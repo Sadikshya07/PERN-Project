@@ -5,7 +5,17 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      'inter': ['Inter', 'sans-serif'],
+    },
+    extend: {
+      colors: {
+        orange: "#D8743A",
+        blue: "#2E5F96",
+        black: "#000000",
+        offWhite: "#FCFCFC",
+      },
+    },
   },
   plugins: [],
 }
