@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-
 export default function Home() {
   return (
     <div className="flex justify-center items-center w-full h-screen">
@@ -18,17 +17,29 @@ export default function Home() {
             Username:
           </label>
           <br />
-          <input type="text" id="username" className="border-2"/>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            className="border-2"
+          />
         </div>
         <div className="password">
           <label htmlFor="password" className="font-inter">
             Password:
           </label>
           <br />
-          <input type="password" id="password" className="border-2"/>
+          <input
+            type="password"
+            id="password"
+            name="username"
+            className="border-2"
+          />
         </div>
         <br />
-        <button type="submit" className="border-2 border-red">Log in</button>
+        <button type="submit" className="border-2 border-red">
+          Log in
+        </button>
       </form>
     </div>
   );
