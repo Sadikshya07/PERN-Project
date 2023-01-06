@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function PageLink(props) {
   return (
-    <div className="links w-[100px]">
+    <div className="links ">
       {console.log(props.link)}
       {props.title}
     </div>
