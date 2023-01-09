@@ -5,6 +5,12 @@ import Link from "next/link";
 export default function Metrics() {
   return (
     <div>
+      <Head>
+        <title>Metrics</title>
+        <meta name="description" content="Deerwalk Sifal School" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       Metrics
     </div>
   );
