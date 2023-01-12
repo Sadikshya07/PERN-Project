@@ -29,6 +29,7 @@ export default function Home() {
             className="toggle-sidebar text-offWhite text-3xl cursor-pointer sm:hidden block"
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           />
+        </div>
           <Sidebar
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             isSidebarOpen={isSidebarOpen}
@@ -37,7 +38,6 @@ export default function Home() {
             onClick={() => setIsOverlayOpen(!isOverlayOpen)}
             isOverlayOpen={isOverlayOpen}
           />
-        </div>
       </nav>
     </>
   );

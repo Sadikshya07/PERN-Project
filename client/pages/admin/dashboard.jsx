@@ -5,6 +5,7 @@ import PageLink from "../../components/admin/PageLink";
 import routes from "../../routes";
 
 export default function Dashboard() {
+  const year = new Date().getFullYear();
   const adminPages = routes[0].adminLinks.map((admin) => {
     return (
       <Link
@@ -151,7 +152,7 @@ export default function Dashboard() {
       <hr />
       <br />
       <h3 className="md:text-3xl text-2xl font-bold my-5 w-full flex justify-center">
-        DSS in 2022
+        DSS in {year}
       </h3>
       <div className="other-links grid-small sm:grid-medium lg:grid-large mb-10">
         {dssinYear}
