@@ -10,9 +10,9 @@ export default function Home(props) {
     <>
       <div
         className={`bg-orange z-50 w-full h-[24rem] absolute top-0 left-0 scroll-y-none ${
-          isOverlayOpen ? "bottom-0" : "-top-[100vw]"
+          isOverlayOpen ? "bottom-0" : "-top-[100vh]"
         }`}
-        style={{ transition: ".1s all ease-in-out" }}
+        style={{ transition: ".8s all ease-in-out" }}
       >
         <div className="p-2 text-3xl text-offWhite absolute top-5 right-10 cursor-pointer">
           <RxCross1
@@ -21,8 +21,8 @@ export default function Home(props) {
             }}
           />
         </div>
-        <div className="navbar-content sm:block hidden">
-          <div className="navbar-left flex flex-col w-8/12 h-[22em]">
+        <div className="navbar-content sm:flex hidden">
+          <div className="navbar-left w-8/12 h-[22em]">
             <div className="navbar-grid-container">
               <div className="about-us flex flex-col">
                 <h2 className="mb-3 text-offWhite text-xl font-medium">
@@ -173,6 +173,7 @@ export default function Home(props) {
             {/* <div className="nav-top flex justify-between mb-10"></div>
             <div className="nav-bottom flex justify-between"></div> */}
           </div>
+          <div className="vertical-bar h-[22em] border-l-[1px] border-offWhite"></div>
           <div className="navbar-right"></div>
         </div>
       </div>
