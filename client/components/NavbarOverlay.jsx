@@ -1,6 +1,10 @@
 import { RxCross1 } from "react-icons/rx";
 import Link from "next/link";
-import routes from "../routes";
+import {BsFacebook} from "react-icons/bs"
+import {RiInstagramFill} from "react-icons/ri"
+import {BsLinkedin} from "react-icons/bs"
+import {BsYoutube} from "react-icons/bs"
+import {BsTwitter} from "react-icons/bs"
 
 export default function Home(props) {
   const { isOverlayOpen } = props;
@@ -9,8 +13,8 @@ export default function Home(props) {
   return (
     <>
       <div
-        className={`bg-orange z-50 w-full h-[24rem] absolute top-0 left-0 scroll-y-none ${
-          isOverlayOpen ? "bottom-0" : "-top-[100vh]"
+        className={`bg-orange z-50 w-full h-[26rem] absolute top-0 left-0 scroll-y-none ${
+          isOverlayOpen ? "top-0" : "-top-[100vh]"
         }`}
         style={{ transition: ".8s all ease-in-out" }}
       >
@@ -21,8 +25,8 @@ export default function Home(props) {
             }}
           />
         </div>
-        <div className="navbar-content sm:flex hidden">
-          <div className="navbar-left w-8/12 h-[22em]">
+        <div className="navbar-content p-8 lg:pl-14 sm:w-full sm:flex  hidden">
+          <div className="navbar-left w-7/12 h-[22em]">
             <div className="navbar-grid-container">
               <div className="about-us flex flex-col">
                 <h2 className="mb-3 text-offWhite text-xl font-medium">
@@ -174,7 +178,21 @@ export default function Home(props) {
             <div className="nav-bottom flex justify-between"></div> */}
           </div>
           <div className="vertical-bar h-[22em] border-l-[1px] border-offWhite"></div>
-          <div className="navbar-right"></div>
+          <div className="navbar-right w-5/12 flex flex-col lg:justify-between justify-start items-start ml-10">
+            <div className="nav-links-right flex flex-col items-start gap-5  h-auto">
+              <Link href = "dss-clubs" className="mb-3 text-offWhite text-xl font-medium">DSS Clubs</Link>
+              <Link href = "admission" className="mb-3 text-offWhite text-xl font-medium">Admission</Link>
+              <a href = "#" className="mb-3 text-offWhite text-xl font-medium">Contact Us</a>
+              <a href = "#" className="mb-3 text-offWhite text-xl font-medium">View Result</a>
+            </div>
+            <div className="socials text-offWhite flex items-center gap-8 lg:text-3xl text-2xl   lg:pb-8">
+              <BsFacebook />
+              <RiInstagramFill/>
+              <BsLinkedin className="lg:text-2xl text-xl"/>
+              <BsYoutube/>
+              <BsTwitter />
+            </div>
+          </div>
         </div>
       </div>
     </>
