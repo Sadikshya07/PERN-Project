@@ -4,7 +4,7 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-export default function WeekendCampProgram() {
+export default function Newsletter() {
   return (
     <>
       <Head>
@@ -14,9 +14,7 @@ export default function WeekendCampProgram() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main>
-        Weekend Camp Program
-      </main>
+      <main>Newsletter</main>
       <Footer />
     </>
   );

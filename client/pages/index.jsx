@@ -126,8 +126,8 @@ export default function Home() {
             <Link href="/admission">Learn More</Link>
           </div>
         </div>
-        <div className="social-embed"></div>
-        <div className="map-embed"></div>
+        <div className="social-embed">FACEBOOK EMBED HERE</div>
+        <div className="map-embed">MAP EMBED HERE</div>
         <Footer />
       </main>
     </>

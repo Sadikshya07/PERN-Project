@@ -4,7 +4,7 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-export default function WeekendCampProgram() {
+export default function WHhyDSS() {
   return (
     <>
       <Head>
@@ -15,7 +15,7 @@ export default function WeekendCampProgram() {
       </Head>
       <Navbar />
       <main>
-        Weekend Camp Program
+        Why DSS
       </main>
       <Footer />
     </>
