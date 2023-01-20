@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import NewsandEventsCard from "../components/NewsandEventsCard";
 
 export default function NewsAndEvents() {
   return (
@@ -15,7 +16,8 @@ export default function NewsAndEvents() {
       </Head>
       <Navbar />
       <main>
-        News and Events
+        {/* hero section here */}
+        <NewsandEventsCard />
       </main>
       <Footer />
     </>

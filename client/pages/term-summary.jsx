@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import TermAnalysis from "../components/TermandAnalysisCard";
 
 export default function TermSummary() {
   return (
@@ -15,7 +16,8 @@ export default function TermSummary() {
       </Head>
       <Navbar />
       <main>
-        Term Summary
+        {/* hero section here */}
+        <TermAnalysis />
       </main>
       <Footer />
     </>

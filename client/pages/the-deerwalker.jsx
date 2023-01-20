@@ -3,8 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import TheDeerwalker from "../components/TermandAnalysisCard";
 
-export default function TheDeerwalker() {
+export default function TermSummary() {
   return (
     <>
       <Head>
@@ -15,7 +16,8 @@ export default function TheDeerwalker() {
       </Head>
       <Navbar />
       <main>
-        The Deerwalker
+        {/* hero section here */}
+        <TheDeerwalker />
       </main>
       <Footer />
     </>

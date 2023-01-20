@@ -3,8 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import NewsletterCard from "../components/TermandAnalysisCard";
 
-export default function Newsletter() {
+export default function TermSummary() {
   return (
     <>
       <Head>
@@ -14,7 +15,10 @@ export default function Newsletter() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main>Newsletter</main>
+      <main>
+        {/* hero section here */}
+        <NewsletterCard />
+      </main>
       <Footer />
     </>
   );

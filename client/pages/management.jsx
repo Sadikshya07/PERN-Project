@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ManagementCard from "../components/ManagementCard";
 
 export default function Management() {
   return (
@@ -14,7 +15,12 @@ export default function Management() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main>Management</main>
+      <main>
+        {/* hero section here */}
+        <div className="management-grid-container">
+          <ManagementCard />
+        </div>
+      </main>
       <Footer />
     </>
   );

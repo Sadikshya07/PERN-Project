@@ -18,10 +18,9 @@ export default function Home() {
       </Head>
 
         <nav className="sticky top-0 bg-orange w-full py-2 flex justify-center">
-          <div className="w-10/12 flex justify-between items-center">
-            {/* <Image src = {dssan}/> */}
+          <div className="w-11/12 flex justify-between items-center">
             <Link href="/">
-              <Image src={logo} alt="dss logo" />
+              <Image src={logo} alt="dss logo"/>
             </Link>
             <GiHamburgerMenu
               className="toggle-overlay text-offWhite text-3xl cursor-pointer sm:block hidden"

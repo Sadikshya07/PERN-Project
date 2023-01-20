@@ -1,10 +1,10 @@
 import { RxCross1 } from "react-icons/rx";
 import Link from "next/link";
-import {BsFacebook} from "react-icons/bs"
-import {RiInstagramFill} from "react-icons/ri"
-import {BsLinkedin} from "react-icons/bs"
-import {BsYoutube} from "react-icons/bs"
-import {BsTwitter} from "react-icons/bs"
+import { BsFacebook } from "react-icons/bs";
+import { RiInstagramFill } from "react-icons/ri";
+import { BsLinkedin } from "react-icons/bs";
+import { BsYoutube } from "react-icons/bs";
+import { BsTwitter } from "react-icons/bs";
 
 export default function Home(props) {
   const { isOverlayOpen } = props;
@@ -65,7 +65,7 @@ export default function Home(props) {
                   href="/weekend-camp-program"
                   className="text-offWhite font-regular font-sm"
                 >
-                  Faculty
+                  Weekend Camp Program
                 </Link>
                 <Link
                   href="/courses"
@@ -78,10 +78,7 @@ export default function Home(props) {
                 <h2 className="mb-3 text-offWhite text-xl font-medium">
                   Community
                 </h2>
-                <Link
-                  href="/alumni"
-                  className="text-offWhite font-regular font-sm"
-                >
+                <Link href="/" className="text-offWhite font-regular font-sm">
                   Alumni
                 </Link>
                 <Link
@@ -132,7 +129,7 @@ export default function Home(props) {
                   Podcast
                 </Link>
               </div>
-              <div className="dss-in-year flex flex-col">
+              <div className="dss-in-year hidden flex-col">
                 <h2 className="mb-3 text-offWhite text-xl font-medium">
                   DSS in {year}
                 </h2>
@@ -180,17 +177,45 @@ export default function Home(props) {
           <div className="vertical-bar h-[22em] border-l-[1px] border-offWhite"></div>
           <div className="navbar-right w-5/12 flex flex-col lg:justify-between justify-start items-start ml-10">
             <div className="nav-links-right flex flex-col items-start gap-5  h-auto">
-              <Link href = "dss-clubs" className="mb-3 text-offWhite text-xl font-medium">DSS Clubs</Link>
-              <Link href = "admission" className="mb-3 text-offWhite text-xl font-medium">Admission</Link>
-              <a href = "#" className="mb-3 text-offWhite text-xl font-medium">Contact Us</a>
-              <a href = "#" className="mb-3 text-offWhite text-xl font-medium">View Result</a>
+              <Link
+                href="/dss-clubs"
+                className="mb-3 text-offWhite text-xl font-medium"
+              >
+                DSS Clubs
+              </Link>
+              <Link
+                href="/admission"
+                className="mb-3 text-offWhite text-xl font-medium"
+              >
+                Admission
+              </Link>
+              <a href="#" className="mb-3 text-offWhite text-xl font-medium">
+                Contact Us
+              </a>
+              <a href="#" className="mb-3 text-offWhite text-xl font-medium">
+                View Result
+              </a>
             </div>
-            <div className="socials text-offWhite flex items-center gap-8 lg:text-3xl text-2xl   lg:pb-8">
-              <BsFacebook />
-              <RiInstagramFill/>
-              <BsLinkedin className="lg:text-2xl text-xl"/>
-              <BsYoutube/>
-              <BsTwitter />
+            <div className="socials text-offWhite flex items-center gap-8 lg:text-4xl text-2xl   lg:pb-8">
+              <a
+                href="https://www.facebook.com/DeerwalkSifalSchool"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <BsFacebook />
+              </a>
+              {/* <a href="" target="_blank" rel="noopener noreferrer">
+                <RiInstagramFill />
+              </a> */}
+              <a href="https://www.linkedin.com/company/deerwalksifalschool/" target="_blank" rel="noopener noreferrer">
+                <BsLinkedin className="lg:text-4xl text-xl" />
+              </a>
+              <a href="https://www.youtube.com/@sifalschool/" target="_blank" rel="noopener noreferrer">
+                <BsYoutube className="lg:text-4xl text-xl" />
+              </a>
+              {/* <a href="" target="_blank" rel="noopener noreferrer"> 
+                <BsTwitter />
+              </a> */}
             </div>
           </div>
         </div>

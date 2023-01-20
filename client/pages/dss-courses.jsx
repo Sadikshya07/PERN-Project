@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import DSSCoursesCard from "../components/DSSCoursesCard";
 
 export default function DSSCourses() {
   return (
@@ -14,7 +15,9 @@ export default function DSSCourses() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main>DSS Courses</main>
+      <main>
+        <DSSCoursesCard />
+      </main>
       <Footer />
     </>
   );

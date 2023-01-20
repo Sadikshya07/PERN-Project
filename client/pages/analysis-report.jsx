@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import AnalysisReportCard from "../components/TermandAnalysisCard";
 
 export default function AnalysisReport() {
   return (
@@ -15,7 +16,8 @@ export default function AnalysisReport() {
       </Head>
       <Navbar />
       <main>
-        Analysis Report
+        {/* hero section here */}
+        <AnalysisReportCard />
       </main>
       <Footer />
     </>

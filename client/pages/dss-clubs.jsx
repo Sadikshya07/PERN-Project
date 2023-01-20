@@ -1,9 +1,10 @@
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import FacultyCard from "../components/FacultyCard";
 
-export default function Faculty() {
+export default function DSSClubs() {
   return (
     <>
       <Head>
@@ -14,10 +15,7 @@ export default function Faculty() {
       </Head>
       <Navbar />
       <main>
-        {/* hero section here */}
-        <div className="faculty-card-container">
-          <FacultyCard />
-        </div>
+        DSS Clubs
       </main>
       <Footer />
     </>
