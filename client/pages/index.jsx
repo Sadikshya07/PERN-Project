@@ -9,6 +9,9 @@ import perClass from "../public/src/assets/per-class.svg";
 import stRatio from "../public/src/assets/st-ratio.svg";
 
 export default function Home() {
+  function hello(){
+    console.log("hello");
+  }
   return (
     <>
       <Head>
@@ -19,91 +22,149 @@ export default function Home() {
       </Head>
       <Navbar />
       <main>
-        <div className="images">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div className="hero">
-          <h1>Welcome to Sifal School</h1>
-          <p className="heading-text">
-            At DSS, all students are encouraged to take risks, speak up, embrace
-            opportunities, and think creatively.We enable them to effect the
-            change they desire.
-          </p>
-          <div className="hero-button">
-            <Link href="/why-dss">READ MORE</Link>
+        <div className="hero-section flex justify-between w-11/12 mx-auto mt-8">
+          <div className="left w-[38em]">
+            <h1 className="text-[4rem] font-extrabold w-[400px] leading-[1.25em]">
+              Welcome to Sifal School
+            </h1>
+            <p className="heading-text text-2xl w-[24em] font-regular mt-2">
+              At DSS, all students are encouraged to take risks, speak up,
+              embrace opportunities, and think creatively.We enable them to
+              effect the change they desire.
+            </p>
+            <div className="hero-button mt-6">
+              <Link
+                href="/why-dss"
+                className="text-center text-offWhite border-4 border-orange font-bold bg-orange px-5 py-2 rounded-full hover:text-orange hover:bg-transparent"
+              >
+                READ MORE
+              </Link>
+            </div>
+            <div className="metrics w-[45em] grid grid-cols-2 gap-y-8 mt-6">
+              <div className="students mt-4 w-[6em]">
+                <Image src={heroStudent} className="ml-4" />
+                <p className="text-center text-orange font-bold text-3xl mt-2">
+                  353
+                </p>
+                <p className="text-center text-xl">Students</p>
+              </div>
+              <div className="per-class w-[6em]">
+                <Image src={perClass} className="ml-4" />
+                <p className="text-center text-orange font-bold text-3xl mt-2">
+                  24
+                </p>
+                <p className="text-center text-xl">Per Class</p>
+              </div>
+              <div className="teachers w-[6em]">
+                <Image src={heroTeacher} className="ml-4" />
+                <p className="text-center text-orange font-bold text-3xl mt-2">
+                  60
+                </p>
+                <p className="text-center text-xl">Teachers</p>
+              </div>
+              <div className="st-ratio w-[20em]">
+                <Image src={stRatio} className="ml-4" />
+                <p className="text-orange font-bold text-3xl ml-[1em] mt-2">
+                  5:1
+                </p>
+                <p className="text-xl">Student Teacher Ratio</p>
+              </div>
+            </div>
           </div>
-          <div className="metrics">
-            <div className="students">
-              <Image src={heroStudent} />
-              <p>353</p>
-              <p>Students</p>
-            </div>
-            <div className="per-class">
-              <Image src={perClass} />
-              <p>24</p>
-              <p>Per Class</p>
-            </div>
-            <div className="teachers">
-              <Image src={heroTeacher} />
-              <p>60</p>
-              <p>Teachers</p>
-            </div>
-            <div className="st-ratio">
-              <Image src={stRatio} />
-              <p>5:1</p>
-              <p>Student Teacher Ratio</p>
-            </div>
+          <div className="images relative w-[38em] h-[38em] -z-50">
+            <div className="absolute bottom-0 right-[14em] h-[15em] w-[15em] rounded-full bg-red-500"></div>
+            <div className="absolute top-0 right-0 h-[30em] w-[30em] rounded-full bg-red-400"></div>
+            <div className="absolute top-[10em] left-0 h-[15em] w-[15em] rounded-full bg-red-300"></div>
           </div>
         </div>
-        <div className="programs">
-          <div className="programs-content">
-            <h1>Our Programs</h1>
-            <p>
+        <div className="programs mt-10 bg-gray">
+          <div className="programs-content w-11/12 mx-auto py-8">
+            <h1 className="text-4xl font-bold">Our Programs</h1>
+            <p className="w-[64em] text-xl my-6">
               Founded in 2016, Deerwalk Sifal School is determined to help our
               students grow as a good global citizen with solid academic skill
               in language, math, and science. We make sure we get the best out
               of every student and help each find their strength.
             </p>
-            <div className="individual-programs">
-              <div className="elementary">
-                <div className="elementary-image"></div>
-                <p>Elementary School</p>
+            <div className="individual-programs flex justify-between">
+              <div className="elementary w-[24em]">
+                <div className="elementary-image w-full h-[28em] bg-red-500 rounded-3xl mb-4"></div>
+                <p className="text-center text-orange text-3xl font-bold">
+                  Elementary School
+                </p>
               </div>
-              <div className="middle">
-                <div className="middle-image"></div>
-                <p>Middle School</p>
+              <div className="middle w-[24em]">
+                <div className="middle-image w-full h-[28em] bg-red-500 rounded-3xl mb-4"></div>
+                <p className="text-center text-orange text-3xl font-bold">
+                  Middle School
+                </p>
               </div>
-              <div className="high">
-                <div className="high-image"></div>
-                <p>High School</p>
+              <div className="high w-[24em]">
+                <div className="high-image w-full h-[28em] bg-red-500 rounded-3xl mb-4"></div>
+                <p className="text-center text-orange text-3xl font-bold">
+                  High School
+                </p>
               </div>
             </div>
           </div>
         </div>
-        <div className="news-and-events">
-          <h1>News and Events</h1>
-          <div className="news-grid-container">
-            <div className="first-card">
-              <p>16 Dec</p>
-              <p>Deerwalk Sifal Night | Elementary Schol</p>
+        <div className="news mt-2">
+          <div className="news-and-events w-11/12 mx-auto py-8">
+            <h1 className="text-4xl font-bold mb-6">News and Events</h1>
+            <div className="news-grid-container mb-8">
+              <Link href="/" className="row-span-2 hover:cursor-pointer">
+                <div className="first-card bg-red-500 h-full rounded-3xl relative row-span-2 -z-50">
+                  <div className="news-overlay">
+                    <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
+                      16 Dec
+                    </p>
+                    <p className="absolute bottom-5 left-5 w-[17em] font-bold text-offWhite text-2xl">
+                      Deerwalk Sifal Night | Elementary School
+                    </p>
+                  </div>
+                </div>
+              </Link>
+              <Link href="/" className= "col-span-2 hover:cursor-pointer">
+                <div className="second-card bg-red-500 h-full rounded-3xl relative -z-50">
+                  <div className="news-overlay">
+                    <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
+                      16 Dec
+                    </p>
+                    <p className="absolute bottom-5 left-5 w-[33em] font-bold text-offWhite text-2xl">
+                      Deerwalk Sifal Night | Elementary School
+                    </p>
+                  </div>
+                </div>
+              </Link>
+              <Link href="/" className="hover:cursor-pointer">
+                <div className="third-card bg-red-500 h-full rounded-3xl relative -z-50">
+                  <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
+                    16 Dec
+                  </p>
+                  <p className="absolute bottom-5 left-5 w-[17em] font-bold text-offWhite text-2xl">
+                    Deerwalk Sifal Night | Elementary School
+                  </p>
+                </div>
+              </Link>
+              <Link href="/" className="hover:cursor-pointer">
+                <div className="fourth-card bg-red-500 h-full rounded-3xl relative -z-50">
+                  <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
+                    16 Dec
+                  </p>
+                  <p className="absolute bottom-5 left-5 w-[17em] font-bold text-offWhite text-2xl">
+                    Deerwalk Sifal Night | Elementary School
+                  </p>
+                </div>
+              </Link>
             </div>
-            <div className="second-card">
-              <p>16 Dec</p>
-              <p>Deerwalk Sifal Night | Elementary Schol</p>
+            <div className="view-more text-center">
+              <Link
+                href="/news-and-events"
+                className="text-center text-offWhite border-4 border-orange font-bold bg-orange px-5 py-2 rounded-xl hover:text-orange hover:bg-transparent"
+              >
+                VIEW MORE
+              </Link>
             </div>
-            <div className="third-card">
-              <p>16 Dec</p>
-              <p>Deerwalk Sifal Night | Elementary Schol</p>
-            </div>
-            <div className="fourth-card">
-              <p>16 Dec</p>
-              <p>Deerwalk Sifal Night | Elementary Schol</p>
-            </div>
-          </div>
-          <div className="view-more">
-            <Link href="/news-and-events">VIEW MORE</Link>
           </div>
         </div>
         <div className="school-activities">
@@ -128,8 +189,8 @@ export default function Home() {
         </div>
         <div className="social-embed">FACEBOOK EMBED HERE</div>
         <div className="map-embed">MAP EMBED HERE</div>
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 }
