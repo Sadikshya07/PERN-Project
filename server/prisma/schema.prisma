@@ -16,7 +16,7 @@ model users {
   password String
 }
 
-model nebcourses {
+model courses {
   id   Int    @id @default(autoincrement())
   name String
 }
@@ -44,30 +44,7 @@ model schoolactivities {
   Title String
 }
 
-model publications {
-  id       Int    @id @default(autoincrement())
-  Filename String
-}
-
-model studentcorner {
-  id             Int    @id @default(autoincrement())
-  studentname    String
-  rollnumber     Int
-  grade          Int
-  articletitle   String
-  articlecontent String
-}
-
-model podcast {
-  id            Int    @id @default(autoincrement())
-  title         String
-  presentername String
-  rollno        Int
-  grade         Int
-  description   String
-}
-
-model newsevents {
+model newsandevents {
   id          Int      @id @default(autoincrement())
   title       String
   description String
@@ -88,7 +65,7 @@ model schoolinmedia {
   author String
 }
 
-model weekendcampname {
+model weekendcampprogram {
   id          Int    @id @default(autoincrement())
   description String
 }
@@ -96,4 +73,42 @@ model weekendcampname {
 model whydss {
   id      Int    @id @default(autoincrement())
   bullets String
+  category String
+}
+model newsletter{
+    id Int @id @default(autoincrement())
+    name String
+}
+
+model termsummary {
+  id Int @id @default(autoincrement())
+  name String
+}
+
+model deerwalker {
+  id Int @id @default(autoincrement())
+  name String
+}
+
+model analysisreport{
+  id Int @id @default(autoincrement())
+  name String
+}
+
+model studentcorner {
+  id             Int    @id @default(autoincrement())
+  studentname    String
+  rollnumber     Int
+  grade          Int
+  articletitle   String
+  articlecontent String
+}
+
+model podcast {
+  id            Int    @id @default(autoincrement())
+  title         String
+  presentername String
+  rollno        Int
+  grade         Int
+  description   String
 }
