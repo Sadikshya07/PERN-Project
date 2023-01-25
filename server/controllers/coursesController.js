@@ -1,5 +1,5 @@
 const express = require("express")
-const router = express.Router
+const router = express.Router();
 
 router.get("/admin/program/courses", async (req, res) => {
     try {
