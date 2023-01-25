@@ -32,10 +32,9 @@ router.get("/admin/publications/deerwalker", async (req, res) => {
   router.post("/admin/publications/deerwalker", async (req, res) => {
     try {
       console.log(req.body);
-      const {name,file} = req.body;
+      const {name} = req.body;
       const data = {
-        name:name,
-        file:file
+        name:name
       };
       const results = await prisma.deerwalker.create({
         data: data,
@@ -51,11 +50,10 @@ router.get("/admin/publications/deerwalker", async (req, res) => {
   router.put("/admin/publications/deerwalker/:id", async (req, res) => {
     try {
       const id = req.params.id;
-      const {name,file} = req.body;
+      const {name} = req.body;
   
     const data = {
-       name:name,
-       file:file
+       name:name
     };
       const results = await prisma.deerwalker.update({
         where: {
@@ -74,11 +72,10 @@ router.get("/admin/publications/deerwalker", async (req, res) => {
   router.delete("/admin/publications/deerwalker/:id", async (req, res) => {
     try {
       const id = req.params.id;
-      const {name,file } = req.body;
+      const {name} = req.body;
   
     const data = {
-        name:name,
-        file:file
+        name:name
     };
       const results = await prisma.deerwalker.delete({ 
           where: {

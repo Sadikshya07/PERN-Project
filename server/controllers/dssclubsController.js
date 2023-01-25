@@ -2,9 +2,9 @@ const express = require("express")
 const router = express.Router
 
 
-router.get("/admin/publications/termsummary", async (req, res) => {
+router.get("/admin/otherpages/dssclubs", async (req, res) => {
     try {
-      const results = await prisma.termsummary.findMany();
+      const results = await prisma.dssclubs.findMany();
       res.status(200).json({
         status: "success",
         data: results,
@@ -13,10 +13,10 @@ router.get("/admin/publications/termsummary", async (req, res) => {
       console.log(error.message);
     }
   });
-  router.get("/admin/publications/termsummary/:id", async (req, res) => {
+  router.get("/admin/otherpages/dssclubs/:id", async (req, res) => {
     try {
       const id = req.params.id;
-      const results = await prisma.termsummary.findFirst({
+      const results = await prisma.dssclubs.findFirst({
         where: {
           id: id,
         },
@@ -29,14 +29,15 @@ router.get("/admin/publications/termsummary", async (req, res) => {
       console.error(error.message);
     }
   });
-  router.post("/admin/publications/termsummary", async (req, res) => {
+  router.post("/admin/otherpages/dssclubs", async (req, res) => {
     try {
       console.log(req.body);
-      const {name } = req.body;
+      const { name, description } = req.body;
       const data = {
-        name:name,
+        name: name,
+        description: description
       };
-      const results = await prisma.termsummary.create({
+      const results = await prisma.dssclubs.create({
         data: data,
       });
       res.status(201).json({
@@ -47,15 +48,16 @@ router.get("/admin/publications/termsummary", async (req, res) => {
       console.error("Error:", error.message);
     }
   });
-  router.put("/admin/publications/termsummary/:id", async (req, res) => {
+  router.put("/admin/otherpages/dssclubs/:id", async (req, res) => {
     try {
       const id = req.params.id;
-      const {name } = req.body;
+      const { name, description} = req.body;
   
     const data = {
-       name:name,
+      name: name,
+      description: description
     };
-      const results = await prisma.termsummary.update({
+      const results = await prisma.dssclubs.update({
         where: {
           id,
         },
@@ -69,15 +71,16 @@ router.get("/admin/publications/termsummary", async (req, res) => {
       console.error(error.message);
     }
   });
-  router.delete("/admin/publications/termsummary/:id", async (req, res) => {
+  router.delete("/admin/otherpages/dssclubs/:id", async (req, res) => {
     try {
       const id = req.params.id;
-      const {name} = req.body;
+      const { name, description} = req.body;
   
     const data = {
-        name:name,
+      name: name,
+      description: description
     };
-      const results = await prisma.termsummary.delete({ 
+      const results = await prisma.dssclubs.delete({ 
           where: {
           id,
         },}

@@ -108,7 +108,7 @@ model podcast {
   id            Int    @id @default(autoincrement())
   title         String
   presentername String
-  rollno        Int
+  rollnumber       Int
   grade         Int
   description   String
 }
