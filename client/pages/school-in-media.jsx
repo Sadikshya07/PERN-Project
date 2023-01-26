@@ -3,10 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import ManagementCard from "../components/ManagementCard";
-import HeroSectionCard from "../components/HeroSection";
+import NewsandEventsCard from "../components/NewsandEventsCard";
 
-export default function Management() {
+export default function SchoolInMedia() {
   return (
     <>
       <Head>
@@ -17,10 +16,8 @@ export default function Management() {
       </Head>
       <Navbar />
       <main>
-        <HeroSectionCard url = "" title = "Management"/>
-        <div className="management-grid-container">
-          <ManagementCard />
-        </div>
+        {/* hero section here */}
+        <NewsandEventsCard />
       </main>
       <Footer />
     </>
