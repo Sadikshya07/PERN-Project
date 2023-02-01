@@ -7,6 +7,7 @@ import heroStudent from "../public/src/assets/hero-students.svg";
 import heroTeacher from "../public/src/assets/hero-teachers.svg";
 import perClass from "../public/src/assets/per-class.svg";
 import stRatio from "../public/src/assets/st-ratio.svg";
+import SchoolActivities from "../components/SchoolActivities";
 
 export default function Home() {
   return (
@@ -238,73 +239,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="school-activities mt-2 bg-gray py-8">
-          <div className="school-activities-content w-11/12 mx-auto">
-            <h1 className="text-4xl font-bold mb-6">School Activities</h1>
-            <div className="embeds flex gap-10 justify-between">
-              <div className="school-activities-card  bg-offWhite w-[20em] h-[20em]">
-                <iframe
-                  src="https://www.youtube.com/embed/_YGI1qRd9pw"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                  className="w-full h-full rounded-xl"
-                ></iframe>
-              </div>
-              <div className="school-activities-card bg-offWhite w-[20em] h-[20em]">
-                <iframe
-                  src="https://www.youtube.com/embed/_YGI1qRd9pw"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                  className="w-full h-full rounded-xl"
-                ></iframe>
-              </div>
-              <div className="school-activities-card  bg-offWhite w-[20em] h-[20em]">
-                <iframe
-                  src="https://www.youtube.com/embed/_YGI1qRd9pw"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                  className="w-full h-full rounded-xl"
-                ></iframe>
-              </div>
-              <div className="school-activities-card  bg-offWhite w-[20em] h-[20em]">
-                <iframe
-                  src="https://www.youtube.com/embed/_YGI1qRd9pw"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                  className="w-full h-full rounded-xl"
-                ></iframe>
-              </div>
-              {/* <div className="school-activities-card  bg-offWhite w-[20em] h-[20em]">
-              <iframe
-                src="https://www.youtube.com/embed/_YGI1qRd9pw"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-                className="w-full h-full rounded-xl"
-              ></iframe>
-            </div>
-            <div className="school-activities-card  bg-offWhite w-[20em] h-[20em]">
-              <iframe
-                src="https://www.youtube.com/embed/_YGI1qRd9pw"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-                className="w-full h-full rounded-xl"
-              ></iframe>
-            </div> */}
-            </div>
-          </div>
-        </div>
+        <SchoolActivities />
         <div className="school-in-media mt-2">
           <div className="school-in-media-content w-11/12 mx-auto py-8">
             <h1 className="text-4xl font-bold mb-6">School in Media</h1>
