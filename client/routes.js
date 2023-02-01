@@ -8,6 +8,10 @@ export default [
       {
         title: "View User",
         url: "/admin/viewusers",
+      },
+      {
+        title: "Add Hero Images",
+        url: "/admin/hero-section-images",
       }
     ],
     homepage: [

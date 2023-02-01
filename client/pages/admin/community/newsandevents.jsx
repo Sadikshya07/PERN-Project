@@ -11,7 +11,33 @@ export default function NewsAndEvents() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      News and events
+      <button className="border-2">Add</button><br/>
+      <table>
+        <thead>
+      <tr>
+      <th>SN</th>
+      <th>AuthorName</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Image</th>
+      <th>Actions</th>
+      </tr>
+      </thead>
+      </table>
+      <form>
+      <label for = "fname">Full name:</label> <br/>
+      <input type="text" id= "fname" placeholder="Name"className="border-2"></input><br/>
+      <label for = "description">Description:</label> <br/>
+      <input type="text" id= "description" placeholder="description"className="border-2"></input> <br/>
+      <label for = "Title">Title:</label> <br/>
+      <input type="text" id= "Title" placeholder="Title"className="border-2"></input> <br/>
+      <label for = "Date">Date:</label> <br/>
+      <input type="date" id= "Date" placeholder="date"className="border-2"></input> <br/>
+      <label for = "image">Image:</label> <br/>
+      <input type="file" id= "image" placeholder="Choose a file"className="border-2"></input> <br/>
+      <button type="submit"className="border-2">Submit</button>
+      </form>
     </div>
   );
 }
