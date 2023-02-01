@@ -1,8 +1,14 @@
 const express = require("express")
 const router = express.Router()
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
+const bodyParser = require("body-parser");
+
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
 
 
-router.get("/admin/publications/podcast", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
       const results = await prisma.podcast.findMany();
       res.status(200).json({
@@ -13,7 +19,7 @@ router.get("/admin/publications/podcast", async (req, res) => {
       console.log(error.message);
     }
   });
-  router.get("/admin/publications/podcast/:id", async (req, res) => {
+  router.get("/:id", async (req, res) => {
     try {
       const id = req.params.id;
       const results = await prisma.podcast.findFirst({
@@ -29,7 +35,7 @@ router.get("/admin/publications/podcast", async (req, res) => {
       console.error(error.message);
     }
   });
-  router.post("/admin/publications/podcast", async (req, res) => {
+  router.post("/", async (req, res) => {
     try {
       console.log(req.body);
       const {presentername,rollnumber,grade,title,description} = req.body;
@@ -51,7 +57,7 @@ router.get("/admin/publications/podcast", async (req, res) => {
       console.error("Error:", error.message);
     }
   });
-  router.put("/admin/publications/podcast/:id", async (req, res) => {
+  router.put("/:id", async (req, res) => {
     try {
       const id = req.params.id;
       const {presentername,rollnumber,grade,title,description} = req.body;
@@ -67,6 +73,7 @@ router.get("/admin/publications/podcast", async (req, res) => {
         where: {
           id,
         },
+        data,
       });
       console.log(results);
       res.status(201).json({
@@ -77,7 +84,7 @@ router.get("/admin/publications/podcast", async (req, res) => {
       console.error(error.message);
     }
   });
-  router.delete("/admin/publications/podcast/:id", async (req, res) => {
+  router.delete("/:id", async (req, res) => {
     try {
       const id = req.params.id;
       const {presentername,rollnumber,grade,title,description } = req.body;
@@ -97,9 +104,9 @@ router.get("/admin/publications/podcast", async (req, res) => {
       console.log(results);
       res.status(201).json({
         status: "success",
-        data: results,
       });
     } catch (error) {
       console.error(error.message);
     }
   });
+  module.exports = router;
