@@ -20,12 +20,10 @@ router.get("/", async (req, res) => {
 });
 router.get("/:id", async (req, res) => {
   try {
-    const id = req.params.id;
-
-    console.log();
+    const { id } = req.params;
     const results = await prisma.management.findFirst({
       where: {
-        id: Number(id),
+        id,
       },
     });
     res.status(200).json({
@@ -68,8 +66,9 @@ router.put("/:id", async (req, res) => {
     };
     const results = await prisma.management.update({
       where: {
-        id: Number(id),
+        id,
       },
+      data,
     });
     console.log(results);
     res.status(201).json({
@@ -92,13 +91,12 @@ router.delete("/:id", async (req, res) => {
     };
     const results = await prisma.management.delete({
       where: {
-        id : Number(id),
+        id,
       },
     });
     console.log(results);
     res.status(201).json({
       status: "success",
-      data: results,
     });
   } catch (error) {
     console.error(error.message);

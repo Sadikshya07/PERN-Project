@@ -14,9 +14,26 @@ app.use(cors());
 // app.use(express.json());
 const analysisreportRoute = require("./controllers/analysisreportController");
 const managementRoute = require("./controllers/managementController");
+const facultyRoute = require("./controllers/facultyController");
+const whydssRoute = require("./controllers/whydssController");
+const newsandeventsRoute = require("./controllers/newsandeventsController");
+const dssclubsRoute = require("./controllers/dssclubsController");
+const dsscoursesRoute = require("./controllers/dsscoursesController");
+const coursesRoute = require("./controllers/coursesController");
+const weekendcampprogramRoute = require("./controllers/weekendcampprogramController")
+
+
 
 app.use("/api/admin/publications/analysisreport", analysisreportRoute);
 app.use("/api/admin/aboutus/management", managementRoute);
+app.use("/api/admin/aboutus/faculty", facultyRoute);
+app.use("/api/admin/aboutus/whydss",whydssRoute);
+app.use("/api/admin/community/newsandevents",newsandeventsRoute);
+app.use("/api/admin/otherpages/dssclubs",dssclubsRoute);
+app.use("/api/admin/programs/dsscourses",dsscoursesRoute);
+app.use("/api/admin/programs/courses",coursesRoute);
+app.use("/api/admin/programs/weekendcampprogram",weekendcampprogramRoute)
+
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
