@@ -3,6 +3,7 @@ const router = express.Router()
 
 
 router.get("/admin/dssinyear/booklist", async (req, res) => {
+  console.log("hi");
     try {
       const results = await prisma.boooklist.findMany();
       res.status(200).json({

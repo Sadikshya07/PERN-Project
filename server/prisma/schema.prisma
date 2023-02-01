@@ -71,27 +71,28 @@ model weekendcampprogram {
 }
 
 model whydss {
-  id      Int    @id @default(autoincrement())
-  bullets String
+  id       Int    @id @default(autoincrement())
+  bullets  String
   category String
 }
-model newsletter{
-    id Int @id @default(autoincrement())
-    name String
+
+model newsletter {
+  id   Int    @id @default(autoincrement())
+  name String
 }
 
 model termsummary {
-  id Int @id @default(autoincrement())
+  id   Int    @id @default(autoincrement())
   name String
 }
 
 model deerwalker {
-  id Int @id @default(autoincrement())
+  id   Int    @id @default(autoincrement())
   name String
 }
 
-model analysisreport{
-  id Int @id @default(autoincrement())
+model analysisreport {
+  id   Int    @id @default(autoincrement())
   name String
 }
 
@@ -108,7 +109,7 @@ model podcast {
   id            Int    @id @default(autoincrement())
   title         String
   presentername String
-  rollnumber       Int
+  rollnumber    Int
   grade         Int
   description   String
 }
