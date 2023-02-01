@@ -4,12 +4,10 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const bodyParser = require("body-parser");
 
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get("/", async (req, res) => {
   try {
-    const results = await prisma.management.findMany();
+    const results = await prisma.newsandevents.findMany();
     res.status(200).json({
       status: "success",
       data: results,
@@ -20,8 +18,8 @@ router.get("/", async (req, res) => {
 });
 router.get("/:id", async (req, res) => {
   try {
-    const { id } = req.params;
-    const results = await prisma.management.findFirst({
+    const id = req.params.id;
+    const results = await prisma.newsandevents.findFirst({
       where: {
         id,
       },
@@ -36,13 +34,15 @@ router.get("/:id", async (req, res) => {
 });
 router.post("/", async (req, res) => {
   try {
-    const { name, description, position } = req.body;
+    console.log(req.body);
+    const { title, description, author, publishdate } = req.body;
     const data = {
-      name,
-      description,
-      position,
+      title: title,
+      description: description,
+      author: author,
+      publishdate: publishdate,
     };
-    const results = await prisma.management.create({
+    const results = await prisma.newsandevents.create({
       data: data,
     });
     res.status(201).json({
@@ -50,21 +50,21 @@ router.post("/", async (req, res) => {
       data: results,
     });
   } catch (error) {
-    console.error(error.message);
+    console.error("Error:", error.message);
   }
 });
 router.put("/:id", async (req, res) => {
-  console.log("hi");
   try {
     const id = req.params.id;
-    const { name, description, position } = req.body;
+    const { title, description, author, publishdate } = req.body;
 
     const data = {
-      name: name,
+      title: title,
       description: description,
-      position: position,
+      author: author,
+      publishdate: publishdate,
     };
-    const results = await prisma.management.update({
+    const results = await prisma.newsandevents.update({
       where: {
         id,
       },
@@ -82,14 +82,15 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { name, description, position } = req.body;
+    const { title, description, author, publishdate } = req.body;
 
     const data = {
-      name: name,
+      title: title,
       description: description,
-      position: position,
+      author: author,
+      publishdate: publishdate,
     };
-    const results = await prisma.management.delete({
+    const results = await prisma.newsandevents.delete({
       where: {
         id,
       },
@@ -97,6 +98,7 @@ router.delete("/:id", async (req, res) => {
     console.log(results);
     res.status(201).json({
       status: "success",
+      data: results,
     });
   } catch (error) {
     console.error(error.message);

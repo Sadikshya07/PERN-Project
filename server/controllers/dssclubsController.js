@@ -1,8 +1,13 @@
 const express = require("express")
 const router = express.Router()
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
+const bodyParser = require("body-parser");
 
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
 
-router.get("/admin/otherpages/dssclubs", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
       const results = await prisma.dssclubs.findMany();
       res.status(200).json({
@@ -13,12 +18,12 @@ router.get("/admin/otherpages/dssclubs", async (req, res) => {
       console.log(error.message);
     }
   });
-  router.get("/admin/otherpages/dssclubs/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
     try {
-      const id = req.params.id;
+      const {id} = req.params;
       const results = await prisma.dssclubs.findFirst({
         where: {
-          id: id,
+          id,
         },
       });
       res.status(200).json({
@@ -29,13 +34,13 @@ router.get("/admin/otherpages/dssclubs", async (req, res) => {
       console.error(error.message);
     }
   });
-  router.post("/admin/otherpages/dssclubs", async (req, res) => {
+  router.post("/", async (req, res) => {
     try {
       console.log(req.body);
       const { name, description } = req.body;
       const data = {
-        name: name,
-        description: description
+        name,
+        description
       };
       const results = await prisma.dssclubs.create({
         data: data,
@@ -48,7 +53,7 @@ router.get("/admin/otherpages/dssclubs", async (req, res) => {
       console.error("Error:", error.message);
     }
   });
-  router.put("/admin/otherpages/dssclubs/:id", async (req, res) => {
+  router.put("/:id", async (req, res) => {
     try {
       const id = req.params.id;
       const { name, description} = req.body;
@@ -61,6 +66,7 @@ router.get("/admin/otherpages/dssclubs", async (req, res) => {
         where: {
           id,
         },
+        data,
       });
       console.log(results);
       res.status(201).json({
@@ -71,7 +77,7 @@ router.get("/admin/otherpages/dssclubs", async (req, res) => {
       console.error(error.message);
     }
   });
-  router.delete("/admin/otherpages/dssclubs/:id", async (req, res) => {
+  router.delete("/:id", async (req, res) => {
     try {
       const id = req.params.id;
       const { name, description} = req.body;
@@ -88,9 +94,10 @@ router.get("/admin/otherpages/dssclubs", async (req, res) => {
       console.log(results);
       res.status(201).json({
         status: "success",
-        data: results,
       });
     } catch (error) {
       console.error(error.message);
     }
   });
+
+  module.exports = router;

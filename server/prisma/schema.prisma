@@ -11,41 +11,43 @@ datasource db {
 }
 
 model users {
-  id       Int    @id @default(autoincrement())
+  id       String @id @default(uuid())
   name     String
   password String
 }
 
 model courses {
-  id   Int    @id @default(autoincrement())
+  id   String @id @default(uuid())
   name String
+  description String
 }
 
-model dsscourse {
-  id          Int    @id @default(autoincrement())
+model dsscourses {
+  id          String @id @default(uuid())
   name        String
   description String
 }
 
-model dssclub {
-  id          Int    @id @default(autoincrement())
+model dssclubs {
+  id          String @id @default(uuid())
   name        String
   description String
 }
 
 model faculty {
-  id          Int    @id @default(autoincrement())
+  id          String @id @default(uuid())
   name        String
   description String
+  department  String
 }
 
 model schoolactivities {
-  id    Int    @id @default(autoincrement())
+  id    String @id @default(uuid())
   Title String
 }
 
 model newsandevents {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(uuid())
   title       String
   description String
   author      String
@@ -53,46 +55,46 @@ model newsandevents {
 }
 
 model management {
-  id          Int    @id @default(autoincrement())
+  id          String @id @default(uuid())
   name        String
   description String
   position    String
 }
 
 model schoolinmedia {
-  id     Int    @id @default(autoincrement())
+  id     String @id @default(uuid())
   title  String
   author String
 }
 
 model weekendcampprogram {
-  id          Int    @id @default(autoincrement())
+  id          String @id @default(uuid())
   description String
 }
 
 model whydss {
-  id       Int    @id @default(autoincrement())
+  id       String @id @default(uuid())
   bullets  String
   category String
 }
 
 model newsletter {
-  id   Int    @id @default(autoincrement())
+  id   String @id @default(uuid())
   name String
 }
 
 model termsummary {
-  id   Int    @id @default(autoincrement())
+  id   String @id @default(uuid())
   name String
 }
 
 model deerwalker {
-  id   Int    @id @default(autoincrement())
+  id   String @id @default(uuid())
   name String
 }
 
 model analysisreport {
-  id   Int    @id @default(autoincrement())
+  id   String @id @default(uuid())
   name String
 }
 
