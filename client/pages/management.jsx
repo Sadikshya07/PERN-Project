@@ -17,7 +17,7 @@ export default function Management() {
       </Head>
       <Navbar />
       <main>
-        <HeroSectionCard url = "" title = "Management"/>
+        <HeroSectionCard url="" title="Management" />
         <div className="management-grid-container">
           <ManagementCard />
         </div>
