@@ -18,7 +18,7 @@ export default function Management() {
       <Navbar />
       <main>
         <HeroSectionCard url="" title="Management" />
-        <div className="management-grid-container flex justify-around">
+        <div className="management-grid-container flex justify-around gap-[23.5rem]">
           <ManagementCard />
           <ManagementCard />
         </div>
