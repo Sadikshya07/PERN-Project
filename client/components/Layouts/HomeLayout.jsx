@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 
-const HomeLayout = ({children}) => {
+const HomeLayout = ({ children }) => {
   return (
     <>
-    <Navbar/>
-    <main>{children}</main>
-    <Footer/>
+      <Navbar />
+      <main> {children}</main>
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default HomeLayout
+export default HomeLayout;

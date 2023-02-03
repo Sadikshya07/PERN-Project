@@ -5,6 +5,7 @@ import { RiInstagramFill } from "react-icons/ri";
 import { BsLinkedin } from "react-icons/bs";
 import { BsYoutube } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
+import ContactUsPopup from "./ContactUsPopup";
 
 export default function Home(props) {
   const { isOverlayOpen } = props;
@@ -189,9 +190,7 @@ export default function Home(props) {
               >
                 Admission
               </Link>
-              <a href="#" className="mb-3 text-offWhite text-xl font-medium">
-                Contact Us
-              </a>
+              <ContactUsPopup />
               <a href="#" className="mb-3 text-offWhite text-xl font-medium">
                 View Result
               </a>
