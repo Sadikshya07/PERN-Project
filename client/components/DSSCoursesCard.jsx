@@ -4,16 +4,17 @@ import Link from "next/link";
 
 export default function DSSCoursesCard() {
   return (
-    <div className="dss-courses-card">
-      <p className="title">Title</p>
-      <p className="description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit sit
-        blanditiis corporis ea! Et dignissimos deleniti nostrum consectetur at
-        a! Corporis similique atque distinctio voluptatibus architecto dolorum
-        repellat a tempore. Tempore ducimus sed quisquam culpa, iure recusandae
-        perferendis deserunt modi provident molestias et atque facilis fugiat
-        inventore dignissimos odit consectetur voluptatibus veritatis
-        perspiciatis blanditiis totam temporibus distinctio eos porro. Fuga?
+    <div className="dss-courses-card  p-3 shadow-lg  rounded-xl mx-auto w-7/12 my-5 ">
+      <p className="title text-center text-orange font-bold text-2xl">
+        Byabaharik Sanskrit Shikshaya
+      </p>
+      <p className="description mt-1 p-5 mb-10">
+        DSS students learn Sanskrit Language for four years at the Elementary
+        school level, and they will be learning 'Byabaharik Sanskrit Shikshaya'
+        in the Middle School for the next four years. Under this, the Sanskrit
+        Department designs and teaches multiple Eastern Philosophical topics on
+        Chanakya Niti, Bidu Niti, Geeta, Ayurved Shikshaya in the Sanskrit
+        language.
       </p>
     </div>
   );

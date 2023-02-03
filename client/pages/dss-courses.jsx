@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import HomeLayout from "../components/Layouts/HomeLayout";
+import HeroSection from "../components/HeroSection";
 import DSSCoursesCard from "../components/DSSCoursesCard";
 
 export default function DSSCourses() {
@@ -14,11 +14,17 @@ export default function DSSCourses() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
-      <main>
-        <DSSCoursesCard />
-      </main>
-      <Footer />
+      <HomeLayout>
+        <HeroSection title={"DSS Courses"} />
+        <div className="w-11/12 mx-auto my-7 grid grid-cols-3 gap-3">
+          <DSSCoursesCard />
+          <DSSCoursesCard />
+          <DSSCoursesCard />
+          <DSSCoursesCard />
+          <DSSCoursesCard />
+          <DSSCoursesCard />
+        </div>
+      </HomeLayout>
     </>
   );
 }

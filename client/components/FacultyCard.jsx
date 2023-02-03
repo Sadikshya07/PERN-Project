@@ -29,14 +29,14 @@ export default function ManagementCard() {
           <button className="self-end px-5 pt-3 text-4xl" onClick={close}>
             &times;
           </button>
-          <div className="content  flex gap-5 !p-10 !pt-0">
+          <div className="content flex gap-5 !p-10 !pt-0">
             <Image
               src={
                 "https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg"
               }
               alt={"Sir the greate"}
-              height={364}
-              width={384}
+              height={300}
+              width={300}
               className="rounded-t-xl"
             />
             <div className="text overflow-hidden">
