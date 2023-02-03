@@ -25,11 +25,11 @@ export default function ManagementCard() {
       modal
     >
       {(close) => (
-        <div className="popup-container flex flex-col">
+        <div className="popup-container flex flex-col rounded-xl">
           <button className="self-end px-5 pt-3 text-4xl" onClick={close}>
             &times;
           </button>
-          <div className="content  flex gap-5 !p-10">
+          <div className="content  flex gap-5 !p-10 !pt-0">
             <Image
               src={
                 "https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg"
