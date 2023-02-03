@@ -11,93 +11,112 @@ datasource db {
 }
 
 model users {
-  id       Int    @id @default(autoincrement())
+  id       String @id @default(uuid())
   name     String
   password String
 }
 
-model courses {
-  id   Int    @id @default(autoincrement())
-  name String
+
+//Homepage
+
+model addheroimages {
+  id  String @id @default(uuid())
+   
 }
 
-model dsscourse {
-  id          Int    @id @default(autoincrement())
-  name        String
-  description String
+model metrics {
+  id String @id @default(uuid())
+  
 }
 
-model dssclub {
-  id          Int    @id @default(autoincrement())
-  name        String
-  description String
-}
-
-model faculty {
-  id          Int    @id @default(autoincrement())
-  name        String
-  description String
+model programs {
+  id  String @id @default(uuid())
+  
 }
 
 model schoolactivities {
-  id    Int    @id @default(autoincrement())
+  id    String @id @default(uuid())
   Title String
 }
 
-model newsandevents {
-  id          Int      @id @default(autoincrement())
-  title       String
+model schoolinmedia {
+  id     String @id @default(uuid())
+  title  String
+  author String
+}
+
+
+//About us
+
+model faculty {
+  id          String @id @default(uuid())
+  name        String
   description String
-  author      String
-  publishdate DateTime
+  department  String
 }
 
 model management {
-  id          Int    @id @default(autoincrement())
+  id          String @id @default(uuid())
   name        String
   description String
   position    String
 }
 
-model schoolinmedia {
-  id     Int    @id @default(autoincrement())
-  title  String
-  author String
-}
-
-model weekendcampprogram {
-  id          Int    @id @default(autoincrement())
-  description String
-}
-
 model whydss {
-  id       Int    @id @default(autoincrement())
+  id       String @id @default(uuid())
   bullets  String
   category String
 }
 
+
+
+
+
+//Our programs
+
+model courses {
+  id   String @id @default(uuid())
+  name String
+  description String
+}
+
+model dsscourses {
+  id          String @id @default(uuid())
+  name        String
+  description String
+}
+
+model weekendcampprogram {
+  id          String @id @default(uuid())
+  description String
+}
+
+
+
+//Publications
+
 model newsletter {
-  id   Int    @id @default(autoincrement())
+  id   String @id @default(uuid())
   name String
 }
 
 model termsummary {
-  id   Int    @id @default(autoincrement())
+  id   String @id @default(uuid())
   name String
 }
 
 model deerwalker {
-  id   Int    @id @default(autoincrement())
+  id   String @id @default(uuid())
   name String
 }
 
 model analysisreport {
-  id   Int    @id @default(autoincrement())
+  id   String @id @default(uuid())
   name String
 }
 
 model studentcorner {
-  id             Int    @id @default(autoincrement())
+  id             String   @id @default(uuid())
   studentname    String
   rollnumber     Int
   grade          Int
@@ -106,10 +125,65 @@ model studentcorner {
 }
 
 model podcast {
-  id            Int    @id @default(autoincrement())
+  id            String   @id @default(uuid())
   title         String
   presentername String
   rollnumber    Int
   grade         Int
   description   String
 }
+
+
+// Dss in year
+
+model booklist {
+  id  String @id@default(uuid())
+  name String
+}
+
+model calendar{
+  id String @id@default(uuid())
+  title String
+}
+
+model lessonplan{
+   id String @id@default(uuid())
+  title String
+}
+
+
+//other pages
+
+model dssclubs {
+  id          String @id @default(uuid())
+  name        String
+  description String
+}
+
+model admission {
+  id          String @id @default(uuid())
+
+}
+
+
+//community
+
+model newsandevents {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  author      String
+  publishdate DateTime
+}
+
+
+
+
+
+
+
+
+
+
+
+

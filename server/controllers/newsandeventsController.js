@@ -1,7 +1,11 @@
 const express = require("express");
-const router = express.Router()
+const router = express.Router();
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
+const bodyParser = require("body-parser");
 
-router.get("/admin/commmunity/newsandevents", async (req, res) => {
+
+router.get("/", async (req, res) => {
   try {
     const results = await prisma.newsandevents.findMany();
     res.status(200).json({
@@ -12,12 +16,12 @@ router.get("/admin/commmunity/newsandevents", async (req, res) => {
     console.log(error.message);
   }
 });
-router.get("/admin/commmunity/newsandevents/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const results = await prisma.newsandevents.findFirst({
       where: {
-        id: id,
+        id,
       },
     });
     res.status(200).json({
@@ -28,7 +32,7 @@ router.get("/admin/commmunity/newsandevents/:id", async (req, res) => {
     console.error(error.message);
   }
 });
-router.post("/admin/commmunity/newsandevents", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     console.log(req.body);
     const { title, description, author, publishdate } = req.body;
@@ -49,7 +53,7 @@ router.post("/admin/commmunity/newsandevents", async (req, res) => {
     console.error("Error:", error.message);
   }
 });
-router.put("/admin/commmunity/newsandevents/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const { title, description, author, publishdate } = req.body;
@@ -64,6 +68,7 @@ router.put("/admin/commmunity/newsandevents/:id", async (req, res) => {
       where: {
         id,
       },
+      data,
     });
     console.log(results);
     res.status(201).json({
@@ -74,7 +79,7 @@ router.put("/admin/commmunity/newsandevents/:id", async (req, res) => {
     console.error(error.message);
   }
 });
-router.delete("/admin/commmunity/newsandevents/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const { title, description, author, publishdate } = req.body;
@@ -100,3 +105,4 @@ router.delete("/admin/commmunity/newsandevents/:id", async (req, res) => {
   }
 });
 
+module.exports = router;

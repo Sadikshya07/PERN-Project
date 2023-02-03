@@ -1,5 +1,7 @@
 import Slider from "react-slick";
 import HomeSliderCard from "./HomeSliderCard";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const SchoolActivities = () => {
   const settings = {

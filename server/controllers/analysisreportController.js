@@ -8,6 +8,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get("/", async (req, res) => {
+  console.log("hi");
   try {
     const results = await prisma.analysisreport.findMany();
     res.status(200).json({
@@ -23,7 +24,7 @@ router.get("/:id", async (req, res) => {
     const id = req.params.id;
     const results = await prisma.analysisreport.findFirst({
       where: {
-        id: Number(id),
+        id,
       },
     });
     res.status(200).json({
@@ -62,8 +63,9 @@ router.put("/:id", async (req, res) => {
     };
     const results = await prisma.analysisreport.update({
       where: {
-        id : Number(id),
+        id,
       },
+      data
     });
     console.log(results);
     res.status(201).json({
@@ -84,13 +86,13 @@ router.delete("/:id", async (req, res) => {
     };
     const results = await prisma.analysisreport.delete({
       where: {
-        id : Number(id),
+        id,
       },
     });
     console.log(results);
     res.status(201).json({
       status: "success",
-      data: results,
+      
     });
   } catch (error) {
     console.error(error.message);
