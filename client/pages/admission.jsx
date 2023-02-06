@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import HeroSectionCard from "../components/HeroSection";
 import { AiFillInfoCircle } from "react-icons/ai";
 
 export default function Admission() {
@@ -17,6 +18,7 @@ export default function Admission() {
       <Navbar />
       <main>
         {/* hero section here */}
+        <HeroSectionCard url="" title={"Admission"} />
         <h4>
           Prospective parents are advised to know about the admission process
           through Open House Sessions (OHS).

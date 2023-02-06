@@ -15,7 +15,7 @@ export default function ManagementCard(props) {
         />
       </div>
       <div className="info text-center">
-        <h1 className="text-4xl text-[#D8743A] font-bold">Joe Shmoe</h1>
+        <h1 className="text-4xl text-[#D8743A] font-bold mt-5">Joe Shmoe</h1>
         <p className="font-semibold text-lg">Joe's Role here</p>
       </div>
       <p className="description mx-auto w-[37.5rem] my-5 text-xl">

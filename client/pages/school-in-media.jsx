@@ -1,8 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import SchoolInMediaCard from "../components/schoolInMediaCard";
+import HeroSectionCard from "../components/HeroSection";
 
 export default function SchoolInMedia() {
   return (
@@ -14,16 +13,16 @@ export default function SchoolInMedia() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
+        <HeroSectionCard url="" title="School in Media" />
         <div className="w-11/12 grid grid-cols-3 justify-items-center p-3 m-3 gap-10  ">
-          {/* hero section here */}
-          <SchoolInMediaCard />
-          <SchoolInMediaCard />
-          <SchoolInMediaCard />
-          <SchoolInMediaCard />
-          <SchoolInMediaCard />
-          <SchoolInMediaCard />
-          <SchoolInMediaCard />
-          <SchoolInMediaCard />
+          <a
+            href="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
+            className="row-span-2 hover:cursor-pointer"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SchoolInMediaCard />
+          </a>
           <SchoolInMediaCard />
           <SchoolInMediaCard />
           <SchoolInMediaCard />
