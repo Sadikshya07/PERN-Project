@@ -4,6 +4,7 @@ const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 require("dotenv").config();
+app.use(cors());
 
 const managementRoute = require("./controllers/managementController");
 const facultyRoute = require("./controllers/facultyController");
@@ -25,7 +26,6 @@ const bodyParser = require("body-parser");
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
 
 // app.use(express.json());
 

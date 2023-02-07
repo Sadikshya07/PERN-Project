@@ -2,7 +2,7 @@ import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 
-export default function ManagementCard(props) {
+export default function ManagementCard({ name, description, position }) {
   return (
     <div className="management-card flex flex-col m-10 ">
       <div className="photo">
@@ -15,17 +15,11 @@ export default function ManagementCard(props) {
         />
       </div>
       <div className="info text-center">
-        <h1 className="text-4xl text-[#D8743A] font-bold mt-5">Joe Shmoe</h1>
-        <p className="font-semibold text-lg">Joe's Role here</p>
+        <h1 className="text-4xl text-[#D8743A] font-bold mt-5">{name}</h1>
+        <p className="font-semibold text-lg">{position}</p>
       </div>
       <p className="description mx-auto w-[37.5rem] my-5 text-xl">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora magni
-        repellendus nihil vel saepe, pariatur aliquam dolor explicabo expedita
-        quasi id debitis, repudiandae ipsum error corporis rem dicta modi
-        adipisci. Iusto accusantium quibusdam aliquam, vitae voluptas eius quod
-        facilis. Incidunt laboriosam, explicabo unde itaque expedita esse nulla
-        nobis dolores assumenda, obcaecati sint suscipit quasi corrupti debitis
-        impedit eaque repellendus atque.
+        {description}
       </p>
     </div>
   );
