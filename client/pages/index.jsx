@@ -16,7 +16,7 @@ export default function Home() {
         <title>Sifal School</title>
         <meta name="description" content="Deerwalk Sifal School" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="../public/src/assets/favicon.svg" />
       </Head>
       <Navbar />
       <main>

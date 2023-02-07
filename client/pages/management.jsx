@@ -1,8 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import ManagementCard from "../components/ManagementCard";
 import HeroSectionCard from "../components/HeroSection";
 import { useEffect, useState } from "react";
