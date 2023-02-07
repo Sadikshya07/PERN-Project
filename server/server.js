@@ -3,17 +3,12 @@ const app = express();
 const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-const multer  = require('multer');
-const upload = multer({ dest: 'uploads/' })
-
 
 const bodyParser = require("body-parser");
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-
-// app.use(express.json());
 
 const managementRoute = require("./controllers/managementController");
 const facultyRoute = require("./controllers/facultyController");
@@ -31,7 +26,12 @@ const termsummaryRoute = require("./controllers/termsummaryController");
 const deerwalkerRoute = require("./controllers/deerwalkerController");
 const studentcornerRoute = require("./controllers/studentcornerController");
 const podcastRoute = require("./controllers/podcastController");
+const bodyParser = require("body-parser");
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
+// app.use(express.json());
 
 app.use("/api/admin/aboutus/management", managementRoute);
 app.use("/api/admin/aboutus/faculty", facultyRoute);
@@ -50,43 +50,7 @@ app.use("/api/admin/publications/deerwalker",deerwalkerRoute);
 app.use("/api/admin/publications/studentcorner",studentcornerRoute);
 app.use("/api/admin/publications/podcast",podcastRoute);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const port = 3001;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server is up and running on port ${port}`);
 });
