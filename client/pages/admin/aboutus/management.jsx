@@ -24,7 +24,7 @@ export default function Management() {
       });
     } catch (err) {
       console.log(err);
-      setError(err.data.data);
+      // setError(err.data.data);
     }
   };
   return (
