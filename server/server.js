@@ -3,6 +3,9 @@ const app = express();
 const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+const multer  = require('multer');
+const upload = multer({ dest: 'uploads/' })
+
 
 const bodyParser = require("body-parser");
 app.use(express.json());
@@ -46,6 +49,40 @@ app.use("/api/admin/publications/termsummary",termsummaryRoute);
 app.use("/api/admin/publications/deerwalker",deerwalkerRoute);
 app.use("/api/admin/publications/studentcorner",studentcornerRoute);
 app.use("/api/admin/publications/podcast",podcastRoute);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

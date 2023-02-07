@@ -173,7 +173,7 @@ model newsandevents {
   title       String
   description String
   author      String
-  publishdate DateTime
+  publishdate DateTime @db.Date
 }
 
 
