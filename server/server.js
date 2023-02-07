@@ -29,23 +29,6 @@ app.use(cors());
 
 // app.use(express.json());
 
-const managementRoute = require("./controllers/managementController");
-const facultyRoute = require("./controllers/facultyController");
-const whydssRoute = require("./controllers/whydssController");
-const newsandeventsRoute = require("./controllers/newsandeventsController");
-const dssclubsRoute = require("./controllers/dssclubsController");
-const dsscoursesRoute = require("./controllers/dsscoursesController");
-const coursesRoute = require("./controllers/coursesController");
-const weekendcampprogramRoute = require("./controllers/weekendcampprogramController");
-const booklistRoute = require("./controllers/booklistController");
-const calendarRoute = require("./controllers/calendarController");
-const newsletterRoute = require("./controllers/newsletterController");
-const analysisreportRoute = require("./controllers/analysisreportController");
-const termsummaryRoute = require("./controllers/termsummaryController");
-const deerwalkerRoute = require("./controllers/deerwalkerController");
-const studentcornerRoute = require("./controllers/studentcornerController");
-const podcastRoute = require("./controllers/podcastController");
-
 app.use("/api/admin/aboutus/management", managementRoute);
 app.use("/api/admin/aboutus/faculty", facultyRoute);
 app.use("/api/admin/aboutus/whydss", whydssRoute);

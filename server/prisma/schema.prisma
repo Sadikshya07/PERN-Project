@@ -16,22 +16,18 @@ model users {
   password String
 }
 
-
 //Homepage
 
 model addheroimages {
-  id  String @id @default(uuid())
-   
+  id String @id @default(uuid())
 }
 
 model metrics {
   id String @id @default(uuid())
-  
 }
 
 model programs {
-  id  String @id @default(uuid())
-  
+  id String @id @default(uuid())
 }
 
 model schoolactivities {
@@ -44,7 +40,6 @@ model schoolinmedia {
   title  String
   author String
 }
-
 
 //About us
 
@@ -68,15 +63,11 @@ model whydss {
   category String
 }
 
-
-
-
-
 //Our programs
 
 model courses {
-  id   String @id @default(uuid())
-  name String
+  id          String @id @default(uuid())
+  name        String
   description String
 }
 
@@ -90,8 +81,6 @@ model weekendcampprogram {
   id          String @id @default(uuid())
   description String
 }
-
-
 
 //Publications
 
@@ -116,7 +105,7 @@ model analysisreport {
 }
 
 model studentcorner {
-  id             String   @id @default(uuid())
+  id             String @id @default(uuid())
   studentname    String
   rollnumber     Int
   grade          Int
@@ -125,7 +114,7 @@ model studentcorner {
 }
 
 model podcast {
-  id            String   @id @default(uuid())
+  id            String @id @default(uuid())
   title         String
   presentername String
   rollnumber    Int
@@ -133,24 +122,22 @@ model podcast {
   description   String
 }
 
-
 // Dss in year
 
 model booklist {
-  id  String @id@default(uuid())
+  id   String @id @default(uuid())
   name String
 }
 
-model calendar{
-  id String @id@default(uuid())
+model calendar {
+  id    String @id @default(uuid())
   title String
 }
 
-model lessonplan{
-   id String @id@default(uuid())
+model lessonplan {
+  id    String @id @default(uuid())
   title String
 }
-
 
 //other pages
 
@@ -161,10 +148,8 @@ model dssclubs {
 }
 
 model admission {
-  id          String @id @default(uuid())
-
+  id String @id @default(uuid())
 }
-
 
 //community
 
@@ -175,15 +160,3 @@ model newsandevents {
   author      String
   publishdate DateTime
 }
-
-
-
-
-
-
-
-
-
-
-
-

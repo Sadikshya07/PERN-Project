@@ -42,6 +42,7 @@ router.post("/", async (req, res) => {
       description,
       position,
     };
+    console.log(data);
     const results = await prisma.management.create({
       data: data,
     });
