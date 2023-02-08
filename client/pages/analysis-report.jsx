@@ -4,6 +4,8 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AnalysisReportCard from "../components/TermandAnalysisCard";
+import HeroSectionCard from "../components/HeroSection";
+import HomeLayout from "../components/Layouts/HomeLayout";
 
 export default function AnalysisReport() {
   return (
@@ -14,12 +16,10 @@ export default function AnalysisReport() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
-      <main>
-        {/* hero section here */}
+      <HomeLayout>
+        <HeroSectionCard url=" " title="Analysis Report" />
         <AnalysisReportCard />
-      </main>
-      <Footer />
+      </HomeLayout>
     </>
   );
 }

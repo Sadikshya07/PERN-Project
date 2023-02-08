@@ -13,7 +13,7 @@ export default function NewsAndEvents() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSection title={"News and Events"} />
+        <HeroSection title="News and Events" />
         <div className="w-11/12 mx-auto grid grid-cols-3 justify-items-center p-3 m-3 gap-10  ">
           <NewsandEventsCard />
           <NewsandEventsCard />

@@ -24,7 +24,7 @@ export default function TermSummary() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSection title={"News Letter"} />
+        <HeroSection title="Newsletter" />
         <div className="m-6  px-9">
           <NewsLetterHeader title={"2079"} />
           <Slider {...settings}>

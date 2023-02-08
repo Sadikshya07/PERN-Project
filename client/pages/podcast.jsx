@@ -1,8 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import HomeLayout from "../components/Layouts/HomeLayout";
+import HeroSectionCard from "../components/HeroSection";
 
 export default function Podcast() {
   return (
@@ -13,11 +11,9 @@ export default function Podcast() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
-      <main>
-        Podcast
-      </main>
-      <Footer />
+      <HomeLayout>
+        <HeroSectionCard url = " " title = "Podcast"/>
+      </HomeLayout>
     </>
   );
 }

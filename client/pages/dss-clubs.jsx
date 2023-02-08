@@ -4,6 +4,7 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import HomeLayout from "../components/Layouts/HomeLayout";
+import HeroSectionCard from "../components/HeroSection";
 
 export default function DSSClubs() {
   return (
@@ -15,7 +16,7 @@ export default function DSSClubs() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <main>DSS Clubs</main>
+        <HeroSectionCard url = "" title = "DSS Clubs"/>
       </HomeLayout>
     </>
   );
