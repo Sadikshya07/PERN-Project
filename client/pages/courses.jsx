@@ -1,6 +1,7 @@
 import Head from "next/head";
 import HomeLayout from "../components/Layouts/HomeLayout";
-import HeroSectionCard from "../components/HeroSection";
+import HeroSection from "../components/HeroSection";
+import CoursesCard from "../components/DSSCoursesCard";
 
 export default function Courses() {
   return (
@@ -12,7 +13,18 @@ export default function Courses() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSectionCard url = " " title = "Courses"/>
+        <HeroSection title= "Courses" />
+        <div className="w-11/12 mx-auto my-7 grid grid-cols-3 gap-3">
+          <CoursesCard />
+          <CoursesCard />
+          <CoursesCard />
+          <CoursesCard />
+          <CoursesCard />
+          <CoursesCard />
+          <CoursesCard />
+          <CoursesCard />
+          <CoursesCard />
+        </div>
       </HomeLayout>
     </>
   );

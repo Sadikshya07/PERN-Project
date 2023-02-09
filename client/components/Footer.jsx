@@ -37,19 +37,19 @@ export default function Footer() {
               </h2>
               <Link
                 href="/management"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 Management
               </Link>
               <Link
                 href="/faculty"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 Faculty
               </Link>
               <Link
                 href="/why-dss"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 Why DSS
               </Link>
@@ -60,19 +60,19 @@ export default function Footer() {
               </h2>
               <Link
                 href="/dss-courses"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 DSS Courses
               </Link>
               <Link
                 href="/weekend-camp-program"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 Faculty
               </Link>
               <Link
                 href="/courses"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 Courses
               </Link>
@@ -83,37 +83,37 @@ export default function Footer() {
               </h2>
               <Link
                 href="/newsletter"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 Newsletter
               </Link>
               <Link
                 href="/term-summary"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 Term Summary
               </Link>
               <Link
                 href="/the-deerwalker"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 The Deerwalker
               </Link>
               <Link
                 href="/student-corner"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 Student Corner
               </Link>
               <Link
                 href="/analysis-report"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 Analysis Report
               </Link>
               <Link
                 href="/podcast"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 Podcast
               </Link>
@@ -124,13 +124,13 @@ export default function Footer() {
               </h2>
               <Link
                 href="/alumni"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 Alumni
               </Link>
               <Link
                 href="/news-and-events"
-                className="text-offWhite font-regular font-sm"
+                className="text-offWhite font-regular font-sm hover:text-darkGray"
               >
                 News & Events
               </Link>
@@ -139,20 +139,20 @@ export default function Footer() {
           <div className="other-links flex justify-between w-[50em]">
             <Link
               href="dss-clubs"
-              className="mb-3 text-offWhite text-xl font-medium"
+              className="mb-3 text-offWhite text-xl font-medium hover:text-darkGray"
             >
               DSS Clubs
             </Link>
             <Link
               href="admission"
-              className="mb-3 text-offWhite text-xl font-medium"
+              className="mb-3 text-offWhite text-xl font-medium hover:text-darkGray"
             >
               Admission
             </Link>
-            <a href="#" className="mb-3 text-offWhite text-xl font-medium">
+            <a href="#" className="mb-3 text-offWhite text-xl font-medium hover:text-darkGray">
               Contact Us
             </a>
-            <a href="#" className="mb-3 text-offWhite text-xl font-medium">
+            <a href="#" className="mb-3 text-offWhite text-xl font-medium hover:text-darkGray">
               View Result
             </a>
           </div>
@@ -163,28 +163,22 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <BsFacebook />
+            <BsFacebook className="hover:text-darkGray"/>
           </a>
-          {/* <a href="" target="_blank" rel="noopener noreferrer">
-                <RiInstagramFill />
-              </a> */}
           <a
             href="https://www.linkedin.com/company/deerwalksifalschool/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <BsLinkedin className="lg:text-4xl text-xl" />
+            <BsLinkedin className="lg:text-4xl text-xl hover:text-darkGray" />
           </a>
           <a
             href="https://www.youtube.com/@sifalschool/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <BsYoutube className="lg:text-4xl text-xl" />
+            <BsYoutube className="lg:text-4xl text-xl hover:text-darkGray" />
           </a>
-          {/* <a href="" target="_blank" rel="noopener noreferrer"> 
-                <BsTwitter />
-              </a> */}
         </div>
       </footer>
     </div>

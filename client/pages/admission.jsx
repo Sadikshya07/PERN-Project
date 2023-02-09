@@ -16,7 +16,7 @@ export default function Admission() {
       <Navbar />
         <HeroSectionCard url="" title={"Admission"} />
       <main>
-        <h4 className="font-semibold text-2xl text-center my-[2rem]">
+        <h4 className="font-semibold text-xl text-center my-[2rem]">
           Prospective parents are advised to know about the admission process
           through <span className="text-green">Open House Sessions (OHS)</span>.
         </h4>
@@ -66,7 +66,7 @@ export default function Admission() {
               documents:
             </p>
             <div className="list-wrapper ml-[20em]">
-              <ul className = "mb-4 list-disc text-lg font-semibold">
+              <ul className = "orange-disc mb-4 list-disc text-lg font-semibold">
                 <li>Two passports sized photos of your child</li>
                 <li>Application processing fee payable at DSS accounts</li>
               </ul>
@@ -78,7 +78,7 @@ export default function Admission() {
               submitting the form, you will receive:
             </p>
             <div className="list-wrapper ml-[20em]">
-              <ul className = "mb-4 list-disc text-lg font-semibold">
+              <ul className = "orange-disc mb-4 list-disc text-lg font-semibold">
                 <li>Admission card with student’s photo</li>
                 <li>Receipt for application fees</li>
               </ul>
@@ -96,7 +96,7 @@ export default function Admission() {
               date, we recommend you:
             </p>
             <div className="list-wrapper ml-[20em]">
-              <ul className = "mb-6 list-disc text-lg font-semibold">
+              <ul className = "orange-disc mb-6 list-disc text-lg font-semibold">
                 <li>
                   To be present in the school 30 minute prior to examination with your child
                 </li>

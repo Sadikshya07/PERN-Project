@@ -13,10 +13,10 @@ export default function WHhyDSS() {
       </Head>
       <HomeLayout>
         <HeroSectionCard url="" title="Why DSS?" />
-        <div className="why-dss-content">
-          <div className="content-card flex">
+        <div className="why-dss-content w-11/12 mx-auto">
+          <div className="content-card flex w-10/12 justify-center">
             <div
-              className="card-image w-4/12 h-[] top-2 rounded-xl"
+              className="card-image w-6/12 h-[] top-2 rounded-xl"
               style={{
                 backgroundImage:
                   "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -25,7 +25,7 @@ export default function WHhyDSS() {
             ></div>
             <div className="information p-[4em] w-[25em] rounded-xl bg-orange text-offWhite">
               <h1 className="text-3xl mb-8 font-bold">Academic Fundamentals</h1>
-              <ul className="text-xl">
+              <ul className = "white-disc mb-4 list-disc text-xl font-semibold text-offWhite">
                 <li>Handwriting</li>
                 <li>Class Work</li>
                 <li>Home Work</li>
