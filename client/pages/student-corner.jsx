@@ -1,7 +1,6 @@
 import Head from "next/head";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import HeroSectionCard from "../components/HeroSection";
-import PodcastCard from "../components/PodcastCard";
 import StudentCornerCard from "../components/StudentCornerCard";
 
 export default function StudentCorner() {
