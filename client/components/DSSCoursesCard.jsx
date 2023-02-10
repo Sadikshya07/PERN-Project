@@ -14,6 +14,12 @@ export default function DSSCoursesCard({title}, {information}) {
         in the Middle School for the next four years. Under this, the Sanskrit
         Department designs and teaches multiple Eastern Philosophical topics on
         Chanakya Niti, Bidu Niti, Geeta, Ayurved Shikshaya in the Sanskrit
+        language.e Middle School for the next four years. Under this, the Sanskrit
+        Department designs and teaches multiple Eastern Philosophical topics on
+        Chanakya Niti, Bidu Niti, Geeta, Ayurved Shikshaya in the Sanskrit
+        language.e Middle School for the next four years. Under this, the Sanskrit
+        Department designs and teaches multiple Eastern Philosophical topics on
+        Chanakya Niti, Bidu Niti, Geeta, Ayurved Shikshaya in the Sanskrit
         language.
       </p>
     </div>

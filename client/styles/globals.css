@@ -109,6 +109,10 @@ html {
     box-shadow: 0px 6px 5px 2px rgba(0, 0, 0, 0.25);
   }
 
+  .card-shadow-medium {
+    box-shadow: 0px 4px 5px 2px rgba(0, 0, 0, 0.25);
+  }
+
   .orange-disc > li::marker{
     color: #D8743A;
     font-size: 1.8rem;

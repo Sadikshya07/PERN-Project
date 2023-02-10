@@ -1,6 +1,8 @@
 import Head from "next/head";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import HeroSectionCard from "../components/HeroSection";
+import PodcastCard from "../components/PodcastCard";
+import StudentCornerCard from "../components/StudentCornerCard";
 
 export default function StudentCorner() {
   return (
@@ -12,7 +14,10 @@ export default function StudentCorner() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSectionCard url = " " title = "Student Corner"/>
+        <HeroSectionCard url=" " title="Student Corner" />
+        <div className="mx-auto my-10 grid w-11/12 grid-cols-3 justify-items-center gap-y-10">
+          <StudentCornerCard />
+        </div>
       </HomeLayout>
     </>
   );

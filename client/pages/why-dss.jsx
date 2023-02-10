@@ -14,7 +14,7 @@ export default function WHhyDSS() {
       <HomeLayout>
         <HeroSectionCard url="" title="Why DSS?" />
         <div className="why-dss-content w-11/12 mx-auto">
-          <div className="content-card flex w-10/12 justify-center">
+          <div className="content-card flex w-10/12 h-[20em] justify-center">
             <div
               className="card-image w-6/12 h-[] top-2 rounded-xl"
               style={{

@@ -5,8 +5,6 @@ import logo from "../public/src/assets/sifal-logo-footer.svg";
 import { BsFacebook } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
 import { BsYoutube } from "react-icons/bs";
-import { RiInstagramFill } from "react-icons/ri";
-import { BsTwitter } from "react-icons/bs";
 
 export default function Footer() {
   return (

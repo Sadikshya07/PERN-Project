@@ -15,8 +15,8 @@ export default function Faculty() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSection title={"Faculty"} />
-        <div className="faculty-card-container grid grid-cols-3 p-3 m-5 gap-5  justify-items-center">
+        <HeroSection url="" title="Faculty" />
+        <div className="faculty-card-container m-5 grid grid-cols-3 justify-items-center gap-y-10 p-3">
           <FacultyCard />
           <FacultyCard />
           <FacultyCard />
