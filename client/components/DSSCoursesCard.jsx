@@ -2,7 +2,7 @@ import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 
-export default function DSSCoursesCard() {
+export default function DSSCoursesCard({name,description}) {
   return (
     <div className="dss-courses-card  p-3 shadow-lg  rounded-xl mx-auto w-7/12 my-5 ">
       <p className="title text-center text-orange font-bold text-2xl">

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 
-export default function NewsandEventsCard() {
+export default function NewsandEventsCard(title,description,author,publishdate) {
   return (
     <div
       className="news-and-events w-[24rem] h-[36rem] bg-no-repeat bg-center bg-cover flex flex-col justify-between p-3 items-start rounded-xl mt-3 "
@@ -11,10 +11,10 @@ export default function NewsandEventsCard() {
       }}
     >
       <p className="bg-orange text-center text-white rounded-full px-3 font-semibold py-2 text-base">
-        16 Dec
+        {publishdate}
       </p>
       <p className="text-white font-bold text-2xl">
-        Deerwalk Sifal Night | Elementry School
+       {title}
       </p>
     </div>
   );

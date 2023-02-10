@@ -2,8 +2,39 @@ import Head from "next/head";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import HeroSection from "../components/HeroSection";
 import NewsandEventsCard from "../components/NewsandEventsCard";
+import NewsandEventsFinder from "./api/NewsandEventsFinder";
+import Spinner from "../components/Spinner";
+import { useEffect, useState } from "react";
 
 export default function NewsAndEvents() {
+  const [data, setData] = useState();
+  const NewsandEventsCard =
+    data && // this so that it only happens when the data is fetched
+    data.map((news) => {
+      return (
+        <NewsandEventsCard
+          key={news.id}
+          title={news.title}
+          description={news.description}
+          author={news.author}
+          publishdate={news.publishdate}
+        />
+      );
+    });
+  useEffect(() => {
+    // use effect to fetch the data when the page loads
+    const fetchData = async () => {
+      // async beacuse it takes time to get the data from the server
+      try {
+        const response = await NewsandEventsFinder.get("/"); //this is to get the data from the server using axios (axios is used insted of fetch() function)
+        // console.log(response.data.data);
+        setData(response.data.data); //set the received responses data to  to data variable at above
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <>
       <Head>
@@ -14,14 +45,14 @@ export default function NewsAndEvents() {
       </Head>
       <HomeLayout>
         <HeroSection title={"News and Events"} />
-        <div className="w-11/12 mx-auto grid grid-cols-3 justify-items-center p-3 m-3 gap-10  ">
-          <NewsandEventsCard />
-          <NewsandEventsCard />
-          <NewsandEventsCard />
-          <NewsandEventsCard />
-          <NewsandEventsCard />
-          <NewsandEventsCard />
-        </div>
+        <HeroSectionCard url="" title="Management" />
+        {data ? (
+          <div className="management-grid-container flex justify-around">
+            {NewsandEventsCard}
+          </div>
+        ) : (
+          <Spinner />
+        )}
       </HomeLayout>
     </>
   );
