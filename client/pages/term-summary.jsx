@@ -14,7 +14,13 @@ export default function TheDeerwalker() {
       </Head>
       <HomeLayout>
         <HeroSectionCard url="" title="Term Summary" />
-        <TermSummaryCard />
+        <div className="term-summary-grid-container grid grid-cols-4">
+          <TermSummaryCard />
+          <TermSummaryCard />
+          <TermSummaryCard />
+          <TermSummaryCard />
+          <TermSummaryCard />
+        </div>
       </HomeLayout>
     </>
   );

@@ -1,8 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import TheDeerwalkerCard from "../components/TermandAnalysisCard";
 import HeroSectionCard from "../components/HeroSection";
 import HomeLayout from "../components/Layouts/HomeLayout";
@@ -18,7 +14,12 @@ export default function TheDeerwalker() {
       </Head>
       <HomeLayout>
         <HeroSectionCard url=" " title="The Deerwalker" />
-        <TheDeerwalkerCard />
+        <div className="term-summary-grid-container grid grid-cols-4">
+          <TheDeerwalkerCard />
+          <TheDeerwalkerCard />
+          <TheDeerwalkerCard />
+          <TheDeerwalkerCard />
+        </div>
       </HomeLayout>
     </>
   );

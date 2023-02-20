@@ -18,7 +18,12 @@ export default function AnalysisReport() {
       </Head>
       <HomeLayout>
         <HeroSectionCard url=" " title="Analysis Report" />
-        <AnalysisReportCard />
+        <div className="term-summary-grid-container grid grid-cols-4">
+          <AnalysisReportCard />
+          <AnalysisReportCard />
+          <AnalysisReportCard />
+          <AnalysisReportCard />
+        </div>
       </HomeLayout>
     </>
   );
