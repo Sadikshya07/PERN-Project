@@ -1,6 +1,4 @@
 import Image from "next/image";
-import Head from "next/head";
-import Link from "next/link";
 import Popup from "reactjs-popup";
 
 export default function ManagementCard() {
@@ -12,7 +10,7 @@ export default function ManagementCard() {
             src={
               "https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg"
             }
-            alt={"Sir the greate"}
+            alt={"Sir the great"}
             height={364}
             width={384}
             className="rounded-t-xl"
@@ -30,15 +28,15 @@ export default function ManagementCard() {
             &times;
           </button>
           <div className="content flex gap-5 !p-10 !pt-0">
-            <Image
-              src={
-                "https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg"
-              }
-              alt={"Sir the greate"}
-              height={300}
-              width={300}
-              className="rounded-t-xl"
-            />
+            <div
+              className="faculty-overlay-image w-[90em] h-[22rem] rounded-xl"
+              style={{
+                backgroundImage:
+                  "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+                backgroundSize: "cover",
+                objectPosition: "center"
+              }}
+            ></div>
             <div className="text overflow-hidden">
               <h1 className=" name font-bold text-orange text-2xl">
                 Joe Shmoe
@@ -46,11 +44,18 @@ export default function ManagementCard() {
               <p className="subject font-normal text-xm text-orange my-3">
                 Computer Science
               </p>
-              <p className="subject font-normal text-xm ">
+              <p className="subject font-normal text-xm mb-4 ">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis
                 error doloremque culpa iste non recusandae suscipit, impedit
                 nam, accusantium quia hic architecto possimus tempore! Dicta
                 iusto quaerat asperiores architecto atque!
+              </p>
+              <p className="mb-4">
+                <span className="font-bold">Area of Expertise</span>: Python,
+                English Language
+              </p>
+              <p className="">
+                <span className="font-bold">Experience</span>: 10 years
               </p>
             </div>
           </div>

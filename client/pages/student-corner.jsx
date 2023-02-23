@@ -16,6 +16,9 @@ export default function StudentCorner() {
         <HeroSectionCard url=" " title="Student Corner" />
         <div className="mx-auto my-10 grid w-11/12 grid-cols-3 justify-items-center gap-y-10">
           <StudentCornerCard />
+          <StudentCornerCard />
+          <StudentCornerCard />
+          <StudentCornerCard />
         </div>
       </HomeLayout>
     </>

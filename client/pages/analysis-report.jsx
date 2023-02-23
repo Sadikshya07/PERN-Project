@@ -1,8 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import AnalysisReportCard from "../components/TermandAnalysisCard";
 import HeroSectionCard from "../components/HeroSection";
 import HomeLayout from "../components/Layouts/HomeLayout";
@@ -18,7 +14,7 @@ export default function AnalysisReport() {
       </Head>
       <HomeLayout>
         <HeroSectionCard url=" " title="Analysis Report" />
-        <div className="term-summary-grid-container grid grid-cols-4">
+        <div className="analysis-report-grid-container grid grid-cols-4">
           <AnalysisReportCard />
           <AnalysisReportCard />
           <AnalysisReportCard />

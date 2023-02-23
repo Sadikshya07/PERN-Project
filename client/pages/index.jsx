@@ -8,6 +8,7 @@ import heroTeacher from "../public/src/assets/hero-teachers.svg";
 import perClass from "../public/src/assets/per-class.svg";
 import stRatio from "../public/src/assets/st-ratio.svg";
 import SchoolActivities from "../components/SchoolActivities";
+import Popup from "../components/Popup";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <link rel="icon" href="../public/src/assets/favicon.svg" />
       </Head>
       <Navbar />
+      <Popup />
       <main>
         <div className="hero-section flex justify-between w-11/12 mx-auto mt-8">
           <div className="left w-[38em]">

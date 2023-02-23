@@ -14,7 +14,7 @@ export default function TheDeerwalker() {
       </Head>
       <HomeLayout>
         <HeroSectionCard url=" " title="The Deerwalker" />
-        <div className="term-summary-grid-container grid grid-cols-4">
+        <div className="the-deerwalker-grid-container grid grid-cols-4">
           <TheDeerwalkerCard />
           <TheDeerwalkerCard />
           <TheDeerwalkerCard />
