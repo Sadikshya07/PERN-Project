@@ -1,7 +1,12 @@
 import Head from "next/head";
-import HomeLayout from "../components/Layouts/HomeLayout";
-import HeroSection from "../components/HeroSection";
+import Image from "next/image";
+import Link from "next/link";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import CoursesCard from "../components/CoursesCard";
+import { useEffect, useState } from "react";
+import Spinner from "../components/Spinner";
+import AnalysisReportFinder from "./api/AnalysisReportFinder";
 
 export default function Courses() {
   return (

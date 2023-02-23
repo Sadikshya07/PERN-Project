@@ -1,8 +1,29 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import FacultyFinder from "../../api/FacultyFinder";
+import { useState } from "react";
 
 export default function Faculty() {
+  const [name, setName] = useState();
+  const [description, setDescription] = useState();
+  const [department, setDepartment] = useState();
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try{
+      const response = await FacultyFinder.post("/",{
+        name,
+        description,
+        department
+      });
+    }
+    catch(err){
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <Head>
@@ -25,14 +46,16 @@ export default function Faculty() {
           </tr>
         </thead>
       </table>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label for="fname">Full name:</label> <br />
         <input
           type="text"
           id="fname"
           placeholder="Name"
           className="border-2"
-        ></input>
+          required
+          onChange={(e) => setName(e.target.value)}
+        />
         <br />
         <label for="description">Description:</label> <br />
         <input
@@ -40,7 +63,9 @@ export default function Faculty() {
           id="description"
           placeholder="description"
           className="border-2"
-        ></input>{" "}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
         <br />
         <label for="department">Department:</label> <br />
         <input
@@ -48,7 +73,9 @@ export default function Faculty() {
           id="department"
           placeholder="department"
           className="border-2"
-        ></input>{" "}
+          onChange={(e) => setDepartment(e.target.value)}
+          required
+        />
         <br />
         <label for="image">Image:</label> <br />
         <input
@@ -56,7 +83,7 @@ export default function Faculty() {
           id="image"
           placeholder="Choose a file"
           className="border-2"
-        ></input>{" "}
+        />
         <br />
         <button type="submit" className="border-2">
           Submit

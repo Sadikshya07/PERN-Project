@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Popup from "reactjs-popup";
 
-export default function ManagementCard() {
+export default function FacultyCard(name,description,department) {
   return (
     <Popup
       trigger={
@@ -16,7 +16,7 @@ export default function ManagementCard() {
             className="rounded-t-xl"
           />
           <div className="overlay absolute flex items-end justify-start opacity-0 text-center bottom-0 rounded-xl h-0 w-full   bg-[rgb(0,0,0)] bg-[rgba(0,0,0,0.5)] text-orange text-xl ">
-            <p className="text-center p-3 m-3 font-black text-2xl">Joe Shmoe</p>
+            <p className="text-center p-3 m-3 font-black text-2xl">{name}</p>
           </div>
         </div>
       }
@@ -39,16 +39,13 @@ export default function ManagementCard() {
             ></div>
             <div className="text overflow-hidden">
               <h1 className=" name font-bold text-orange text-2xl">
-                Joe Shmoe
+                {name}
               </h1>
               <p className="subject font-normal text-xm text-orange my-3">
-                Computer Science
+               {department}
               </p>
-              <p className="subject font-normal text-xm mb-4 ">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis
-                error doloremque culpa iste non recusandae suscipit, impedit
-                nam, accusantium quia hic architecto possimus tempore! Dicta
-                iusto quaerat asperiores architecto atque!
+              <p className="subject font-normal text-xm ">
+                {description}
               </p>
               <p className="mb-4">
                 <span className="font-bold">Area of Expertise</span>: Python,

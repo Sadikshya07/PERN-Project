@@ -1,4 +1,5 @@
 import Head from "next/head";
+
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import HeroSectionCard from "../components/HeroSection";

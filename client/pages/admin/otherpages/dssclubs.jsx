@@ -1,8 +1,25 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import DssClubsFinder from "../../api/DssClubsFinder";
+import { useState } from "react";
 
 export default function DSSClubs() {
+  const [name, setName] = useState();
+  const [description, setDescription] = useState();
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try{
+      const response = await DssClubsFinder.post("/",{
+        name,
+        description
+      });
+    }
+    catch(err){
+      console.log(err);
+    }}
   return (
     <div>
       <Head>
@@ -23,13 +40,15 @@ export default function DSSClubs() {
           </tr>
         </thead>
       </table>
-      <form>
+      <form onChange={handleSubmit}>
         <label htmlFor="name">Name:</label> <br />
         <input
           type="text"
           id="name"
           placeholder="Name"
           className="border-2"
+          required
+          onChange={(e) => setName(e.target.value)}
         ></input>
         <br />
         <label for="description">Description:</label> <br />
@@ -38,6 +57,8 @@ export default function DSSClubs() {
           id="description"
           placeholder="description"
           className="border-2"
+          required
+          onChange={(e) => setDescription(e.target.value)}
         ></input>
         <br />
         <button type="submit" className="border-2">
