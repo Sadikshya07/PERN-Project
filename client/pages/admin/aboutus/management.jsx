@@ -11,13 +11,13 @@ export default function Management() {
   const [position, setPosition] = useState();
   // error is used to display the error but it is not completed
   const [error, setError] = useState("");
-
+  
   const handleSubmit = async (e) => {
     // <-- this function is used to submit the data to backend
-    e.preventDefault(); //<-- here e.preventDefault is used so that the page doesnot reload since it is the deafult behaviour of form submission
+    e.preventDefault(); //<-- here e.preventDefault is used so that the page doesnot reload since it is the default behaviour of form submission
     try {
       const response = await ManagementFinder.post("/", {
-        //<-- this is to submit the data. Since data is posted in post request here. The API can be found in the API folder
+        //<-- this is to submit the data. Since data is posted in post request here. The API can be found in the API folder.
         name,
         description,
         position,
@@ -46,7 +46,7 @@ export default function Management() {
             </tr>
           </thead>
         </table>
-        {/* this is to just to call the functino handleSubmit when the form is submitted  */}
+        {/* this is to just to call the function handleSubmit when the form is submitted  */}
         <form onSubmit={handleSubmit}>
           <label htmlFor="fname" className="block">
             Full name:

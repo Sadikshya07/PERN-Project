@@ -1,8 +1,26 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import WhyDssFinder from "../../api/WhyDssFinder";
+import { useState } from "react";
 
 export default function WhyDSS() {
+  const [Category, setCategory] = useState();
+  const [Bullets, setBullets] = useState();
+  const [error, setError] = useState("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try{
+      const response = await WhyDssFinder.post("/",{
+        Category,
+        Bullets,
+      });
+    }
+    catch(err){
+      console.log(err);
+    }
+  };
+  
   return (
     <div>
       <Head>
@@ -23,13 +41,15 @@ export default function WhyDSS() {
           </tr>
         </thead>
       </table>
-      <form>
+      <form onChange={handleSubmit}>
         <label for="category">Category:</label> <br />
         <input
           type="text"
           id="category"
           placeholder="Category"
           className="border-2"
+          required
+          onChange={(e) => setCategory(e.target.value)}
         ></input>
         <br />
         <label for="Bullets">Bullets:</label> <br />
@@ -38,6 +58,8 @@ export default function WhyDSS() {
           id="Bullets"
           placeholder="Bullet"
           className="border-2"
+          required
+          onChange={(e) => set(e.target.value)}
         ></input>
         <br />
         <button type="submit" className="border-2">
