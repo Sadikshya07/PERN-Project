@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Popup from "reactjs-popup";
 
-export default function FacultyCard(name,description,department) {
+export default function FacultyCard({name,description,department}) {
   return (
     <Popup
       trigger={
@@ -29,7 +29,7 @@ export default function FacultyCard(name,description,department) {
           </button>
           <div className="content flex gap-5 !p-10 !pt-0">
             <div
-              className="faculty-overlay-image w-[90em] h-[22rem] rounded-xl"
+              className="faculty-overlay-image w-[30em] 2xl:w-[30em] h-[22rem] rounded-xl"
               style={{
                 backgroundImage:
                   "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -41,10 +41,10 @@ export default function FacultyCard(name,description,department) {
               <h1 className=" name font-bold text-orange text-2xl">
                 {name}
               </h1>
-              <p className="subject font-normal text-xm text-orange my-3">
+              <p className="subject font-normal text-lg text-orange my-3">
                {department}
               </p>
-              <p className="subject font-normal text-xm ">
+              <p className="subject mb-4 font-normal">
                 {description}
               </p>
               <p className="mb-4">

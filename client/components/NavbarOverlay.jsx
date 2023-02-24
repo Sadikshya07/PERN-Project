@@ -1,10 +1,8 @@
 import { RxCross1 } from "react-icons/rx";
 import Link from "next/link";
 import { BsFacebook } from "react-icons/bs";
-import { RiInstagramFill } from "react-icons/ri";
 import { BsLinkedin } from "react-icons/bs";
 import { BsYoutube } from "react-icons/bs";
-import { BsTwitter } from "react-icons/bs";
 import ContactUsPopup from "./ContactUsPopup";
 
 export default function Home(props) {
@@ -26,7 +24,7 @@ export default function Home(props) {
             }}
           />
         </div>
-        <div className="navbar-content p-8 lg:pl-14 sm:w-full sm:flex  hidden">
+        <div className="navbar-content p-8 lg:pl-14 sm:w-full sm:flex sm:justify-between  hidden">
           <div className="navbar-left w-7/12 h-[22em]">
             <div className="navbar-grid-container">
               <div className="about-us flex flex-col">
