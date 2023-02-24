@@ -20,7 +20,7 @@ export default function Home() {
         <link rel="icon" href="../public/src/assets/favicon.svg" />
       </Head>
       <Navbar />
-      <Popup />
+      {/* <Popup /> */}
       <main>
         <div className="hero-section flex justify-between w-11/12 mx-auto mt-8">
           <div className="left w-[38em]">

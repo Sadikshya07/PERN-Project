@@ -132,5 +132,11 @@ html {
     margin-top: 1em;
     font-weight: 600;
   }
+
+  .why-dss-list li {
+    font-size: 1.1rem;
+    margin-top: 1em;
+    font-weight: 600;
+  }
 }
 

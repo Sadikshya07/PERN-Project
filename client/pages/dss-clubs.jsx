@@ -19,7 +19,7 @@ export default function DSSClubs() {
             ages, ethnicities and backgrounds come together to unite for a
             common pursuit.
           </h1>
-          <div className="section-one flex justify-between mb-12">
+          <div className="section-one flex justify-around mb-12">
             <div className="images relative w-5/12 h-[28rem]">
               <div
                 className="image-one absolute right-0 bottom-0 w-[24rem] h-[24rem] rounded-full bg-red-500"
@@ -55,7 +55,7 @@ export default function DSSClubs() {
               </ul>
             </div>
           </div>
-          <div className="section-two flex flex-row-reverse justify-between mb-10">
+          <div className="section-two flex flex-row-reverse justify-evenly mb-10">
             <div className="images relative w-5/12 h-[28rem]">
               <div
                 className="image-one absolute right-0 bottom-0 w-[24rem] h-[24rem] rounded-full bg-red-500"
