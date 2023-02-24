@@ -5,20 +5,20 @@ import NewsandEventsFinder from "../../api/NewsandEventsFinder";
 import { useState } from "react";
 
 export default function NewsAndEvents() {
-  const [AuthorName, setAuthorName] = useState();
-  const [Title, setTitle] = useState();
-  const [Description,setDescription] = useState();
-  const [Date,setDate] = useState();
+  const [author, setauthor] = useState();
+  const [title, setTitle] = useState();
+  const [description,setDescription] = useState();
+  const [publishdate,setDate] = useState();
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await NewsandEventsFinder.post("/", {
-        AuthorName,
-        Title,
-        Description,
-        Date
+        author,
+        title,
+        description,
+        publishdate
       });
     } catch (err) {
       console.log(err);

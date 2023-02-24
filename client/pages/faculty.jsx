@@ -13,6 +13,7 @@ export default function Faculty() {
   const FacultyCards=
     data && // this so that it only happens when the data is fetched
     data.map((person) => {
+    
       return (
         <FacultyCard
           key={person.id}
@@ -24,9 +25,8 @@ export default function Faculty() {
     });
   useEffect(() => {
     const fetchData = async () => {
-
       try {
-        const response = await FacultyFinder.get("/"); 
+        const response = await FacultyFinder.get("/");
         // console.log(response.data.data);
         setData(response.data.data);
       } catch (err) {
@@ -34,7 +34,7 @@ export default function Faculty() {
       }
     };
     fetchData();
-  },[]);
+  }, []);
   return (
     <>
       <Head>
