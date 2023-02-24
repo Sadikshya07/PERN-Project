@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 export default function NewsAndEvents() {
   const [data, setData] = useState();
-  const NewsandEventsCard =
+  const NewsandEventsCards =
     data && // this so that it only happens when the data is fetched
     data.map((news) => {
       return (
@@ -45,10 +45,9 @@ export default function NewsAndEvents() {
       </Head>
       <HomeLayout>
         <HeroSection title={"News and Events"} />
-        <HeroSectionCard url="" title="Management" />
         {data ? (
           <div className="management-grid-container flex justify-around">
-            {NewsandEventsCard}
+            {NewsandEventsCards}
           </div>
         ) : (
           <Spinner />

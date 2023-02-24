@@ -22,7 +22,8 @@ export default function Management() {
         description,
         position,
       });
-    } catch (err) {
+    } 
+    catch (err) {
       console.log(err);
       // setError(err.data.data);
     }
@@ -42,6 +43,7 @@ export default function Management() {
               <th>SN</th>
               <th>Name</th>
               <th>Description</th>
+              <th>Position</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -83,6 +85,15 @@ export default function Management() {
             onChange={(e) => setPosition(e.target.value)}
             required
           />
+          <br />
+        <label for="image">Image:</label> <br />
+        <input
+          type="file"
+          id="image"
+          placeholder="Choose a file"
+          className="border-2"
+        />
+        <br />
           <div className="m-3">
             <button type="submit" className="border-2">
               Submit

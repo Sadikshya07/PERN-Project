@@ -59,7 +59,7 @@ export default function WhyDSS() {
           placeholder="Bullet"
           className="border-2"
           required
-          onChange={(e) => set(e.target.value)}
+          onChange={(e) => setBullets(e.target.value)}
         ></input>
         <br />
         <button type="submit" className="border-2">

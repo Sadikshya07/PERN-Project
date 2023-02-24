@@ -10,11 +10,12 @@ import { useEffect, useState } from "react";
 
 export default function Faculty() {
   const [data, setData] = useState();
-  const FacultyCard=
+  const FacultyCards =
     data && // this so that it only happens when the data is fetched
     data.map((person) => {
+    
       return (
-        < FacultyCard
+        <FacultyCard
           key={person.id}
           name={person.name}
           description={person.description}
@@ -24,9 +25,8 @@ export default function Faculty() {
     });
   useEffect(() => {
     const fetchData = async () => {
-
       try {
-        const response = await FacultyFinder.get("/"); 
+        const response = await FacultyFinder.get("/");
         // console.log(response.data.data);
         setData(response.data.data);
       } catch (err) {
@@ -34,7 +34,7 @@ export default function Faculty() {
       }
     };
     fetchData();
-  },[]);
+  }, []);
   return (
     <>
       <Head>
@@ -47,7 +47,7 @@ export default function Faculty() {
         <HeroSectionCard url="" title={"Faculty"} />
         {data ? (
           <div className="faculty-card-container grid grid-cols-3 p-3 m-5 gap-5  justify-items-center">
-          {FacultyCard }
+            {FacultyCards}
           </div>
         ) : (
           <Spinner />

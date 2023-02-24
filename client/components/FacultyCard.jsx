@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Popup from "reactjs-popup";
 
-export default function FacultyCard(name,description,department) {
+export default function FacultyCard({ name, description, department }) {
   return (
     <Popup
       trigger={
@@ -40,15 +40,11 @@ export default function FacultyCard(name,description,department) {
               className="rounded-t-xl"
             />
             <div className="text overflow-hidden">
-              <h1 className=" name font-bold text-orange text-2xl">
-                {name}
-              </h1>
+              <h1 className=" name font-bold text-orange text-2xl">{name}</h1>
               <p className="subject font-normal text-xm text-orange my-3">
-               {department}
+                {department}
               </p>
-              <p className="subject font-normal text-xm ">
-                {description}
-              </p>
+              <p className="subject font-normal text-xm ">{description}</p>
             </div>
           </div>
         </div>

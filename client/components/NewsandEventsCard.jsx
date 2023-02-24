@@ -2,7 +2,7 @@ import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 
-export default function NewsandEventsCard(title,description,author,publishdate) {
+export default function NewsandEventsCard({title,description,author,publishdate}) {
   return (
     <div
       className="news-and-events w-[24rem] h-[36rem] bg-no-repeat bg-center bg-cover flex flex-col justify-between p-3 items-start rounded-xl mt-3 "
