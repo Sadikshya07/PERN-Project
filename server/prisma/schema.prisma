@@ -48,6 +48,8 @@ model faculty {
   name        String
   description String
   department  String
+  AreaofExpertise String
+  Experience String
 }
 
 model management {

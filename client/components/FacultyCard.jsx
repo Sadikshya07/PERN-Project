@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Popup from "reactjs-popup";
 
-export default function FacultyCard({ name, description, department }) {
+export default function FacultyCard({ name, description, department,AreaofExpertise,Experience}) {
   return (
     <Popup
       trigger={

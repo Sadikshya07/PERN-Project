@@ -2,24 +2,42 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import FacultyFinder from "../../api/FacultyFinder";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Faculty() {
   const [name, setName] = useState();
+  const [faculty, setFaculty] = useState();
   const [description, setDescription] = useState();
   const [department, setDepartment] = useState();
+  const [AreaofExpertise, setAreaofExpertise] = useState();
+  const [Experience, setExperience] = useState();
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await FacultyFinder.get("/");
+        console.log(response.data.data);
+        setFaculty(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      const response = await FacultyFinder.post("/",{
+    try {
+      const response = await FacultyFinder.post("/", {
         name,
         description,
-        department
+        department,
+        AreaofExpertise,
+        Experience,
       });
-    }
-    catch(err){
+      faculty(response.data.data)
+      console.log(response);
+    } catch (err) {
       console.log(err);
     }
   };
@@ -42,12 +60,14 @@ export default function Faculty() {
             <th>Description</th>
             <th>Department</th>
             <th>Image</th>
+            <th>Area of Expertise</th>
+            <th>Experience</th>
             <th>Actions</th>
           </tr>
         </thead>
       </table>
       <form onSubmit={handleSubmit}>
-        <label for="fname">Full name:</label> <br />
+        <label forhtml="fname">Full name:</label> <br />
         <input
           type="text"
           id="fname"
@@ -57,7 +77,7 @@ export default function Faculty() {
           onChange={(e) => setName(e.target.value)}
         />
         <br />
-        <label for="description">Description:</label> <br />
+        <label forhtml="description">Description:</label> <br />
         <input
           type="text"
           id="description"
@@ -67,7 +87,7 @@ export default function Faculty() {
           required
         />
         <br />
-        <label for="department">Department:</label> <br />
+        <label forhtml="department">Department:</label> <br />
         <input
           type="text"
           id="department"
@@ -77,7 +97,27 @@ export default function Faculty() {
           required
         />
         <br />
-        <label for="image">Image:</label> <br />
+        <label forhtml="AreaofExpertise">Area of Expertise:</label> <br />
+        <input
+          type="text"
+          id="Areaofexpertise"
+          placeholder="AreaofExpertise"
+          className="border-2"
+          onChange={(e) => setAreaofExpertise(e.target.value)}
+          required
+        />
+        <br />
+        <label forhtml="Experience">Experience:</label> <br />
+        <input
+          type="text"
+          id="Experience"
+          placeholder="Experience"
+          className="border-2"
+          onChange={(e) => setExperience(e.target.value)}
+          required
+        />
+        <br />
+        <label forhtml="image">Image:</label> <br />
         <input
           type="file"
           id="image"

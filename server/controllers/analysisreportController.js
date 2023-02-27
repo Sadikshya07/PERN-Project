@@ -8,7 +8,6 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get("/", async (req, res) => {
-  console.log("hi");
   try {
     const results = await prisma.analysisreport.findMany();
     res.status(200).json({

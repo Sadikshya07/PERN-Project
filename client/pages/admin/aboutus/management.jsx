@@ -2,15 +2,30 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import ManagementFinder from "../../api/ManagementFinder";
-import { useState } from "react";
+import { useState,useEffect} from "react";
 
 export default function Management() {
   // useState is used to change the variable when user types in the values (to check what is going on use console.log(name or description or position ))
   const [name, setName] = useState();
   const [description, setDescription] = useState();
   const [position, setPosition] = useState();
+  const [Management,setManagement] = useState();
   // error is used to display the error but it is not completed
   const [error, setError] = useState("");
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await ManagementFinder.get("/");
+        console.log(response.data.data);
+        setManagement(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
   
   const handleSubmit = async (e) => {
     // <-- this function is used to submit the data to backend
@@ -22,6 +37,8 @@ export default function Management() {
         description,
         position,
       });
+      Management(response.data.data);
+      console.log(response)
     } 
     catch (err) {
       console.log(err);
