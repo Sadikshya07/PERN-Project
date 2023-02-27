@@ -1,12 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import CoursesCard from "../components/CoursesCard";
-import { useEffect, useState } from "react";
-import Spinner from "../components/Spinner";
-import AnalysisReportFinder from "./api/AnalysisReportFinder";
+import HomeLayout from "../components/Layouts/HomeLayout";
+import HeroSectionCard from "../components/HeroSection";
 
 export default function Courses() {
   return (
@@ -18,7 +13,7 @@ export default function Courses() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSection title="Courses" />
+        <HeroSectionCard title="Courses" />
         <div className="courses-content w-11/12 mx-auto my-10">
           <div className="elementary">
             <h1 className="text-2xl font-bold text-orange mb-4">
