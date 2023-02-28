@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import PodcastFinder from "../../api/PodcastFinder";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Podcast() {
   const [PresenterName, setPresenterName] = useState();
@@ -10,6 +10,19 @@ export default function Podcast() {
   const [Grade, setGrade] = useState();
   const [PodcastDescription, setPodcastDescription] = useState();
   const [error, setError] = useState("");
+  const [podcast, setPodcast] = useState();
+  let i = 0;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await PodcastFinder.get("/");
+        setPodcast(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +31,7 @@ export default function Podcast() {
         PresenterName,
         Rollno,
         Grade,
-        PodcastDescription
+        PodcastDescription,
       });
     } catch (err) {
       console.log(err);
@@ -47,6 +60,21 @@ export default function Podcast() {
             <th>Actions</th>
           </tr>
         </thead>
+        <tbody>
+          {podcast.map((item) => {
+            return (
+              <tr key={item.id}>
+                <td>{i++}</td>
+                <td>{item.presentername}</td>
+                <td>{item.rollnumber}</td>
+                <td>{item.description}</td>
+                <td>{item.grade}</td>
+                <td>Update</td>
+                <td>Delete</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
       <form onChange={handleSubmit}>
         <label for="name">Presenter Name:</label> <br />
@@ -85,7 +113,8 @@ export default function Podcast() {
           id="video"
           placeholder="Place the link."
           className="border-2"
-        ></input><br/>
+        ></input>
+        <br />
         <label htmlFor="description">Podcast Description</label> <br />
         <input
           type="text"

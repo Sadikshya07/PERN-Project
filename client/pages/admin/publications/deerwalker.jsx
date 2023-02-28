@@ -2,11 +2,25 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import DeerwalkerFinder from "../../api/DeerwalkerFinder";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Deerwalker() {
   const [name, setName] = useState();
   const [error, setError] = useState("");
+  const [deerwalkFinder, setDeerwalkFinder] = useState();
+  let i = 1;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await DeerwalkFinder.get("/");
+        setDeerwalkFinder(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,9 +48,22 @@ export default function Deerwalker() {
             <th>SN</th>
             <th>Name</th>
             <th>File</th>
-            <th>Actions</th>
+            <th colSpan={2}>Actions</th>
           </tr>
         </thead>
+        <tbody>
+          {deerwalkFinder.map((item) => {
+            return (
+              <tr key={item.id}>
+                <td>{i}</td>
+                <td>{item.name}</td>
+                <td>{item.file}</td>
+                <td>Delete</td>
+                <td>Update</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
       <form onChange={handleSubmit}>
         <h1>Deerwalker</h1>

@@ -2,12 +2,23 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import NewsLetterFinder from "../../api/NewsLetterFinder";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Newsletter() {
   const [name, setName] = useState();
   const [error, setError] = useState("");
-
+  const [newLetter, setNewsLetter] = useState();
+  let i = 1;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await NewsLetterFinder.get("/");
+        setNewsLetter(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -34,9 +45,22 @@ export default function Newsletter() {
             <th>SN</th>
             <th>Name</th>
             <th>File</th>
-            <th>Actions</th>
+            <th colSpan={2}>Actions</th>
           </tr>
         </thead>
+        <tbody>
+          {newLetter.map((item) => {
+            return (
+              <tr key={item.id}>
+                <td>{i}</td>
+                <td>{item.name}</td>
+                <td>{item.file}</td>
+                <td>Delete</td>
+                <td>Delete</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
       <form onChange={handleSubmit}>
         <h1>NewsLetter</h1>
