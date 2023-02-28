@@ -66,7 +66,7 @@ export default function Admission() {
               <span className="text-green">10:00 am to 5:30 pm. (Monday to Friday)</span> with following
               documents:
             </p>
-            <div className="list-wrapper ml-[20em]">
+            <div className="list-wrapper ml-[20em] 2xl:ml-[30em]">
               <ul className = "orange-disc mb-4 list-disc text-lg font-semibold">
                 <li>Two passports sized photos of your child</li>
                 <li>Application processing fee payable at DSS accounts</li>
@@ -78,7 +78,7 @@ export default function Admission() {
               your child from the available list of the available dates. After
               submitting the form, you will receive:
             </p>
-            <div className="list-wrapper ml-[20em]">
+            <div className="list-wrapper ml-[20em] 2xl:ml-[30em]">
               <ul className = "orange-disc mb-4 list-disc text-lg font-semibold">
                 <li>Admission card with student’s photo</li>
                 <li>Receipt for application fees</li>
@@ -96,7 +96,7 @@ export default function Admission() {
               To make sure your child goes comfortable with the DAT, on the test
               date, we recommend you:
             </p>
-            <div className="list-wrapper ml-[20em]">
+            <div className="list-wrapper ml-[20em] 2xl:ml-[30em]">
               <ul className = "orange-disc mb-6 list-disc text-lg font-semibold">
                 <li>
                   To be present in the school 30 minute prior to examination with your child

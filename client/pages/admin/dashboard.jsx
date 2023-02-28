@@ -151,7 +151,7 @@ export default function Dashboard() {
       <br />
       <hr />
       <br />
-      <h3 className="md:text-3xl text-2xl font-bold my-5 w-full flex justify-center">
+      {/* <h3 className="md:text-3xl text-2xl font-bold my-5 w-full flex justify-center">
         DSS in {year}
       </h3>
       <div className="other-links grid-small sm:grid-medium lg:grid-large mb-10">
@@ -159,7 +159,7 @@ export default function Dashboard() {
       </div>
       <br />
       <hr />
-      <br />
+      <br /> */}
       <h3 className="md:text-3xl text-2xl font-bold my-5 w-full flex justify-center">
         Other Pages
       </h3>
