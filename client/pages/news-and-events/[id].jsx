@@ -2,10 +2,25 @@ import SelectedArticle from "../../components/SelectedArticle";
 import RelatedArticles from "../../components/RelatedArticles";
 import HomeLayout from "../../components/Layouts/HomeLayout";
 import { useRouter } from "next/dist/client/router";
+import { useEffect } from "react";
+import NewsandEventsFinder from "../api/NewsandEventsFinder";
 
 export default function NewsTemplate() {
   const router = useRouter();
   const { id } = router.query;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await NewsandEventsFinder.get(`/${id}`);
+        console.log(response);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="news-temlate-container">
       <HomeLayout>
