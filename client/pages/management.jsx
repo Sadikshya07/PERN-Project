@@ -46,7 +46,7 @@ export default function Management() {
       <HomeLayout>
         <HeroSectionCard url="" title="Management" />
         {data ? (
-          <div className="management-grid-container w-11/12 mx-auto grid grid-cols-2">
+          <div className="management-grid-container w-11/12 mx-auto grid lg:grid-cols-2">
             {managementCards}
           </div>
         ) : (

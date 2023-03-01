@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function HeroSection({url, title}) {
   return (
-    <div className="hero-section relative w-full h-[30em] -z-50">
+    <div className="hero-section relative w-full h-[20em] md:h-[30em] -z-50">
       <div
         className="content w-full h-full"
         style={{
@@ -14,7 +14,7 @@ export default function HeroSection({url, title}) {
         }}
       >
         <div className="title-card rounded-r-full bg-orange absolute bottom-14">
-            <p className="text-2xl font-bold px-[3em] py-[2em] text-white">{title}</p>
+            <p className="md:text-2xl font-bold px-[3em] py-[2em] text-white">{title}</p>
         </div>
       </div>
     </div>
