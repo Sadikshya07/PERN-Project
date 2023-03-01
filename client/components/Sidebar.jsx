@@ -3,13 +3,12 @@ import Link from "next/link";
 
 export default function Home(props) {
   const { isSidebarOpen } = props;
-  const year = new Date().getFullYear();
   return (
     <>
       <div
         className={`bg-orange z-50 w-screen h-screen fixed top-0 left-0 overflow-y-scroll ${
           isSidebarOpen ? "left-0" : "left-[100vw]"
-        }`}
+        } ${isSidebarOpen ? "block" : "hidden"}`}
         style={{ transition: ".1s all ease-in-out" }}
       >
         <div className="main-container">
@@ -133,7 +132,7 @@ export default function Home(props) {
                 </Link>
               </div>
             </div>
-            <div className="dss-in-year flex flex-col">
+            {/* <div className="dss-in-year flex flex-col">
               <h2 className="mb-3 text-offWhite text-xl font-medium">
                 DSS in {year}
               </h2>
@@ -175,6 +174,20 @@ export default function Home(props) {
                   Booklist
                 </Link>
               </div>
+            </div> */}
+            <div className="other-links flex flex-col mb-8">
+              <Link
+                href="dss-clubs"
+                className="mb-3 text-offWhite text-xl font-medium hover:text-darkGray"
+              >
+                DSS Clubs
+              </Link>
+              <Link
+                href="admission"
+                className="mb-3 text-offWhite text-xl font-medium hover:text-darkGray"
+              >
+                Admission
+              </Link>
             </div>
           </div>
         </div>
