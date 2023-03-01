@@ -31,13 +31,19 @@ router.get("/:id", async (req, res) => {
     console.error(error.message);
   }
 });
+const imagePathServer = "/images/";
 router.post("/", async (req, res) => {
   try {
     console.log(req.body);
     const { title, description, author, publishdate } = req.body;
+    let ImagePath;
+    console.log(req.files);
+    ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
+    await req.files.image.mv("./public" + ImagePath);
     const data = {
       title: title,
       description: description,
+      image: ImagePath,
       author: author,
       publishdate: publishdate,
     };

@@ -113,16 +113,16 @@ model newsletter {
   id        String   @id @default(uuid())
   name      String
   createAt  DateTime @default(now())
-  image String
-  file String
+  image     String
+  file      String
   updatedAt DateTime @updatedAt
 }
 
 model termsummary {
   id        String   @id @default(uuid())
   name      String
-  image String
-  file String
+  image     String
+  file      String
   createAt  DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -130,8 +130,8 @@ model termsummary {
 model deerwalker {
   id        String   @id @default(uuid())
   name      String
-  image String
-  file String
+  image     String
+  file      String
   createAt  DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -139,8 +139,8 @@ model deerwalker {
 model analysisreport {
   id        String   @id @default(uuid())
   name      String
-  image String
-  file String
+  image     String
+  file      String
   createAt  DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -152,8 +152,8 @@ model studentcorner {
   grade          Int
   articletitle   String
   articlecontent String
-  image String
-  file String
+  image          String
+  file           String
   createAt       DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
@@ -165,8 +165,8 @@ model podcast {
   rollnumber    Int
   grade         Int
   description   String
-  image String
-  file String
+  image         String
+  file          String
   createAt      DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
@@ -217,6 +217,8 @@ model newsandevents {
   title       String
   description String
   author      String
+  image1      String
+  image2      String
   publishdate DateTime @db.Date
   createAt    DateTime @default(now())
   updatedAt   DateTime @updatedAt

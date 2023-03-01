@@ -34,8 +34,8 @@ router.get("/:id", async (req, res) => {
     console.error(error.message);
   }
 });
-const imagePathServer = "/public/images/";
-const filePathServer = "/public/files/";
+const imagePathServer = "/images/";
+const filePathServer = "/files/";
 router.post("/", async (req, res) => {
   try {
     const { name } = req.body;
@@ -46,9 +46,8 @@ router.post("/", async (req, res) => {
     ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
     console.log(ImagePath);
     FilePath = filePathServer + Date.now() + "-" + req.files.file.name;
-
-    await req.files.image.mv("." + ImagePath);
-    await req.files.file.mv("." + FilePath);
+    await req.files.image.mv("./public" + ImagePath);
+    await req.files.file.mv("./public" + FilePath);
 
     const data = {
       name: name,
