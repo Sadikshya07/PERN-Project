@@ -4,7 +4,6 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const bodyParser = require("body-parser");
 
-
 router.get("/", async (req, res) => {
   try {
     const results = await prisma.newsandevents.findMany();
