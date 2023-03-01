@@ -3,12 +3,14 @@ const app = express();
 const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+const fileUpload = require("express-fileupload");
 
 const bodyParser = require("body-parser");
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(fileUpload());
 
 const managementRoute = require("./controllers/managementController");
 const facultyRoute = require("./controllers/facultyController");
@@ -26,8 +28,10 @@ const termsummaryRoute = require("./controllers/termsummaryController");
 const deerwalkerRoute = require("./controllers/deerwalkerController");
 const studentcornerRoute = require("./controllers/studentcornerController");
 const podcastRoute = require("./controllers/podcastController");
-
+const fileUploadExtensionCheck = require("./middlewares/fileUploadExtensionCheck");
+const uploadFileExistance = require("./middlewares/uploadFileExistance");
 // app.use(express.json());
+
 
 app.use("/api/admin/aboutus/management", managementRoute);
 app.use("/api/admin/aboutus/faculty", facultyRoute);
@@ -39,12 +43,13 @@ app.use("/api/admin/programs/courses", coursesRoute);
 app.use("/api/admin/programs/weekendcampprogram", weekendcampprogramRoute);
 app.use("/api/admin/dssinyear/booklist", booklistRoute);
 app.use("/api/admin/dssinyear/calendar", calendarRoute);
-app.use("/api/admin/publications/newsletter", newsletterRoute);
+app.use("/api/admin/publications/newsletter", [uploadFileExistance, fileUploadExtensionCheck],newsletterRoute);
 app.use("/api/admin/publications/analysisreport", analysisreportRoute);
 app.use("/api/admin/publications/termsummary", termsummaryRoute);
 app.use("/api/admin/publications/deerwalker", deerwalkerRoute);
 app.use("/api/admin/publications/studentcorner", studentcornerRoute);
 app.use("/api/admin/publications/podcast", podcastRoute);
+
 app.use(express.static("public"));
 
 const port = process.env.PORT || 3001;

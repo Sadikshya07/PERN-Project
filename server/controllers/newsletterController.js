@@ -35,12 +35,31 @@ router.get("/", async (req, res) => {
       console.error(error.message);
     }
   });
+  const imagePathServer = "/public/images/";
+  const filePathServer = "/public/files/";
   router.post("/", async (req, res) => {
     try {
-      console.log(req.body);
-      const {name } = req.body;
+
+      const {
+        name
+      } = req.body;
+
+      // image and file upload
+      let ImagePath, FilePath;
+
+      ImagePath =
+        imagePathServer + Date.now() + "-" + req.files.image.name;
+      console.log(ImagePath)
+      FilePath =
+        filePathServer + Date.now() + "-" + req.files.file.name;
+      
+      await req.files.image.mv("." + ImagePath);
+      await req.files.file.mv("." + FilePath);
+
       const data = {
-        name:name
+        name: name,
+        image: ImagePath,
+        file: FilePath,
       };
       const results = await prisma.newsletter.create({
         data: data,
