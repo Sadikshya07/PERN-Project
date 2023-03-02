@@ -38,7 +38,7 @@ const SchoolActivities = () => {
   };
   return (
     <div className="school-activities mt-2 bg-gray py-8">
-      <div className="school-activities-content w-11/12 mx-auto">
+      <div className="school-activities-content w-10/12 md:w-11/12 mx-auto">
         <h1 className="text-2xl md:text-4xl font-bold mb-6">School Activities</h1>
         <Slider {...settings}>
           <HomeSliderCard src={"https://www.youtube.com/embed/_YGI1qRd9pw"} />

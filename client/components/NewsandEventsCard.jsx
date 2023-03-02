@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Head from "next/head";
 import Link from "next/link";
 
 export default function NewsandEventsCard({title,description,author,publishdate}) {

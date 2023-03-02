@@ -15,9 +15,9 @@ export default function Footer() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="footer-wrapper bg-orange w-full">
-        <footer className="w-11/12 mx-auto flex lg:flex-row md:gap-x-10 flex-col justify-around py-10 lg:h-[21em] h-auto">
-          <div className="left mb-10">
+      <div className="footer-wrapper bg-orange w-full py-6">
+        <footer className="w-11/12 mx-auto flex lg:flex-row md:gap-x-10 flex-col justify-around  lg:h-[21em] h-auto">
+          <div className="left mb-8">
             <Link href="/">
               <Image src={logo} className="mb-5" />
             </Link>
@@ -27,7 +27,7 @@ export default function Footer() {
             </p>
             <p className="text-offWhite text-xl">014591240 | 9851064445</p>
           </div>
-          <div className="vertical-bar hidden lg:block h-[16em] border-l-[1px] border-offWhite"></div>
+          <div className="vertical-bar hidden lg:block h-[20em] border-l-[1px] border-offWhite"></div>
           <div className="links">
             <div className="grid grid-cols-2 grid-rows-2 lg:links-flex-container lg:flex justify-between w-full lg:w-[50em] mb-10">
               <div className="about-us flex flex-col">
@@ -36,19 +36,19 @@ export default function Footer() {
                 </h2>
                 <Link
                   href="/management"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
                   Management
                 </Link>
                 <Link
                   href="/faculty"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
                   Faculty
                 </Link>
                 <Link
                   href="/why-dss"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
                   Why DSS
                 </Link>
@@ -59,19 +59,19 @@ export default function Footer() {
                 </h2>
                 <Link
                   href="/dss-courses"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
                   DSS Courses
                 </Link>
                 <Link
                   href="/weekend-camp-program"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
-                  Faculty
+                  Weekend Camp Program
                 </Link>
                 <Link
                   href="/courses"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
                   Courses
                 </Link>
@@ -82,37 +82,37 @@ export default function Footer() {
                 </h2>
                 <Link
                   href="/newsletter"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
                   Newsletter
                 </Link>
                 <Link
                   href="/term-summary"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
                   Term Summary
                 </Link>
                 <Link
                   href="/the-deerwalker"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
                   The Deerwalker
                 </Link>
                 <Link
                   href="/student-corner"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
                   Student Corner
                 </Link>
                 <Link
                   href="/analysis-report"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
                   Analysis Report
                 </Link>
                 <Link
                   href="/podcast"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
                   Podcast
                 </Link>
@@ -123,19 +123,19 @@ export default function Footer() {
                 </h2>
                 <Link
                   href="/alumni"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
                   Alumni
                 </Link>
                 <Link
                   href="/news-and-events"
-                  className="text-offWhite font-regular font-sm hover:text-darkGray"
+                  className="mb-2 text-offWhite font-regular font-sm hover:text-darkGray"
                 >
                   News & Events
                 </Link>
               </div>
             </div>
-            <div className="other-links mb-10 grid grid-rows-1 grid-cols-2 justify-between w-full md:w-[50em]">
+            <div className="other-links grid grid-rows-1 grid-cols-2 justify-between w-full md:w-[50em]">
               <Link
                 href="dss-clubs"
                 className="mb-3 text-offWhite text-xl font-medium hover:text-darkGray"
@@ -148,12 +148,6 @@ export default function Footer() {
               >
                 Admission
               </Link>
-              {/* <a href="#" className="mb-3 text-offWhite text-xl font-medium hover:text-darkGray">
-                Contact Us
-              </a>
-              <a href="#" className="mb-3 text-offWhite text-xl font-medium hover:text-darkGray">
-                View Result
-              </a> */}
             </div>
           </div>
           <div className="socials mx-auto text-offWhite flex lg:flex-col items-center gap-8 text-3xl lg:pb-8">

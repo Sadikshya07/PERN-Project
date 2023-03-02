@@ -14,7 +14,7 @@ export default function WeekendCampProgram() {
       <HomeLayout>
         <HeroSectionCard url="" title="Weekend Camp Program" />
         <div className="content-wrapper w-11/12 mx-auto">
-          <h1 className="text-center text-xl my-10 font-semibold">
+          <h1 className="md:text-center md:text-xl my-10 font-semibold">
             The Weekend Camp Program offers a variety of exciting activities for
             kids to enjoy, including 'ARTS', 'CODING', 'CONVERSATIONAL ENGLISH',
             'DANCE', and 'MUSIC'. These activities are designed to help children
@@ -22,10 +22,10 @@ export default function WeekendCampProgram() {
             new friends.
           </h1>
           <div className="sections flex flex-col gap-10 mb-10">
-            <div className="arts flex justify-between">
-              <div className="text w-8/12">
+            <div className="arts flex flex-col md:flex-row justify-between">
+              <div className="text md:w-8/12">
                 <h3 className="text-3xl font-bold mb-8">Arts</h3>
-                <p className="w-10/12 text-xl font-regular">
+                <p className="w-full lg:w-10/12 md:text-xl font-regular">
                   Through arts, students develop various skills like resilience,
                   courage, resolve and a positive mindset to help them master
                   their craft, do well academically and succeed in life after
@@ -33,18 +33,18 @@ export default function WeekendCampProgram() {
                 </p>
               </div>
               <div
-                className="section-image w-[22rem] h-[22em] rounded-full bg-orange"
-                style={{
+                className="section-image w-[16rem] h-[16rem] md:w-[18rem] md:h-[18em] lg:w-[22rem] lg:h-[22em] rounded-full bg-orange"
+                style={{ 
                   backgroundImage:
                     "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
                   backgroundSize: "cover",
                 }}
               ></div>
             </div>
-            <div className="coding flex flex-row-reverse justify-between">
-              <div className="text w-8/12">
+            <div className="coding flex flex-col md:flex-row-reverse justify-between">
+              <div className="text md:w-8/12">
                 <h3 className="text-3xl font-bold mb-8">Coding</h3>
-                <p className="w-10/12 text-xl font-regular">
+                <p className="w-full lg:w-10/12 md:text-xl font-regular">
                   Programmers (coders) are in high demand. Having children learn
                   to code at a young age prepares them for the future. Coding
                   knowledge helps the kids understand better problem-solving
@@ -58,7 +58,7 @@ export default function WeekendCampProgram() {
                 </p>
               </div>
               <div
-                className="section-image w-[22rem] h-[22em] rounded-full bg-orange"
+                className="section-image w-[16rem] h-[16rem] md:w-[18rem] md:h-[18em] lg:w-[22rem] lg:h-[22em] rounded-full bg-orange"
                 style={{
                   backgroundImage:
                     "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -66,12 +66,12 @@ export default function WeekendCampProgram() {
                 }}
               ></div>
             </div>
-            <div className="conversational-english flex justify-between">
-              <div className="text w-8/12">
+            <div className="conversational-english flex flex-col md:flex-row justify-between">
+              <div className="text md:w-8/12">
                 <h3 className="text-3xl font-bold mb-8">
                   Conversational English
                 </h3>
-                <p className="w-10/12 text-xl font-regular">
+                <p className="w-full lg:w-10/12 md:text-xl font-regular">
                   This is online learning, where the American teacher from the
                   USA teaches the student of age group 6 - 9 years in the
                   Language Lab of Sifal School virtually. At the same, there
@@ -79,7 +79,7 @@ export default function WeekendCampProgram() {
                 </p>
               </div>
               <div
-                className="section-image w-[22rem] h-[22em] rounded-full bg-orange"
+                className="section-image w-[16rem] h-[16rem] md:w-[18rem] md:h-[18em] lg:w-[22rem] lg:h-[22em] rounded-full bg-orange"
                 style={{
                   backgroundImage:
                     "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -87,10 +87,10 @@ export default function WeekendCampProgram() {
                 }}
               ></div>
             </div>
-            <div className="music flex  flex-row-reverse justify-between">
-              <div className="text w-8/12">
+            <div className="music flex flex-col md:flex-row-reverse justify-between">
+              <div className="text md:w-8/12">
                 <h3 className="text-3xl font-bold mb-8">Music</h3>
-                <p className="w-10/12 text-xl font-regular">
+                <p className="w-full lg:w-10/12 md:text-xl font-regular">
                   According to science, music can help us be better creative
                   thinkers. The researchers have validated the fact that music
                   education from an early age helps develop cognitive abilities,
@@ -100,7 +100,7 @@ export default function WeekendCampProgram() {
                 </p>
               </div>
               <div
-                className="section-image w-[22rem] h-[22em] rounded-full bg-orange"
+                className="section-image w-[16rem] h-[16rem] md:w-[18rem] md:h-[18em] lg:w-[22rem] lg:h-[22em] rounded-full bg-orange"
                 style={{
                   backgroundImage:
                     "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -108,10 +108,10 @@ export default function WeekendCampProgram() {
                 }}
               ></div>
             </div>
-            <div className="dance flex justify-between">
-              <div className="text w-8/12">
+            <div className="dance flex flex-col md:flex-row justify-between">
+              <div className="text md:w-8/12">
                 <h3 className="text-3xl font-bold mb-8">Dance</h3>
-                <p className="w-10/12 text-xl font-regular">
+                <p className="w-full lg:w-10/12 md:text-xl font-regular">
                   This helps in improving social skills, wellbeing, reduction of
                   stress/ anxiety and the development of creativity and
                   self-expression. Dance is a medium for sensing, understanding,
@@ -119,7 +119,7 @@ export default function WeekendCampProgram() {
                 </p>
               </div>
               <div
-                className="section-image w-[22rem] h-[22em] rounded-full bg-orange"
+                className="section-image w-[16rem] h-[16rem] md:w-[18rem] md:h-[18em] lg:w-[22rem] lg:h-[22em] rounded-full bg-orange"
                 style={{
                   backgroundImage:
                     "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
