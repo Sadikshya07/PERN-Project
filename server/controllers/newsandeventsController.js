@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
@@ -36,14 +37,17 @@ router.post("/", async (req, res) => {
   try {
     console.log(req.body);
     const { title, description, author, publishdate } = req.body;
-    let ImagePath;
+    let ImagePath1, ImagePath2;
     console.log(req.files);
-    ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
-    await req.files.image.mv("./public" + ImagePath);
+    ImagePath1 = imagePathServer + Date.now() + "-" + req.files.image1.name;
+    ImagePath2 = `${imagePathServer}${Date.now()}-${req.files.image2.name}`;
+    await req.files.image1.mv("./public" + ImagePath1);
+    await req.files.image2.mv("./public" + ImagePath2);
     const data = {
       title: title,
       description: description,
-      image: ImagePath,
+      image1: `localhost:${process.env.PORT}${ImagePath1}`,
+      image2: `localhost:${process.env.PORT}${ImagePath2}`,
       author: author,
       publishdate: publishdate,
     };

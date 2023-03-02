@@ -4,9 +4,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "i.natgeofe.com",
-        port: "",
+        protocol: "http",
+        hostname: "localhost",
+        port: "3000",
+        pathname: "/**/**",
       },
     ],
   },

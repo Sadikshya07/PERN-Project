@@ -32,6 +32,7 @@ export default function NewsAndEvents() {
           description={news.description}
           author={news.author}
           publishdate={news.publishdate}
+          image1={news.image1}
         />
       );
     });
@@ -45,6 +46,7 @@ export default function NewsAndEvents() {
       </Head>
       <HomeLayout>
         <HeroSection title={"News and Events"} />
+        {console.log(data)}
         {data ? (
           <div className="management-grid-container flex justify-around">
             {newsAndEventsCards}

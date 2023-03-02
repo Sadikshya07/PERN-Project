@@ -2,22 +2,50 @@ import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 
-export default function NewsandEventsCard({title,description,author,publishdate}) {
+export default function NewsandEventsCard({
+  title,
+  description,
+  author,
+  publishdate,
+  image1,
+}) {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let d = new Date(publishdate);
   return (
-    <Link href = "/">
+    <>
+      {console.log(d.getMonth())}
+      {image1 && console.log(image1)}
       <div
-        className="news-and-events w-[24rem] h-[36rem] bg-no-repeat bg-center bg-cover flex flex-col justify-between p-3 items-start rounded-xl mt-3 "
-        style={{
-          backgroundImage: `linear-gradient(180deg, rgba(217, 217, 217, 0) 10.42%, #000000 80.21%)  ,url("https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg")`,
-        }}
+        className="news-and-events w-[24rem] h-[36rem]  rounded-3xl relative my-3 "
+        // style={{
+        //   backgroundImage: `url(${image1 && image1})`,
+        //   backgroundSize: "cover",
+        // }}
       >
-        <p className="bg-orange text-center text-white rounded-full px-3 font-semibold py-2 text-base">
-          {publishdate}
-        </p>
-        <p className="text-white font-bold text-2xl">
-         {title}
-        </p>
+        <Image src={`${image1}`} fill cover quality={100} />
+
+        <div className="news-overlay h-full rounded-3xl bg-gradient-to-t from-black to-transparent">
+          <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
+            {publishdate}
+          </p>
+          <p className="absolute bottom-5 left-5 w-[17em] font-bold text-offWhite text-2xl">
+            {title}
+          </p>
+        </div>
       </div>
-    </Link>
+    </>
   );
 }
