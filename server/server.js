@@ -5,6 +5,7 @@ const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const fileUpload = require("express-fileupload");
+const cookieparser = require("cookie-parser");
 
 const bodyParser = require("body-parser");
 app.use(express.json());
@@ -12,6 +13,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(fileUpload());
+app.use(cookieparser());
+
 
 const managementRoute = require("./controllers/managementController");
 const facultyRoute = require("./controllers/facultyController");
@@ -32,6 +35,7 @@ const podcastRoute = require("./controllers/podcastController");
 const fileUploadExtensionCheck = require("./middlewares/fileUploadExtensionCheck");
 const uploadFileExistance = require("./middlewares/uploadFileExistance");
 const fileSizeLimitter = require("./middlewares/fileSizeLimmiter");
+const authRouter = require("./controllers/authController");
 // app.use(express.json());
 
 app.use("/api/admin/aboutus/management", managementRoute);
@@ -54,6 +58,7 @@ app.use("/api/admin/publications/termsummary", termsummaryRoute);
 app.use("/api/admin/publications/deerwalker", deerwalkerRoute);
 app.use("/api/admin/publications/studentcorner", studentcornerRoute);
 app.use("/api/admin/publications/podcast", podcastRoute);
+app.use("/api/v1/auth", authRouter);
 
 app.use(express.static("public"));
 
