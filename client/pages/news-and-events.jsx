@@ -46,7 +46,7 @@ export default function NewsAndEvents() {
       <HomeLayout>
         <HeroSection title={"News and Events"} />
         {data ? (
-          <div className="management-grid-container flex justify-around">
+          <div className="management-grid-container grid md:grid-cols-2 lg:grid-cols-3">
             {newsAndEventsCards}
           </div>
         ) : (

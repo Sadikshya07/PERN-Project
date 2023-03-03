@@ -14,7 +14,7 @@ export default function Podcast() {
       </Head>
       <HomeLayout>
         <HeroSectionCard url=" " title="Read Aloud Podcast" />
-        <div className="mx-auto my-10 grid w-11/12 grid-cols-3 justify-items-center gap-y-10">
+        <div className="mx-auto my-10 grid w-11/12 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-y-10">
           <PodcastCard />
           <PodcastCard />
           <PodcastCard />

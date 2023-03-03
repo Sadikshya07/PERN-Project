@@ -35,10 +35,10 @@ export default function AnalysisReport() {
       </Head>
       <Navbar />
       <main>
-        <HeroSectionCard url="" title="Courses" />
+        <HeroSectionCard url="" title="Analysis Report" />
         <TermandAnalysisReport url="" title="AnalysisReport" />
         {data ? (
-          <div className="analysis-report-grid-container flex justify-around">
+          <div className="analysis-report-grid-container grid md:grid-cols-2 lg:grid-cols-4">
             {AnalysisReportCards}
           </div>
         ) : (
