@@ -16,6 +16,22 @@ router.get("/", async (req, res) => {
     console.log(error.message);
   }
 });
+
+router.get("/only4", async (req, res) => {
+  try {
+    const results = await prisma.newsandevents.findMany({
+      take: 4,
+    });
+    res.status(200).json({
+      status: "sucess",
+      result: results.length,
+      data: results,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 router.get("/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -46,8 +62,8 @@ router.post("/", async (req, res) => {
     const data = {
       title: title,
       description: description,
-      image1: `localhost:${process.env.PORT}${ImagePath1}`,
-      image2: `localhost:${process.env.PORT}${ImagePath2}`,
+      image1: ImagePath1,
+      image2: ImagePath2,
       author: author,
       publishdate: publishdate,
     };
@@ -62,6 +78,7 @@ router.post("/", async (req, res) => {
     console.error("Error:", error.message);
   }
 });
+
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;

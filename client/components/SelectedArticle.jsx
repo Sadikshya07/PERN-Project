@@ -6,11 +6,21 @@ const SelectedArticle = ({ description, image1, image2 }) => {
         <p className="text-lg">{description}</p>
       </article>
       <div className="images">
-        <div className="image1 bg-orange w-full h-[24em] my-8">
-          <Image src={`http://${image1}`} fill quality={100} alt="Image 1" />
+        <div
+          className="image1 bg-orange w-full h-[24em] my-8  object-cover"
+          style={{
+            background: `url('http://localhost:3000${image1}')`,
+          }}
+        >
+          {/* <Image src={`http://${image1}`} fill quality={100} alt="Image 1" /> */}
         </div>
-        <div className="image2 bg-orange w-full h-[24em] my-8">
-          <Image src={`http://${image2}`} fill quality={100} alt="Image 2" />
+        <div
+          className="image2 bg-orange w-full h-[24em] my-8 object-cover"
+          style={{
+            background: `url('http://localhost:3000${image2}')`,
+          }}
+        >
+          {/* <Image src={`http://${image2}`} fill quality={100} alt="Image 2" /> */}
         </div>
       </div>
     </main>

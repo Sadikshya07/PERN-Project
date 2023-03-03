@@ -25,17 +25,17 @@ export default function NewsandEventsCard({
   ];
   let d = new Date(publishdate);
   return (
-    <Link href={`/news-and-events/${id}`}>
+    <Link href={`/news-and-events/${id}`} className="flex ">
       <div
-        className="news-and-events w-[24rem] h-[36rem]  rounded-3xl relative my-3 "
-        // style={{
-        //   backgroundImage: `url(${image1 && image1})`,
-        //   backgroundSize: "cover",
-        // }}
+        className="news-and-events w-[24rem] h-[36rem] border-0 rounded-3xl relative my-3 "
+        style={{
+          backgroundImage: `url(${image1 && image1})`,
+          backgroundSize: "cover",
+        }}
       >
-        <Image src={`http://${image1}`} fill cover quality={100} />
+        <Image src={`${image1}`} fill cover quality={100} />
 
-        <div className="news-overlay h-full rounded-3xl bg-gradient-to-t from-black to-transparent">
+        <div className="news-overlay h-full rounded-3xl bg-gradient-to-t from-black to-transparent ">
           <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
             {`${d.getDate()}`}
             <br />

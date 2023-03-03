@@ -49,8 +49,10 @@ export default function NewsAndEvents() {
         <HeroSection title={"News and Events"} />
         {console.log(data)}
         {data ? (
-          <div className="management-grid-container flex justify-around">
-            {newsAndEventsCards}
+          <div className="wrapper w-11/12 mx-auto">
+            <div className="management-grid-container grid grid-cols-3 content-evenly">
+              {newsAndEventsCards}
+            </div>
           </div>
         ) : (
           <Spinner />

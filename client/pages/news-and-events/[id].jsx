@@ -9,19 +9,21 @@ export default function NewsTemplate() {
   const router = useRouter();
   const { id } = router.query;
   const [selectedArticle, setSelectedArtice] = useState();
+  console.log(id);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await NewsandEventsFinder.get(`/${id}`);
-        console.log(response.data.data);
-        setSelectedArtice(response.data.data);
+        const datas = response.data.data;
+        setSelectedArtice(datas);
+        console.log("data is " + response.data.data);
       } catch (err) {
         console.log(err);
       }
     };
-    fetchData();
-  }, []);
+    if (id) fetchData();
+  }, [id]);
 
   let d = selectedArticle && new Date(selectedArticle.publishdate);
 
