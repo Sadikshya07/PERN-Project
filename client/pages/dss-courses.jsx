@@ -9,7 +9,7 @@ import DssCoursesFinder from "./api/DssCoursesFinder";
 export default function DSSCourses() {
   const [data, setData] = useState();
   const DSSCoursesCards =
-  data && // this so that it only happens when the data is fetched
+  data &&
   data.map((Courses) => {
     return (
       <DSSCoursesCard
@@ -42,7 +42,7 @@ export default function DSSCourses() {
       <HomeLayout>
         <HeroSection title={"DSS Courses"} />
         {data ? (
-          <div className="w-11/12 mx-auto my-7 grid grid-cols-3 gap-3">
+          <div className="w-11/12 mx-auto my-7 grid md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-8 lg:gap-3">
             {DSSCoursesCards}
           </div>
         ) : (

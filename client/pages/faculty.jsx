@@ -46,7 +46,7 @@ export default function Faculty() {
       <HomeLayout>
         <HeroSectionCard url="" title={"Faculty"} />
         {data ? (
-          <div className="faculty-card-container grid grid-cols-3 p-3 m-5 gap-5  justify-items-center">
+          <div className="faculty-card-container grid md:grid-cols-2 lg:grid-cols-3 p-3 m-5 gap-5  justify-items-center">
           {FacultyCards }
           </div>
         ) : (

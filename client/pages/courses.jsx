@@ -19,7 +19,7 @@ export default function Courses() {
             <h1 className="text-2xl font-bold text-orange mb-4">
               Elementary School: Grade 1-4
             </h1>
-            <div className="courses-link-container grid grid-cols-4 mb-10">
+            <div className="courses-link-container grid md:grid-cols-2 lg:grid-cols-4 mb-10">
               <CoursesCard url = "" title = "Grade 1"/> 
             </div>
           </div>
@@ -29,7 +29,7 @@ export default function Courses() {
             <h1 className="text-2xl font-bold text-orange mb-4">
               Middle School: Grade 5-8
             </h1>
-            <div className="courses-link-container grid grid-cols-4 mb-10">
+            <div className="courses-link-container grid md:grid-cols-2 lg:grid-cols-4 mb-10">
               <CoursesCard url = "" title = "Grade 5"/> 
             </div>
           </div>
@@ -39,7 +39,7 @@ export default function Courses() {
             <h1 className="text-2xl font-bold text-orange mb-4">
               High School: Grade 9-12
             </h1>
-            <div className="courses-link-container grid grid-cols-4 mb-10">
+            <div className="courses-link-container grid md:grid-cols-2 lg:grid-cols-4 mb-10">
               <CoursesCard url = "" title = "Grade 9"/> 
             </div>
           </div>

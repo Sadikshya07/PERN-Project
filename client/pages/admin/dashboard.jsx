@@ -5,7 +5,6 @@ import PageLink from "../../components/admin/PageLink";
 import routes from "../../routes";
 
 export default function Dashboard() {
-  const year = new Date().getFullYear();
   const adminPages = routes[0].adminLinks.map((admin) => {
     return (
       <Link

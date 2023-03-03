@@ -10,12 +10,12 @@ export default function FacultyCard({name,description,department}) {
             src={
               "https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg"
             }
-            alt={"Sir the great"}
+            alt={"faculty image"}
             height={364}
             width={384}
             className="rounded-t-xl"
           />
-          <div className="overlay absolute flex items-end justify-start opacity-0 text-center bottom-0 rounded-xl h-0 w-full   bg-[rgb(0,0,0)] bg-[rgba(0,0,0,0.5)] text-orange text-xl ">
+          <div className="overlay absolute flex items-end justify-start opacity-0 text-center bottom-0 rounded-xl h-0 w-full bg-[rgb(0,0,0)] bg-[rgba(0,0,0,0.5)] text-orange text-xl ">
             <p className="text-center p-3 m-3 font-black text-2xl">{name}</p>
           </div>
         </div>
@@ -23,13 +23,13 @@ export default function FacultyCard({name,description,department}) {
       modal
     >
       {(close) => (
-        <div className="popup-container flex flex-col rounded-xl">
+        <div className="popup-container flex flex-col w-full rounded-xl">
           <button className="self-end px-5 pt-3 text-4xl" onClick={close}>
             &times;
           </button>
-          <div className="content flex gap-5 !p-10 !pt-0">
+          <div className="content flex flex-col lg:flex-row gap-5 !p-10 !pt-0">
             <div
-              className="faculty-overlay-image w-[30em] 2xl:w-[30em] h-[22rem] rounded-xl"
+              className="faculty-overlay-image w-full h-[20em] lg:w-[30em] [30em] lg:h-[22rem] rounded-xl"
               style={{
                 backgroundImage:
                   "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -38,7 +38,7 @@ export default function FacultyCard({name,description,department}) {
               }}
             ></div>
             <div className="text overflow-hidden">
-              <h1 className=" name font-bold text-orange text-2xl">
+              <h1 className="name font-bold text-orange text-2xl">
                 {name}
               </h1>
               <p className="subject font-normal text-lg text-orange my-3">

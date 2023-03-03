@@ -2,7 +2,7 @@ import Head from "next/head";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import HeroSectionCard from "../components/HeroSection";
 
-export default function WHhyDSS() {
+export default function WhyDSS() {
   return (
     <div>
       <Head>
@@ -15,10 +15,10 @@ export default function WHhyDSS() {
         <HeroSectionCard url="" title="Why DSS?" />
         <div className="why-dss-content w-11/12 mx-auto">
           <div className="sections">
-            <div className="academic-fundamentals flex justify-around items-center my-8">
-              <div className="images relative w-5/12 h-[28rem]">
+            <div className="academic-fundamentals flex flex-col lg:flex-row justify-around items-center my-8">
+              <div className="images relative w-5/12 h-[16rem] md:h-[28rem]">
                 <div
-                  className="image-one absolute right-0 bottom-0 w-[24rem] h-[24rem] rounded-full bg-red-500"
+                  className="image-one absolute right-0 bottom-0 w-[16rem] h-[16rem] md:w-[24rem] md:h-[24rem] rounded-full bg-red-500"
                   style={{
                     backgroundImage:
                       "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -26,7 +26,7 @@ export default function WHhyDSS() {
                   }}
                 ></div>
                 <div
-                  className="image-two absoltue w-[24rem] h-[24rem] rounded-full bg-red-400"
+                  className="image-two hidden lg:block absolute w-[24rem] h-[24rem] rounded-full bg-red-400"
                   style={{
                     backgroundImage:
                       "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -34,8 +34,8 @@ export default function WHhyDSS() {
                   }}
                 ></div>
               </div>
-              <div className="info w-6/12">
-                <h1 className="text-3xl font-bold text-orange">
+              <div className="info w-10/12 lg:w-6/12">
+                <h1 className="text-2xl md:text-3xl font-bold text-orange">
                   Academic Fundamentals
                 </h1>
                 <ul className="why-dss-list orange-disc list-disc">
@@ -47,10 +47,10 @@ export default function WHhyDSS() {
                 </ul>
               </div>
             </div>
-            <div className="essential-skills flex flex-row-reverse justify-around items-center my-8">
-              <div className="images relative w-5/12 h-[28rem]">
+            <div className="essential-skills flex flex-col lg:flex-row-reverse justify-around items-center my-8">
+              <div className="images relative w-5/12 h-[16rem] md:h-[28rem]">
                 <div
-                  className="image-one absolute right-0 bottom-0 w-[24rem] h-[24rem] rounded-full bg-red-500"
+                  className="image-one absolute right-0 bottom-0 w-[16rem] h-[16rem] md:w-[24rem] md:h-[24rem] rounded-full bg-red-500"
                   style={{
                     backgroundImage:
                       "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -58,7 +58,7 @@ export default function WHhyDSS() {
                   }}
                 ></div>
                 <div
-                  className="image-two absoltue w-[24rem] h-[24rem] rounded-full bg-red-400"
+                  className="image-two hidden lg:block absoltue w-[24rem] h-[24rem] rounded-full bg-red-400"
                   style={{
                     backgroundImage:
                       "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -66,11 +66,11 @@ export default function WHhyDSS() {
                   }}
                 ></div>
               </div>
-              <div className="info w-6/12">
-                <h1 className="text-3xl font-bold text-orange">
+              <div className="info w-10/12 lg:w-6/12">
+                <h1 className="text-2xl font-bold text-orange">
                   Essential Skills
                 </h1>
-                <ul className="why-dss-list orange-disc list-disc grid grid-cols-2">
+                <ul className="why-dss-list orange-disc list-disc grid grid-cols-1 md:grid-cols-2">
                   <li>Listen Carefully</li>
                   <li>Respect Everyone (5R’s of DSS)</li>
                   <li>Dress Smartly</li>
@@ -84,10 +84,10 @@ export default function WHhyDSS() {
                 </ul>
               </div>
             </div>
-            <div className="language-skills flex justify-around items-center my-8">
-              <div className="images relative w-5/12 h-[28rem]">
+            <div className="language-skills flex flex-col lg:flex-row justify-around items-center my-8">
+              <div className="images relative w-5/12 h-[16rem] md:h-[28rem]">
                 <div
-                  className="image-one absolute right-0 bottom-0 w-[24rem] h-[24rem] rounded-full bg-red-500"
+                  className="image-one absolute right-0 bottom-0 w-[16rem] h-[16rem] md:w-[24rem] md:h-[24rem] rounded-full bg-red-500"
                   style={{
                     backgroundImage:
                       "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -95,7 +95,7 @@ export default function WHhyDSS() {
                   }}
                 ></div>
                 <div
-                  className="image-two absoltue w-[24rem] h-[24rem] rounded-full bg-red-400"
+                  className="image-two hidden lg:block  absoltue w-[24rem] h-[24rem] rounded-full bg-red-400"
                   style={{
                     backgroundImage:
                       "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -103,8 +103,8 @@ export default function WHhyDSS() {
                   }}
                 ></div>
               </div>
-              <div className="info  w-6/12">
-                <h1 className="text-3xl font-bold text-orange">
+              <div className="info w-10/12 lg:w-6/12">
+                <h1 className="text-2xl font-bold text-orange">
                   Language Skills
                 </h1>
                 <ul className="why-dss-list orange-disc list-disc">
@@ -133,10 +133,10 @@ export default function WHhyDSS() {
                 </ul>
               </div>
             </div>
-            <div className="eca flex flex-row-reverse justify-around items-center my-8">
-              <div className="images relative w-5/12 h-[28rem]">
+            <div className="eca flex flex-col lg:flex-row-reverse justify-around items-center my-8">
+              <div className="images relative w-5/12 h-[16rem] md:h-[28rem]">
                 <div
-                  className="image-one absolute right-0 bottom-0 w-[24rem] h-[24rem] rounded-full bg-red-500"
+                  className="image-one absolute right-0 bottom-0 w-[16rem] h-[16rem] md:w-[24rem] md:h-[24rem] rounded-full bg-red-500"
                   style={{
                     backgroundImage:
                       "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -144,7 +144,7 @@ export default function WHhyDSS() {
                   }}
                 ></div>
                 <div
-                  className="image-two absoltue w-[24rem] h-[24rem] rounded-full bg-red-400"
+                  className="image-two hidden lg:block absolute w-[24rem] h-[24rem] rounded-full bg-red-400"
                   style={{
                     backgroundImage:
                       "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
@@ -152,11 +152,11 @@ export default function WHhyDSS() {
                   }}
                 ></div>
               </div>
-              <div className="info  w-6/12">
-                <h1 className="text-3xl font-bold text-orange">
+              <div className="info w-10/12 lg:w-6/12">
+                <h1 className="text-2xl font-bold text-orange">
                   Language Skills
                 </h1>
-                <ul className="why-dss-list orange-disc list-disc grid grid-cols-2">
+                <ul className="why-dss-list orange-disc list-disc grid grid-cols-1 md:grid-cols-2">
                   <li>Dance</li>
                   <li>Music</li>
                   <li>Vocal</li>

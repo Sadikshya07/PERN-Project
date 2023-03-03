@@ -15,7 +15,7 @@ export default function Home(props) {
         className={`bg-orange z-50 w-full h-[26rem] absolute top-0 left-0 scroll-y-none ${
           isOverlayOpen ? "top-0" : "-top-[100vh]"
         }`}
-        style={{ transition: "  .8s all ease-in-out" }}
+        style={{ transition: " .8s all ease-in-out" }}
       >
         <div className="p-2 text-3xl text-offWhite absolute top-5 right-10 cursor-pointer">
           <RxCross1
@@ -24,7 +24,7 @@ export default function Home(props) {
             }}
           />
         </div>
-        <div className="navbar-content p-8 lg:pl-14 sm:w-full sm:flex sm:justify-between  hidden">
+        <div className="navbar-content p-8 sm:w-full sm:flex sm:justify-between  hidden">
           <div className="navbar-left w-7/12 h-[22em]">
             <div className="navbar-grid-container">
               <div className="about-us flex flex-col">
