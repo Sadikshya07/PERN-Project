@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function NewsandEventsCard({
   title,
+  id,
   description,
   author,
   publishdate,
@@ -23,7 +25,7 @@ export default function NewsandEventsCard({
   ];
   let d = new Date(publishdate);
   return (
-    <>
+    <Link href={`/news-and-events/${id}`}>
       <div
         className="news-and-events w-[24rem] h-[36rem]  rounded-3xl relative my-3 "
         // style={{
@@ -44,6 +46,6 @@ export default function NewsandEventsCard({
           </p>
         </div>
       </div>
-    </>
+    </Link>
   );
 }

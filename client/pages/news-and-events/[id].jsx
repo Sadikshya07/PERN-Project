@@ -2,18 +2,20 @@ import SelectedArticle from "../../components/SelectedArticle";
 import RelatedArticles from "../../components/RelatedArticles";
 import HomeLayout from "../../components/Layouts/HomeLayout";
 import { useRouter } from "next/dist/client/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import NewsandEventsFinder from "../api/NewsandEventsFinder";
 
 export default function NewsTemplate() {
   const router = useRouter();
   const { id } = router.query;
+  const [selectedArticle, setSelectedArtice] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await NewsandEventsFinder.get(`/${id}`);
-        console.log(response);
+        console.log(response.data.data);
+        setSelectedArtice(response.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -21,23 +23,39 @@ export default function NewsTemplate() {
     fetchData();
   }, []);
 
+  let d = selectedArticle && new Date(selectedArticle.publishdate);
+
   return (
     <div className="news-temlate-container">
+      {console.log(selectedArticle)}
       <HomeLayout>
         <div className="wrapper w-11/12 mx-auto">
-          <header className="text-center">
-            <h1 className="text-3xl text-orange font-bold mt-8">
-              Deerwalk Sifal Night | Elementary School
-            </h1>
-            <p className="info text-orange text-xl my-4">
-              By <span className="italic">Alisha</span> on
-              <span className="italic"> 2022-03-21</span>
-            </p>
-          </header>
-          <div className="content flex justify-between">
-            <SelectedArticle />
-            <RelatedArticles />
-          </div>
+          {selectedArticle && (
+            <>
+              <header className="text-center">
+                <h1 className="text-3xl text-orange font-bold mt-8">
+                  {selectedArticle.title}
+                </h1>
+                <p className="info text-orange text-xl my-4">
+                  By <span className="italic">{selectedArticle.author}</span> on
+                  <span className="italic">
+                    {" "}
+                    {`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`}
+                  </span>
+                </p>
+              </header>
+              <div className="content flex justify-between">
+                {selectedArticle && (
+                  <SelectedArticle
+                    description={selectedArticle.description}
+                    image1={selectedArticle.image1}
+                    image2={selectedArticle.image2}
+                  />
+                )}
+                <RelatedArticles />
+              </div>
+            </>
+          )}
         </div>
       </HomeLayout>
     </div>

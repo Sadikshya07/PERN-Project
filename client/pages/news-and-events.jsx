@@ -28,6 +28,7 @@ export default function NewsAndEvents() {
       return (
         <NewsandEventsCard
           key={news.id}
+          id={news.id}
           title={news.title}
           description={news.description}
           author={news.author}
