@@ -27,6 +27,7 @@ export default function NewsAndEvents() {
     data.map((news) => {
       return (
         <NewsandEventsCard
+          EventsCard
           key={news.id}
           id={news.id}
           title={news.title}
@@ -50,7 +51,7 @@ export default function NewsAndEvents() {
         {console.log(data)}
         {data ? (
           <div className="wrapper w-11/12 mx-auto">
-            <div className="management-grid-container grid grid-cols-3 content-evenly">
+            <div className="management-grid-container grid grid-cols-3 justify-between">
               {newsAndEventsCards}
             </div>
           </div>

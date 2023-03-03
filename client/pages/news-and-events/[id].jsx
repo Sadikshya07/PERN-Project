@@ -9,15 +9,18 @@ export default function NewsTemplate() {
   const router = useRouter();
   const { id } = router.query;
   const [selectedArticle, setSelectedArtice] = useState();
+  const [otherArticle, setOtherArticle] = useState();
   console.log(id);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await NewsandEventsFinder.get(`/${id}`);
+        const sideArray = await NewsandEventsFinder.get(`/only4`);
+        setOtherArticle(sideArray.data.data);
         const datas = response.data.data;
         setSelectedArtice(datas);
-        console.log("data is " + response.data.data);
+        // console.log("data is " + response.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -29,7 +32,6 @@ export default function NewsTemplate() {
 
   return (
     <div className="news-temlate-container">
-      {console.log(selectedArticle)}
       <HomeLayout>
         <div className="wrapper w-11/12 mx-auto">
           {selectedArticle && (
@@ -54,7 +56,7 @@ export default function NewsTemplate() {
                     image2={selectedArticle.image2}
                   />
                 )}
-                <RelatedArticles />
+                <RelatedArticles otherArticle={otherArticle} />
               </div>
             </>
           )}

@@ -29,11 +29,11 @@ export default function NewsandEventsCard({
       <div
         className="news-and-events w-[24rem] h-[36rem] border-0 rounded-3xl relative my-3 "
         style={{
-          backgroundImage: `url(${image1 && image1})`,
+          backgroundImage: `url('http://${image1}')`,
           backgroundSize: "cover",
         }}
       >
-        <Image src={`${image1}`} fill cover quality={100} />
+        {/* <Image src={`http://${image1}`} fill  quality={100} /> */}
 
         <div className="news-overlay h-full rounded-3xl bg-gradient-to-t from-black to-transparent ">
           <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
