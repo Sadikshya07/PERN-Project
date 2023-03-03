@@ -50,29 +50,6 @@ router.get("/", async (req, res) => {
     await req.files.image.mv("./public" + ImagePath);
     await req.files.file.mv("./public" + FilePath);
 
-<<<<<<< HEAD
-    const data = {
-      name: name,
-      image: ImagePath,
-      file: FilePath,
-    };
-    const results = await prisma.newsletter.create({
-      data: data,
-    });
-    res.status(201).json({
-      status: "success",
-      data: results,
-    });
-  } catch (error) {
-    console.error("Error:", error.message);
-  }
-});
-router.put("/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const { name } = req.body;
-
-=======
       ImagePath =
         imagePathServer + Date.now() + "-" + req.files.image.name;
       console.log(ImagePath)
@@ -158,7 +135,6 @@ router.put("/:id", async (req, res) => {
       const id = req.params.id;
       const {name } = req.body;
   
->>>>>>> c69956168ff426eed196315b72ad1eaece5ae71c
     const data = {
       name: name,
     };
