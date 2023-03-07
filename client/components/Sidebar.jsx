@@ -8,7 +8,7 @@ export default function Home(props) {
       <div
         className={`bg-orange z-50 w-screen h-screen fixed top-0 left-0 overflow-y-scroll ${
           isSidebarOpen ? "left-0" : "left-[100vw]"
-        } ${isSidebarOpen ? "block" : "hidden"}`}
+        }`}
         style={{ transition: ".1s all ease-in-out" }}
       >
         <div className="main-container">

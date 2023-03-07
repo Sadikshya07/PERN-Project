@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function PodcastCard() {
   return (
     <a href="/">
-        <div className="podcast-card-container card-shadow w-11/12 h-[32em] rounded-xl">
+        <div className="podcast-card-container mx-auto card-shadow w-11/12 h-[44em] md:h-[40em] lg:h-[36em] rounded-xl">
           <div
             className="card-image w-full h-2/4"
             style={{
