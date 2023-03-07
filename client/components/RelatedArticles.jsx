@@ -5,7 +5,7 @@ const RelatedArticles = ({ otherArticle }) => {
         <div
           className="card w-[18rem] h-[18rem] bg-orange rounded-xl mb-4 object-fill"
           style={{
-            background: `url('http://${article.image1}')`,
+            background: `url('http://localhost:3000${article.image1}')`,
           }}
         ></div>
         <p className="text-orange font-semibold text-2xl w-[18rem]">

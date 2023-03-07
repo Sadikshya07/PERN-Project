@@ -9,7 +9,7 @@ const SelectedArticle = ({ description, image1, image2 }) => {
         <div
           className="image1 bg-orange w-full h-[24em] my-8  object-contain  aspect-[3/4]"
           style={{
-            background: `url('http://${image1}')`,
+            background: `url('http://localhost:3000${image1}')`,
           }}
         >
           {/* <Image src={`http://${image1}`} fill quality={100} alt="Image 1" /> */}
@@ -17,7 +17,7 @@ const SelectedArticle = ({ description, image1, image2 }) => {
         <div
           className="image2 bg-orange w-full h-[24em] my-8 object-cover"
           style={{
-            background: `url('http://${image2}')`,
+            background: `url('http://localhost:3000${image2}')`,
           }}
         >
           {/* <Image src={`http://${image2}`} fill quality={100} alt="Image 2" /> */}
