@@ -8,7 +8,7 @@ export default function Deerwalker() {
   const [name, setName] = useState();
   const [error, setError] = useState("");
   const [deerwalkFinder, setDeerwalkFinder] = useState();
-  let i = 1;
+  let i = 0;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,7 +55,7 @@ export default function Deerwalker() {
           {deerwalkFinder.map((item) => {
             return (
               <tr key={item.id}>
-                <td>{i}</td>
+                <td>{i++}</td>
                 <td>{item.name}</td>
                 <td>{item.file}</td>
                 <td>Delete</td>

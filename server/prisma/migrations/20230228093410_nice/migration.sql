@@ -202,7 +202,7 @@ CREATE TABLE "newsandevents" (
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "author" TEXT NOT NULL,
-    "publishdate" TIMESTAMP(3) NOT NULL,
+    "publishdate" DATE NOT NULL,
 
     CONSTRAINT "newsandevents_pkey" PRIMARY KEY ("id")
 );

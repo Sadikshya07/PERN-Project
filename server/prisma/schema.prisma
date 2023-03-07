@@ -10,145 +10,206 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model users {
-  id       String @id @default(uuid())
-  name     String
-  password String
+model User {
+  id           String   @id @unique @default(uuid())
+  email        String   @unique
+  name         String?
+  password     String
+  RefreshToken String   @default("")
+  createAt     DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 //Homepage
 
 model addheroimages {
-  id String @id @default(uuid())
+  id        String   @id @default(uuid())
+  image     String
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model metrics {
-  id String @id @default(uuid())
+  id        String   @id @default(uuid())
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model programs {
-  id String @id @default(uuid())
+  id        String   @id @default(uuid())
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model schoolactivities {
-  id    String @id @default(uuid())
-  Title String
+  id        String   @id @default(uuid())
+  Title     String
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model schoolinmedia {
-  id     String @id @default(uuid())
-  title  String
-  author String
+  id        String   @id @default(uuid())
+  title     String
+  author    String
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 //About us
 
 model faculty {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
   name        String
   description String
   department  String
+  createAt    DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model management {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
   name        String
   description String
   position    String
+  createAt    DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model whydss {
-  id       String @id @default(uuid())
-  bullets  String
-  category String
+  id        String   @id @default(uuid())
+  bullets   String
+  category  String
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 //Our programs
 
 model courses {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
   name        String
   description String
+  createAt    DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model dsscourses {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
   name        String
   description String
+  createAt    DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model weekendcampprogram {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
   description String
+  createAt    DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 //Publications
 
 model newsletter {
-  id   String @id @default(uuid())
-  name String
+  id        String   @id @default(uuid())
+  name      String
+  createAt  DateTime @default(now())
+  image     String
+  file      String
+  updatedAt DateTime @updatedAt
 }
 
 model termsummary {
-  id   String @id @default(uuid())
-  name String
+  id        String   @id @default(uuid())
+  name      String
+  image     String
+  file      String
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model deerwalker {
-  id   String @id @default(uuid())
-  name String
+  id        String   @id @default(uuid())
+  name      String
+  image     String
+  file      String
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model analysisreport {
-  id   String @id @default(uuid())
-  name String
+  id        String   @id @default(uuid())
+  name      String
+  image     String
+  file      String
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model studentcorner {
-  id             String @id @default(uuid())
+  id             String   @id @default(uuid())
   studentname    String
   rollnumber     Int
   grade          Int
   articletitle   String
   articlecontent String
+  image          String
+  file           String
+  createAt       DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model podcast {
-  id            String @id @default(uuid())
+  id            String   @id @default(uuid())
   title         String
   presentername String
   rollnumber    Int
   grade         Int
   description   String
+  image         String
+  file          String
+  createAt      DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 // Dss in year
 
 model booklist {
-  id   String @id @default(uuid())
-  name String
+  id        String   @id @default(uuid())
+  name      String
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model calendar {
-  id    String @id @default(uuid())
-  title String
+  id        String   @id @default(uuid())
+  title     String
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model lessonplan {
-  id    String @id @default(uuid())
-  title String
+  id        String   @id @default(uuid())
+  title     String
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 //other pages
 
 model dssclubs {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
   name        String
   description String
+  createAt    DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model admission {
-  id String @id @default(uuid())
+  id        String   @id @default(uuid())
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 //community
@@ -158,5 +219,9 @@ model newsandevents {
   title       String
   description String
   author      String
+  image1      String
+  image2      String
   publishdate DateTime @db.Date
+  createAt    DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
