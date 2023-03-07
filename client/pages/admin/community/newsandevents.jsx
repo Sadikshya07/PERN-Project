@@ -5,7 +5,7 @@ import NewsandEventsFinder from "../../api/NewsandEventsFinder";
 import { useState } from "react";
 
 export default function NewsAndEvents() {
-  const [author, setauthor] = useState();
+  const [author, setAuthor] = useState();
   const [title, setTitle] = useState();
   const [description,setDescription] = useState();
   const [publishdate,setDate] = useState();
@@ -55,7 +55,7 @@ export default function NewsAndEvents() {
           placeholder="Name"
           className="border-2"
           required
-          onChange={(e) => setAuthorName(e.target.value)}
+          onChange={(e) => setAuthor(e.target.value)}
         ></input>
         <br />
         <label for="description">Description:</label> <br />

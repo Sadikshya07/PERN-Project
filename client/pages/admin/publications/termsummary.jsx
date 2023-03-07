@@ -2,12 +2,25 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import TermSummaryFinder from "../../api/TermSummaryFinder";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function TermSummary() {
   const [name, setName] = useState();
   const [error, setError] = useState("");
+  const [termSummary, setTermSummary] = useState();
+  let i = 0;
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await TermSummaryFinder.get("/");
+        setTermSummary(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -34,9 +47,20 @@ export default function TermSummary() {
             <th>SN</th>
             <th>Name</th>
             <th>File</th>
-            <th>Actions</th>
+            <th colSpan={2}>Actions</th>
           </tr>
         </thead>
+        <tbody>
+          {termSummary.map((item) => {
+            <tr key={item.id}>
+              <td>{i++}</td>
+              <td>{item.name}</td>
+              <td>FIle here</td>
+              <td>Update</td>
+              <td>Delete</td>
+            </tr>;
+          })}
+        </tbody>
       </table>
       <form onChange={handleSubmit}>
         <h1>Term Summary</h1>

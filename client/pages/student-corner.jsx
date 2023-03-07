@@ -1,8 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import HomeLayout from "../components/Layouts/HomeLayout";
+import HeroSectionCard from "../components/HeroSection";
+import StudentCornerCard from "../components/StudentCornerCard";
 
 export default function StudentCorner() {
   return (
@@ -13,11 +12,15 @@ export default function StudentCorner() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
-      <main>
-        Student Corner
-      </main>
-      <Footer />
+      <HomeLayout>
+        <HeroSectionCard url=" " title="Student Corner" />
+        <div className="mx-auto my-10 grid w-11/12 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-y-10">
+          <StudentCornerCard />
+          <StudentCornerCard />
+          <StudentCornerCard />
+          <StudentCornerCard />
+        </div>
+      </HomeLayout>
     </>
   );
 }

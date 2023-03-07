@@ -2,30 +2,44 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import StudentCornerFinder from "../../api/StudentCornerFinder";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function StudentCorner() {
-    const [StudentName, setStudentName] = useState();
-    const [Rollno, setRollno] = useState();
-    const [Grade, setGrade] = useState();
-    const [ArticleTitle, setArticleTitle] = useState();
-    const [ArticleContent, setArticleContent] = useState();
-    const [error, setError] = useState("");
-  
-    const handleSubmit = async (e) => {
-      e.preventDefault();
+  const [StudentName, setStudentName] = useState();
+  const [Rollno, setRollno] = useState();
+  const [Grade, setGrade] = useState();
+  const [ArticleTitle, setArticleTitle] = useState();
+  const [ArticleContent, setArticleContent] = useState();
+  const [error, setError] = useState("");
+  const [studnentCorner, setStudentCorner] = useState();
+  let i = 0;
+
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        const response = await StudentCornerFinder.post("/", {
-          StudentName,
-          Rollno,
-          Grade,
-          ArticleTitle,
-          ArticleContent
-        });
+        const response = await StudentCornerFinder.get("/");
+        setStudentCorner(response.data.data);
       } catch (err) {
         console.log(err);
       }
     };
+    fetchData();
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await StudentCornerFinder.post("/", {
+        StudentName,
+        Rollno,
+        Grade,
+        ArticleTitle,
+        ArticleContent,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div>
       <Head>
@@ -46,9 +60,26 @@ export default function StudentCorner() {
             <th>Article Title</th>
             <th>Article Content</th>
             <th>Image</th>
-            <th>Actions</th>
+            <th colSpan={2}>Actions</th>
           </tr>
         </thead>
+        <tbody>
+          {studnentCorner.map((item) => {
+            return (
+              <tr key={item.id}>
+                <td>{i++}</td>
+                <td>{item.studentname}</td>
+                <td>{item.studentname}</td>
+                <td>{item.grade}</td>
+                <td>{item.articletitle}</td>
+                <td>{item.articlecontent}</td>
+                <td>Imaga here</td>
+                <td>Delete</td>
+                <td>Update</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
       <form onChange={handleSubmit}>
         <label for="name">Student Name:</label> <br />
@@ -59,7 +90,7 @@ export default function StudentCorner() {
           className="border-2"
           required
           onChange={(e) => setStudentName(e.target.value)}
-        ></input>
+        />
         <br />
         <label for="grade">Grade:</label> <br />
         <input
@@ -89,7 +120,8 @@ export default function StudentCorner() {
           className="border-2"
           required
           onChange={(e) => setArticleTitle(e.target.value)}
-        ></input><br/>
+        ></input>
+        <br />
         <label for="Article">Article Content</label> <br />
         <input
           type="text"

@@ -1,18 +1,29 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import AnalysisReportFinder from "../../api/AnalysisReportFinder";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function AnalysisReport() {
   const [name, setName] = useState();
   const [error, setError] = useState("");
+  const [analysisReport, setAnalysisReport] = useState();
+  let i = 1;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await AnalysisReportFinder.get("/");
+        setAnalysisReport(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await AnalysisReportFinder.post("/", {
-        name
+        name,
       });
     } catch (err) {
       console.log(err);
@@ -34,9 +45,22 @@ export default function AnalysisReport() {
             <th>SN</th>
             <th>Name</th>
             <th>Image</th>
-            <th>Actions</th>
+            <th colSpan={2}>Actions</th>
           </tr>
         </thead>
+        <tbody>
+          {analysisReport.map((item) => {
+            return (
+              <tr key={item.id}>
+                <th>{i}</th>
+                <th>{item.name}</th>
+                <th>{item.image}</th>
+                <th>Delete</th>
+                <th>Update</th>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
       <form onChange={handleSubmit}>
         <h1>Analysis Report</h1>

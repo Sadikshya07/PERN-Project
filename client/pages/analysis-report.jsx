@@ -1,30 +1,23 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TermandAnalysisReport from "../components/TermandAnalysisCard";
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import AnalysisReportFinder from "./api/AnalysisReportFinder";
+import HeroSectionCard from "../components/HeroSection";
 
 export default function AnalysisReport() {
   const [data, setData] = useState();
-  const AnalysisReportCard =
-  data && // this so that it only happens when the data is fetched
-  data.map((person) => {
-    return (
-      <AnalysisReportCard
-        key={person.id}
-        name={person.name}
-      />
-    );
-  });
+  const AnalysisReportCards =
+    data && // this so that it only happens when the data is fetched
+    data.map((person) => {
+      return <TermandAnalysisReport key={person.id} name={person.name} />;
+    });
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await AnalysisReportFinder.get("/"); //this is to get the data from the server using axios (axios is used insted of fetch() function)
-        // console.log(response.data.data);
+        const response = await AnalysisReportFinder.get("/");
         setData(response.data.data);
       } catch (err) {
         console.log(err);
@@ -42,19 +35,17 @@ export default function AnalysisReport() {
       </Head>
       <Navbar />
       <main>
-        {/* hero section here */}
-        < TermandAnalysisReport url="" title="AnalysisReport"/>
-        {
-          data ? (
-            <div className="analysisreport-grid-container flex justify-around">
-              {TermandAnalysisReport}
-            </div>
-          ) : (
-            <Spinner />
-          )
-        }
+        <HeroSectionCard url="" title="Analysis Report" />
+        <TermandAnalysisReport url="" title="AnalysisReport" />
+        {data ? (
+          <div className="analysis-report-grid-container grid md:grid-cols-2 lg:grid-cols-4">
+            {AnalysisReportCards}
+          </div>
+        ) : (
+          <Spinner />
+        )}
       </main>
       <Footer />
     </>
-  )
+  );
 }

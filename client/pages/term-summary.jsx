@@ -1,11 +1,9 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import TermAnalysis from "../components/TermandAnalysisCard";
+import TermSummaryCard from "../components/TermandAnalysisCard";
+import HeroSectionCard from "../components/HeroSection";
+import HomeLayout from "../components/Layouts/HomeLayout";
 
-export default function TermSummary() {
+export default function TheDeerwalker() {
   return (
     <>
       <Head>
@@ -14,12 +12,16 @@ export default function TermSummary() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
-      <main>
-        {/* hero section here */}
-        <TermAnalysis />
-      </main>
-      <Footer />
+      <HomeLayout>
+        <HeroSectionCard url="" title="Term Summary" />
+        <div className="term-summary-grid-container grid md:grid-cols-2 lg:grid-cols-4 gap-y-10">
+          <TermSummaryCard />
+          <TermSummaryCard />
+          <TermSummaryCard />
+          <TermSummaryCard />
+          <TermSummaryCard />
+        </div>
+      </HomeLayout>
     </>
   );
 }

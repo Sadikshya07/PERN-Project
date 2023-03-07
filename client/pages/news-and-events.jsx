@@ -8,19 +8,6 @@ import { useEffect, useState } from "react";
 
 export default function NewsAndEvents() {
   const [data, setData] = useState();
-  const NewsandEventsCards =
-    data && // this so that it only happens when the data is fetched
-    data.map((news) => {
-      return (
-        <NewsandEventsCard
-          key={news.id}
-          title={news.title}
-          description={news.description}
-          author={news.author}
-          publishdate={news.publishdate}
-        />
-      );
-    });
   useEffect(() => {
     // use effect to fetch the data when the page loads
     const fetchData = async () => {
@@ -35,6 +22,19 @@ export default function NewsAndEvents() {
     };
     fetchData();
   }, []);
+  const newsAndEventsCards =
+    data && // this so that it only happens when the data is fetched
+    data.map((news) => {
+      return (
+        <NewsandEventsCard
+          key={news.id}
+          title={news.title}
+          description={news.description}
+          author={news.author}
+          publishdate={news.publishdate}
+        />
+      );
+    });
   return (
     <>
       <Head>
@@ -46,8 +46,8 @@ export default function NewsAndEvents() {
       <HomeLayout>
         <HeroSection title={"News and Events"} />
         {data ? (
-          <div className="management-grid-container flex justify-around">
-            {NewsandEventsCards}
+          <div className="management-grid-container grid md:grid-cols-2 lg:grid-cols-3">
+            {newsAndEventsCards}
           </div>
         ) : (
           <Spinner />

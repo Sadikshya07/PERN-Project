@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 export default function Faculty() {
   const [data, setData] = useState();
-  const FacultyCards =
+  const FacultyCards=
     data && // this so that it only happens when the data is fetched
     data.map((person) => {
       return (
@@ -47,8 +47,8 @@ export default function Faculty() {
       <HomeLayout>
         <HeroSectionCard url="" title={"Faculty"} />
         {data ? (
-          <div className="faculty-card-container grid grid-cols-3 p-3 m-5 gap-5  justify-items-center">
-            {FacultyCards}
+          <div className="faculty-card-container grid md:grid-cols-2 lg:grid-cols-3 p-3 m-5 gap-5  justify-items-center">
+          {FacultyCards }
           </div>
         ) : (
           <Spinner />
