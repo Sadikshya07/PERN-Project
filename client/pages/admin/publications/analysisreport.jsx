@@ -6,7 +6,7 @@ export default function AnalysisReport() {
   const [name, setName] = useState();
   const [error, setError] = useState("");
   const [analysisReport, setAnalysisReport] = useState();
-  let i = 1;
+  let i = 0;
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -52,11 +52,11 @@ export default function AnalysisReport() {
           {analysisReport.map((item) => {
             return (
               <tr key={item.id}>
-                <th>{i}</th>
-                <th>{item.name}</th>
-                <th>{item.image}</th>
-                <th>Delete</th>
-                <th>Update</th>
+                <td>{i++}</td>
+                <td>{item.name}</td>
+                <td>{item.image}</td>
+                <td>Delete</td>
+                <td>Update</td>
               </tr>
             );
           })}

@@ -7,19 +7,29 @@ import { useState } from "react";
 export default function NewsAndEvents() {
   const [author, setAuthor] = useState();
   const [title, setTitle] = useState();
-  const [description,setDescription] = useState();
-  const [publishdate,setDate] = useState();
+  const [description, setDescription] = useState();
+  const [publishdate, setDate] = useState();
   const [error, setError] = useState("");
+  const [image1, setImage1] = useState();
+  const [image2, setImage2] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await NewsandEventsFinder.post("/", {
-        author,
-        title,
-        description,
-        publishdate
-      });
+      const response = await NewsandEventsFinder.post(
+        "/",
+        {
+          author,
+          title,
+          image1,
+          image2,
+          description,
+          publishdate,
+        },
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
     } catch (err) {
       console.log(err);
     }
@@ -47,8 +57,8 @@ export default function NewsAndEvents() {
           </tr>
         </thead>
       </table>
-      <form onSubmit={handleSubmit}>
-        <label for="fname">Full name:</label> <br />
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <label htmlFor="fname">Full name:</label> <br />
         <input
           type="text"
           id="fname"
@@ -66,7 +76,7 @@ export default function NewsAndEvents() {
           className="border-2"
           required
           onChange={(e) => setDescription(e.target.value)}
-        ></input>{" "}
+        ></input>
         <br />
         <label for="Title">Title:</label> <br />
         <input
@@ -76,7 +86,7 @@ export default function NewsAndEvents() {
           className="border-2"
           required
           onChange={(e) => setTitle(e.target.value)}
-        ></input>{" "}
+        ></input>
         <br />
         <label for="Date">Date:</label> <br />
         <input
@@ -85,16 +95,32 @@ export default function NewsAndEvents() {
           placeholder="date"
           className="border-2"
           required
-          onChange={(e) => setDate(e.target.value)}
-        ></input>{" "}
+          onChange={(e) => setDate(new Date(e.target.value))}
+        ></input>
         <br />
-        <label for="image">Image:</label> <br />
+        <label for="image">Image 1:</label> <br />
         <input
           type="file"
           id="image"
           placeholder="Choose a file"
           className="border-2"
-        ></input>{" "}
+          onChange={(e) => {
+            setImage1(e.target.files[0]);
+          }}
+          required
+        ></input>
+        <br />
+        <label for="image">Image 2:</label> <br />
+        <input
+          type="file"
+          id="image"
+          placeholder="Choose a file"
+          className="border-2"
+          onChange={(e) => {
+            setImage2(e.target.files[0]);
+          }}
+          required
+        ></input>
         <br />
         <button type="submit" className="border-2">
           Submit

@@ -27,11 +27,14 @@ export default function NewsAndEvents() {
     data.map((news) => {
       return (
         <NewsandEventsCard
+          EventsCard
           key={news.id}
+          id={news.id}
           title={news.title}
           description={news.description}
           author={news.author}
           publishdate={news.publishdate}
+          image1={news.image1}
         />
       );
     });
@@ -45,6 +48,7 @@ export default function NewsAndEvents() {
       </Head>
       <HomeLayout>
         <HeroSection title={"News and Events"} />
+        {console.log(data)}
         {data ? (
           <div className="management-grid-container grid md:grid-cols-2 lg:grid-cols-3">
             {newsAndEventsCards}

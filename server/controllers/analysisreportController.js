@@ -64,7 +64,7 @@ router.put("/:id", async (req, res) => {
       where: {
         id,
       },
-      data
+      data,
     });
     console.log(results);
     res.status(201).json({
@@ -91,7 +91,6 @@ router.delete("/:id", async (req, res) => {
     console.log(results);
     res.status(201).json({
       status: "success",
-      
     });
   } catch (error) {
     console.error(error.message);
