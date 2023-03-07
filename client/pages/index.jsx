@@ -9,18 +9,24 @@ import perClass from "../public/src/assets/per-class.svg";
 import stRatio from "../public/src/assets/st-ratio.svg";
 import SchoolActivities from "../components/SchoolActivities";
 import Popup from "../components/Popup";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [buttonPopup, setButtonPopup] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setButtonPopup(true);
+    }, 1000);
+  }, []);
   return (
     <>
       <Head>
         <title>Sifal School</title>
         <meta name="description" content="Deerwalk Sifal School" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="../public/src/assets/favicon.svg" />
+        <link rel="icon" href="/src/assets/favicon.svg" />
       </Head>
       <Navbar />
-      {/* <Popup /> */}
       <main>
         <div className="hero-section flex justify-between w-11/12 mx-auto mt-8">
           <div className="left lg:w-[38em]">
@@ -433,6 +439,16 @@ export default function Home() {
         </div>
       </main>
       <Footer />
+      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+        <div
+          className=" h-[50vh] w-full bg-red-500"
+          style={{
+            backgroundImage:
+              "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+            backgroundSize: "cover",
+          }}
+        ></div>
+      </Popup>
     </>
   );
 }
