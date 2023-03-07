@@ -17,7 +17,7 @@ export default [
     homepage: [
       {
         title: "Add Images",
-        url: "/admin/home/heroimages",
+        url: "/admin/home/home-images",
       },
       {
         title: "Metrics",

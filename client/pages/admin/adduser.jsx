@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function AddUser() {
@@ -11,7 +10,47 @@ export default function AddUser() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      Add User
+      <div className="form-container">
+        <form>
+            <h1>Add User</h1>
+            <label htmlFor="name"> Name:</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Name"
+              className="border-2"
+              required
+            ></input>
+            <br />
+            <label for="file">Email:</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              className="border-2"
+            ></input>
+            <br />
+            <label for="file">Password:</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              className="border-2"
+            ></input>
+            <br />
+            <label for="file">Confirm Password:</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="Confirm Password"
+              className="border-2"
+            ></input>
+            <br />
+            <button type="submit" className="border-2">
+              Submit
+            </button>
+          </form>
+      </div>
     </div>
   );
 }

@@ -48,19 +48,19 @@ export default function NewsTemplate() {
           <div className="side-info mx-auto md:mx-0">
             <h1 className="text-3xl text-center font-semibold mb-8">Other Posts</h1>
             <aside className="other-posts flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-col gap-y-8">
-              <div className="other-posts-card">
+              <div className="other-posts-card mx-auto">
                 <div className="card w-[18rem] h-[18rem] bg-orange rounded-xl mb-4"></div>
                 <p className="text-orange font-semibold text-2xl w-[18rem]">
                   This is another news.
                 </p>
               </div>
-              <div className="other-posts-card">
+              <div className="other-posts-card mx-auto">
                 <div className="card w-[18rem] h-[18rem] bg-orange rounded-xl mb-4"></div>
                 <p className="text-orange font-semibold text-2xl w-[18rem]">
                   This is another news.
                 </p>
               </div>
-              <div className="other-posts-card">
+              <div className="other-posts-card mx-auto">
                 <div className="card w-[18rem] h-[18rem] bg-orange rounded-xl mb-4"></div>
                 <p className="text-orange font-semibold text-2xl w-[18rem]">
                   This is another news.

@@ -80,7 +80,7 @@ export default function AnalysisReport() {
           id="file"
           placeholder="choose file"
           className="border-2"
-        ></input>{" "}
+        ></input>
         <br />
         <button type="submit" className="border-2">
           Submit

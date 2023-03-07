@@ -1,45 +1,42 @@
 import Head from "next/head";
 import Link from "next/link";
 
-export default function Programs() {
+export default function Images() {
   return (
     <div>
       <Head>
-        <title>Add Programs</title>
+        <title>Add Images</title>
         <meta name="description" content="Deerwalk Sifal School" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="form-container">
-        <h1>Add Programs</h1>
+        <h1>Add Home Images</h1>
         <form>
-          <label for="image1">Elementary School:</label>
+          <label for="image1">Image 1:</label>
           <input
             type="file"
-            id="elementaryschool"
+            id="image1"
             placeholder="choose file"
             className="border-2"
           ></input>
           <br />
-          <label for="image2">Middle School:</label>
+          <label for="image2">Image 2:</label>
           <input
             type="file"
-            id="middleschool"
+            id="image2"
             placeholder="choose file"
             className="border-2"
           ></input>
           <br />
-          <label for="image3">High School:</label>
+          <label for="image3">Image 3:</label>
           <input
             type="file"
-            id="highschool"
+            id="image3"
             placeholder="choose file"
             className="border-2"
           ></input>
           <br />
-          <button type="submit" className="border-2">
-            Submit
-          </button>
         </form>
       </div>
     </div>
