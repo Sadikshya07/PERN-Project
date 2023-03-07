@@ -26,6 +26,14 @@ export default [
       {
         title: "Programs",
         url: "/admin/home/programs",
+      },
+      {
+        title: "School Activities",
+        url: "/admin/home/school-activities",
+      },
+      {
+        title: "School in Media",
+        url: "/admin/home/school-in-media",
       }
     ],
     aboutUs: [
