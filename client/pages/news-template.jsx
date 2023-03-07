@@ -15,10 +15,10 @@ export default function NewsTemplate() {
             <span className="italic">2022-03-21</span>
           </p>
         </header>
-        <div className="content flex justify-between">
-          <main className="article-and-images w-8/12">
+        <div className="content flex flex-col lg:flex-row justify-between">
+          <main className="article-and-images lg:w-8/12">
             <article>
-              <p className="text-lg"> 
+              <p className="text-lg">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Voluptas earum officia totam a, qui sint itaque. Sequi eligendi,
                 incidunt nobis repellendus veritatis ipsum culpa voluptates
@@ -45,32 +45,32 @@ export default function NewsTemplate() {
               <div className="image2 bg-orange w-full h-[24em] my-8"></div>
             </div>
           </main>
-          <aside className="other-posts flex flex-col gap-y-8">
-            <h1 className="text-3xl text-center font-semibold">
-              Other Posts
-            </h1>
-            <div className="other-posts-card">
-              <div className="card w-[18rem] h-[18rem] bg-orange rounded-xl mb-4"></div>
-              <p className="text-orange font-semibold text-2xl w-[18rem]">
-                This is another news. 
-              </p>
-            </div>
-            <div className="other-posts-card">
-              <div className="card w-[18rem] h-[18rem] bg-orange rounded-xl mb-4"></div>
-              <p className="text-orange font-semibold text-2xl w-[18rem]">
-                This is another news. 
-              </p>
-            </div>
-            <div className="other-posts-card">
-              <div className="card w-[18rem] h-[18rem] bg-orange rounded-xl mb-4"></div>
-              <p className="text-orange font-semibold text-2xl w-[18rem]">
-                This is another news. 
-              </p>
-            </div>
-          </aside>
+          <div className="side-info mx-auto md:mx-0">
+            <h1 className="text-3xl text-center font-semibold mb-8">Other Posts</h1>
+            <aside className="other-posts flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-col gap-y-8">
+              <div className="other-posts-card">
+                <div className="card w-[18rem] h-[18rem] bg-orange rounded-xl mb-4"></div>
+                <p className="text-orange font-semibold text-2xl w-[18rem]">
+                  This is another news.
+                </p>
+              </div>
+              <div className="other-posts-card">
+                <div className="card w-[18rem] h-[18rem] bg-orange rounded-xl mb-4"></div>
+                <p className="text-orange font-semibold text-2xl w-[18rem]">
+                  This is another news.
+                </p>
+              </div>
+              <div className="other-posts-card">
+                <div className="card w-[18rem] h-[18rem] bg-orange rounded-xl mb-4"></div>
+                <p className="text-orange font-semibold text-2xl w-[18rem]">
+                  This is another news.
+                </p>
+              </div>
+            </aside>
+          </div>
         </div>
       </div>
-    <Footer />
+      <Footer />
     </div>
   );
 }
