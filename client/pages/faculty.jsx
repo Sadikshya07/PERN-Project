@@ -13,7 +13,6 @@ export default function Faculty() {
   const FacultyCards =
     data && // this so that it only happens when the data is fetched
     data.map((person) => {
-      
       return (
         <FacultyCard
           key={person.id}

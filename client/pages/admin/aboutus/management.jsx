@@ -2,7 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import ManagementFinder from "../../api/ManagementFinder";
-import { useState,useEffect} from "react";
+import {useState,useEffect} from "react";
+import {useHistory} from "react-router-dom";
 
 export default function Management() {
   // useState is used to change the variable when user types in the values (to check what is going on use console.log(name or description or position ))
@@ -13,6 +14,7 @@ export default function Management() {
   // error is used to display the error but it is not completed
   const [error, setError] = useState("");
 
+ // let history = useHistory();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,6 +47,25 @@ export default function Management() {
       // setError(err.data.data);
     }
   };
+
+  const handleUpdate = async (id) => {
+      history.push('/admin/${id}/updatemanagement');
+  
+  };
+
+  const handleDelete = async (id) => {
+    try{
+      const response = await ManagementFinder.delete('/${id}')
+      setManagement(Management.filter(person => {
+        return person.id !== id 
+      })
+        );
+    }
+    catch (err){
+        console.log(err);
+    }
+  }
+
   return (
     <div>
       <Head>
@@ -57,13 +78,35 @@ export default function Management() {
         <table>
           <thead>
             <tr>
-              <th>SN</th>
               <th>Name</th>
               <th>Description</th>
               <th>Position</th>
               <th>Actions</th>
             </tr>
           </thead>
+          <tbody>
+           {Management && 
+            Management.map((person) => {
+            return (
+          <tr key={person.id} >
+          <td>name={person.name}</td>
+          <td>description={person.description}</td>
+          <td>position={person.position}</td>
+          <td>
+            <button 
+           // onClick = {() => handleUpdate(person.id)}
+            className="border-2">Update</button>
+          </td>
+          <td>
+            <button 
+            onClick = {() => handleDelete(person.id)}
+            className="border-2">Delete</button>
+          </td>
+          </tr>
+            );
+           })
+         }   
+         </tbody>
         </table>
         {/* this is to just to call the function handleSubmit when the form is submitted  */}
         <form onSubmit={handleSubmit}>
@@ -103,7 +146,7 @@ export default function Management() {
             required
           />
           <br />
-        <label for="image">Image:</label> <br />
+        <label htmlFor="image">Image:</label> <br />
         <input
           type="file"
           id="image"

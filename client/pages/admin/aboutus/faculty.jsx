@@ -41,6 +41,20 @@ export default function Faculty() {
       console.log(err);
     }
   };
+  const handleDelete = async (id) => {
+    try{
+      const response = await FacultyFinder.delete('/${id}')
+      setFaculty(faculty.filter(person => {
+        return person.id !== id 
+      })
+        );
+    }
+    catch (err){
+        console.log(err);
+    }
+  }
+
+
 
   return (
     <div>
@@ -55,7 +69,6 @@ export default function Faculty() {
       <table>
         <thead>
           <tr>
-            <th>SN</th>
             <th>Name</th>
             <th>Description</th>
             <th>Department</th>
@@ -63,8 +76,29 @@ export default function Faculty() {
             <th>Area of Expertise</th>
             <th>Experience</th>
             <th>Actions</th>
-          </tr>
+          </tr>      
         </thead>
+        <tbody>
+          {faculty && 
+          faculty.map((person) => {
+          return (
+          <tr key={person.id} >
+          <td>name={person.name}</td>
+          <td>description={person.description}</td>
+          <td>department={person.department}</td>
+          <td>AreaofExpertise={person.AreaofExpertise}</td>
+          <td>Experience={person.Experience}</td>
+          <td>
+            <button className="border-2">Update</button>
+          </td>
+          <td>
+            <button onclick={() => handleDelete(person.id)}className="border-2">Delete</button>
+          </td>
+          </tr>
+           );
+          })
+          }
+        </tbody>   
       </table>
       <form onSubmit={handleSubmit}>
         <label forhtml="fname">Full name:</label> <br />
