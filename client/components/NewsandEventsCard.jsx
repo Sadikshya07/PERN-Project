@@ -25,7 +25,7 @@ export default function NewsandEventsCard({
   ];
   let d = new Date(publishdate);
   return (
-    <Link href={`/news-and-events/${id}`} className="flex ">
+    <Link href={`/news-and-events/${id}`} className={`flex`}>
       <div
         className="news-and-events w-[24rem] h-[36rem] border-0 rounded-3xl relative my-3 "
         style={{

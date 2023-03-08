@@ -10,14 +10,78 @@ import stRatio from "../public/src/assets/st-ratio.svg";
 import SchoolActivities from "../components/SchoolActivities";
 import Popup from "../components/Popup";
 import { useEffect, useState } from "react";
+import NewsandEventsFinder from "./api/NewsandEventsFinder";
 
 export default function Home() {
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let i = 0;
+  const [newsandEvents, setNewsandEvents] = useState();
   const [buttonPopup, setButtonPopup] = useState(false);
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response1 = await NewsandEventsFinder.get("/recent5");
+        setNewsandEvents(response1.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
     setTimeout(() => {
       setButtonPopup(true);
     }, 1000);
   }, []);
+
+  const newsmapped =
+    newsandEvents &&
+    newsandEvents.map((news) => {
+      let d = new Date(news.publishdate);
+
+      i++;
+      return (
+        <Link
+          href={`/news-and-events/${news.id}`}
+          className={`hover:cursor-pointer item-${i}`}
+        >
+          <div
+            className="first-card bg-red-500 h-full rounded-3xl relative -z-50 "
+            // style={{
+            //   backgroundImage: `url('http://localhost:3000${news.image1}')`,
+            //   backgroundSize: "cover",
+            // }}
+          >
+            <Image
+              src={`http://localhost:3000${news.image1}`}
+              cover
+              fill
+              className="rounded-3xl bg-center bg-contain"
+            />
+            <div className="news-overlay h-full rounded-3xl bg-gradient-to-t from-black to-transparent">
+              <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
+                {`${d.getDate()}`}
+              </p>
+              <p className="absolute bottom-5 left-5 md:w-[17em] font-bold text-offWhite text-2xl">
+                {news.title}
+              </p>
+            </div>
+          </div>
+        </Link>
+      );
+    });
+
   return (
     <>
       <Head>
@@ -28,7 +92,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <main>
-        <div className="hero-section flex justify-between w-11/12 mx-auto mt-8">
+        <div className="hero-section flex justify-between w-11/12 mx-auto mt-8 ">
           <div className="left lg:w-[38em]">
             <h1 className="text-2xl md:text-[3rem] lg:text-[4rem] font-extrabold w-[14em] leading-[1.25em]">
               Welcome to Sifal School
@@ -164,82 +228,7 @@ export default function Home() {
               News and Events
             </h1>
             <div className="grid-container lg:grid-container-large mb-8">
-              <Link href="/" className="lg:row-span-2 hover:cursor-pointer">
-                <div
-                  className="first-card bg-red-500 h-full rounded-3xl relative -z-50"
-                  style={{
-                    backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
-                    backgroundSize: "cover",
-                  }}
-                >
-                  <div className="news-overlay h-full rounded-3xl bg-gradient-to-t from-black to-transparent">
-                    <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
-                      16 Dec
-                    </p>
-                    <p className="absolute bottom-5 left-5 md:w-[17em] font-bold text-offWhite text-2xl">
-                      Deerwalk Sifal Night | Elementary School
-                    </p>
-                  </div>
-                </div>
-              </Link>
-              <Link href="/" className="lg:col-span-2 hover:cursor-pointer">
-                <div
-                  className="second-card bg-red-500 h-full rounded-3xl relative -z-50"
-                  style={{
-                    backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
-                    backgroundSize: "cover",
-                  }}
-                >
-                  <div className="news-overlay h-full rounded-3xl bg-gradient-to-t from-black to-transparent">
-                    <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
-                      16 Dec
-                    </p>
-                    <p className="absolute bottom-5 left-5 md:w-[33em] font-bold text-offWhite text-2xl">
-                      Deerwalk Sifal Night | Elementary School
-                    </p>
-                  </div>
-                </div>
-              </Link>
-              <Link href="/" className="hover:cursor-pointer">
-                <div
-                  className="third-card bg-red-500 h-full rounded-3xl relative -z-50"
-                  style={{
-                    backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
-                    backgroundSize: "cover",
-                  }}
-                >
-                  <div className="news-overlay h-full rounded-3xl bg-gradient-to-t from-black to-transparent">
-                    <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
-                      16 Dec
-                    </p>
-                    <p className="absolute bottom-5 left-5 md:w-[17em] font-bold text-offWhite text-2xl">
-                      Deerwalk Sifal Night | Elementary School
-                    </p>
-                  </div>
-                </div>
-              </Link>
-              <Link href="/" className="hover:cursor-pointer">
-                <div
-                  className="fourth-card bg-red-500 h-full rounded-3xl relative -z-50"
-                  style={{
-                    backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
-                    backgroundSize: "cover",
-                  }}
-                >
-                  <div className="news-overlay h-full rounded-3xl bg-gradient-to-t from-black to-transparent">
-                    <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
-                      16 Dec
-                    </p>
-                    <p className="absolute bottom-5 left-5 md:w-[17em] font-bold text-offWhite text-2xl">
-                      Deerwalk Sifal Night | Elementary School
-                    </p>
-                  </div>
-                </div>
-              </Link>
+              {newsmapped}
             </div>
             <div className="view-more text-center">
               <Link
@@ -441,7 +430,7 @@ export default function Home() {
       <Footer />
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
         <div
-          className=" h-[50vh] w-full bg-red-500"
+          className=" h-[50vh] w-full bg-red-500 rounded-b-xl"
           style={{
             backgroundImage:
               "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",

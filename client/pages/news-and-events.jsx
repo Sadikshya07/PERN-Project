@@ -50,7 +50,7 @@ export default function NewsAndEvents() {
         <HeroSection title={"News and Events"} />
         {console.log(data)}
         {data ? (
-          <div className="management-grid-container grid md:grid-cols-2 lg:grid-cols-3">
+          <div className="management-grid-container grid md:grid-cols-2 lg:grid-cols-3 mx-auto w-11/12">
             {newsAndEventsCards}
           </div>
         ) : (

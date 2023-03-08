@@ -40,7 +40,7 @@ export default function Popup(props) {
             exit={{
               y: -200,
             }}
-            className="popup-modal relative mx-auto w-11/12 bg-white rounded-xl"
+            className="popup-modal relative mx-auto w-11/12 bg-white rounded-xl p-1"
             onClick={(e) => e.stopPropagation()}
           >
             <button>
