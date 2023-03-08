@@ -48,9 +48,8 @@ export default function NewsAndEvents() {
       </Head>
       <HomeLayout>
         <HeroSection title={"News and Events"} />
-        {console.log(data)}
         {data ? (
-          <div className="management-grid-container grid md:grid-cols-2 lg:grid-cols-3">
+          <div className="management-grid-container w-11/12 mx-auto grid md:grid-cols-2 lg:grid-cols-3">
             {newsAndEventsCards}
           </div>
         ) : (

@@ -14,44 +14,27 @@ export default function Metrics() {
       </Head>
       <AdminLayout>
         <div className="main-container">
-          <h1>Metrics</h1>
+          <h1>School in Media</h1>
           <form>
-            <label htmlFor="name">Students: </label>
+            <label htmlFor="name">Title: </label>
             <input
               type="text"
-              id="students"
+              id="title"
               placeholder=""
               className="border-2"
               required
             ></input>
             <br />
-            <label htmlFor="name">Students Per Class: </label>
+            <label htmlFor="name">Author: </label>
             <input
               type="text"
-              id="perclass"
+              id="author"
               placeholder=""
               className="border-2"
               required
             ></input>
             <br />
-            <label htmlFor="name">Teachers: </label>
-            <input
-              type="text"
-              id="teachers"
-              placeholder=""
-              className="border-2"
-              required
-            ></input>
-            <br />
-            <label htmlFor="name">Student-Teacher Ratio: </label>
-            <input
-              type="text"
-              id="stratio"
-              placeholder=""
-              className="border-2"
-              required
-            ></input>
-            <br />
+            
             <button type="submit" className="border-2">
               Submit
             </button>
