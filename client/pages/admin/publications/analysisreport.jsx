@@ -32,7 +32,6 @@ export default function AnalysisReport() {
   };
   return (
     <div>
-      {console.log(analysisReport)}
       <Head>
         <title>Analysis Report</title>
         <meta name="description" content="Deerwalk Sifal School" />
@@ -52,17 +51,18 @@ export default function AnalysisReport() {
             </tr>
           </thead>
           <tbody>
-            {analysisReport.map((item) => {
-              return (
-                <tr key={item.id}>
-                  <td>{i++}</td>
-                  <td>{item.name}</td>
-                  <td>{item.image}</td>
-                  <td>Delete</td>
-                  <td>Update</td>
-                </tr>
-              );
-            })}
+            {analysisReport &&
+              analysisReport.map((item) => {
+                return (
+                  <tr key={item.id}>
+                    <td>{i++}</td>
+                    <td>{item.name}</td>
+                    <td>{item.image}</td>
+                    <td>Delete</td>
+                    <td>Update</td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
         <form onChange={handleSubmit}>

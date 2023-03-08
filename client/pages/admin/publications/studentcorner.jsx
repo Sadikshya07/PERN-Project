@@ -66,21 +66,22 @@ export default function StudentCorner() {
             </tr>
           </thead>
           <tbody>
-            {studnentCorner.map((item) => {
-              return (
-                <tr key={item.id}>
-                  <td>{i++}</td>
-                  <td>{item.studentname}</td>
-                  <td>{item.studentname}</td>
-                  <td>{item.grade}</td>
-                  <td>{item.articletitle}</td>
-                  <td>{item.articlecontent}</td>
-                  <td>Imaga here</td>
-                  <td>Delete</td>
-                  <td>Update</td>
-                </tr>
-              );
-            })}
+            {studnentCorner &&
+              studnentCorner.map((item) => {
+                return (
+                  <tr key={item.id}>
+                    <td>{i++}</td>
+                    <td>{item.studentname}</td>
+                    <td>{item.studentname}</td>
+                    <td>{item.grade}</td>
+                    <td>{item.articletitle}</td>
+                    <td>{item.articlecontent}</td>
+                    <td>Imaga here</td>
+                    <td>Delete</td>
+                    <td>Update</td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
         <form onChange={handleSubmit}>

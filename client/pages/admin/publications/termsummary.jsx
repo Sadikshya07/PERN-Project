@@ -53,15 +53,16 @@ export default function TermSummary() {
             </tr>
           </thead>
           <tbody>
-            {termSummary.map((item) => {
-              <tr key={item.id}>
-                <td>{i++}</td>
-                <td>{item.name}</td>
-                <td>FIle here</td>
-                <td>Update</td>
-                <td>Delete</td>
-              </tr>;
-            })}
+            {termSummary &&
+              termSummary.map((item) => {
+                <tr key={item.id}>
+                  <td>{i++}</td>
+                  <td>{item.name}</td>
+                  <td>FIle here</td>
+                  <td>Update</td>
+                  <td>Delete</td>
+                </tr>;
+              })}
           </tbody>
         </table>
         <form onChange={handleSubmit}>

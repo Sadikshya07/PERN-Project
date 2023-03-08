@@ -51,17 +51,18 @@ export default function Newsletter() {
             </tr>
           </thead>
           <tbody>
-            {newLetter.map((item) => {
-              return (
-                <tr key={item.id}>
-                  <td>{i}</td>
-                  <td>{item.name}</td>
-                  <td>{item.file}</td>
-                  <td>Delete</td>
-                  <td>Delete</td>
-                </tr>
-              );
-            })}
+            {newLetter &&
+              newLetter.map((item) => {
+                return (
+                  <tr key={item.id}>
+                    <td>{i}</td>
+                    <td>{item.name}</td>
+                    <td>{item.file}</td>
+                    <td>Delete</td>
+                    <td>Delete</td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
         <form onChange={handleSubmit}>

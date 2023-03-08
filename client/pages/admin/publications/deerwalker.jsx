@@ -8,14 +8,14 @@ import AdminLayout from "../../../components/Layouts/AdminLayout";
 export default function Deerwalker() {
   const [name, setName] = useState();
   const [error, setError] = useState("");
-  const [deerwalkFinder, setDeerwalkFinder] = useState();
+  const [deerwalkerData, setDeerwalkerData] = useState();
   let i = 0;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await DeerwalkFinder.get("/");
-        setDeerwalkFinder(response.data.data);
+        setDeerwalkerData(response.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -54,17 +54,18 @@ export default function Deerwalker() {
             </tr>
           </thead>
           <tbody>
-            {deerwalkFinder.map((item) => {
-              return (
-                <tr key={item.id}>
-                  <td>{i++}</td>
-                  <td>{item.name}</td>
-                  <td>{item.file}</td>
-                  <td>Delete</td>
-                  <td>Update</td>
-                </tr>
-              );
-            })}
+            {deerwalkerData &&
+              deerwalkerData.map((item) => {
+                return (
+                  <tr key={item.id}>
+                    <td>{i++}</td>
+                    <td>{item.name}</td>
+                    <td>{item.file}</td>
+                    <td>Delete</td>
+                    <td>Update</td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
         <form onChange={handleSubmit}>
