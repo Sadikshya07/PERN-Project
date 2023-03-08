@@ -73,7 +73,27 @@ export default function Faculty() {
           <input
             type="text"
             id="department"
-            placeholder="department"
+            placeholder="Department"
+            className="border-2"
+            onChange={(e) => setDepartment(e.target.value)}
+            required
+          />
+          <br />
+          <label for="department">Area of Expertise:</label> <br />
+          <input
+            type="text"
+            id="areaOfExpertise"
+            placeholder="Area of Expertise"
+            className="border-2"
+            onChange={(e) => setDepartment(e.target.value)}
+            required
+          />
+          <br />
+          <label for="department">Experience:</label> <br />
+          <input
+            type="text"
+            id="experience"
+            placeholder="Experience"
             className="border-2"
             onChange={(e) => setDepartment(e.target.value)}
             required
