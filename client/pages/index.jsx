@@ -49,20 +49,14 @@ export default function Home() {
     newsandEvents &&
     newsandEvents.map((news) => {
       let d = new Date(news.publishdate);
-
+      console.log(d);
       i++;
       return (
         <Link
           href={`/news-and-events/${news.id}`}
           className={`hover:cursor-pointer item-${i}`}
         >
-          <div
-            className="first-card  h-full rounded-3xl relative"
-            // style={{
-            //   backgroundImage: `url('http://localhost:3000${news.image1}')`,
-            //   backgroundSize: "cover",
-            // }}
-          >
+          <div className="first-card  h-full rounded-3xl relative">
             <Image
               src={`http://localhost:3000${news.image1}`}
               cover
@@ -72,6 +66,8 @@ export default function Home() {
             <div className="news-overlay h-full w-full rounded-3xl bg-gradient-to-t from-black to-transparent z-1">
               <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
                 {`${d.getDate()}`}
+                <br />
+                {months[d.getMonth()]}
               </p>
               <p className="absolute bottom-5 left-5 md:w-[17em] font-bold text-offWhite text-2xl">
                 {news.title}
