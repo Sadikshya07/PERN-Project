@@ -2,6 +2,10 @@ export default [
   {
     adminLinks: [
       {
+        title: "Dashboard",
+        url: "/admin/dashboard",
+      },
+      {
         title: "Add User",
         url: "/admin/adduser",
       },
@@ -12,6 +16,10 @@ export default [
       {
         title: "Add Hero Images",
         url: "/admin/hero-section-images",
+      },
+      {
+        title: "Popup",
+        url: "/admin/add-popup",
       }
     ],
     homepage: [
