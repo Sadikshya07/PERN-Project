@@ -7,6 +7,7 @@ const prisma = new PrismaClient();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const jwtGenerator = require("../utils/jwtGenerator");
+const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 
@@ -189,5 +190,96 @@ router.get("/refresh", async(req, res) => {
         res.status(500).send("server error");
     }
 });
+
+router.post("/forgotPassword", async(req, res) => {
+    try {
+        const { email } = req.body;
+        // find user email
+        const foundUser = await prisma.user.findUnique({
+            where: {
+                email: email
+            }
+        });
+        if(!foundUser) return res.status(200).send("Email not in use")
+        const user_id = foundUser.id;
+        const user_reset_token = foundUser.resetToken;
+        
+        let validityCheck = false;
+        // check if token already sent, if sent send error
+        const validateToken = jwt.verify(user_reset_token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+            if(!err) validityCheck = true;
+        });
+        if(validityCheck) {
+            return res.send("Token Valid, Wait up ").status(200);
+        }
+
+        const resetToken = jwtGenerator(user_id, process.env.ACCESS_TOKEN_SECRET, "10m");
+        const createResetToken = await prisma.user.update({
+            where: {
+                email: foundUser.email
+            },
+            data:{
+                resetToken: resetToken,
+            }
+        });
+        mailer(foundUser);
+        return res.json(createResetToken);
+
+    } catch (error) {
+        console.log("Error: ", error);
+        return res.status(500).send("Internal Server Error");
+    }
+});
+
+
+const mailer = async(foundUser) => {
+    try {
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.ethereal.email',
+            port: 587,
+            auth: {
+                user: 'vicky20@ethereal.email',
+                pass: 'wtjCGJcxYXt2ddZcK3'
+            }
+        });
+        // save client url in env and use that url
+        // bored to add link in .env file will do it later
+        const link = `http://127.0.0.1:3001/api/v1/auth/updatePassword?token=${foundUser.resetToken}&id=${foundUser.id}`
+        const data = await transporter.sendMail({
+            from:"admin@example.com",
+            to: foundUser.email,
+            subject: "PASSWORD RESET TOKEN",
+            html: `<b>Link Valid for 15 mins</b><br>link: ${link}`,
+        });
+    } catch (error) {
+        console.log("Error: ", error);
+        return res.status(500).send("Internal Server Error");
+    }
+}
+
+router.post("/updatePassword", async(req, res) => {
+    try {
+        const {resetToken, user_id} = req.query;
+        const {password} = req.body;
+        // check if token already sent, if sent send error
+        let validity = true;
+        const validateToken = jwt.verify(resetToken, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+            if(err) validity = false;
+        });
+        if(!validity) return res.send("invalid token");
+        const updatePassword = await prisma.user.update({
+            where:{
+                id: user_id
+            }, 
+            data: {
+                password: password
+            }
+        });
+        return res.send(updatePassword)
+    } catch (error) {
+        console.log("Error: ", error);
+        return res.status(500).send("Internal Server Error");
+    }
+})
 
 module.exports = router;
