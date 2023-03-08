@@ -49,7 +49,6 @@ export default function Home() {
     newsandEvents &&
     newsandEvents.map((news) => {
       let d = new Date(news.publishdate);
-      console.log(d);
       i++;
       return (
         <Link
