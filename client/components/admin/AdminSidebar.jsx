@@ -63,9 +63,9 @@ export default function AdminSidebar() {
   });
   return (
     <div className="main-container w-[22rem] bg-orange h-screen overflow-y-auto">
-      <div className="logo-container">
+      <Link className="logo-container" href = "/">
         <Image src={logo} alt="dss logo" className="mx-auto my-2" />
-      </div>
+      </Link>
       <div className="links-container ml-10">
         <div className="admin-pages mb-4">
           <h1 className="text-offWhite text-2xl font-bold mb-2">Admin</h1>

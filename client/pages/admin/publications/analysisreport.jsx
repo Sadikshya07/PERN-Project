@@ -77,7 +77,7 @@ export default function AnalysisReport() {
             onChange={(e) => setName(e.target.value)}
           ></input>
           <br />
-          <label for="file">File:</label>
+          <label htmlFor="file">File:</label>
           <input
             type="file"
             id="file"
