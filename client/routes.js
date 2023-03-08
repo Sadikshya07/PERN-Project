@@ -10,7 +10,7 @@ export default [
         url: "/admin/adduser",
       },
       {
-        title: "View User",
+        title: "View Users",
         url: "/admin/viewusers",
       },
       {
