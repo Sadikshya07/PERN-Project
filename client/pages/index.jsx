@@ -57,7 +57,7 @@ export default function Home() {
           className={`hover:cursor-pointer item-${i}`}
         >
           <div
-            className="first-card bg-red-500 h-full rounded-3xl relative -z-50 "
+            className="first-card  h-full rounded-3xl relative"
             // style={{
             //   backgroundImage: `url('http://localhost:3000${news.image1}')`,
             //   backgroundSize: "cover",
@@ -67,9 +67,9 @@ export default function Home() {
               src={`http://localhost:3000${news.image1}`}
               cover
               fill
-              className="rounded-3xl bg-center bg-contain"
+              className="rounded-3xl bg-center bg-contain z-[-1]"
             />
-            <div className="news-overlay h-full rounded-3xl bg-gradient-to-t from-black to-transparent">
+            <div className="news-overlay h-full w-full rounded-3xl bg-gradient-to-t from-black to-transparent z-1">
               <p className="absolute top-5 left-5 bg-orange w-[4rem] h-[4rem] flex justify-center items-center text-offWhite text-center rounded-full font-bold">
                 {`${d.getDate()}`}
               </p>
