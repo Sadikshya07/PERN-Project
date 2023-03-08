@@ -134,10 +134,10 @@ export default [
         title: "DSS Clubs",
         url: "/admin/otherpages/dssclubs",
       },
-      {
-        title: "Admission",
-        url: "/admin/otherpages/admission",
-      }
+      // {
+      //   title: "Admission",
+      //   url: "/admin/otherpages/admission",
+      // }
     ]
   },
 ];
