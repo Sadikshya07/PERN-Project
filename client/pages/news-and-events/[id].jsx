@@ -31,7 +31,7 @@ export default function NewsTemplate() {
   let d = selectedArticle && new Date(selectedArticle.publishdate);
 
   return (
-    <div className="news-temlate-container">
+    <div className="news-template-container">
       <HomeLayout>
         <div className="wrapper w-11/12 mx-auto">
           {selectedArticle && (
