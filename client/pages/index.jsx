@@ -33,7 +33,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response1 = await NewsandEventsFinder.get("/recent5");
+        const response1 = await NewsandEventsFinder.get("/only4");
         setNewsandEvents(response1.data.data);
       } catch (err) {
         console.log(err);

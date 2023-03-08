@@ -11,6 +11,15 @@
   outline: 1px solid ;
 } */
 
+@media (min-width: 1024px) {
+  .item-1 {
+    grid-row: span 2 / span 2;
+  }
+  .item-2 {
+    grid-column: span 2 / span 2;
+  }
+}
+
 html {
   font-family: "Inter", sans-serif;
   --scroll-behavior: smooth !important;
@@ -75,13 +84,6 @@ html {
     place-items: center;
     grid-template-columns: repeat(4, 1fr);
     row-gap: 50px;
-  }
-
-  .item-1 {
-    grid-row: span 2 / span 2;
-  }
-  .item-2 {
-    grid-column: span 2 / span 2;
   }
 
   /* tablet view  */

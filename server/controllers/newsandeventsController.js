@@ -17,24 +17,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/recent5", async (req, res) => {
-  try {
-    const results = await prisma.newsandevents.findMany({
-      take: 5,
-      orderBy: {
-        createAt: "desc",
-      },
-    });
-    res.status(200).json({
-      status: "sucess",
-      result: results.length,
-      data: results,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-});
-
 router.get("/only4", async (req, res) => {
   try {
     const results = await prisma.newsandevents.findMany({
