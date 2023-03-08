@@ -14,7 +14,6 @@ export default function Management() {
   // error is used to display the error but it is not completed
   const [error, setError] = useState("");
 
- // let history = useHistory();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,14 +47,9 @@ export default function Management() {
     }
   };
 
-  const handleUpdate = async (id) => {
-      history.push('/admin/${id}/updatemanagement');
-  
-  };
-
   const handleDelete = async (id) => {
     try{
-      const response = await ManagementFinder.delete('/${id}')
+      const response = await ManagementFinder.delete(`/${id}`)
       setManagement(Management.filter(person => {
         return person.id !== id 
       })
@@ -93,9 +87,11 @@ export default function Management() {
           <td>description={person.description}</td>
           <td>position={person.position}</td>
           <td>
-            <button 
-           // onClick = {() => handleUpdate(person.id)}
-            className="border-2">Update</button>
+            <Link href="/admin/aboutus/update-management">
+              <button 
+                         // onClick = {() => handleUpdate(person.id)}
+              className="border-2">Update</button>
+            </Link>
           </td>
           <td>
             <button 

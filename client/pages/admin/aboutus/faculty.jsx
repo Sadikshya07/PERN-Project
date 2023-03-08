@@ -25,6 +25,7 @@ export default function Faculty() {
     };
     fetchData();
   }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -41,9 +42,10 @@ export default function Faculty() {
       console.log(err);
     }
   };
+
   const handleDelete = async (id) => {
     try{
-      const response = await FacultyFinder.delete('/${id}')
+      const response = await FacultyFinder.delete(`/${id}`)
       setFaculty(faculty.filter(person => {
         return person.id !== id 
       })
@@ -53,8 +55,6 @@ export default function Faculty() {
         console.log(err);
     }
   }
-
-
 
   return (
     <div>
@@ -92,7 +92,9 @@ export default function Faculty() {
             <button className="border-2">Update</button>
           </td>
           <td>
-            <button onclick={() => handleDelete(person.id)}className="border-2">Delete</button>
+            <button 
+            onclick={() => handleDelete(person.id)}
+            className="border-2">Delete</button>
           </td>
           </tr>
            );

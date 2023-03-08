@@ -1,15 +1,32 @@
 -- CreateTable
-CREATE TABLE "users" (
+CREATE TABLE "User" (
+    "id" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "name" TEXT,
+    "password" TEXT NOT NULL,
+    "RefreshToken" TEXT NOT NULL DEFAULT '',
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "adduser" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "confirmpassword" TEXT NOT NULL,
 
-    CONSTRAINT "users_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "adduser_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "addheroimages" (
     "id" TEXT NOT NULL,
+    "Page" TEXT NOT NULL,
+    "Image" TEXT NOT NULL,
 
     CONSTRAINT "addheroimages_pkey" PRIMARY KEY ("id")
 );
@@ -17,6 +34,12 @@ CREATE TABLE "addheroimages" (
 -- CreateTable
 CREATE TABLE "metrics" (
     "id" TEXT NOT NULL,
+    "Students" TEXT NOT NULL,
+    "StudentsPerClass" TEXT NOT NULL,
+    "Teachers" TEXT NOT NULL,
+    "StudentTeacherRatio" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "metrics_pkey" PRIMARY KEY ("id")
 );
@@ -24,6 +47,9 @@ CREATE TABLE "metrics" (
 -- CreateTable
 CREATE TABLE "programs" (
     "id" TEXT NOT NULL,
+    "Image" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "programs_pkey" PRIMARY KEY ("id")
 );
@@ -31,7 +57,9 @@ CREATE TABLE "programs" (
 -- CreateTable
 CREATE TABLE "schoolactivities" (
     "id" TEXT NOT NULL,
-    "Title" TEXT NOT NULL,
+    "Link" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "schoolactivities_pkey" PRIMARY KEY ("id")
 );
@@ -41,6 +69,10 @@ CREATE TABLE "schoolinmedia" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "author" TEXT NOT NULL,
+    "Image" TEXT NOT NULL,
+    "Link" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "schoolinmedia_pkey" PRIMARY KEY ("id")
 );
@@ -51,6 +83,10 @@ CREATE TABLE "faculty" (
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "department" TEXT NOT NULL,
+    "AreaofExpertise" TEXT NOT NULL,
+    "Experience" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "faculty_pkey" PRIMARY KEY ("id")
 );
@@ -61,6 +97,8 @@ CREATE TABLE "management" (
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "position" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "management_pkey" PRIMARY KEY ("id")
 );
@@ -70,6 +108,8 @@ CREATE TABLE "whydss" (
     "id" TEXT NOT NULL,
     "bullets" TEXT NOT NULL,
     "category" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "whydss_pkey" PRIMARY KEY ("id")
 );
@@ -79,6 +119,8 @@ CREATE TABLE "courses" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "courses_pkey" PRIMARY KEY ("id")
 );
@@ -88,6 +130,8 @@ CREATE TABLE "dsscourses" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "dsscourses_pkey" PRIMARY KEY ("id")
 );
@@ -96,6 +140,8 @@ CREATE TABLE "dsscourses" (
 CREATE TABLE "weekendcampprogram" (
     "id" TEXT NOT NULL,
     "description" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "weekendcampprogram_pkey" PRIMARY KEY ("id")
 );
@@ -104,6 +150,10 @@ CREATE TABLE "weekendcampprogram" (
 CREATE TABLE "newsletter" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "image" TEXT NOT NULL,
+    "file" TEXT NOT NULL,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "newsletter_pkey" PRIMARY KEY ("id")
 );
@@ -112,6 +162,10 @@ CREATE TABLE "newsletter" (
 CREATE TABLE "termsummary" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
+    "file" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "termsummary_pkey" PRIMARY KEY ("id")
 );
@@ -120,6 +174,10 @@ CREATE TABLE "termsummary" (
 CREATE TABLE "deerwalker" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
+    "file" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "deerwalker_pkey" PRIMARY KEY ("id")
 );
@@ -128,6 +186,10 @@ CREATE TABLE "deerwalker" (
 CREATE TABLE "analysisreport" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
+    "file" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "analysisreport_pkey" PRIMARY KEY ("id")
 );
@@ -140,6 +202,10 @@ CREATE TABLE "studentcorner" (
     "grade" INTEGER NOT NULL,
     "articletitle" TEXT NOT NULL,
     "articlecontent" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
+    "file" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "studentcorner_pkey" PRIMARY KEY ("id")
 );
@@ -152,6 +218,10 @@ CREATE TABLE "podcast" (
     "grade" INTEGER NOT NULL,
     "description" TEXT NOT NULL,
     "rollnumber" INTEGER NOT NULL,
+    "image" TEXT NOT NULL,
+    "file" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "podcast_pkey" PRIMARY KEY ("id")
 );
@@ -160,6 +230,8 @@ CREATE TABLE "podcast" (
 CREATE TABLE "booklist" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "booklist_pkey" PRIMARY KEY ("id")
 );
@@ -168,6 +240,8 @@ CREATE TABLE "booklist" (
 CREATE TABLE "calendar" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "calendar_pkey" PRIMARY KEY ("id")
 );
@@ -176,6 +250,8 @@ CREATE TABLE "calendar" (
 CREATE TABLE "lessonplan" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "lessonplan_pkey" PRIMARY KEY ("id")
 );
@@ -185,15 +261,18 @@ CREATE TABLE "dssclubs" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "dssclubs_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "admission" (
+CREATE TABLE "popup" (
     "id" TEXT NOT NULL,
+    "Image" TEXT NOT NULL,
 
-    CONSTRAINT "admission_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "popup_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -202,7 +281,17 @@ CREATE TABLE "newsandevents" (
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "author" TEXT NOT NULL,
+    "image1" TEXT NOT NULL,
+    "image2" TEXT NOT NULL,
     "publishdate" DATE NOT NULL,
+    "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "newsandevents_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_id_key" ON "User"("id");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");

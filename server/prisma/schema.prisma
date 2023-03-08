@@ -18,8 +18,16 @@ model User {
 }
 
 //home
+
+model adduser {
+   id String @id @default(uuid())
+   name String
+   email String
+   password String
+   confirmpassword String
+   }
+
 model addheroimages {
-<<<<<<< HEAD
   id String @id @default(uuid())
   Page String
   Image String
@@ -31,16 +39,22 @@ model metrics {
   StudentsPerClass String
   Teachers String
   StudentTeacherRatio String
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model programs {
   id String @id @default(uuid())
   Image String
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model schoolactivities {
   id    String @id @default(uuid())
   Link String
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model schoolinmedia {
@@ -49,40 +63,13 @@ model schoolinmedia {
   author String
   Image String
   Link String
-=======
-  id        String   @id @default(uuid())
-  image     String
-  createAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  // id        String   @id @default(uuid())
+  // image     String
+   createAt  DateTime @default(now())
+   updatedAt DateTime @updatedAt
 }
 
-model metrics {
-  id        String   @id @default(uuid())
-  createAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
 
-model programs {
-  id        String   @id @default(uuid())
-  createAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model schoolactivities {
-  id        String   @id @default(uuid())
-  Title     String
-  createAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model schoolinmedia {
-  id        String   @id @default(uuid())
-  title     String
-  author    String
-  createAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
->>>>>>> 2ec427f64ce47501606a8569970fde2032d9c87c
-}
 
 //about us
 
@@ -91,13 +78,10 @@ model faculty {
   name        String
   description String
   department  String
-<<<<<<< HEAD
   AreaofExpertise String
   Experience String
-=======
   createAt    DateTime @default(now())
   updatedAt   DateTime @updatedAt
->>>>>>> 2ec427f64ce47501606a8569970fde2032d9c87c
 }
 
 model management {
@@ -200,14 +184,11 @@ model podcast {
   presentername String
   grade         Int
   description   String
-<<<<<<< HEAD
   rollnumber    Int
-=======
   image         String
   file          String
   createAt      DateTime @default(now())
   updatedAt     DateTime @updatedAt
->>>>>>> 2ec427f64ce47501606a8569970fde2032d9c87c
 }
 
 //dss in year
@@ -243,16 +224,9 @@ model dssclubs {
   updatedAt   DateTime @updatedAt
 }
 
-<<<<<<< HEAD
 model popup {
   id String @id @default(uuid())
   Image String
-=======
-model admission {
-  id        String   @id @default(uuid())
-  createAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
->>>>>>> 2ec427f64ce47501606a8569970fde2032d9c87c
 }
 
 //community
