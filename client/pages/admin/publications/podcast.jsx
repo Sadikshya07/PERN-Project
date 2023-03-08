@@ -63,19 +63,20 @@ export default function Podcast() {
             </tr>
           </thead>
           <tbody>
-            {podcast.map((item) => {
-              return (
-                <tr key={item.id}>
-                  <td>{i++}</td>
-                  <td>{item.presentername}</td>
-                  <td>{item.rollnumber}</td>
-                  <td>{item.description}</td>
-                  <td>{item.grade}</td>
-                  <td>Update</td>
-                  <td>Delete</td>
-                </tr>
-              );
-            })}
+            {podcast &&
+              podcast.map((item) => {
+                return (
+                  <tr key={item.id}>
+                    <td>{i++}</td>
+                    <td>{item.presentername}</td>
+                    <td>{item.rollnumber}</td>
+                    <td>{item.description}</td>
+                    <td>{item.grade}</td>
+                    <td>Update</td>
+                    <td>Delete</td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
         <form onChange={handleSubmit}>
