@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -20,49 +17,69 @@ model User {
   updatedAt    DateTime @updatedAt
 }
 
-//Homepage
+//home
+
+model adduser {
+   id String @id @default(uuid())
+   name String
+   email String
+   password String
+   confirmpassword String
+   }
 
 model addheroimages {
-  id        String   @id @default(uuid())
-  image     String
-  createAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id String @id @default(uuid())
+  Page String
+  Image String
 }
 
 model metrics {
-  id        String   @id @default(uuid())
+  id String @id @default(uuid())
+  Students String
+  StudentsPerClass String
+  Teachers String
+  StudentTeacherRatio String
   createAt  DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model programs {
-  id        String   @id @default(uuid())
+  id String @id @default(uuid())
+  Image String
   createAt  DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model schoolactivities {
-  id        String   @id @default(uuid())
-  Title     String
+  id    String @id @default(uuid())
+  Link String
   createAt  DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model schoolinmedia {
-  id        String   @id @default(uuid())
-  title     String
-  author    String
-  createAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id     String @id @default(uuid())
+  title  String
+  author String
+  Image String
+  Link String
+  // id        String   @id @default(uuid())
+  // image     String
+   createAt  DateTime @default(now())
+   updatedAt DateTime @updatedAt
 }
 
-//About us
+
+
+//about us
 
 model faculty {
   id          String   @id @default(uuid())
   name        String
   description String
   department  String
+  AreaofExpertise String
+  Experience String
   createAt    DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -84,7 +101,7 @@ model whydss {
   updatedAt DateTime @updatedAt
 }
 
-//Our programs
+//programs
 
 model courses {
   id          String   @id @default(uuid())
@@ -109,7 +126,8 @@ model weekendcampprogram {
   updatedAt   DateTime @updatedAt
 }
 
-//Publications
+
+//publications
 
 model newsletter {
   id        String   @id @default(uuid())
@@ -164,16 +182,16 @@ model podcast {
   id            String   @id @default(uuid())
   title         String
   presentername String
-  rollnumber    Int
   grade         Int
   description   String
+  rollnumber    Int
   image         String
   file          String
   createAt      DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
 
-// Dss in year
+//dss in year
 
 model booklist {
   id        String   @id @default(uuid())
@@ -206,10 +224,9 @@ model dssclubs {
   updatedAt   DateTime @updatedAt
 }
 
-model admission {
-  id        String   @id @default(uuid())
-  createAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model popup {
+  id String @id @default(uuid())
+  Image String
 }
 
 //community

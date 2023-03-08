@@ -36,14 +36,16 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     console.log(req.body);
-    const { name, description, department } = req.body;
+    const { name, description, department,AreaofExpertise,Experience} = req.body;
     const data = {
       name: name,
       description: description,
       department: department,
+      AreaofExpertise: AreaofExpertise,
+      Experience: Experience
     };
     const results = await prisma.faculty.create({
-      data: data,
+      data,
     });
     res.status(201).json({
       status: "success",
@@ -56,12 +58,14 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { name, description, department } = req.body;
+    const { name, description, department,AreaofExpertise,Experience } = req.body;
 
     const data = {
       name: name,
       description: description,
       department: department,
+      AreaofExpertise: AreaofExpertise,
+      Experience: Experience
     };
     const results = await prisma.faculty.update({
       where: {
@@ -81,12 +85,14 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { name, description, department } = req.body;
+    const { name, description, department,AreaofExpertise,Experience } = req.body;
 
     const data = {
       name: name,
       description: description,
       department: department,
+      AreaofExpertise: AreaofExpertise,
+      Experience: Experience
     };
     const results = await prisma.faculty.delete({
       where: {

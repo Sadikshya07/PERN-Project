@@ -3,27 +3,59 @@ import Image from "next/image";
 import Link from "next/link";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import FacultyFinder from "../../api/FacultyFinder";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Faculty() {
   const [name, setName] = useState();
+  const [faculty, setFaculty] = useState();
   const [description, setDescription] = useState();
   const [department, setDepartment] = useState();
+  const [AreaofExpertise, setAreaofExpertise] = useState();
+  const [Experience, setExperience] = useState();
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await FacultyFinder.get("/");
+        console.log(response.data.data);
+        setFaculty(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      const response = await FacultyFinder.post("/",{
+    try {
+      const response = await FacultyFinder.post("/", {
         name,
         description,
-        department
+        department,
+        AreaofExpertise,
+        Experience,
       });
-    }
-    catch(err){
+      faculty(response.data.data)
+      console.log(response);
+    } catch (err) {
       console.log(err);
     }
   };
+
+  const handleDelete = async (id) => {
+    try{
+      const response = await FacultyFinder.delete(`/${id}`)
+      setFaculty(faculty.filter(person => {
+        return person.id !== id 
+      })
+        );
+    }
+    catch (err){
+        console.log(err);
+    }
+  }
 
   return (
     <div>
@@ -72,30 +104,30 @@ export default function Faculty() {
           <label for="department">Department:</label> <br />
           <input
             type="text"
-            id="department"
-            placeholder="Department"
+            id="Department"
+            placeholder="department"
             className="border-2"
             onChange={(e) => setDepartment(e.target.value)}
             required
           />
           <br />
-          <label for="department">Area of Expertise:</label> <br />
+          <label for="department">Area Of Expertise:</label> <br />
           <input
             type="text"
-            id="areaOfExpertise"
-            placeholder="Area of Expertise"
+            id="areaOfExperties"
+            placeholder=""
             className="border-2"
-            onChange={(e) => setDepartment(e.target.value)}
+            // onChange={(e) => setDepartment(e.target.value)}
             required
           />
           <br />
-          <label for="department">Experience:</label> <br />
+          <label for="areaOfExperties">Experience:</label> <br />
           <input
             type="text"
             id="experience"
-            placeholder="Experience"
+            placeholder=""
             className="border-2"
-            onChange={(e) => setDepartment(e.target.value)}
+            // onChange={(e) => setDepartment(e.target.value)}
             required
           />
           <br />
