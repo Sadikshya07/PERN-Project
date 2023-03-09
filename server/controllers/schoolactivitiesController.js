@@ -9,9 +9,15 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get("/", async (req, res) => {
   try {
-    const results = await prisma.schoolactivities.findMany();
+    const results = await prisma.schoolactivities.findMany({
+      take: 9,
+      orderBy: {
+        createAt: "desc",
+      },
+    });
     res.status(200).json({
       status: "success",
+      results: results.length,
       data: results,
     });
   } catch (error) {
@@ -36,11 +42,10 @@ router.get("/:id", async (req, res) => {
 });
 router.post("/", async (req, res) => {
   try {
-    const {Link} = req.body;
+    const { link } = req.body;
     const data = {
-     Link,
+      Link: link,
     };
-    console.log(data);
     const results = await prisma.schoolactivities.create({
       data: data,
     });
@@ -55,7 +60,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const {Link} = req.body;
+    const { Link } = req.body;
 
     const data = {
       Link,
@@ -78,10 +83,10 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const {Link} = req.body;
+    const { Link } = req.body;
 
     const data = {
-     Link
+      Link,
     };
     const results = await prisma.schoolactivities.delete({
       where: {

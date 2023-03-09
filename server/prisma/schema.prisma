@@ -62,7 +62,6 @@ model schoolinmedia {
   id        String   @id @default(uuid())
   title     String
   author    String
-  Image     String
   Link      String
   // id        String   @id @default(uuid())
   // image     String

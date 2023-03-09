@@ -9,7 +9,11 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get("/", async (req, res) => {
   try {
-    const results = await prisma.metrics.findMany();
+    const results = await prisma.metrics.findFirst({
+      orderBy: {
+        createAt: "desc",
+      },
+    });
     res.status(200).json({
       status: "success",
       data: results,
@@ -36,12 +40,13 @@ router.get("/:id", async (req, res) => {
 });
 router.post("/", async (req, res) => {
   try {
-    const { Students,StudentsPerClass,Teachers,StudentTeacherRatio } = req.body;
+    const { Students, StudentsPerClass, Teachers, StudentTeacherRatio } =
+      req.body.formData;
     const data = {
-        Students,
-        StudentsPerClass,
-        Teachers,
-        StudentTeacherRatio
+      Students,
+      StudentsPerClass,
+      Teachers,
+      StudentTeacherRatio,
     };
     console.log(data);
     const results = await prisma.metrics.create({
@@ -58,13 +63,14 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { Students,StudentsPerClass,Teachers,StudentTeacherRatio } = req.body;
+    const { Students, StudentsPerClass, Teachers, StudentTeacherRatio } =
+      req.body;
 
     const data = {
-        Students,
-        StudentsPerClass,
-        Teachers,
-        StudentTeacherRatio
+      Students,
+      StudentsPerClass,
+      Teachers,
+      StudentTeacherRatio,
     };
     const results = await prisma.metrics.update({
       where: {
@@ -84,13 +90,14 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { Students,StudentsPerClass,Teachers,StudentTeacherRatio } = req.body;
+    const { Students, StudentsPerClass, Teachers, StudentTeacherRatio } =
+      req.body;
 
     const data = {
-        Students,
-        StudentsPerClass,
-        Teachers,
-        StudentTeacherRatio
+      Students,
+      StudentsPerClass,
+      Teachers,
+      StudentTeacherRatio,
     };
     const results = await prisma.metrics.delete({
       where: {
@@ -107,4 +114,3 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
-

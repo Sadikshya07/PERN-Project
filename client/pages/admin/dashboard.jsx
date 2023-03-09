@@ -1,6 +1,6 @@
 import Head from "next/head";
 import AdminLayout from "../../components/Layouts/AdminLayout";
-import { GrLogout } from "react-icons/gr";
+import { FiLogOut } from "react-icons/fi";
 
 export default function Dashboard() {
   return (
@@ -13,7 +13,7 @@ export default function Dashboard() {
       <div className="page-content">
         <div className="logout flex items-center gap-x-4 absolute top-6 right-10">
           <h2 className="text-2xl font-bold text-orange">Logout</h2>
-          <GrLogout className="text-4xl" />
+          <FiLogOut className="text-4xl" />
         </div>
         <div className="info">
           <p className="text-5xl text-orange font-bold">Welcome, admin!</p>

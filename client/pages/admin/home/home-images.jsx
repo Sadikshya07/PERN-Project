@@ -1,8 +1,22 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 
 export default function Images() {
+  const [image1, setImage1] = useState();
+  const [image2, setImage2] = useState();
+  const [image3, setImage3] = useState();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await console.log("Nothing"); // api waiting
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <Head>
@@ -19,6 +33,9 @@ export default function Images() {
             <input
               type="file"
               id="image1"
+              onChange={(e) => {
+                setImage1(e.target.files[0]);
+              }}
               placeholder="choose file"
               className="border-2"
             ></input>
@@ -27,6 +44,9 @@ export default function Images() {
             <input
               type="file"
               id="image2"
+              onChange={(e) => {
+                setImage2(e.target.files[0]);
+              }}
               placeholder="choose file"
               className="border-2"
             ></input>
@@ -36,9 +56,15 @@ export default function Images() {
               type="file"
               id="image3"
               placeholder="choose file"
+              onChange={(e) => {
+                setImage3(e.target.files[0]);
+              }}
               className="border-2"
             ></input>
             <br />
+            <button type="submit" className="border-2">
+              Submit
+            </button>
           </form>
         </div>
       </AdminLayout>

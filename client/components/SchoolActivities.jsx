@@ -2,8 +2,24 @@ import Slider from "react-slick";
 import HomeSliderCard from "./HomeSliderCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useState, useEffect } from "react";
+import SchoolActivitiesFinder from "../pages/api/SchoolActivitiesFinder";
 
 const SchoolActivities = () => {
+  const [data, setData] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response3 = await SchoolActivitiesFinder.get("/");
+        setData(response3.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -39,20 +55,14 @@ const SchoolActivities = () => {
   return (
     <div className="school-activities mt-2 bg-gray py-8">
       <div className="school-activities-content w-10/12 md:w-11/12 mx-auto">
-        <h1 className="text-2xl md:text-4xl font-bold mb-6">School Activities</h1>
+        <h1 className="text-2xl md:text-4xl font-bold mb-6">
+          School Activities
+        </h1>
         <Slider {...settings}>
-          <HomeSliderCard src={"https://www.youtube.com/embed/_YGI1qRd9pw"} />
-          <HomeSliderCard src={"https://www.youtube.com/embed/_YGI1qRd9pw"} />
-          <HomeSliderCard src={"https://www.youtube.com/embed/_YGI1qRd9pw"} />
-          <HomeSliderCard src={"https://www.youtube.com/embed/_YGI1qRd9pw"} />
-          <HomeSliderCard src={"https://www.youtube.com/embed/_YGI1qRd9pw"} />
-          <HomeSliderCard src={"https://www.youtube.com/embed/_YGI1qRd9pw"} />
-          <HomeSliderCard src={"https://www.youtube.com/embed/_YGI1qRd9pw"} />
-          <HomeSliderCard src={"https://www.youtube.com/embed/_YGI1qRd9pw"} />
-          <HomeSliderCard src={"https://www.youtube.com/embed/_YGI1qRd9pw"} />
-          <HomeSliderCard src={"https://www.youtube.com/embed/_YGI1qRd9pw"} />
-          <HomeSliderCard src={"https://www.youtube.com/embed/_YGI1qRd9pw"} />
-          <HomeSliderCard src={"https://www.youtube.com/embed/_YGI1qRd9pw"} />
+          {data &&
+            data.map((links) => {
+              return <HomeSliderCard key={links.id} src={links.Link} />;
+            })}
         </Slider>
       </div>
     </div>
