@@ -20,68 +20,66 @@ model User {
 //home
 
 model adduser {
-   id String @id @default(uuid())
-   name String
-   email String
-   password String
-   confirmpassword String
-   }
+  id              String @id @default(uuid())
+  name            String
+  email           String
+  password        String
+  confirmpassword String
+}
 
 model addheroimages {
-  id String @id @default(uuid())
-  Page String
+  id    String @id @default(uuid())
+  Page  String
   Image String
 }
 
 model metrics {
-  id String @id @default(uuid())
-  Students String
-  StudentsPerClass String
-  Teachers String
+  id                  String   @id @default(uuid())
+  Students            String
+  StudentsPerClass    String
+  Teachers            String
   StudentTeacherRatio String
-  createAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createAt            DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 }
 
 model programs {
-  id String @id @default(uuid())
-  Image String
+  id        String   @id @default(uuid())
+  Image     String
   createAt  DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model schoolactivities {
-  id    String @id @default(uuid())
-  Link String
+  id        String   @id @default(uuid())
+  Link      String
   createAt  DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model schoolinmedia {
-  id     String @id @default(uuid())
-  title  String
-  author String
-  Image String
-  Link String
+  id        String   @id @default(uuid())
+  title     String
+  author    String
+  Image     String
+  Link      String
   // id        String   @id @default(uuid())
   // image     String
-   createAt  DateTime @default(now())
-   updatedAt DateTime @updatedAt
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
-
-
 
 //about us
 
 model faculty {
-  id          String   @id @default(uuid())
-  name        String
-  description String
-  department  String
+  id              String   @id @default(uuid())
+  name            String
+  description     String
+  department      String
   AreaofExpertise String
-  Experience String
-  createAt    DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  Experience      String
+  createAt        DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 model management {
@@ -125,7 +123,6 @@ model weekendcampprogram {
   createAt    DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
-
 
 //publications
 
@@ -225,7 +222,7 @@ model dssclubs {
 }
 
 model popup {
-  id String @id @default(uuid())
+  id    String @id @default(uuid())
   Image String
 }
 
