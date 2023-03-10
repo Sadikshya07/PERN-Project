@@ -26,7 +26,7 @@ export default function Metrics() {
   };
 
   return (
-    <div>
+    <>
       <Head>
         <title>Add Metrics</title>
         <meta name="description" content="Deerwalk Sifal School" />
@@ -94,6 +94,6 @@ export default function Metrics() {
           </form>
         </div>
       </AdminLayout>
-    </div>
+    </>
   );
 }
