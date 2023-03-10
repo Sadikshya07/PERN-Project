@@ -64,6 +64,8 @@ app.use("/api/admin/home/schoolinmedia",schoolinmediaRoute);
 app.use("/api/admin/home/schoolactivities",schoolactivitiesRoute);
 app.use("/api/admin/home/addheroimages",addheroimagesRoute);
 
+app.use(express.static("public"));
+
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server is up and running on port ${port}`);
