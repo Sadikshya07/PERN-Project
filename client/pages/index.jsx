@@ -9,11 +9,24 @@ import perClass from "../public/src/assets/per-class.svg";
 import stRatio from "../public/src/assets/st-ratio.svg";
 import SchoolActivities from "../components/SchoolActivities";
 import Popup from "../components/Popup";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import NewsandEventsFinder from "./api/NewsandEventsFinder";
 import MetricsFinder from "./api/MetricsFinder";
+import SchoolActivitiesFinder from "./api/SchoolActivitiesFinder";
+import {
+  SchoolContext,
+  SchoolContextProvider,
+} from "../components/context/SchoolContext";
 
-export default function Home() {
+export default function HomeWrapper() {
+  return (
+    <SchoolContextProvider>
+      <Home />
+    </SchoolContextProvider>
+  );
+}
+
+function Home() {
   const months = [
     "Jan",
     "Feb",
@@ -28,18 +41,19 @@ export default function Home() {
     "Nov",
     "Dec",
   ];
-
-  let i = 0;
   const [newsandEvents, setNewsandEvents] = useState();
   const [metrics, setMetrics] = useState();
   const [buttonPopup, setButtonPopup] = useState(false);
+  const { schoolActivites, setSchoolActivites } = useContext(SchoolContext);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response1 = await NewsandEventsFinder.get("/only4");
         const response2 = await MetricsFinder.get("/");
+        const response3 = await SchoolActivitiesFinder.get("/");
         setNewsandEvents(response1.data.data);
         setMetrics(response2.data.data);
+        setSchoolActivites(response3.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -49,6 +63,8 @@ export default function Home() {
       setButtonPopup(true);
     }, 1000);
   }, []);
+
+  let i = 0;
 
   const newsmapped =
     newsandEvents &&

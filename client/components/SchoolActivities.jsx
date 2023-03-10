@@ -2,23 +2,12 @@ import Slider from "react-slick";
 import HomeSliderCard from "./HomeSliderCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import SchoolActivitiesFinder from "../pages/api/SchoolActivitiesFinder";
+import { SchoolContext } from "./context/SchoolContext";
 
 const SchoolActivities = () => {
-  const [data, setData] = useState();
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response3 = await SchoolActivitiesFinder.get("/");
-        setData(response3.data.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { schoolActivites } = useContext(SchoolContext);
 
   const settings = {
     dots: false,
@@ -59,9 +48,10 @@ const SchoolActivities = () => {
           School Activities
         </h1>
         <Slider {...settings}>
-          {data &&
-            data.map((links) => {
-              return <HomeSliderCard key={links.id} src={links.Link} />;
+          {console.log(schoolActivites)}
+          {schoolActivites &&
+            schoolActivites.map((activity) => {
+              return <HomeSliderCard key={activity.id} src={activity.Link} />;
             })}
         </Slider>
       </div>
