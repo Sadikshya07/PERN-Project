@@ -9,10 +9,24 @@ import perClass from "../public/src/assets/per-class.svg";
 import stRatio from "../public/src/assets/st-ratio.svg";
 import SchoolActivities from "../components/SchoolActivities";
 import Popup from "../components/Popup";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import NewsandEventsFinder from "./api/NewsandEventsFinder";
+import MetricsFinder from "./api/MetricsFinder";
+import SchoolActivitiesFinder from "./api/SchoolActivitiesFinder";
+import {
+  SchoolContext,
+  SchoolContextProvider,
+} from "../components/context/SchoolContext";
 
-export default function Home() {
+export default function HomeWrapper() {
+  return (
+    <SchoolContextProvider>
+      <Home />
+    </SchoolContextProvider>
+  );
+}
+
+function Home() {
   const months = [
     "Jan",
     "Feb",
@@ -27,14 +41,19 @@ export default function Home() {
     "Nov",
     "Dec",
   ];
-  let i = 0;
   const [newsandEvents, setNewsandEvents] = useState();
+  const [metrics, setMetrics] = useState();
   const [buttonPopup, setButtonPopup] = useState(false);
+  const { schoolActivites, setSchoolActivites } = useContext(SchoolContext);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response1 = await NewsandEventsFinder.get("/only4");
+        const response2 = await MetricsFinder.get("/");
+        const response3 = await SchoolActivitiesFinder.get("/");
         setNewsandEvents(response1.data.data);
+        setMetrics(response2.data.data);
+        setSchoolActivites(response3.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -44,6 +63,8 @@ export default function Home() {
       setButtonPopup(true);
     }, 1000);
   }, []);
+
+  let i = 0;
 
   const newsmapped =
     newsandEvents &&
@@ -105,38 +126,40 @@ export default function Home() {
                 READ MORE
               </Link>
             </div>
-            <div className="metrics w-auto md:w-[45em] grid grid-cols-2 gap-y-8 mt-6">
-              <div className="students mt-4 w-[6em]">
-                <Image src={heroStudent} className="ml-4" />
-                <p className="text-center text-orange font-bold text-3xl mt-2">
-                  353
-                </p>
-                <p className="text-center text-xl">Students</p>
+            {metrics && (
+              <div className="metrics w-auto md:w-[45em] grid grid-cols-2 gap-y-8 mt-6">
+                <div className="students mt-4 w-[6em]">
+                  <Image src={heroStudent} className="ml-4" />
+                  <p className="text-center text-orange font-bold text-3xl mt-2">
+                    {metrics.Students}
+                  </p>
+                  <p className="text-center text-xl">Students</p>
+                </div>
+                <div className="per-class w-[6em]">
+                  <Image src={perClass} className="ml-4" />
+                  <p className="text-center text-orange font-bold text-3xl mt-2">
+                    {metrics.StudentsPerClass}
+                  </p>
+                  <p className="text-center text-xl">Per Class</p>
+                </div>
+                <div className="teachers w-[6em]">
+                  <Image src={heroTeacher} className="ml-4" />
+                  <p className="text-center text-orange font-bold text-3xl mt-2">
+                    {metrics.Teachers}
+                  </p>
+                  <p className="text-center text-xl">Teachers</p>
+                </div>
+                <div className="st-ratio md:w-[20em]">
+                  <Image src={stRatio} className="ml-4" />
+                  <p className="text-orange font-bold text-3xl ml-[1em] mt-2">
+                    {metrics.StudentTeacherRatio}
+                  </p>
+                  <p className="text-xl w-2 md:w-4 lg:w-auto">
+                    Student Teacher Ratio
+                  </p>
+                </div>
               </div>
-              <div className="per-class w-[6em]">
-                <Image src={perClass} className="ml-4" />
-                <p className="text-center text-orange font-bold text-3xl mt-2">
-                  24
-                </p>
-                <p className="text-center text-xl">Per Class</p>
-              </div>
-              <div className="teachers w-[6em]">
-                <Image src={heroTeacher} className="ml-4" />
-                <p className="text-center text-orange font-bold text-3xl mt-2">
-                  60
-                </p>
-                <p className="text-center text-xl">Teachers</p>
-              </div>
-              <div className="st-ratio md:w-[20em]">
-                <Image src={stRatio} className="ml-4" />
-                <p className="text-orange font-bold text-3xl ml-[1em] mt-2">
-                  5:1
-                </p>
-                <p className="text-xl w-2 md:w-4 lg:w-auto">
-                  Student Teacher Ratio
-                </p>
-              </div>
-            </div>
+            )}
           </div>
           <div className="images hidden lg:block relative w-[38em] h-[38em] -z-50">
             <div

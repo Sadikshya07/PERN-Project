@@ -36,12 +36,11 @@ router.get("/:id", async (req, res) => {
 });
 router.post("/", async (req, res) => {
   try {
-    const {title,author,Image,Link  } = req.body;
+    const { title, author, Link } = req.body;
     const data = {
-        title,
-        author,
-        Image,
-        Link
+      title,
+      author,
+      Link,
     };
     console.log(data);
     const results = await prisma.schoolinmedia.create({
@@ -58,13 +57,13 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const {title,author,Image,Link} = req.body;
+    const { title, author, Image, Link } = req.body;
 
     const data = {
-        title,
-        author,
-        Image,
-        Link
+      title,
+      author,
+      Image,
+      Link,
     };
     const results = await prisma.schoolinmedia.update({
       where: {
@@ -84,13 +83,13 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const {title,author,Image,Link} = req.body;
+    const { title, author, Image, Link } = req.body;
 
     const data = {
-        title,
-        author,
-        Image,
-        Link
+      title,
+      author,
+      Image,
+      Link,
     };
     const results = await prisma.schoolinmedia.delete({
       where: {
