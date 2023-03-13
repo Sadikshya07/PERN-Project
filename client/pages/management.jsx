@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import ManagementFinder from "./api/ManagementFinder";
+import HeroSectionFinder from "./api/HeroSectionFinder";
 
 export default function Management() {
   // Use effect to change when we recieve the data
   const [data, setData] = useState();
+  const [heroImage, setHeroImage] = useState();
   const managementCards =
     data && // this so that it only happens when the data is fetched
     data.map((person) => {
@@ -27,8 +29,10 @@ export default function Management() {
       // async beacuse it takes time to get the data from the server
       try {
         const response = await ManagementFinder.get("/"); //this is to get the data from the server using axios (axios is used insted of fetch() function)
-        // console.log(response.data.data);
+        const response2 = await HeroSectionFinder.get("/Management");
+        console.log(response2.data.data);
         setData(response.data.data); //set the received responses data to  to data variable at above
+        setHeroImage(response2.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -44,7 +48,7 @@ export default function Management() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSectionCard url="" title="Management" />
+        <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
         {data ? (
           <div className="management-grid-container w-11/12 mx-auto grid lg:grid-cols-2">
             {managementCards}

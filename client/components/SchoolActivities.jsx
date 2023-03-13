@@ -47,7 +47,6 @@ const SchoolActivities = () => {
           School Activities
         </h1>
         <Slider {...settings}>
-          {console.log(schoolActivites)}
           {schoolActivites &&
             schoolActivites.map((activity) => {
               return <HomeSliderCard key={activity.id} src={activity.Link} />;

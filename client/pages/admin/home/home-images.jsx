@@ -28,7 +28,7 @@ export default function Images() {
       <AdminLayout>
         <div className="form-container">
           <h1>Add Homepage Images</h1>
-          <form>
+          <form onSubmit={handleSubmit}>
             <label for="image1">Image 1:</label>
             <input
               type="file"
