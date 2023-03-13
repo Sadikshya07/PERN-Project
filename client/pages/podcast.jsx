@@ -2,8 +2,22 @@ import Head from "next/head";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import HeroSectionCard from "../components/HeroSection";
 import PodcastCard from "../components/PodcastCard";
+import { useEffect, useState } from "react";
 
 export default function Podcast() {
+  const [heroImage, setHeroImage] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await HeroSectionFinder.get("/The Deerwalker");
+        setHeroImage(response.data.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <>
       <Head>
@@ -13,7 +27,9 @@ export default function Podcast() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSectionCard url=" " title="Read Aloud Podcast" />
+        {heroImage && (
+          <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
+        )}
         <div className="mx-auto my-10 grid w-11/12 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-y-10">
           <PodcastCard />
           <PodcastCard />

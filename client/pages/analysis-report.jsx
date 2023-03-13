@@ -9,6 +9,8 @@ import HeroSectionCard from "../components/HeroSection";
 
 export default function AnalysisReport() {
   const [data, setData] = useState();
+  const [heroImage, setHeroImage] = useState();
+
   const AnalysisReportCards =
     data && // this so that it only happens when the data is fetched
     data.map((person) => {
@@ -18,6 +20,9 @@ export default function AnalysisReport() {
     const fetchData = async () => {
       try {
         const response = await AnalysisReportFinder.get("/");
+        const response2 = await HeroSectionFinder.get("/Analysis Report");
+        setHeroImage(response2.data.data);
+
         setData(response.data.data);
       } catch (err) {
         console.log(err);
@@ -35,7 +40,9 @@ export default function AnalysisReport() {
       </Head>
       <Navbar />
       <main>
-        <HeroSectionCard url="" title="Analysis Report" />
+        {heroImage && (
+          <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
+        )}
         <TermandAnalysisReport url="" title="AnalysisReport" />
         {data ? (
           <div className="analysis-report-grid-container grid md:grid-cols-2 lg:grid-cols-4">
