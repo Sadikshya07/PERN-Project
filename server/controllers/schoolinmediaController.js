@@ -9,13 +9,50 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get("/", async (req, res) => {
   try {
-    const results = await prisma.schoolinmedia.findMany();
+    const results = await prisma.schoolinmedia.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
     res.status(200).json({
       status: "success",
       data: results,
     });
   } catch (error) {
     console.log(error);
+  }
+});
+
+function exclude(result, keys) {
+  for (let key of keys) {
+    delete result[key];
+  }
+  return result;
+}
+
+router.get("/latest", async (req, res) => {
+  try {
+    const results = await prisma.schoolinmedia.findMany({
+      select: {
+        id: true,
+        title: true,
+        author: true,
+        Link: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: 5,
+    });
+    const resultsWithoutImage = exclude(results, ["Image"]);
+    res.status(200).json({
+      status: "success",
+      data: resultsWithoutImage,
+    });
+  } catch (err) {
+    console.log(err.message);
   }
 });
 router.get("/:id", async (req, res) => {

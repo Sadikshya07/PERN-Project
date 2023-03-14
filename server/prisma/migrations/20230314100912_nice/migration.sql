@@ -52,7 +52,9 @@ CREATE TABLE "metrics" (
 -- CreateTable
 CREATE TABLE "programs" (
     "id" TEXT NOT NULL,
-    "Image" TEXT NOT NULL,
+    "elementryImage" TEXT NOT NULL,
+    "middleImage" TEXT NOT NULL,
+    "higherImage" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -280,6 +282,18 @@ CREATE TABLE "popup" (
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "popup_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "HomeImage" (
+    "id" TEXT NOT NULL,
+    "image1" TEXT NOT NULL,
+    "image2" TEXT NOT NULL,
+    "image3" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "HomeImage_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable

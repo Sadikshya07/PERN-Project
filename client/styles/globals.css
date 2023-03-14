@@ -18,8 +18,10 @@
   .item-2 {
     grid-column: span 2 / span 2;
   }
+  .school-1 {
+    grid-row: span 2 / span 2;
+  }
 }
-
 html {
   font-family: "Inter", sans-serif;
   --scroll-behavior: smooth !important;

@@ -48,7 +48,9 @@ export default function Management() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
+        {heroImage && (
+          <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
+        )}
         {data ? (
           <div className="management-grid-container w-11/12 mx-auto grid lg:grid-cols-2">
             {managementCards}

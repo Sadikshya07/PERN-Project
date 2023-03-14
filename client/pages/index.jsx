@@ -13,6 +13,7 @@ import { useContext, useEffect, useState } from "react";
 import NewsandEventsFinder from "./api/NewsandEventsFinder";
 import MetricsFinder from "./api/MetricsFinder";
 import HomeImageFinder from "./api/HomeImageFinder";
+import SchoolinMediaFinder from "./api/SchoolinMediaFinder";
 import SchoolActivitiesFinder from "./api/SchoolActivitiesFinder";
 import ProgramsFinder from "./api/ProgramsFinder";
 import {
@@ -50,6 +51,7 @@ function Home() {
   const [popUpImg, setPopUpImg] = useState();
   const [heroImage, setHeroImage] = useState();
   const [programs, setPrograms] = useState();
+  const [schoolMedia, setSchoolMedia] = useState();
   const { schoolActivites, setSchoolActivites } = useContext(SchoolContext);
   useEffect(() => {
     const fetchData = async () => {
@@ -60,6 +62,9 @@ function Home() {
         const response4 = await PopUpFinder.get("/one");
         const response5 = await HomeImageFinder.get("/latest");
         const response6 = await ProgramsFinder.get("/latest");
+        const response7 = await SchoolinMediaFinder.get("/latest");
+        console.log(response7.data.data);
+        setSchoolMedia(response7.data.data);
         setPrograms(response6.data.data);
         setHeroImage(response5.data.data);
         setPopUpImg(response4.data.data);
@@ -75,6 +80,38 @@ function Home() {
   }, []);
 
   let i = 0;
+
+  const schoolinMediaMapped =
+    schoolMedia &&
+    schoolMedia.map((media) => {
+      i++;
+      return (
+        <a
+          href={media.Link}
+          className={`school-${i}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className={`${i}-card  h-full relative`}>
+            <iframe
+              src={media.Link}
+              frameborder="0"
+              className="w-full h-full"
+            ></iframe>
+            <div className="overlay w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black to-transparent">
+              <div className="news-content absolute top-0 left-0 h-full">
+                <p className="absolute bottom-[3em] left-5 w-[12em] md:w-[17em] text-offWhite text-2xl font-bold">
+                  {media.title}
+                </p>
+                <p className="absolute bottom-5 left-5 w-[17em] text-offWhite">
+                  {media.author}
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+      );
+    });
 
   const newsmapped =
     newsandEvents &&
@@ -277,126 +314,7 @@ function Home() {
               School in Media
             </h1>
             <div className="grid grid-rows-5 grid-cols-1 gap-y-8 lg:grid-container-large mb-8">
-              <a
-                href="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                className="lg:row-span-2 hover:cursor-pointer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="first-card bg-orange h-full relative row-span-2 -z-50">
-                  <iframe
-                    src="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                    frameborder="0"
-                    className="w-full h-full"
-                  ></iframe>
-                  <div className="overlay w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black to-transparent">
-                    <div className="news-content absolute top-0 left-0 h-full">
-                      <p className="absolute bottom-[3em] left-5 w-[12em] md:w-[17em] text-offWhite text-2xl font-bold">
-                        LIFE STORY
-                      </p>
-                      <p className="absolute bottom-5 left-5 w-[17em] text-offWhite">
-                        -Snigdha Chaudhary
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <a
-                href="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                className="hover:cursor-pointer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="second-card bg-orange h-full relative -z-50">
-                  <iframe
-                    src="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                    frameborder="0"
-                    className="w-full h-full"
-                  ></iframe>
-                  <div className="overlay w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black to-transparent">
-                    <div className="news-content absolute top-0 left-0 h-full">
-                      <p className="absolute bottom-[3em] left-5 w-[12em] md:w-[17em] text-offWhite text-2xl font-bold">
-                        LIFE STORY
-                      </p>
-                      <p className="absolute bottom-5 left-5 w-[17em] text-offWhite">
-                        -Snigdha Chaudhary
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <a
-                href="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                className="hover:cursor-pointer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="third-card bg-orange h-full relative -z-50">
-                  <iframe
-                    src="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                    frameborder="0"
-                    className="w-full h-full"
-                  ></iframe>
-                  <div className="overlay w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black to-transparent">
-                    <div className="news-content absolute top-0 left-0 h-full">
-                      <p className="absolute bottom-[3em] left-5 w-[12em] md:w-[17em] text-offWhite text-2xl font-bold">
-                        LIFE STORY
-                      </p>
-                      <p className="absolute bottom-5 left-5 w-[17em] text-offWhite">
-                        -Snigdha Chaudhary
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <a
-                href="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                className="hover:cursor-pointer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="fourth-card bg-orange h-full relative -z-50">
-                  <iframe
-                    src="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                    frameborder="0"
-                    className="w-full h-full"
-                  ></iframe>
-                  <div className="overlay w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black to-transparent">
-                    <div className="news-content absolute top-0 left-0 h-full">
-                      <p className="absolute bottom-[3em] left-5 w-[12em] md:w-[17em] text-offWhite text-2xl font-bold">
-                        LIFE STORY
-                      </p>
-                      <p className="absolute bottom-5 left-5 w-[17em] text-offWhite">
-                        -Snigdha Chaudhary
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <a
-                href="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                className="hover:cursor-pointer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="fifth-card bg-orange h-full relative -z-50">
-                  <iframe
-                    src="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                    frameborder="0"
-                    className="w-full h-full"
-                  ></iframe>
-                  <div className="overlay w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black to-transparent">
-                    <div className="news-content absolute top-0 left-0 h-full">
-                      <p className="absolute bottom-[3em] left-5 w-[12em] md:w-[17em] text-offWhite text-2xl font-bold">
-                        LIFE STORY
-                      </p>
-                      <p className="absolute bottom-5 left-5 w-[17em] text-offWhite">
-                        -Snigdha Chaudhary
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </a>
+              {schoolinMediaMapped}
             </div>
             <div className="view-more text-center">
               <Link
