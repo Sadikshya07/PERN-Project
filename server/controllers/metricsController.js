@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
   try {
     const results = await prisma.metrics.findFirst({
       orderBy: {
-        createAt: "desc",
+        createdAt: "desc",
       },
     });
     res.status(200).json({

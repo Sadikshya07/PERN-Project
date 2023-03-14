@@ -14,25 +14,27 @@ model User {
   password     String
   RefreshToken String   @default("")
   resetToken   String?
-  createAt     DateTime @default(now())
+  createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
 
 //home
 
 model adduser {
-  id              String @id @default(uuid())
+  id              String   @id @default(uuid())
   name            String
   email           String
   password        String
   confirmpassword String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 model addheroimages {
   id        String   @id @default(uuid())
   Page      String
   Image     String
-  createAt  DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
@@ -42,21 +44,23 @@ model metrics {
   StudentsPerClass    String
   Teachers            String
   StudentTeacherRatio String
-  createAt            DateTime @default(now())
+  createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
 }
 
 model programs {
-  id        String   @id @default(uuid())
-  Image     String
-  createAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id             String   @id @default(uuid())
+  elementryImage String
+  middleImage    String
+  higherImage    String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model schoolactivities {
   id        String   @id @default(uuid())
   Link      String
-  createAt  DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
@@ -68,7 +72,7 @@ model schoolinmedia {
   Link      String
   // id        String   @id @default(uuid())
   // image     String
-  createAt  DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
@@ -81,7 +85,7 @@ model faculty {
   department      String
   AreaofExpertise String
   Experience      String
-  createAt        DateTime @default(now())
+  createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }
 
@@ -90,7 +94,7 @@ model management {
   name        String
   description String
   position    String
-  createAt    DateTime @default(now())
+  createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
@@ -98,7 +102,7 @@ model whydss {
   id        String   @id @default(uuid())
   bullets   String
   category  String
-  createAt  DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
@@ -108,7 +112,7 @@ model courses {
   id          String   @id @default(uuid())
   name        String
   description String
-  createAt    DateTime @default(now())
+  createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
@@ -116,14 +120,14 @@ model dsscourses {
   id          String   @id @default(uuid())
   name        String
   description String
-  createAt    DateTime @default(now())
+  createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
 model weekendcampprogram {
   id          String   @id @default(uuid())
   description String
-  createAt    DateTime @default(now())
+  createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
@@ -132,7 +136,7 @@ model weekendcampprogram {
 model newsletter {
   id        String   @id @default(uuid())
   name      String
-  createAt  DateTime @default(now())
+  createdAt DateTime @default(now())
   image     String
   file      String
   updatedAt DateTime @updatedAt
@@ -143,7 +147,7 @@ model termsummary {
   name      String
   image     String
   file      String
-  createAt  DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
@@ -152,7 +156,7 @@ model deerwalker {
   name      String
   image     String
   file      String
-  createAt  DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
@@ -161,7 +165,7 @@ model analysisreport {
   name      String
   image     String
   file      String
-  createAt  DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
@@ -174,7 +178,7 @@ model studentcorner {
   articlecontent String
   image          String
   file           String
-  createAt       DateTime @default(now())
+  createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
 
@@ -187,7 +191,7 @@ model podcast {
   rollnumber    Int
   image         String
   file          String
-  createAt      DateTime @default(now())
+  createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
 
@@ -196,21 +200,21 @@ model podcast {
 model booklist {
   id        String   @id @default(uuid())
   name      String
-  createAt  DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model calendar {
   id        String   @id @default(uuid())
   title     String
-  createAt  DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model lessonplan {
   id        String   @id @default(uuid())
   title     String
-  createAt  DateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
@@ -220,13 +224,24 @@ model dssclubs {
   id          String   @id @default(uuid())
   name        String
   description String
-  createAt    DateTime @default(now())
+  createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
 model popup {
-  id    String @id @default(uuid())
-  Image String
+  id        String   @id @default(uuid())
+  Image     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model HomeImage {
+  id        String   @id @default(uuid())
+  image1    String
+  image2    String
+  image3    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 //community
@@ -239,6 +254,6 @@ model newsandevents {
   image1      String
   image2      String
   publishdate DateTime @db.Date
-  createAt    DateTime @default(now())
+  createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

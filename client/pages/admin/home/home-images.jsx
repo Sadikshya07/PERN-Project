@@ -1,17 +1,28 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
+import HomeImageFinder from "../../api/HomeImageFinder";
 
 export default function Images() {
-  const [image1, setImage1] = useState();
-  const [image2, setImage2] = useState();
-  const [image3, setImage3] = useState();
+  const image1Ref = useRef();
+  const image2Ref = useRef();
+  const image3Ref = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await console.log("Nothing"); // api waiting
+      const response = await HomeImageFinder.post(
+        "/",
+        {
+          image1: image1Ref.current.files[0],
+          image2: image2Ref.current.files[0],
+          image3: image3Ref.current.files[0],
+        },
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
     } catch (err) {
       console.log(err);
     }
@@ -33,9 +44,7 @@ export default function Images() {
             <input
               type="file"
               id="image1"
-              onChange={(e) => {
-                setImage1(e.target.files[0]);
-              }}
+              ref={image1Ref}
               placeholder="choose file"
               className="border-2"
             ></input>
@@ -44,9 +53,7 @@ export default function Images() {
             <input
               type="file"
               id="image2"
-              onChange={(e) => {
-                setImage2(e.target.files[0]);
-              }}
+              ref={image2Ref}
               placeholder="choose file"
               className="border-2"
             ></input>
@@ -56,9 +63,7 @@ export default function Images() {
               type="file"
               id="image3"
               placeholder="choose file"
-              onChange={(e) => {
-                setImage3(e.target.files[0]);
-              }}
+              ref={image3Ref}
               className="border-2"
             ></input>
             <br />

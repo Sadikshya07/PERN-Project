@@ -9,7 +9,7 @@ export default function HeroSection({ url, title }) {
         <div
           className="content w-full h-full"
           style={{
-            backgroundImage: `url('http://localhost:3000/${url}')`,
+            backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}/${url}')`,
             backgroundSize: "cover",
           }}
         >

@@ -29,7 +29,7 @@ export default function NewsandEventsCard({
       <div
         className="news-and-events w-[24rem] h-[36rem] border-0 rounded-3xl relative my-3 "
         style={{
-          backgroundImage: `url('http://localhost:3000${image1}')`,
+          backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${image1}')`,
           backgroundSize: "cover",
         }}
       >

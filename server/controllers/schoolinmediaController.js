@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
       data: results,
     });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 });
 router.get("/:id", async (req, res) => {
@@ -34,15 +34,18 @@ router.get("/:id", async (req, res) => {
     console.error(error.message);
   }
 });
+const imageServerPath = "/images/";
 router.post("/", async (req, res) => {
   try {
+    let ImagePath = imageServerPath + Date.now() + "-" + req.files.image.name;
+    await req.files.image.mv("./public" + ImagePath);
     const { title, author, Link } = req.body;
     const data = {
       title,
       author,
       Link,
+      Image: ImagePath,
     };
-    console.log(data);
     const results = await prisma.schoolinmedia.create({
       data: data,
     });
@@ -51,7 +54,7 @@ router.post("/", async (req, res) => {
       data: results,
     });
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 });
 router.put("/:id", async (req, res) => {

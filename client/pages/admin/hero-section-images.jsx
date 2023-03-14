@@ -6,10 +6,6 @@ import HeroSectionFinder from "../api/HeroSectionFinder";
 
 export default function HeroSectionImages() {
   const [Page, setPage] = useState("Choose Page");
-  const [formData, setFormData] = useState({
-    Page: "Choose Page",
-    image: null,
-  });
   const [image, setImage] = useState();
 
   const handleSubmit = async (e) => {
