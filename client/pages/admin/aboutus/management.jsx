@@ -4,9 +4,10 @@ import Link from "next/link";
 import ManagementFinder from "../../api/ManagementFinder";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import {useState,useEffect} from "react";
-
+import {useRouter} from "next/router";
 
 export default function Management() {
+  const router = useRouter();
   // useState is used to change the variable when user types in the values (to check what is going on use console.log(name or description or position ))
   const [name, setName] = useState();
   const [description, setDescription] = useState();
@@ -59,7 +60,7 @@ export default function Management() {
   };
 
   const handleUpdate = (id) => {
-    history.push(`/admin/aboutus/${id}/update-management`);
+    router.push(`/admin/aboutus/${id}/update-management`);
   };
 
   return (
@@ -113,9 +114,29 @@ export default function Management() {
               Full name:
             </label>
             <input
-              type="file"
-              id="image"
-              placeholder="Choose a file"
+              type="text"
+              id="fname"
+              placeholder="Full name:"
+              className="border-2"
+            />
+            <br />
+            <label htmlFor="description" className="block">
+              Description:
+            </label>
+            <input
+              type="text"
+              id="description"
+              placeholder="Description"
+              className="border-2"
+            />
+            <br />
+            <label htmlFor="position" className="block">
+              Position:
+            </label>
+            <input
+              type="text"
+              id="position"
+              placeholder="Position"
               className="border-2"
             />
             <br />
