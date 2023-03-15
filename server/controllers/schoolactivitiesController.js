@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
     const results = await prisma.schoolactivities.findMany({
       take: 9,
       orderBy: {
-        createAt: "desc",
+        createdAt: "desc",
       },
     });
     res.status(200).json({

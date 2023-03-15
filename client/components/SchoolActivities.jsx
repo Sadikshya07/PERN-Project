@@ -2,8 +2,7 @@ import Slider from "react-slick";
 import HomeSliderCard from "./HomeSliderCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState, useEffect, useContext } from "react";
-import SchoolActivitiesFinder from "../pages/api/SchoolActivitiesFinder";
+import { useContext } from "react";
 import { SchoolContext } from "./context/SchoolContext";
 
 const SchoolActivities = () => {
@@ -48,7 +47,6 @@ const SchoolActivities = () => {
           School Activities
         </h1>
         <Slider {...settings}>
-          {console.log(schoolActivites)}
           {schoolActivites &&
             schoolActivites.map((activity) => {
               return <HomeSliderCard key={activity.id} src={activity.Link} />;

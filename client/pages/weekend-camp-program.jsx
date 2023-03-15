@@ -1,8 +1,23 @@
 import Head from "next/head";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import HeroSectionCard from "../components/HeroSection";
+import { useEffect, useState } from "react";
+import HeroSectionFinder from "./api/HeroSectionFinder";
 
 export default function WeekendCampProgram() {
+  const [heroImage, setHeroImage] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await HeroSectionFinder.get("/Weekend Camp Program");
+        setHeroImage(response.data.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <Head>
@@ -12,7 +27,9 @@ export default function WeekendCampProgram() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSectionCard url="" title="Weekend Camp Program" />
+        {heroImage && (
+          <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
+        )}
         <div className="content-wrapper w-11/12 mx-auto">
           <h1 className="md:text-center md:text-xl my-10 font-semibold">
             The Weekend Camp Program offers a variety of exciting activities for
@@ -34,7 +51,7 @@ export default function WeekendCampProgram() {
               </div>
               <div
                 className="section-image w-[16rem] h-[16rem] md:w-[18rem] md:h-[18em] lg:w-[22rem] lg:h-[22em] rounded-full bg-orange"
-                style={{ 
+                style={{
                   backgroundImage:
                     "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
                   backgroundSize: "cover",

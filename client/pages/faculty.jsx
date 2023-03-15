@@ -7,10 +7,12 @@ import HeroSectionCard from "../components/HeroSection";
 import Spinner from "../components/Spinner";
 import FacultyFinder from "./api/FacultyFinder";
 import { useEffect, useState } from "react";
+import HeroSectionFinder from "./api/HeroSectionFinder";
 
 export default function Faculty() {
   const [data, setData] = useState();
-  const FacultyCards=
+  const [heroImage, setHeroImage] = useState();
+  const FacultyCards =
     data && // this so that it only happens when the data is fetched
     data.map((person) => {
       return (
@@ -28,8 +30,10 @@ export default function Faculty() {
     const fetchData = async () => {
       try {
         const response = await FacultyFinder.get("/");
+        const response2 = await HeroSectionFinder.get("/Faculty");
         // console.log(response.data.data);
         setData(response.data.data);
+        setHeroImage(response2.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -45,10 +49,12 @@ export default function Faculty() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSectionCard url="" title={"Faculty"} />
+        {heroImage && (
+          <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
+        )}
         {data ? (
           <div className="faculty-card-container grid md:grid-cols-2 lg:grid-cols-3 p-3 m-5 gap-5  justify-items-center">
-          {FacultyCards }
+            {FacultyCards}
           </div>
         ) : (
           <Spinner />

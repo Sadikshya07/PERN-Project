@@ -18,12 +18,12 @@ router.get("/", async (req, res) => {
     console.log(error.message);
   }
 });
-router.get("/:id", async (req, res) => {
+router.get("/:P", async (req, res) => {
   try {
-    const { id } = req.params;
+    const { P } = req.params;
     const results = await prisma.addheroimages.findFirst({
       where: {
-        id,
+        Page: P,
       },
     });
     res.status(200).json({
@@ -34,12 +34,15 @@ router.get("/:id", async (req, res) => {
     console.error(error.message);
   }
 });
+const imagePathServer = "/images/";
 router.post("/", async (req, res) => {
   try {
-    const { Page,Image } = req.body;
+    const { Page } = req.body;
+    let ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
+    await req.files.image.mv("./public" + ImagePath);
     const data = {
-     Page,
-     Image,
+      Page,
+      Image: ImagePath,
     };
     console.log(data);
     const results = await prisma.addheroimages.create({
@@ -56,7 +59,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const {Page,Image} = req.body;
+    const { Page, Image } = req.body;
 
     const data = {
       Page,
@@ -80,11 +83,11 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { Page,Image} = req.body;
+    const { Page, Image } = req.body;
 
     const data = {
-        Page,    
-        Image
+      Page,
+      Image,
     };
     const results = await prisma.addheroimages.delete({
       where: {

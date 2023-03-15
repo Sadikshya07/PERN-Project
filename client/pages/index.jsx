@@ -12,12 +12,16 @@ import Popup from "../components/Popup";
 import { useContext, useEffect, useState } from "react";
 import NewsandEventsFinder from "./api/NewsandEventsFinder";
 import MetricsFinder from "./api/MetricsFinder";
+import HomeImageFinder from "./api/HomeImageFinder";
+import SchoolinMediaFinder from "./api/SchoolinMediaFinder";
 import SchoolActivitiesFinder from "./api/SchoolActivitiesFinder";
+import ProgramsFinder from "./api/ProgramsFinder";
 import {
   SchoolContext,
   SchoolContextProvider,
 } from "../components/context/SchoolContext";
 import {motion} from "framer-motion"
+import PopUpFinder from "./api/PopUpFinder";
 
 export default function HomeWrapper() {
   return (
@@ -45,6 +49,10 @@ function Home() {
   const [newsandEvents, setNewsandEvents] = useState();
   const [metrics, setMetrics] = useState();
   const [buttonPopup, setButtonPopup] = useState(false);
+  const [popUpImg, setPopUpImg] = useState();
+  const [heroImage, setHeroImage] = useState();
+  const [programs, setPrograms] = useState();
+  const [schoolMedia, setSchoolMedia] = useState();
   const { schoolActivites, setSchoolActivites } = useContext(SchoolContext);
   useEffect(() => {
     const fetchData = async () => {
@@ -52,6 +60,15 @@ function Home() {
         const response1 = await NewsandEventsFinder.get("/only4");
         const response2 = await MetricsFinder.get("/");
         const response3 = await SchoolActivitiesFinder.get("/");
+        const response4 = await PopUpFinder.get("/one");
+        const response5 = await HomeImageFinder.get("/latest");
+        const response6 = await ProgramsFinder.get("/latest");
+        const response7 = await SchoolinMediaFinder.get("/latest");
+        console.log(response7.data.data);
+        setSchoolMedia(response7.data.data);
+        setPrograms(response6.data.data);
+        setHeroImage(response5.data.data);
+        setPopUpImg(response4.data.data);
         setNewsandEvents(response1.data.data);
         setMetrics(response2.data.data);
         setSchoolActivites(response3.data.data);
@@ -60,12 +77,42 @@ function Home() {
       }
     };
     fetchData();
-    setTimeout(() => {
-      setButtonPopup(true);
-    }, 1000);
+    setButtonPopup(true);
   }, []);
 
   let i = 0;
+
+  const schoolinMediaMapped =
+    schoolMedia &&
+    schoolMedia.map((media) => {
+      i++;
+      return (
+        <a
+          href={media.Link}
+          className={`school-${i}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className={`${i}-card  h-full relative`}>
+            <iframe
+              src={media.Link}
+              frameborder="0"
+              className="w-full h-full"
+            ></iframe>
+            <div className="overlay w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black to-transparent">
+              <div className="news-content absolute top-0 left-0 h-full">
+                <p className="absolute bottom-[3em] left-5 w-[12em] md:w-[17em] text-offWhite text-2xl font-bold">
+                  {media.title}
+                </p>
+                <p className="absolute bottom-5 left-5 w-[17em] text-offWhite">
+                  {media.author}
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+      );
+    });
 
   const newsmapped =
     newsandEvents &&
@@ -79,7 +126,7 @@ function Home() {
         >
           <div className="first-card  h-full rounded-3xl relative">
             <Image
-              src={`http://localhost:3000${news.image1}`}
+              src={`${process.env.NEXT_PUBLIC_SERVER_HOST}${news.image1}`}
               cover
               fill
               className="rounded-3xl bg-center bg-contain z-[-1]"
@@ -163,30 +210,31 @@ function Home() {
             )}
           </div>
           <div className="images hidden lg:block relative w-[38em] h-[38em] -z-50">
-            <div
-              className="absolute bottom-0 right-[14em] h-[15em] w-[15em] rounded-full bg-red-500"
-              style={{
-                backgroundImage:
-                  "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
-                backgroundSize: "cover",
-              }}
-            ></div>
-            <div
-              className="absolute top-0 right-0 h-[30em] w-[30em] rounded-full bg-red-400"
-              style={{
-                backgroundImage:
-                  "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
-                backgroundSize: "cover",
-              }}
-            ></div>
-            <div
-              className="absolute top-[10em] left-0 h-[15em] w-[15em] rounded-full bg-red-300"
-              style={{
-                backgroundImage:
-                  "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
-                backgroundSize: "cover",
-              }}
-            ></div>
+            {heroImage && (
+              <>
+                <div
+                  className="absolute bottom-0 right-[14em] h-[15em] w-[15em] rounded-full bg-red-500"
+                  style={{
+                    backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${heroImage.image1}')`,
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+                <div
+                  className="absolute top-0 right-0 h-[30em] w-[30em] rounded-full bg-red-400"
+                  style={{
+                    backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${heroImage.image2}')`,
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+                <div
+                  className="absolute top-[10em] left-0 h-[15em] w-[15em] rounded-full bg-red-300"
+                  style={{
+                    backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${heroImage.image3}')`,
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+              </>
+            )}
           </div>
         </div>
         <div className="programs mt-10 bg-gray">
@@ -199,45 +247,46 @@ function Home() {
               of every student and help each find their strength.
             </p>
             <div className="individual-programs flex flex-col lg:flex-row md:w-[26rem] md:mx-auto lg:w-full  md:flex-wrap lg:flex-nowrap justify-between gap-x-10">
-              <div className="elementary w-full mx-auto lg:w-1/3">
-                <div
-                  className="elementary-image w-full h-[16rem] lg:h-[28rem] bg-red-500 rounded-3xl mb-4"
-                  style={{
-                    backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
-                    backgroundSize: "cover",
-                  }}
-                ></div>
-                <p className="text-center text-orange text-2xl my-2 md:text-3xl font-bold">
-                  Elementary School
-                </p>
-              </div>
-              <div className="middle w-full lg:w-1/3">
-                <div
-                  className="middle-image w-full h-[16rem] lg:h-[28rem] bg-red-500 rounded-3xl mb-4"
-                  style={{
-                    backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
-                    backgroundSize: "cover",
-                  }}
-                ></div>
-                <p className="text-center text-orange text-2xl my-2 md:text-3xl font-bold">
-                  Middle School
-                </p>
-              </div>
-              <div className="high  w-full lg:w-1/3">
-                <div
-                  className="high-image w-full h-[16rem] lg:h-[28rem] bg-red-500 rounded-3xl mb-4"
-                  style={{
-                    backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
-                    backgroundSize: "cover",
-                  }}
-                ></div>
-                <p className="text-center text-orange text-2xl my-2 md:text-3xl font-bold">
-                  High School
-                </p>
-              </div>
+              {programs && (
+                <>
+                  <div className="elementary w-full mx-auto lg:w-1/3">
+                    <div
+                      className="elementary-image w-full h-[16rem] lg:h-[28rem] bg-red-500 rounded-3xl mb-4"
+                      style={{
+                        backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${programs.elementryImage}')`,
+                        backgroundSize: "cover",
+                      }}
+                    ></div>
+                    <p className="text-center text-orange text-2xl my-2 md:text-3xl font-bold">
+                      Elementary School
+                    </p>
+                  </div>
+                  <div className="middle w-full lg:w-1/3">
+                    <div
+                      className="middle-image w-full h-[16rem] lg:h-[28rem] bg-red-500 rounded-3xl mb-4"
+                      style={{
+                        backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${programs.middleImage}')`,
+                        backgroundSize: "cover",
+                      }}
+                    ></div>
+                    <p className="text-center text-orange text-2xl my-2 md:text-3xl font-bold">
+                      Middle School
+                    </p>
+                  </div>
+                  <div className="high  w-full lg:w-1/3">
+                    <div
+                      className="high-image w-full h-[16rem] lg:h-[28rem] bg-red-500 rounded-3xl mb-4"
+                      style={{
+                        backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${programs.higherImage}')`,
+                        backgroundSize: "cover",
+                      }}
+                    ></div>
+                    <p className="text-center text-orange text-2xl my-2 md:text-3xl font-bold">
+                      High School
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -266,126 +315,7 @@ function Home() {
               School in Media
             </h1>
             <div className="grid grid-rows-5 grid-cols-1 gap-y-8 lg:grid-container-large mb-8">
-              <a
-                href="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                className="lg:row-span-2 hover:cursor-pointer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="first-card bg-orange h-full relative row-span-2 -z-50">
-                  <iframe
-                    src="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                    frameborder="0"
-                    className="w-full h-full"
-                  ></iframe>
-                  <div className="overlay w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black to-transparent">
-                    <div className="news-content absolute top-0 left-0 h-full">
-                      <p className="absolute bottom-[3em] left-5 w-[12em] md:w-[17em] text-offWhite text-2xl font-bold">
-                        LIFE STORY
-                      </p>
-                      <p className="absolute bottom-5 left-5 w-[17em] text-offWhite">
-                        -Snigdha Chaudhary
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <a
-                href="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                className="hover:cursor-pointer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="second-card bg-orange h-full relative -z-50">
-                  <iframe
-                    src="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                    frameborder="0"
-                    className="w-full h-full"
-                  ></iframe>
-                  <div className="overlay w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black to-transparent">
-                    <div className="news-content absolute top-0 left-0 h-full">
-                      <p className="absolute bottom-[3em] left-5 w-[12em] md:w-[17em] text-offWhite text-2xl font-bold">
-                        LIFE STORY
-                      </p>
-                      <p className="absolute bottom-5 left-5 w-[17em] text-offWhite">
-                        -Snigdha Chaudhary
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <a
-                href="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                className="hover:cursor-pointer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="third-card bg-orange h-full relative -z-50">
-                  <iframe
-                    src="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                    frameborder="0"
-                    className="w-full h-full"
-                  ></iframe>
-                  <div className="overlay w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black to-transparent">
-                    <div className="news-content absolute top-0 left-0 h-full">
-                      <p className="absolute bottom-[3em] left-5 w-[12em] md:w-[17em] text-offWhite text-2xl font-bold">
-                        LIFE STORY
-                      </p>
-                      <p className="absolute bottom-5 left-5 w-[17em] text-offWhite">
-                        -Snigdha Chaudhary
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <a
-                href="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                className="hover:cursor-pointer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="fourth-card bg-orange h-full relative -z-50">
-                  <iframe
-                    src="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                    frameborder="0"
-                    className="w-full h-full"
-                  ></iframe>
-                  <div className="overlay w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black to-transparent">
-                    <div className="news-content absolute top-0 left-0 h-full">
-                      <p className="absolute bottom-[3em] left-5 w-[12em] md:w-[17em] text-offWhite text-2xl font-bold">
-                        LIFE STORY
-                      </p>
-                      <p className="absolute bottom-5 left-5 w-[17em] text-offWhite">
-                        -Snigdha Chaudhary
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <a
-                href="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                className="hover:cursor-pointer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="fifth-card bg-orange h-full relative -z-50">
-                  <iframe
-                    src="https://www.hamropatro.com/posts/articles-Bal-saahitya/articles-Bal-saahitya-Wrinkle-in-time"
-                    frameborder="0"
-                    className="w-full h-full"
-                  ></iframe>
-                  <div className="overlay w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black to-transparent">
-                    <div className="news-content absolute top-0 left-0 h-full">
-                      <p className="absolute bottom-[3em] left-5 w-[12em] md:w-[17em] text-offWhite text-2xl font-bold">
-                        LIFE STORY
-                      </p>
-                      <p className="absolute bottom-5 left-5 w-[17em] text-offWhite">
-                        -Snigdha Chaudhary
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </a>
+              {schoolinMediaMapped}
             </div>
             <div className="view-more text-center">
               <Link
@@ -447,16 +377,17 @@ function Home() {
         </div>
       </main>
       <Footer />
-      {/* <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <div
-          className=" h-[50vh] w-full bg-red-500 rounded-b-xl"
-          style={{
-            backgroundImage:
-              "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
-            backgroundSize: "cover",
-          }}
-        ></div>
-      </Popup> */}
+      {popUpImg && (
+        <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+          <div
+            className=" h-[50vh] w-full bg-red-500 rounded-b-xl"
+            style={{
+              backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${popUpImg.Image}')`,
+              backgroundSize: "cover",
+            }}
+          ></div>
+        </Popup>
+      )}
     </>
   );
 }

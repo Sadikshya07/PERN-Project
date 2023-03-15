@@ -22,7 +22,7 @@ router.get("/only4", async (req, res) => {
     const results = await prisma.newsandevents.findMany({
       take: 4,
       orderBy: {
-        createAt: "desc",
+        createdAt: "desc",
       },
     });
     res.status(200).json({

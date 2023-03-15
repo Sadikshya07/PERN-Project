@@ -2,8 +2,22 @@ import Head from "next/head";
 import TermSummaryCard from "../components/TermandAnalysisCard";
 import HeroSectionCard from "../components/HeroSection";
 import HomeLayout from "../components/Layouts/HomeLayout";
+import { useEffect, useState } from "react";
 
 export default function TheDeerwalker() {
+  const [heroImage, setHeroImage] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await HeroSectionFinder.get("/The Deerwalker");
+        setHeroImage(response.data.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <>
       <Head>
@@ -13,7 +27,9 @@ export default function TheDeerwalker() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSectionCard url="" title="Term Summary" />
+        {heroImage && (
+          <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
+        )}
         <div className="term-summary-grid-container grid md:grid-cols-2 lg:grid-cols-4 gap-y-10">
           <TermSummaryCard />
           <TermSummaryCard />

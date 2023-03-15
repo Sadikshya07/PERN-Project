@@ -8,6 +8,8 @@ import AdminLayout from "../../../components/Layouts/AdminLayout";
 export default function Newsletter() {
   const [name, setName] = useState();
   const [error, setError] = useState("");
+  const [heroImage, setHeroImage] = useState();
+
   const [newLetter, setNewsLetter] = useState();
   let i = 1;
   useEffect(() => {
