@@ -4,7 +4,7 @@ import Link from "next/link";
 import ManagementFinder from "../../api/ManagementFinder";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import {useState,useEffect} from "react";
-// import {useHistory} from "react-router-dom";
+
 
 export default function Management() {
   // useState is used to change the variable when user types in the values (to check what is going on use console.log(name or description or position ))
@@ -14,8 +14,6 @@ export default function Management() {
   const [Management, setManagement] = useState();
   // error is used to display the error but it is not completed
   const [error, setError] = useState("");
-
-  let history = useHistory;
 
   useEffect(() => {
     const fetchData = async () => {
