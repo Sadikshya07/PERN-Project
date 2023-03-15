@@ -333,10 +333,10 @@ function Home() {
           </div>
         </div>
         <div
-          className="admissions mt-2 bg-gray h-[22em]"
+          className="admissions mt-2 bg-gray h-[22em] "
           style={{
             backgroundImage:
-              "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+              "url(https://deerwalk.edu.np/sifalschool/public/images/Background_Images/admissionBackgound.JPG)",
             backgroundSize: "cover",
           }}
         >

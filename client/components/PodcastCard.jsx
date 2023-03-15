@@ -7,7 +7,7 @@ export default function PodcastCard() {
         className="card-image w-full h-2/4"
         style={{
           backgroundImage:
-            "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+            "url(https://deerwalk.edu.np/sifalschool/public/images/Podcast/1678866087.jpg)",
           backgroundSize: "cover",
         }}
       ></div>
@@ -16,7 +16,7 @@ export default function PodcastCard() {
           Read Aloud Podcast | Little Painters
         </p>
         <p className="podcast-by text-[#888888] text-sm mb-2">
-          Siddhartha Aryal - 34032, Grade 1
+          Suruchi Bimali - 34026, Grade 1
         </p>
         <p className="description mb-2 pb-2">
           This is one of the "reading aloud" activities for DSS students.We

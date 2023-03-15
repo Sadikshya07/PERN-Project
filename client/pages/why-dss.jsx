@@ -34,7 +34,7 @@ export default function WhyDSS() {
                   className="image-one absolute right-0 bottom-0 w-[16rem] h-[16rem] md:w-[24rem] md:h-[24rem] rounded-full bg-red-500"
                   style={{
                     backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+                      "url(https://deerwalk.edu.np/sifalschool/public/images/Background_Images/clubsBackground.jpg)",
                     backgroundSize: "cover",
                   }}
                 ></div>
@@ -42,7 +42,7 @@ export default function WhyDSS() {
                   className="image-two hidden lg:block absolute w-[24rem] h-[24rem] rounded-full bg-red-400"
                   style={{
                     backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+                      "url(https://deerwalk.edu.np/sifalschool/public/images/Background_Images/admissionBackgound.JPG)",
                     backgroundSize: "cover",
                   }}
                 ></div>
@@ -66,7 +66,7 @@ export default function WhyDSS() {
                   className="image-one absolute right-0 bottom-0 w-[16rem] h-[16rem] md:w-[24rem] md:h-[24rem] rounded-full bg-red-500"
                   style={{
                     backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+                      "url(https://deerwalk.edu.np/sifalschool/public/images/Background_Images/weekendBackground.JPG)",
                     backgroundSize: "cover",
                   }}
                 ></div>
@@ -74,7 +74,7 @@ export default function WhyDSS() {
                   className="image-two hidden lg:block absoltue w-[24rem] h-[24rem] rounded-full bg-red-400"
                   style={{
                     backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+                      "url(https://deerwalk.edu.np/sifalschool/public/images/Background_Images/contactusBackgound.JPG)",
                     backgroundSize: "cover",
                   }}
                 ></div>
@@ -103,7 +103,7 @@ export default function WhyDSS() {
                   className="image-one absolute right-0 bottom-0 w-[16rem] h-[16rem] md:w-[24rem] md:h-[24rem] rounded-full bg-red-500"
                   style={{
                     backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+                      "url(https://deerwalk.edu.np/sifalschool/public/images/Background_Images/admissionBackgound.JPG)",
                     backgroundSize: "cover",
                   }}
                 ></div>
@@ -111,7 +111,7 @@ export default function WhyDSS() {
                   className="image-two hidden lg:block  absoltue w-[24rem] h-[24rem] rounded-full bg-red-400"
                   style={{
                     backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+                      "url(https://deerwalk.edu.np/sifalschool/public/images/Background_Images/clubsBackground.jpg)",
                     backgroundSize: "cover",
                   }}
                 ></div>
@@ -152,7 +152,7 @@ export default function WhyDSS() {
                   className="image-one absolute right-0 bottom-0 w-[16rem] h-[16rem] md:w-[24rem] md:h-[24rem] rounded-full bg-red-500"
                   style={{
                     backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+                      "url(https://deerwalk.edu.np/sifalschool/public/images/Background_Images/weekendBackground.JPG)",
                     backgroundSize: "cover",
                   }}
                 ></div>
@@ -160,7 +160,7 @@ export default function WhyDSS() {
                   className="image-two hidden lg:block absolute w-[24rem] h-[24rem] rounded-full bg-red-400"
                   style={{
                     backgroundImage:
-                      "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+                      "url(https://deerwalk.edu.np/sifalschool/public/images/Background_Images/clubsBackground.jpg)",
                     backgroundSize: "cover",
                   }}
                 ></div>

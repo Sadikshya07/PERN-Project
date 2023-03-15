@@ -31,11 +31,11 @@ export default function TheDeerwalker() {
           <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
         )}
         <div className="term-summary-grid-container grid md:grid-cols-2 lg:grid-cols-4 gap-y-10">
-          <TermSummaryCard />
-          <TermSummaryCard />
-          <TermSummaryCard />
-          <TermSummaryCard />
-          <TermSummaryCard />
+          <TermSummaryCard name = "Term Summary-Term III, 2078"/>
+          <TermSummaryCard name = "Term Summary-Term III, 2078"/>
+          <TermSummaryCard name = "Term Summary-Term III, 2078"/>
+          <TermSummaryCard name = "Term Summary-Term III, 2078"/>
+          <TermSummaryCard name = "Term Summary-Term III, 2078"/>
         </div>
       </HomeLayout>
     </>

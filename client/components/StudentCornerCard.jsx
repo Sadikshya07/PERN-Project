@@ -10,7 +10,7 @@ export default function PodcastCard() {
             className="card-image w-full h-2/4"
             style={{
               backgroundImage:
-                "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+                "url(https://deerwalk.edu.np/sifalschool/public/images/StudentCorner/1678879196.jpg)",
               backgroundSize: "cover",
             }}
           ></div>
@@ -27,9 +27,9 @@ export default function PodcastCard() {
               book "Little Painters" Written by Cheryl Rao and Illustrated by Tanvi
               Choudhary.
             </p>
-            <Link href="/" className="text-center text-lg text-orange font-bold">
+            <a href="https://deerwalk.edu.np/sifalschool/StudentCorner/details/6188" className="text-center text-lg text-orange font-bold">
               <p>READ MORE</p>
-            </Link>
+            </a>
           </div>
         </div>
     </a>
