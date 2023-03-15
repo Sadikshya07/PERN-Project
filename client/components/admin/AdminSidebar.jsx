@@ -5,58 +5,67 @@ import PageLink from "../../components/admin/PageLink";
 import logo from "../../public/src/assets/sifal-logo.svg";
 
 export default function AdminSidebar() {
+  let i =0;
   const adminPages = routes[0].adminLinks.map((admin) => {
+    i++
     return (
-      <Link href={admin.url} className="link text-offWhite text-lg">
+      <Link href={admin.url} className="link text-offWhite text-lg" key={i}>
         <PageLink title={admin.title} />
       </Link>
     );
   });
   const homePages = routes[0].homepage.map((home) => {
+    i++
     return (
-      <Link href={home.url} className="link text-offWhite text-lg">
+      <Link href={home.url} className="link text-offWhite text-lg" key={i}>
         <PageLink title={home.title} />
       </Link>
     );
   });
   const aboutUs = routes[0].aboutUs.map((about) => {
+    i++
     return (
-      <Link href={about.url} className="link text-offWhite text-lg">
+      <Link href={about.url} className="link text-offWhite text-lg" key={i}>
         <PageLink title={about.title} />
       </Link>
     );
   });
   const programs = routes[0].programs.map((program) => {
+    i++
     return (
-      <Link href={program.url} className="link text-offWhite text-lg">
+      <Link href={program.url} className="link text-offWhite text-lg" key={i}>
         <PageLink title={program.title} />
       </Link>
     );
   });
   const community = routes[0].community.map((community) => {
+    i++
     return (
-      <Link href={community.url} className="link text-offWhite text-lg">
+      <Link href={community.url} className="link text-offWhite text-lg" key={i}>
         <PageLink title={community.title} />
       </Link>
     );
   });
   const publications = routes[0].publications.map((publication) => {
+    i++
     return (
-      <Link href={publication.url} className="link text-offWhite text-lg">
+      <Link href={publication.url} className="link text-offWhite text-lg" key={i}>
         <PageLink title={publication.title} />
       </Link>
     );
   });
   const dssinYear = routes[0].dssInYear.map((item) => {
+    i++
     return (
-      <Link href={item.url} className="link text-offWhite text-lg">
+      <Link href={item.url} className="link text-offWhite text-lg" key={i}>
         <PageLink title={item.title} />
       </Link>
     );
   });
   const otherPages = routes[0].otherPages.map((other) => {
+    i++;
     return (
-      <Link href={other.url} className="link text-offWhite text-lg">
+      <Link href={other.url} className="link text-offWhite text-lg" key={i}>
         <PageLink title={other.title} />
       </Link>
     );

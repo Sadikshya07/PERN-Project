@@ -17,6 +17,7 @@ import {
   SchoolContext,
   SchoolContextProvider,
 } from "../components/context/SchoolContext";
+import {motion} from "framer-motion"
 
 export default function HomeWrapper() {
   return (
@@ -127,7 +128,7 @@ function Home() {
               </Link>
             </div>
             {metrics && (
-              <div className="metrics w-auto md:w-[45em] grid grid-cols-2 gap-y-8 mt-6">
+              <motion.div className="metrics w-auto md:w-[45em] grid grid-cols-2 gap-y-8 mt-6" initial = {{y: 120}} animate = {{y: 0}}>
                 <div className="students mt-4 w-[6em]">
                   <Image src={heroStudent} className="ml-4" />
                   <p className="text-center text-orange font-bold text-3xl mt-2">
@@ -158,7 +159,7 @@ function Home() {
                     Student Teacher Ratio
                   </p>
                 </div>
-              </div>
+              </motion.div>
             )}
           </div>
           <div className="images hidden lg:block relative w-[38em] h-[38em] -z-50">
@@ -446,7 +447,7 @@ function Home() {
         </div>
       </main>
       <Footer />
-      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+      {/* <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
         <div
           className=" h-[50vh] w-full bg-red-500 rounded-b-xl"
           style={{
@@ -455,7 +456,7 @@ function Home() {
             backgroundSize: "cover",
           }}
         ></div>
-      </Popup>
+      </Popup> */}
     </>
   );
 }
