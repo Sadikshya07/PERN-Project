@@ -9,10 +9,10 @@ export default [
         title: "Add User",
         url: "/admin/adduser",
       },
-      {
-        title: "View Users",
-        url: "/admin/viewusers",
-      },
+      // {
+      //   title: "View Users",
+      //   url: "/admin/viewusers",
+      // },
       {
         title: "Add Hero Images",
         url: "/admin/hero-section-images",

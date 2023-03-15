@@ -20,7 +20,7 @@ import {
   SchoolContext,
   SchoolContextProvider,
 } from "../components/context/SchoolContext";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
 import PopUpFinder from "./api/PopUpFinder";
 
 export default function HomeWrapper() {
@@ -46,6 +46,7 @@ function Home() {
     "Nov",
     "Dec",
   ];
+
   const [newsandEvents, setNewsandEvents] = useState();
   const [metrics, setMetrics] = useState();
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -175,7 +176,11 @@ function Home() {
               </Link>
             </div>
             {metrics && (
-              <motion.div className="metrics w-auto md:w-[45em] grid grid-cols-2 gap-y-8 mt-6" initial = {{y: 120}} animate = {{y: 0}}>
+              <motion.div
+                className="metrics w-auto md:w-[45em] grid grid-cols-2 gap-y-8 mt-6"
+                initial={{ y: 120 }}
+                animate={{ y: 0 }}
+              >
                 <div className="students mt-4 w-[6em]">
                   <Image src={heroStudent} className="ml-4" />
                   <p className="text-center text-orange font-bold text-3xl mt-2">
