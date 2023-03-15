@@ -2,8 +2,22 @@ import Head from "next/head";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import HeroSectionCard from "../components/HeroSection";
 import StudentCornerCard from "../components/StudentCornerCard";
+import { useEffect, useState } from "react";
 
 export default function StudentCorner() {
+  const [heroImage, setHeroImage] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await HeroSectionFinder.get("/The Deerwalker");
+        setHeroImage(response.data.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <>
       <Head>
@@ -13,7 +27,9 @@ export default function StudentCorner() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSectionCard url=" " title="Student Corner" />
+        {heroImage && (
+          <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
+        )}
         <div className="mx-auto my-10 grid w-11/12 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-y-10">
           <StudentCornerCard />
           <StudentCornerCard />

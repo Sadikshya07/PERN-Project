@@ -4,8 +4,22 @@ import Slider from "react-slick";
 import HeroSection from "../components/HeroSection";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import NewsLetterHeader from "../components/NewsLetterHeader";
+import { useEffect, useState } from "react";
 
 export default function TermSummary() {
+  const [heroImage, setHeroImage] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await HeroSectionFinder.get("/Newsletter");
+        setHeroImage(response.data.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    fetchData();
+  }, []);
   const settings = {
     dots: false,
     infinite: true,
@@ -47,7 +61,9 @@ export default function TermSummary() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSection title="Newsletter" />
+        {heroImage && (
+          <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
+        )}
         <div className="m-6  px-9">
           <NewsLetterHeader title={"2079"} />
           <Slider {...settings}>

@@ -18,6 +18,21 @@ router.get("/", async (req, res) => {
     console.log(error.message);
   }
 });
+router.get("/one", async (req, res) => {
+  try {
+    const results = await prisma.popup.findFirst({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    res.status(200).json({
+      status: "success",
+      data: results,
+    });
+  } catch (error) {
+    console.error(error.message);
+  }
+});
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -34,13 +49,14 @@ router.get("/:id", async (req, res) => {
     console.error(error.message);
   }
 });
+const imagePathServer = "/images/";
 router.post("/", async (req, res) => {
   try {
-    const { Image } = req.body;
+    let ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
+    await req.files.image.mv("./public" + ImagePath);
     const data = {
-     Image,
+      Image: ImagePath,
     };
-    console.log(data);
     const results = await prisma.popup.create({
       data: data,
     });
@@ -55,7 +71,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const {Image} = req.body;
+    const { Image } = req.body;
 
     const data = {
       Image,
@@ -78,10 +94,10 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { Image} = req.body;
+    const { Image } = req.body;
 
     const data = {
-     Image
+      Image,
     };
     const results = await prisma.popup.delete({
       where: {

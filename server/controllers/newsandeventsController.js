@@ -21,6 +21,9 @@ router.get("/only4", async (req, res) => {
   try {
     const results = await prisma.newsandevents.findMany({
       take: 4,
+      orderBy: {
+        createdAt: "desc",
+      },
     });
     res.status(200).json({
       status: "sucess",

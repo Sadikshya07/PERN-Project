@@ -2,22 +2,30 @@ export default [
   {
     adminLinks: [
       {
+        title: "Dashboard",
+        url: "/admin/dashboard",
+      },
+      {
         title: "Add User",
         url: "/admin/adduser",
       },
       {
-        title: "View User",
+        title: "View Users",
         url: "/admin/viewusers",
       },
       {
         title: "Add Hero Images",
         url: "/admin/hero-section-images",
+      },
+      {
+        title: "Popup",
+        url: "/admin/add-popup",
       }
     ],
     homepage: [
       {
         title: "Add Images",
-        url: "/admin/home/heroimages",
+        url: "/admin/home/home-images",
       },
       {
         title: "Metrics",
@@ -26,6 +34,14 @@ export default [
       {
         title: "Programs",
         url: "/admin/home/programs",
+      },
+      {
+        title: "School Activities",
+        url: "/admin/home/school-activities",
+      },
+      {
+        title: "School in Media",
+        url: "/admin/home/school-in-media",
       }
     ],
     aboutUs: [
@@ -118,10 +134,10 @@ export default [
         title: "DSS Clubs",
         url: "/admin/otherpages/dssclubs",
       },
-      {
-        title: "Admission",
-        url: "/admin/otherpages/admission",
-      }
+      // {
+      //   title: "Admission",
+      //   url: "/admin/otherpages/admission",
+      // }
     ]
   },
 ];

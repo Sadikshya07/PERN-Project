@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 
 export default function NewsAndEvents() {
   const [data, setData] = useState();
+  const [heroImage, setHeroImage] = useState();
+
   useEffect(() => {
     // use effect to fetch the data when the page loads
     const fetchData = async () => {
@@ -15,6 +17,8 @@ export default function NewsAndEvents() {
       try {
         const response = await NewsandEventsFinder.get("/"); //this is to get the data from the server using axios (axios is used insted of fetch() function)
         // console.log(response.data.data);
+        const response2 = await HeroSectionFinder.get("/News & Events");
+        setHeroImage(response2.data.data);
         setData(response.data.data); //set the received responses data to  to data variable at above
       } catch (err) {
         console.log(err);
@@ -47,10 +51,11 @@ export default function NewsAndEvents() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSection title={"News and Events"} />
-        {console.log(data)}
+        {heroImage && (
+          <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
+        )}
         {data ? (
-          <div className="management-grid-container grid md:grid-cols-2 lg:grid-cols-3">
+          <div className="management-grid-container w-11/12 mx-auto grid md:grid-cols-2 lg:grid-cols-3">
             {newsAndEventsCards}
           </div>
         ) : (

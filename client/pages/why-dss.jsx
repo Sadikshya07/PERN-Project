@@ -1,8 +1,19 @@
 import Head from "next/head";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import HeroSectionCard from "../components/HeroSection";
+import HeroSectionFinder from "./api/HeroSectionFinder";
+import { useState, useEffect } from "react";
 
 export default function WhyDSS() {
+  const [heroImage, setHeroImage] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await HeroSectionFinder.get("/Why-DSS");
+      setHeroImage(response.data.data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <Head>
@@ -12,7 +23,9 @@ export default function WhyDSS() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSectionCard url="" title="Why DSS?" />
+        {heroImage && (
+          <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
+        )}
         <div className="why-dss-content w-11/12 mx-auto">
           <div className="sections">
             <div className="academic-fundamentals flex flex-col lg:flex-row justify-around items-center my-8">

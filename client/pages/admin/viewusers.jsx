@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import AdminLayout from "../../components/Layouts/AdminLayout";
 
 export default function ViewUser() {
   return (
@@ -11,7 +12,7 @@ export default function ViewUser() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      View User
+      <AdminLayout>View User</AdminLayout>
     </div>
   );
 }

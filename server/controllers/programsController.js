@@ -18,6 +18,22 @@ router.get("/", async (req, res) => {
     console.log(error.message);
   }
 });
+router.get("/latest", async (req, res) => {
+  try {
+    const results = await prisma.programs.findFirst({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    res.status(200).json({
+      status: "success",
+      data: results,
+    });
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -34,16 +50,29 @@ router.get("/:id", async (req, res) => {
     console.error(error.message);
   }
 });
+
+const imagePathServer = "/images/";
+
 router.post("/", async (req, res) => {
   try {
-    const { Image } = req.body;
+    let imagePath1 = imagePathServer + Date.now() + "-" + req.files.image1.name;
+    let imagePath2 = imagePathServer + Date.now() + "-" + req.files.image2.name;
+    let imagePath3 = imagePathServer + Date.now() + "-" + req.files.image3.name;
+
+    await req.files.image1.mv("./public" + imagePath1);
+    await req.files.image2.mv("./public" + imagePath2);
+    await req.files.image3.mv("./public" + imagePath3);
+
     const data = {
-     Image,
+      elementryImage: imagePath1,
+      middleImage: imagePath2,
+      higherImage: imagePath3,
     };
-    console.log(data);
+
     const results = await prisma.programs.create({
       data: data,
     });
+
     res.status(201).json({
       status: "success",
       data: results,
@@ -55,7 +84,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const {Image} = req.body;
+    const { Image } = req.body;
 
     const data = {
       Image,
@@ -78,10 +107,10 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { Image} = req.body;
+    const { Image } = req.body;
 
     const data = {
-     Image
+      Image,
     };
     const results = await prisma.programs.delete({
       where: {

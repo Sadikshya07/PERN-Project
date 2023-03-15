@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://127.0.0.1:3000/api/admin/programs/courses",
+  baseURL: `${process.env.NEXT_PUBLIC_SERVER_HOST}/api/admin/programs/courses`,
 });
