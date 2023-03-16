@@ -19,6 +19,7 @@ export default function Faculty() {
         <FacultyCard
           key={person.id}
           name={person.name}
+          image={person.image}
           description={person.description}
           department={person.department}
           AreaofExpertise={person.AreaofExpertise}
