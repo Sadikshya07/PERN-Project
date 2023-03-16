@@ -4,7 +4,6 @@ import Link from "next/link";
 import ManagementFinder from "../../api/ManagementFinder";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import { useState, useEffect } from "react";
-// import {useHistory} from "react-router-dom";
 
 export default function Management() {
   const router = useRouter();
