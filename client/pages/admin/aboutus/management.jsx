@@ -60,7 +60,7 @@ export default function Management() {
   };
 
   const handleUpdate = (id) => {
-    router.push(`/admin/aboutus/${id}/update-management`);
+    router.push(`/admin/aboutus/${id}`);
   };
 
   return (
@@ -91,9 +91,9 @@ export default function Management() {
             <td>description={person.description}</td>
             <td>position={person.position}</td>
             <td>
-              <Link href="/admin/aboutus/update-management">
+              <Link href="/admin/aboutus/${id}">
                 <button
-                           // onClick = {() => handleUpdate(person.id)}
+                onClick = {() => handleUpdate(person.id)}
                 className="border-2">Update</button>
               </Link>
             </td>
@@ -118,6 +118,8 @@ export default function Management() {
               id="fname"
               placeholder="Full name:"
               className="border-2"
+              required
+              onChange={(e) => setName(e.target.value)}
             />
             <br />
             <label htmlFor="description" className="block">
@@ -128,6 +130,8 @@ export default function Management() {
               id="description"
               placeholder="Description"
               className="border-2"
+              required
+              onChange={(e) => setDescription(e.target.value)}
             />
             <br />
             <label htmlFor="position" className="block">
@@ -138,6 +142,8 @@ export default function Management() {
               id="position"
               placeholder="Position"
               className="border-2"
+              required
+              onChange={(e) => setPosition(e.target.value)}
             />
             <br />
           <label htmlFor="image">Image:</label> <br />

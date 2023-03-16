@@ -79,6 +79,33 @@ export default function Faculty() {
               <th>Actions</th>
             </tr>
           </thead>
+          <tbody>
+             {faculty &&
+              faculty.map((person) => {
+              return (
+            <tr key={person.id} >
+            <td>name={person.name}</td>
+            <td>description={person.description}</td>
+            <td>department={person.department}</td>
+            <td>AreaofExpertise={person.AreaofExpertise}</td>
+            <td>Experience={person.Experience}</td>
+            <td>
+              <Link href="/admin/aboutus/update-faculty">
+                <button
+                onClick = {() => handleUpdate(person.id)}
+                className="border-2">Update</button>
+              </Link>
+            </td>
+            <td>
+              <button
+              onClick = {() => handleDelete(person.id)}
+              className="border-2">Delete</button>
+            </td>
+            </tr>
+              );
+             })
+           }
+           </tbody>
         </table>
         <form onSubmit={handleSubmit}>
           <label for="fname">Full name:</label> <br />
