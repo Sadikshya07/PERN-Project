@@ -33,16 +33,21 @@ router.get("/:id", async (req, res) => {
     console.error(error.message);
   }
 });
+const imagePathServer = "/images/";
+
 router.post("/", async (req, res) => {
   try {
-    console.log(req.body);
-    const { name, description, department,AreaofExpertise,Experience} = req.body;
+    const { name, description, department, AreaofExpertise, Experience } =
+      req.body;
+    let ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
+
     const data = {
       name: name,
+      image: ImagePath,
       description: description,
       department: department,
       AreaofExpertise: AreaofExpertise,
-      Experience: Experience
+      Experience: Experience,
     };
     const results = await prisma.faculty.create({
       data,
@@ -58,14 +63,15 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { name, description, department,AreaofExpertise,Experience } = req.body;
+    const { name, description, department, AreaofExpertise, Experience } =
+      req.body;
 
     const data = {
       name: name,
       description: description,
       department: department,
       AreaofExpertise: AreaofExpertise,
-      Experience: Experience
+      Experience: Experience,
     };
     const results = await prisma.faculty.update({
       where: {
@@ -85,14 +91,15 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { name, description, department,AreaofExpertise,Experience } = req.body;
+    const { name, description, department, AreaofExpertise, Experience } =
+      req.body;
 
     const data = {
       name: name,
       description: description,
       department: department,
       AreaofExpertise: AreaofExpertise,
-      Experience: Experience
+      Experience: Experience,
     };
     const results = await prisma.faculty.delete({
       where: {
