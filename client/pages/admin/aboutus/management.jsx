@@ -154,6 +154,7 @@ export default function Management() {
               type="file"
               id="image"
               placeholder="Choose a file"
+              onChange={(e) => setImage(e.target.files[0])}
               className="border-2"
             />
             <br />
