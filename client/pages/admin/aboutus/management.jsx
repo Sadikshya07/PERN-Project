@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import ManagementFinder from "../../api/ManagementFinder";
-import { useState } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import { useState, useEffect } from "react";
 // import {useHistory} from "react-router-dom";
@@ -131,23 +130,13 @@ export default function Management() {
               className="border-2"
             />
             <br />
-            <label htmlFor="fname" className="block">
+            <label htmlFor="desc" className="block">
               Description:
             </label>
             <textarea
               type="text"
               id="desc"
-              onChange={(e) => description(e.target.value)}
-              className="border-2"
-            />
-            <br />
-            <label htmlFor="fname" className="block">
-              Full name:
-            </label>
-            <input
-              type="name"
-              id="fname"
-              onChange={(e) => setPosition(e.target.value)}
+              onChange={(e) => setDescription(e.target.value)}
               className="border-2"
             />
             <br />
@@ -155,31 +144,20 @@ export default function Management() {
             <input
               type="file"
               id="image"
-              placeholder="Choose a file"
+              placeholder="Choose an image"
               className="border-2"
               required
               // Since the name or description or position needs to be sent to backend we can change their values using onChnage handler of form. setName is used from useState .
               //  e.target.value is taking the value from the input box. And the same is done for all the following data that needs to be sent
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setImage(e.target.value)}
             />
-            <label htmlFor="description" className="block">
-              Description:
-            </label>
-            <textarea
-              type="text"
-              id="description"
-              placeholder="description"
-              className="border-2"
-              onChange={(e) => setDescription(e.target.value)}
-              required
-            />
-            <label htmlFor="description" className="block">
+            <label htmlFor="position" className="block">
               Position:
             </label>
             <input
               type="text"
-              id="description"
-              placeholder="description"
+              id="position"
+              placeholder=""
               className="border-2"
               onChange={(e) => setPosition(e.target.value)}
               required
