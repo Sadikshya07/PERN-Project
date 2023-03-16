@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function ManagementCard({ name, description, position }) {
+export default function ManagementCard({ name, description, position, image }) {
   return (
     <div className="management-card my-10 lg:m-10 flex flex-col ">
       <div className="photo">
