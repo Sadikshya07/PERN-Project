@@ -383,9 +383,14 @@ function Home() {
       </main>
       <Footer />
       {popUpImg && (
-        <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+        <Popup
+          trigger={buttonPopup}
+          setTrigger={setButtonPopup}
+          width={"w-11/12 "}
+          height={"h-5/6"}
+        >
           <div
-            className=" h-[50vh] w-full bg-red-500 rounded-b-xl"
+            className="h-full rounded-b-xl"
             style={{
               backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${popUpImg.Image}')`,
               backgroundSize: "cover",

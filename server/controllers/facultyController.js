@@ -45,6 +45,7 @@ router.post("/", async (req, res) => {
     let newName = splitName.join("-");
 
     let ImagePath = imagePathServer + Date.now() + "-" + newName;
+    await req.files.image.mv("./public" + ImagePath);
 
     const data = {
       name: name,
