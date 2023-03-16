@@ -145,7 +145,7 @@ export default function Faculty() {
             id="image"
             placeholder="Choose a file"
             className="border-2"
-            onChange={(e) => setImage((e) => setImage(e.target.files[0]))}
+            onChange={(e) => setImage(e.target.files[0])}
           />
           <br />
           <button type="submit" className="border-2">

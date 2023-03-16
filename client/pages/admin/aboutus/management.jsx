@@ -144,12 +144,12 @@ export default function Management() {
             <input
               type="file"
               id="image"
-              placeholder="Choose an image"
+              placeholder="Choose a file"
+              onChange={(e) => setImage(e.target.files[0])}
               className="border-2"
               required
               // Since the name or description or position needs to be sent to backend we can change their values using onChnage handler of form. setName is used from useState .
               //  e.target.value is taking the value from the input box. And the same is done for all the following data that needs to be sent
-              onChange={(e) => setImage(e.target.value)}
             />
             <label htmlFor="position" className="block">
               Position:
