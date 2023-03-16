@@ -77,7 +77,7 @@ export default function Management() {
       </Head>
       <AdminLayout>
         <div className="container w-11/12 my-3 py-3">
-          <table>
+          {/* <table>
             <thead>
               <tr>
                 <th>SN</th>
@@ -117,7 +117,7 @@ export default function Management() {
                   );
                 })}
             </tbody>
-          </table>
+          </table> */}
           {/* this is to just to call the function handleSubmit when the form is submitted  */}
           <form onSubmit={handleSubmit}>
             <label htmlFor="fname" className="block">
