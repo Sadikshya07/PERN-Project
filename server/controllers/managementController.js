@@ -43,7 +43,7 @@ router.post("/", async (req, res) => {
     const data = {
       name,
       description,
-      image: imagePath,
+      image: ImagePath,
       position,
     };
     console.log(data);
