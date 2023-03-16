@@ -1,15 +1,20 @@
 import Image from "next/image";
 import Popup from "reactjs-popup";
 
-export default function FacultyCard({ name, description, department,AreaofExpertise,Experience}) {
+export default function FacultyCard({
+  name,
+  description,
+  department,
+  AreaofExpertise,
+  Experience,
+  image,
+}) {
   return (
     <Popup
       trigger={
         <div className="faculty-card relative cursor-pointer rounded-xl">
           <Image
-            src={
-              "https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg"
-            }
+            src={`${process.env.NEXT_PUBLIC_SERVER_HOST}${image}`}
             alt={"faculty image"}
             height={364}
             width={384}
@@ -31,28 +36,23 @@ export default function FacultyCard({ name, description, department,AreaofExpert
             <div
               className="faculty-overlay-image w-full h-[20em] lg:w-[30em] [30em] lg:h-[22rem] rounded-xl"
               style={{
-                backgroundImage:
-                  "url(https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_4x3.jpg)",
+                backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${image}')`,
                 backgroundSize: "cover",
-                objectPosition: "center"
+                objectPosition: "center",
               }}
             ></div>
             <div className="text overflow-hidden">
-              <h1 className="name font-bold text-orange text-2xl">
-                {name}
-              </h1>
+              <h1 className="name font-bold text-orange text-2xl">{name}</h1>
               <p className="subject font-normal text-lg text-orange my-3">
-               {department}
+                {department}
               </p>
-              <p className="subject mb-4 font-normal">
-                {description}
-              </p>
+              <p className="subject mb-4 font-normal">{description}</p>
               <p className="mb-4">
-                <span className="font-bold">Area of Expertise</span>: Python,
-                English Language
+                <span className="font-bold">Area of Expertise</span>:{" "}
+                {AreaofExpertise}
               </p>
               <p className="">
-                <span className="font-bold">Experience</span>: 10 years
+                <span className="font-bold">Experience</span>: {Experience}
               </p>
             </div>
           </div>
