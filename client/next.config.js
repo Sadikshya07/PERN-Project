@@ -12,6 +12,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "i.natgeofe.com",
       },
+      {
+        protocol: "https",
+        hostname: "deerwalk.edu.np",
+      },
     ],
   },
 };

@@ -67,23 +67,23 @@ export default function TermSummary() {
         <div className="m-6  px-9">
           <NewsLetterHeader title={"2079"} />
           <Slider {...settings}>
-            <NewsletterCard />
-            <NewsletterCard />
-            <NewsletterCard />
-            <NewsletterCard />
-            <NewsletterCard />
-            <NewsletterCard />
-            <NewsletterCard />
+            <NewsletterCard name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
           </Slider>
           <NewsLetterHeader title={"2078"} />
           <Slider {...settings}>
-            <NewsletterCard />
-            <NewsletterCard />
-            <NewsletterCard />
-            <NewsletterCard />
-            <NewsletterCard />
-            <NewsletterCard />
-            <NewsletterCard />
+            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
           </Slider>
         </div>
       </HomeLayout>

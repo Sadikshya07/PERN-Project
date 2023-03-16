@@ -43,14 +43,20 @@ export default function AnalysisReport() {
         {heroImage && (
           <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
         )}
-        <TermandAnalysisReport url="" title="AnalysisReport" />
-        {data ? (
+        <div className="analysis-report-grid-container grid md:grid-cols-2 lg:grid-cols-4">
+          <TermandAnalysisReport name="Closing Report - Deerwalk Theater Show 2079" />
+          <TermandAnalysisReport name="AnalysisReport" />
+          <TermandAnalysisReport name="AnalysisReport" />
+          <TermandAnalysisReport name="AnalysisReport" />
+          <TermandAnalysisReport name="AnalysisReport" />
+        </div>
+        {/* {data ? (
           <div className="analysis-report-grid-container grid md:grid-cols-2 lg:grid-cols-4">
             {AnalysisReportCards}
           </div>
         ) : (
           <Spinner />
-        )}
+        )} */}
       </main>
       <Footer />
     </>

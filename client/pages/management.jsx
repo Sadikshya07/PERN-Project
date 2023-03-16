@@ -20,6 +20,7 @@ export default function Management() {
           name={person.name}
           description={person.description}
           position={person.position}
+          image={person.image}
         />
       );
     });

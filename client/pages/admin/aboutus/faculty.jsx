@@ -12,6 +12,7 @@ export default function Faculty() {
   const [department, setDepartment] = useState();
   const [AreaofExpertise, setAreaofExpertise] = useState();
   const [Experience, setExperience] = useState();
+  const [image, setImage] = useState();
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -30,14 +31,21 @@ export default function Faculty() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await FacultyFinder.post("/", {
-        name,
-        description,
-        department,
-        AreaofExpertise,
-        Experience,
-      });
-      faculty(response.data.data)
+      const response = await FacultyFinder.post(
+        "/",
+        {
+          name,
+          description,
+          department,
+          AreaofExpertise,
+          image,
+          Experience,
+        },
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      faculty(response.data.data);
       console.log(response);
     } catch (err) {
       console.log(err);
@@ -45,17 +53,17 @@ export default function Faculty() {
   };
 
   const handleDelete = async (id) => {
-    try{
-      const response = await FacultyFinder.delete(`/${id}`)
-      setFaculty(faculty.filter(person => {
-        return person.id !== id 
-      })
-        );
+    try {
+      const response = await FacultyFinder.delete(`/${id}`);
+      setFaculty(
+        faculty.filter((person) => {
+          return person.id !== id;
+        })
+      );
+    } catch (err) {
+      console.log(err);
     }
-    catch (err){
-        console.log(err);
-    }
-  }
+  };
 
   return (
     <div>
@@ -164,6 +172,7 @@ export default function Faculty() {
             id="image"
             placeholder="Choose a file"
             className="border-2"
+            onChange={(e) => setImage(e.target.files[0])}
           />
           <br />
           <button type="submit" className="border-2">

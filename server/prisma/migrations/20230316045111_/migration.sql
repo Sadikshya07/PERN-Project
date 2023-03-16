@@ -92,6 +92,7 @@ CREATE TABLE "faculty" (
     "department" TEXT NOT NULL,
     "AreaofExpertise" TEXT NOT NULL,
     "Experience" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -104,6 +105,7 @@ CREATE TABLE "management" (
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "position" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

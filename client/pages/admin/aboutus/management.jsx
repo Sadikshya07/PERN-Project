@@ -3,13 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import ManagementFinder from "../../api/ManagementFinder";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
-import {useState,useEffect} from "react";
-import {useRouter} from "next/router";
+import { useState, useEffect } from "react";
+// import {useHistory} from "react-router-dom";
 
 export default function Management() {
   const router = useRouter();
   // useState is used to change the variable when user types in the values (to check what is going on use console.log(name or description or position ))
   const [name, setName] = useState();
+  const [image, setImage] = useState();
   const [description, setDescription] = useState();
   const [position, setPosition] = useState();
   const [Management, setManagement] = useState();
@@ -33,12 +34,20 @@ export default function Management() {
     // <-- this function is used to submit the data to backend
     e.preventDefault(); //<-- here e.preventDefault is used so that the page doesnot reload since it is the default behaviour of form submission
     try {
-      const response = await ManagementFinder.post("/", {
-        //<-- this is to submit the data. Since data is posted in post request here. The API can be found in the API folder.
-        name,
-        description,
-        position,
-      });
+      const response = await ManagementFinder.post(
+        "/",
+        {
+          //<-- this is to submit the data. Since data is posted in post request here. The API can be found in the API folder.
+          name,
+          description,
+          position,
+          image,
+        },
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      Management(response.data.data);
       console.log(response);
     } catch (err) {
       console.log(err);
@@ -72,10 +81,11 @@ export default function Management() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
-        <div className="container w-11/12 mx-auto my-3 py-3">
+        <div className="container w-11/12 my-3 py-3">
           <table>
             <thead>
               <tr>
+                <th>SN</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Position</th>
@@ -146,14 +156,39 @@ export default function Management() {
               onChange={(e) => setPosition(e.target.value)}
             />
             <br />
-          <label htmlFor="image">Image:</label> <br />
-          <input
-            type="file"
-            id="image"
-            placeholder="Choose a file"
-            className="border-2"
-          />
-          <br />
+            <label htmlFor="desc" className="block">
+              Description:
+            </label>
+            <textarea
+              type="text"
+              id="desc"
+              onChange={(e) => setDescription(e.target.value)}
+              className="border-2"
+            />
+            <br />
+            <label htmlFor="image">Image:</label> <br />
+            <input
+              type="file"
+              id="image"
+              placeholder="Choose a file"
+              onChange={(e) => setImage(e.target.files[0])}
+              className="border-2"
+              required
+              // Since the name or description or position needs to be sent to backend we can change their values using onChnage handler of form. setName is used from useState .
+              //  e.target.value is taking the value from the input box. And the same is done for all the following data that needs to be sent
+            />
+            <label htmlFor="position" className="block">
+              Position:
+            </label>
+            <input
+              type="text"
+              id="position"
+              placeholder=""
+              className="border-2"
+              onChange={(e) => setPosition(e.target.value)}
+              required
+            />
+            <br />
             <div className="m-3">
               <button type="submit" className="border-2">
                 Submit
