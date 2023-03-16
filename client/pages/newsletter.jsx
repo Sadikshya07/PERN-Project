@@ -1,8 +1,9 @@
 import Head from "next/head";
 import NewsletterCard from "../components/TermandAnalysisCard";
 import Slider from "react-slick";
-import HeroSection from "../components/HeroSection";
+import HeroSectionCard from "../components/HeroSection";
 import HomeLayout from "../components/Layouts/HomeLayout";
+import HeroSectionFinder from "./api/HeroSectionFinder";
 import NewsLetterHeader from "../components/NewsLetterHeader";
 import { useEffect, useState } from "react";
 
@@ -67,23 +68,23 @@ export default function TermSummary() {
         <div className="m-6  px-9">
           <NewsLetterHeader title={"2079"} />
           <Slider {...settings}>
-            <NewsletterCard name = "Newsletter- Falgun, 2079"/>
-            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
-            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
-            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
-            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
-            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
-            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
           </Slider>
           <NewsLetterHeader title={"2078"} />
           <Slider {...settings}>
-            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
-            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
-            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
-            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
-            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
-            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
-            <NewsletterCard  name = "Newsletter- Falgun, 2079"/>
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
+            <NewsletterCard name="Newsletter- Falgun, 2079" />
           </Slider>
         </div>
       </HomeLayout>

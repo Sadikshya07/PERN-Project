@@ -45,8 +45,6 @@ export default function Faculty() {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-      faculty(response.data.data);
-      console.log(response);
     } catch (err) {
       console.log(err);
     }

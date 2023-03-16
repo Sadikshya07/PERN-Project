@@ -1,6 +1,8 @@
 import Head from "next/head";
 import TheDeerwalkerCard from "../components/TermandAnalysisCard";
 import HeroSectionCard from "../components/HeroSection";
+import HeroSectionFinder from "./api/HeroSectionFinder";
+
 import HomeLayout from "../components/Layouts/HomeLayout";
 import { useEffect, useState } from "react";
 
@@ -31,10 +33,10 @@ export default function TheDeerwalker() {
           <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
         )}
         <div className="the-deerwalker-grid-container grid md:grid-cols-2 lg:grid-cols-4">
-          <TheDeerwalkerCard name = "The Deerwalker Vol 5 Issue 5 Number 12"/>
-          <TheDeerwalkerCard name = "The Deerwalker Vol 5 Issue 5 Number 12"/>
-          <TheDeerwalkerCard name = "The Deerwalker Vol 5 Issue 5 Number 12"/>
-          <TheDeerwalkerCard name = "The Deerwalker Vol 5 Issue 5 Number 12"/>
+          <TheDeerwalkerCard name="The Deerwalker Vol 5 Issue 5 Number 12" />
+          <TheDeerwalkerCard name="The Deerwalker Vol 5 Issue 5 Number 12" />
+          <TheDeerwalkerCard name="The Deerwalker Vol 5 Issue 5 Number 12" />
+          <TheDeerwalkerCard name="The Deerwalker Vol 5 Issue 5 Number 12" />
         </div>
       </HomeLayout>
     </>
