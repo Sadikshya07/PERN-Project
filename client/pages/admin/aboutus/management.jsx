@@ -46,7 +46,6 @@ export default function Management() {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-      Management(response.data.data);
       console.log(response);
     } catch (err) {
       console.log(err);

@@ -2,6 +2,8 @@ import Head from "next/head";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TermandAnalysisReport from "../components/TermandAnalysisCard";
+import HeroSectionFinder from "./api/HeroSectionFinder";
+
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import AnalysisReportFinder from "./api/AnalysisReportFinder";

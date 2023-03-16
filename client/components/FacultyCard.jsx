@@ -13,6 +13,7 @@ export default function FacultyCard({
     <Popup
       trigger={
         <div className="faculty-card relative cursor-pointer rounded-xl">
+          {console.log(`${process.env.NEXT_PUBLIC_SERVER_HOST}${image}`)}
           <Image
             src={`${process.env.NEXT_PUBLIC_SERVER_HOST}${image}`}
             alt={"faculty image"}

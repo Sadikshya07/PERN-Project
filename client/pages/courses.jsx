@@ -2,6 +2,7 @@ import Head from "next/head";
 import CoursesCard from "../components/CoursesCard";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import HeroSectionCard from "../components/HeroSection";
+import HeroSectionFinder from "./api/HeroSectionFinder";
 import { useEffect, useState } from "react";
 
 export default function Courses() {
@@ -37,10 +38,22 @@ export default function Courses() {
               Elementary School: Grade 1-4
             </h1>
             <div className="courses-link-container grid md:grid-cols-2 lg:grid-cols-4 mb-10">
-              <CoursesCard url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%201%20-%202080.pdf" title="Grade 1" />
-              <CoursesCard url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%202%20-%202080.pdf" title="Grade 2" />
-              <CoursesCard url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%203%20-%202080.pdf" title="Grade 3" />
-              <CoursesCard url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%204%20-%202080.pdf" title="Grade 4" />
+              <CoursesCard
+                url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%201%20-%202080.pdf"
+                title="Grade 1"
+              />
+              <CoursesCard
+                url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%202%20-%202080.pdf"
+                title="Grade 2"
+              />
+              <CoursesCard
+                url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%203%20-%202080.pdf"
+                title="Grade 3"
+              />
+              <CoursesCard
+                url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%204%20-%202080.pdf"
+                title="Grade 4"
+              />
             </div>
           </div>
         </div>
@@ -50,10 +63,22 @@ export default function Courses() {
               Middle School: Grade 5-8
             </h1>
             <div className="courses-link-container grid md:grid-cols-2 lg:grid-cols-4 mb-10">
-              <CoursesCard url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%205%20-%202080.pdf" title="Grade 5" />
-              <CoursesCard url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%206%20-%202080.pdf" title="Grade 6" />
-              <CoursesCard url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%207%20-%202080.pdf" title="Grade 7" />
-              <CoursesCard url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%208%20-%202080.pdf" title="Grade 8" />
+              <CoursesCard
+                url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%205%20-%202080.pdf"
+                title="Grade 5"
+              />
+              <CoursesCard
+                url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%206%20-%202080.pdf"
+                title="Grade 6"
+              />
+              <CoursesCard
+                url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%207%20-%202080.pdf"
+                title="Grade 7"
+              />
+              <CoursesCard
+                url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%208%20-%202080.pdf"
+                title="Grade 8"
+              />
             </div>
           </div>
         </div>
@@ -63,10 +88,22 @@ export default function Courses() {
               High School: Grade 9-12
             </h1>
             <div className="courses-link-container grid md:grid-cols-2 lg:grid-cols-4 mb-10">
-              <CoursesCard url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%209%20-%202080.pdf" title="Grade 9" />
-              <CoursesCard url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%2010%20-%202080.pdf" title="Grade 10" />
-              <CoursesCard url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%2011%20-%202080.pdf" title="Grade 11" />
-              <CoursesCard url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%2012%20-%202080.pdf" title="Grade 12" />
+              <CoursesCard
+                url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%209%20-%202080.pdf"
+                title="Grade 9"
+              />
+              <CoursesCard
+                url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%2010%20-%202080.pdf"
+                title="Grade 10"
+              />
+              <CoursesCard
+                url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%2011%20-%202080.pdf"
+                title="Grade 11"
+              />
+              <CoursesCard
+                url="https://deerwalk.edu.np/sifalschool/public/uploads/course/DSS%20-%20COURSE%20CREDIT%20-%20GRADE%2012%20-%202080.pdf"
+                title="Grade 12"
+              />
             </div>
           </div>
         </div>
