@@ -4,6 +4,7 @@ import Link from "next/link";
 import ManagementFinder from "../../api/ManagementFinder";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import { useState, useEffect } from "react";
+import {useRouter} from "next/router";
 
 export default function Management() {
   const router = useRouter();
@@ -68,7 +69,7 @@ export default function Management() {
   };
 
   const handleUpdate = (id) => {
-    router.push(`/admin/aboutus/${id}`);
+    router.push("/admin/aboutus/${id}");
   };
 
   return (
@@ -100,7 +101,7 @@ export default function Management() {
             <td>description={person.description}</td>
             <td>position={person.position}</td>
             <td>
-              <Link href="/admin/aboutus/${id}">
+              <Link href="/admin/aboutus/`${id}`">
                 <button
                 onClick = {() => handleUpdate(person.id)}
                 className="border-2">Update</button>
@@ -155,16 +156,6 @@ export default function Management() {
               onChange={(e) => setPosition(e.target.value)}
             />
             <br />
-            <label htmlFor="desc" className="block">
-              Description:
-            </label>
-            <textarea
-              type="text"
-              id="desc"
-              onChange={(e) => setDescription(e.target.value)}
-              className="border-2"
-            />
-            <br />
             <label htmlFor="image">Image:</label> <br />
             <input
               type="file"
@@ -176,18 +167,6 @@ export default function Management() {
               // Since the name or description or position needs to be sent to backend we can change their values using onChnage handler of form. setName is used from useState .
               //  e.target.value is taking the value from the input box. And the same is done for all the following data that needs to be sent
             />
-            <label htmlFor="position" className="block">
-              Position:
-            </label>
-            <input
-              type="text"
-              id="position"
-              placeholder=""
-              className="border-2"
-              onChange={(e) => setPosition(e.target.value)}
-              required
-            />
-            <br />
             <div className="m-3">
               <button type="submit" className="border-2">
                 Submit

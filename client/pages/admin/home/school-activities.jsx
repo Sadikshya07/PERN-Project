@@ -7,6 +7,7 @@ import SchoolActivitiesFinder from "../../api/SchoolActivitiesFinder";
 
 export default function Metrics() {
   const [link, setLink] = useState();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

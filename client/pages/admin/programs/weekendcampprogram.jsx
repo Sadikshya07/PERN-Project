@@ -2,13 +2,40 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import WeekendCampFinder from "../../api/WeekendCampFinder";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 
 export default function WeekendCampProgram() {
   const [name, setName] = useState();
   const [description, setDescription] = useState();
+  const [WeekendCampProgram, setWeekendCampProgram] = useState();
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await WeekendCampFinder.get("/");
+        console.log(response.data.data);
+        setWeekendCampProgram(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleDelete = async (id) => {
+    try{
+      const response = await WeekendCampFinder.delete(`/${id}`);
+      setWeekendCampProgram(
+        WeekendCampProgram.filter((item) => {
+          return item.id !== id;
+        })
+      );
+    } catch (err){
+      console.log(err);
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +48,8 @@ export default function WeekendCampProgram() {
     catch(err){
       console.log(err);
     }}
+
+  
   return (
     <div>
       <Head>
@@ -41,6 +70,30 @@ export default function WeekendCampProgram() {
               <th>Actions</th>
             </tr>
           </thead>
+          <tbody>
+             {WeekendCampProgram &&
+              WeekendCampProgram.map((item) => {
+              return (
+            <tr key={item.id} >
+            <td>name={item.name}</td>
+            <td>description={item.description}</td>
+            <td>
+              <Link href="">
+                <button
+                onClick = {() => handleUpdate(item.id)}
+                className="border-2">Update</button>
+              </Link>
+            </td>
+            <td>
+              <button
+              onClick = {() => handleDelete(item.id)}
+              className="border-2">Delete</button>
+            </td>
+            </tr>
+              );
+             })
+           }
+           </tbody>
         </table>
         <form onChange={handleSubmit}>
           <label htmlFor="name">Name:</label> <br />

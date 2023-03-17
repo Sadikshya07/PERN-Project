@@ -2,13 +2,29 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import DssCoursesFinder from "../../api/DssCoursesFinder";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
+import {useRouter} from "next/router";
 
 export default function DSSCourses() {
+  const router = useRouter();
   const [name, setName] = useState();
   const [description, setDescription] = useState();
+  const [DssCourses, setDssCourses] = useState();
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await DssCoursesFinder.get("/");
+        console.log(response.data.data);
+        setDssCourses(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +37,25 @@ export default function DSSCourses() {
     catch(err){
       console.log(err);
     }}
+    
+    const handleDelete = async (id) => {
+      try{
+        const response = await DssCoursesFinder.delete(`/${id}`);
+        setDssCourses(
+          DssCourses.filter((Courses) => {
+            return Courses.id !== id;
+          })
+        );
+      } catch (err){
+        console.log(err);
+      }
+    }
+
+
+    const handleUpdate = async (id) => {
+      router.push("")
+    }
+
   return (
     <div>
       <Head>
@@ -35,12 +70,35 @@ export default function DSSCourses() {
         <table>
           <thead>
             <tr>
-              <th>SN</th>
               <th>Name</th>
               <th>Description</th>
               <th>Actions</th>
             </tr>
           </thead>
+          <tbody>
+             {DssCourses &&
+              DssCourses.map((Courses) => {
+              return (
+            <tr key={Courses.id} >
+            <td>name={Courses.name}</td>
+            <td>description={Courses.description}</td>
+            <td>
+              <Link href="">
+                <button
+                onClick = {() => handleUpdate(Courses.id)}
+                className="border-2">Update</button>
+              </Link>
+            </td>
+            <td>
+              <button
+              onClick = {() => handleDelete(Courses.id)}
+              className="border-2">Delete</button>
+            </td>
+            </tr>
+              );
+             })
+           }
+           </tbody>
         </table>
         <form onChange={handleSubmit}>
           <label htmlFor="name">Name:</label> <br />

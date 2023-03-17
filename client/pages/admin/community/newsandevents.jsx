@@ -4,12 +4,15 @@ import Link from "next/link";
 import NewsandEventsFinder from "../../api/NewsandEventsFinder";
 import { useState } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
+import {useRouter} from "next/router"
 
 export default function NewsAndEvents() {
+  const router = useRouter();
   const [author, setAuthor] = useState();
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [publishdate, setDate] = useState();
+  const [newsandevents, setNewsandEvents] = useState();
   const [error, setError] = useState("");
   const [image1, setImage1] = useState();
   const [image2, setImage2] = useState();
@@ -35,6 +38,23 @@ export default function NewsAndEvents() {
       console.log(err);
     }
   };
+  const handleDelete = async (id) => {
+    try{
+      const response = await NewsandEventsFinder.delete(`/${id}`);
+      setNewsandEvents(
+        newsandevents.filter((news) => {
+          return news.id !== id;
+        })
+      );
+    }catch (err){
+      console.log(err);
+    }
+
+  };
+  
+  const handleUpdate = (id) => {
+    router.push(``);
+  };
   return (
     <div>
       <Head>
@@ -49,7 +69,6 @@ export default function NewsAndEvents() {
         <table>
           <thead>
             <tr>
-              <th>SN</th>
               <th>AuthorName</th>
               <th>Title</th>
               <th>Description</th>
@@ -58,6 +77,32 @@ export default function NewsAndEvents() {
               <th>Actions</th>
             </tr>
           </thead>
+          <tbody>
+             {newsandevents &&
+              newsandevents.map((news) => {
+              return (
+            <tr key={news.id} >
+            <td>author={news.author}</td>
+            <td>title={news.title}</td>
+            <td>description={news.description}</td>
+            <td>publishdate={news.publishdate}</td>
+            <td>
+              <Link href="">
+                <button
+                onClick = {() => handleUpdate(news.id)}
+                className="border-2">Update</button>
+              </Link>
+            </td>
+            <td>
+              <button
+              onClick = {() => handleDelete(news.id)}
+              className="border-2">Delete</button>
+            </td>
+            </tr>
+              );
+             })
+           }
+           </tbody>
         </table>
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <label htmlFor="fname">Full name:</label> <br />
