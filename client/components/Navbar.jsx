@@ -13,9 +13,9 @@ export default function Home() {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <body className={`${isOverlayOpen ? "bg-orange" : ""}`}></body>
-      </Head>
+      </Head> */}
 
       <nav className="sticky top-0 bg-orange w-full py-2 flex justify-center z-50">
         <div className="w-11/12 flex justify-between items-center">

@@ -7,12 +7,18 @@ import { SchoolContext } from "./context/SchoolContext";
 
 const SchoolActivities = () => {
   const { schoolActivites } = useContext(SchoolContext);
+  let silidesToShowValue;
+  if (schoolActivites && schoolActivites.length <= 4) {
+    silidesToShowValue = schoolActivites.lenght;
+  } else {
+    silidesToShowValue = 4;
+  }
 
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: silidesToShowValue,
     slidesToScroll: 4,
     responsive: [
       {
@@ -44,6 +50,7 @@ const SchoolActivities = () => {
     <div className="school-activities mt-2 bg-gray py-8">
       <div className="school-activities-content w-10/12 md:w-11/12 mx-auto">
         <h1 className="text-2xl md:text-4xl font-bold mb-6">
+          {console.log(schoolActivites && schoolActivites.length)}
           School Activities
         </h1>
         <Slider {...settings}>

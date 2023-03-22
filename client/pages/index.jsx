@@ -82,6 +82,7 @@ function Home() {
   }, []);
 
   let i = 0;
+  let y = 0;
 
   const schoolinMediaMapped =
     schoolMedia &&
@@ -119,13 +120,13 @@ function Home() {
     newsandEvents &&
     newsandEvents.map((news) => {
       let d = new Date(news.publishdate);
-      i++;
+      y++;
       return (
         <Link
           href={`/news-and-events/${news.id}`}
-          className={`hover:cursor-pointer item-${i}`}
+          className={`hover:cursor-pointer item-${y}`}
         >
-          <div className="first-card  h-full rounded-3xl relative">
+          <div className="h-full rounded-3xl relative">
             <Image
               src={`${process.env.NEXT_PUBLIC_SERVER_HOST}${news.image1}`}
               cover
