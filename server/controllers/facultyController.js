@@ -72,6 +72,8 @@ router.put("/:id", async (req, res) => {
       department: department,
       AreaofExpertise: AreaofExpertise,
       Experience: Experience,
+      image: ImagePath
+
     };
     const results = await prisma.faculty.update({
       where: {
@@ -100,6 +102,7 @@ router.delete("/:id", async (req, res) => {
       department: department,
       AreaofExpertise: AreaofExpertise,
       Experience: Experience,
+      image:ImagePath
     };
     const results = await prisma.faculty.delete({
       where: {

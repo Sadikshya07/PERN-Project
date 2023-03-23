@@ -16,7 +16,7 @@ export default function Management() {
   const [Management, setManagement] = useState();
   // error is used to display the error but it is not completed
   const [error, setError] = useState("");
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,7 +41,7 @@ export default function Management() {
           name,
           description,
           position,
-          image,
+          image
         },
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -69,7 +69,7 @@ export default function Management() {
   };
 
   const handleUpdate = (id) => {
-    router.push("/admin/aboutus/${id}");
+    router.push(`/admin/aboutus/Management/${id}`);
   };
 
   return (
@@ -89,6 +89,7 @@ export default function Management() {
                 <th>Name</th>
                 <th>Description</th>
                 <th>Position</th>
+                <th>Image</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -100,8 +101,9 @@ export default function Management() {
             <td>name={person.name}</td>
             <td>description={person.description}</td>
             <td>position={person.position}</td>
+            <td>image={person.image}</td>
             <td>
-              <Link href="/admin/aboutus/`${id}`">
+              <Link href="/admin/aboutus/Management/`${id}`">
                 <button
                 onClick = {() => handleUpdate(person.id)}
                 className="border-2">Update</button>
@@ -164,8 +166,8 @@ export default function Management() {
               onChange={(e) => setImage(e.target.files[0])}
               className="border-2"
               required
-              // Since the name or description or position needs to be sent to backend we can change their values using onChnage handler of form. setName is used from useState .
-              //  e.target.value is taking the value from the input box. And the same is done for all the following data that needs to be sent
+              // Since the name or description or position needs to be sent to backend we can change their values using onChange handler of form. setName is used from useState .
+              // e.target.value is taking the value from the input box. And the same is done for all the following data that needs to be sent
             />
             <div className="m-3">
               <button type="submit" className="border-2">

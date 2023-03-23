@@ -1,47 +1,44 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import ManagementFinder from "../../api/ManagementFinder";
+import DssCoursesFinder from "../../api/DssCoursesFinder";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
-import {useRouter} from "next/router"
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
-export default function UpdateManagement(){
-    const router = useRouter()
-    const { id } = router.query
+export default function UpdateDssCourses() {
+  const router = useRouter();
+  const { id } = router.query;
   const [name, setName] = useState();
   const [description, setDescription] = useState();
-  const [position, setPosition] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await ManagementFinder.get(`/${id}`);
-        console.log(response.data.data);
-        setName(response.data.data.person.name);
-        setDescription(response.data.data.person.description);
-        setPosition(response.data.data.person.position);
+        const response = await DssCoursesFinder.get(`/${id}`);
+        console.log(response.Courses.data);
+        setName(response.data.data.Courses.name);
+        setDescription(response.data.data.Courses.description);
       } catch (err) {
         console.log(err);
       }
     };
-    fetchData();
-  }, []);
+    if (id) fetchData();
+  }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-      const response = await ManagementFinder.put(`${id}`, {
-        name,
-        description,
-        position,
-      });
-      router.push(`/admin/aboutus/management`)
+    const response = await DssCoursesFinder.put(`/${id}`, {
+      name,
+      description,
+    });
+    router.push(`/admin/programs/dsscourses`);
   };
 
   return (
     <div>
       <Head>
-        <title>Admin | Management</title>
+        <title>Admin | DssCourses</title>
         <meta name="description" content="Deerwalk Sifal School" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -72,27 +69,7 @@ export default function UpdateManagement(){
               required
               onChange={(e) => setDescription(e.target.value)}
             />
-            <br />
-            <label htmlFor="position" className="block">
-              Position:
-            </label>
-            <input
-              type="text"
-              id="position"
-              placeholder="Position"
-              className="border-2"
-              required
-              onChange={(e) => setPosition(e.target.value)}
-            />
-            <br />
-          <label htmlFor="image">Image:</label> <br />
-          <input
-            type="file"
-            id="image"
-            placeholder="Choose a file"
-            className="border-2"
-          />
-          <br />
+           <br/>
             <div className="m-3">
               <button type="submit" className="border-2">
                 Submit

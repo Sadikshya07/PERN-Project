@@ -4,8 +4,11 @@ import Link from "next/link";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import FacultyFinder from "../../api/FacultyFinder";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Faculty() {
+  const router = useRouter();
+
   const [name, setName] = useState();
   const [faculty, setFaculty] = useState();
   const [description, setDescription] = useState();
@@ -65,6 +68,10 @@ export default function Faculty() {
     }
   };
 
+  const handleUpdate = (id) => {
+    router.push("/admin/aboutus/update-faculty");
+  };
+
   return (
     <div>
       <Head>
@@ -98,7 +105,7 @@ export default function Faculty() {
             <td>AreaofExpertise={person.AreaofExpertise}</td>
             <td>Experience={person.Experience}</td>
             <td>
-              <Link href="/admin/aboutus/update-faculty">
+              <Link href="/admin/aboutus/Faculty/">
                 <button
                 onClick = {() => handleUpdate(person.id)}
                 className="border-2">Update</button>

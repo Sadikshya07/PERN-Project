@@ -53,7 +53,7 @@ export default function DSSCourses() {
 
 
     const handleUpdate = async (id) => {
-      router.push("")
+      router.push(`/admin/programs/${id}`)
     }
 
   return (
@@ -65,8 +65,6 @@ export default function DSSCourses() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
-        <button className="border-2">Add</button>
-        <br />
         <table>
           <thead>
             <tr>
@@ -83,7 +81,7 @@ export default function DSSCourses() {
             <td>name={Courses.name}</td>
             <td>description={Courses.description}</td>
             <td>
-              <Link href="">
+              <Link href="/admin/programs/`${id}`">
                 <button
                 onClick = {() => handleUpdate(Courses.id)}
                 className="border-2">Update</button>
@@ -119,7 +117,7 @@ export default function DSSCourses() {
             className="border-2"
             required
             onChange={(e) => setDescription(e.target.value)}
-          ></input>{" "}
+          ></input>
           <br />
           <button type="submit" className="border-2">
             Submit

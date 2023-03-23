@@ -61,12 +61,13 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { name, description, position } = req.body;
+    const { name, description, position, image} = req.body;
 
     const data = {
       name: name,
       description: description,
       position: position,
+      image: image
     };
     const results = await prisma.management.update({
       where: {
@@ -86,12 +87,13 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { name, description, position } = req.body;
+    const { name, description, position,image } = req.body;
 
     const data = {
       name: name,
       description: description,
       position: position,
+      image: image
     };
     const results = await prisma.management.delete({
       where: {

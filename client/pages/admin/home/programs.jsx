@@ -1,13 +1,32 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef ,useState,useEffect} from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import ProgramsFinder from "../../api/ProgramsFinder";
+import {useRouter} from "next/router";
 
 export default function Programs() {
+  const router = useRouter();
   const image1Ref = useRef();
   const image2Ref = useRef();
   const image3Ref = useRef();
+  const [programs,setPrograms] = useState();
+  const [image1 , setImage1] = useState();
+  const [image2 , setImage2] = useState();
+  const [image3 , setImage3] = useState()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await ProgramsFinder.get("/");
+        console.log(response.data.data);
+        setPrograms(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +47,23 @@ export default function Programs() {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      const response = await ProgramsFinder.delete(`/${id}`);
+      setPrograms(
+        programs.filter((programs) => {
+          return programs.id !== id;
+        })
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUpdate = (id) => {
+    router.push(`/admin/home/Programs/${id}`);
+  }
+    
   return (
     <div>
       <Head>
@@ -39,6 +75,43 @@ export default function Programs() {
       <AdminLayout>
         <div className="form-container">
           <h1>Add Programs</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>SN</th>
+                <th>Image1</th>
+                <th>Image2</th>
+                <th>Image3</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+             {programs &&
+              programs.map((programs) => {
+              return (
+            <tr key={programs.id} >
+            <td>image1={programs.image1}</td>
+            <td>image2={programs.image2}</td>
+            <td>image3={programs.image3}</td>
+            <td>
+              <Link href="/admin/home/Programs/`${id}`">
+                <button
+                onClick = {() => handleUpdate(programs.id)}
+                className="border-2">Update</button>
+              </Link>
+            </td>
+            <td>
+              <button
+              onClick = {() => handleDelete(programs.id)}
+              className="border-2">Delete</button>
+            </td>
+            </tr>
+              );
+             })
+           }
+           </tbody>
+          </table>
+            
           <form onSubmit={handleSubmit}>
             <label for="image1">Elementary School:</label>
             <input
@@ -47,6 +120,8 @@ export default function Programs() {
               ref={image1Ref}
               placeholder="choose file"
               className="border-2"
+              onChange={(e) => setImage1(e.target.files[0])}
+              required
             ></input>
             <br />
             <label for="image2">Middle School:</label>
@@ -56,6 +131,8 @@ export default function Programs() {
               ref={image2Ref}
               placeholder="choose file"
               className="border-2"
+              onChange={(e) => setImage2(e.target.files[0])}
+              required
             ></input>
             <br />
             <label for="image3">High School:</label>
@@ -65,6 +142,8 @@ export default function Programs() {
               ref={image3Ref}
               placeholder="choose file"
               className="border-2"
+              onChange={(e) => setImage3(e.target.files[0])}
+              required
             ></input>
             <br />
             <button type="submit" className="border-2">

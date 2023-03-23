@@ -3,7 +3,7 @@ import AdminLayout from "../../../components/Layouts/AdminLayout";
 import MetricsFinder from "../../api/MetricsFinder";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 export default function Metrics() {
   const [formData, setFormData] = useState({
@@ -12,6 +12,20 @@ export default function Metrics() {
     Teachers: null,
     StudentTeacherRatio: null,
   });
+  const [metrics,setMetrics] = useState()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await MetricsFinder.get("/");
+        console.log(response.data.data);
+        setMetrics(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +34,19 @@ export default function Metrics() {
       const response = await MetricsFinder.post("/", {
         formData,
       });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await MetricsFinder.delete(`/${id}`);
+      setMetrics(
+        metrics.filter((metrics) => {
+          return metrics.id !== id;
+        })
+      );
     } catch (err) {
       console.log(err);
     }
@@ -36,6 +63,45 @@ export default function Metrics() {
       <AdminLayout>
         <div className="main-container">
           <h1>Metrics</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>SN</th>
+                <th>Students</th>
+                <th>StudentsPerClass</th>
+                <th>Teachers</th>
+                <th>StudentTeacherRatio</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+             {metrics &&
+              metrics.map((metrics) => {
+              return (
+            <tr key={metrics.id} >
+            <td>{metrics.Students}</td>
+            <td>{metrics.StudentsPerClass}</td>
+            <td>{metrics.Teachers}</td>
+            <td>{metrics.StudentTeacherRatio}</td>
+            <td>
+              <Link href="">
+                <button
+                onClick = {() => handleUpdate(metrics.id)}
+                className="border-2">Update</button>
+              </Link>
+            </td>
+            <td>
+              <button
+              onClick = {() => handleDelete(metrics.id)}
+              className="border-2">Delete</button>
+            </td>
+            </tr>
+              );
+             })
+           }
+           </tbody>
+          </table>
+           
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Students: </label>
             <input

@@ -40,7 +40,7 @@ router.post("/", async (req, res) => {
     const { name, description } = req.body;
     const data = {
       name: name,
-      description: description,
+      description: description
     };
     const results = await prisma.dsscourses.create({
       data: data,
