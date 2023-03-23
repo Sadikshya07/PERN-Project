@@ -47,6 +47,7 @@ export default function Management() {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
+      Management(response.data.data);
       console.log(response);
     } catch (err) {
       console.log(err);
@@ -81,7 +82,7 @@ export default function Management() {
       </Head>
       <AdminLayout>
         <div className="container w-11/12 my-3 py-3">
-          {/* <table>
+          <table>
             <thead>
               <tr>
                 <th>SN</th>
