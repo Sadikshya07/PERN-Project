@@ -1,28 +1,29 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import ManagementFinder from "../../api/ManagementFinder";
-import AdminLayout from "../../../components/Layouts/AdminLayout";
+import ProgramsFinder from "../../../api/ProgramsFinder";
+import AdminLayout from "../../../../components/Layouts/AdminLayout";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import {useRef, useState, useEffect } from "react";
 
-export default function UpdateManagement() {
+export default function UpdatePrograms() {
   const router = useRouter();
   const { id } = router.query;
-  const [name, setName] = useState();
-  const [description, setDescription] = useState();
-  const [position, setPosition] = useState();
-  const [image, setImage] = useState();
+  const image1Ref = useRef();
+  const image2Ref = useRef();
+  const image3Ref = useRef();
+  const [image1 , setImage1] = useState();
+  const [image2 , setImage2] = useState();
+  const [image3 , setImage3] = useState()
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await ManagementFinder.get(`/${id}`);
+        const response = await ProgramsFinder.get(`/${id}`);
         console.log(response.data.data);
-        setName(response.data.data.person.name);
-        setDescription(response.data.data.person.description);
-        setPosition(response.data.data.person.position);
-        setImage(response.data.data.person.image);
+        setImage1(response.data.data.programs.image1);
+        setImage2(response.data.data.programs.image2);
+        setImage3(response.data.data.programs.image3);
       } catch (err) {
         console.log(err);
       }
@@ -32,77 +33,61 @@ export default function UpdateManagement() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await ManagementFinder.put(`/${id}`, {
-      name,
-      description,
-      position,
-      image,
+    const response = await  ProgramsFinder.put(`/${id}`, {
+        image1: image1Ref.current.files[0],
+        image2: image2Ref.current.files[0],
+        image3: image3Ref.current.files[0],
     });
-    router.push(`/admin/aboutus/management`);
+    router.push(`/admin/home/programs`);
   };
 
   return (
     <div>
       <Head>
-        <title>Admin | Management</title>
+        <title>Admin | Update-Programs</title>
         <meta name="description" content="Deerwalk Sifal School" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
         <div>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="fname" className="block">
-              Full name:
-            </label>
-            <input
-              type="text"
-              id="fname"
-              placeholder="Full name:"
-              className="border-2"
-              required
-              onChange={(e) => setName(e.target.value)}
-            />
-            <br />
-            <label htmlFor="description" className="block">
-              Description:
-            </label>
-            <input
-              type="text"
-              id="description"
-              placeholder="Description"
-              className="border-2"
-              required
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <br />
-            <label htmlFor="position" className="block">
-              Position:
-            </label>
-            <input
-              type="text"
-              id="position"
-              placeholder="Position"
-              className="border-2"
-              required
-              onChange={(e) => setPosition(e.target.value)}
-            />
-            <br />
-            <label htmlFor="image">Image:</label> <br />
+        <form onSubmit={handleSubmit}>
+            <label for="image1">Elementary School:</label>
             <input
               type="file"
-              id="image"
-              placeholder="Choose a file"
+              id="elementaryschool"
+              ref={image1Ref}
+              placeholder="choose file"
               className="border-2"
+              onChange={(e) => setImage1(e.target.files[0])}
               required
-              onChange={(e) => setImage(e.target.value)}
-            />
+            ></input>
             <br />
-            <div className="m-3">
-              <button type="submit" className="border-2">
-                Submit
-              </button>
-            </div>
+            <label for="image2">Middle School:</label>
+            <input
+              type="file"
+              id="middleschool"
+              ref={image2Ref}
+              placeholder="choose file"
+              className="border-2"
+              onChange={(e) => setImage2(e.target.files[0])}
+              required
+            ></input>
+            <br />
+            <label for="image3">High School:</label>
+            <input
+              type="file"
+              id="highschool"
+              ref={image3Ref}
+              placeholder="choose file"
+              className="border-2"
+              onChange={(e) => setImage3(e.target.files[0])}
+              required
+            ></input>
+            <br />
+            <button type="submit" className="border-2">
+              Submit
+            </button>
           </form>
         </div>
       </AdminLayout>
