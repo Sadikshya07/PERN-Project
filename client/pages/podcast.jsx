@@ -2,6 +2,8 @@ import Head from "next/head";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import HeroSectionCard from "../components/HeroSection";
 import PodcastCard from "../components/PodcastCard";
+import HeroSectionFinder from "./api/HeroSectionFinder";
+
 import { useEffect, useState } from "react";
 
 export default function Podcast() {
@@ -10,7 +12,7 @@ export default function Podcast() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await HeroSectionFinder.get("/The Deerwalker");
+        const response = await HeroSectionFinder.get("/Podcast");
         setHeroImage(response.data.data);
       } catch (err) {
         console.log(err.message);

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import HeroSectionCard from "../components/HeroSection";
+import HeroSectionFinder from "./api/HeroSectionFinder";
 import StudentCornerCard from "../components/StudentCornerCard";
 import { useEffect, useState } from "react";
 
@@ -10,7 +11,7 @@ export default function StudentCorner() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await HeroSectionFinder.get("/The Deerwalker");
+        const response = await HeroSectionFinder.get("/Student Corner");
         setHeroImage(response.data.data);
       } catch (err) {
         console.log(err.message);

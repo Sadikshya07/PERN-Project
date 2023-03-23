@@ -1,8 +1,10 @@
 import Head from "next/head";
 import HomeLayout from "../components/Layouts/HomeLayout";
-import HeroSection from "../components/HeroSection";
+import HeroSectionCard from "../components/HeroSection";
 import NewsandEventsCard from "../components/NewsandEventsCard";
 import NewsandEventsFinder from "./api/NewsandEventsFinder";
+import HeroSectionFinder from "./api/HeroSectionFinder";
+
 import Spinner from "../components/Spinner";
 import { useEffect, useState } from "react";
 

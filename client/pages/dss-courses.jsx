@@ -25,9 +25,10 @@ export default function DSSCourses() {
     const fetchData = async () => {
       try {
         const response = await DssCoursesFinder.get("/");
-        const response2 = await HeroSectionFinder.get("/DSS-Courses");
+        const response2 = await HeroSectionFinder.get("/DSS Courses");
         setData(response.data.data);
         setHeroImage(response2.data.data);
+        console.log(response2.data.data);
       } catch (err) {
         console.log(err);
       }

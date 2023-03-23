@@ -23,7 +23,7 @@ export default function Popup(props) {
           exit={{
             opacity: 0,
           }}
-          className="popup-container transition-all h-[100vh] w-full fixed top-0 left-0 bg-[rgba(0,0,0,0.2)] flex justify-center items-center"
+          className={`popup-container transition-all h-[100vh] w-full fixed top-0 left-0 bg-[rgba(0,0,0,0.2)] flex justify-center items-center z-50`}
           onClick={() => props.setTrigger(false)}
         >
           <motion.div
@@ -40,7 +40,7 @@ export default function Popup(props) {
             exit={{
               y: -200,
             }}
-            className="popup-modal relative mx-auto w-11/12 bg-white rounded-xl p-1"
+            className={`popup-modal relative mx-auto  bg-white ${props.height} ${props.width} rounded-xl p-1`}
             onClick={(e) => e.stopPropagation()}
           >
             <button>
@@ -49,7 +49,7 @@ export default function Popup(props) {
                 onClick={() => props.setTrigger(false)}
               />
             </button>
-            <div>{props.children}</div>
+            {props.children}
           </motion.div>
         </motion.div>
       ) : (

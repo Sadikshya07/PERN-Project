@@ -5,10 +5,10 @@ export default [
         title: "Dashboard",
         url: "/admin/dashboard",
       },
-      {
-        title: "Add User",
-        url: "/admin/adduser",
-      },
+      // {
+      //   title: "Add User",
+      //   url: "/admin/adduser",
+      // },
       // {
       //   title: "View Users",
       //   url: "/admin/viewusers",

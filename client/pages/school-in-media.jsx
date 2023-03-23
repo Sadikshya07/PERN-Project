@@ -13,7 +13,7 @@ export default function SchoolInMedia() {
     const fetchData = async () => {
       try {
         const response = await SchoolinMediaFinder.get("/");
-        const response2 = await HeroSectionFinder.get("/School In Media");
+        const response2 = await HeroSectionFinder.get("/School in Media");
         setHeroImage(response2.data.data);
         setData(response.data.data);
       } catch (err) {

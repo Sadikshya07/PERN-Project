@@ -1,5 +1,6 @@
 import Image from "next/image";
-import Popup from "reactjs-popup";
+import { useState } from "react";
+import Popup from "./Popup";
 
 export default function FacultyCard({
   name,
@@ -9,32 +10,29 @@ export default function FacultyCard({
   Experience,
   image,
 }) {
+  const [trigger, setTrigger] = useState(false);
   return (
-    <Popup
-      trigger={
-        <div className="faculty-card relative cursor-pointer rounded-xl">
-          <Image
-            src={`${process.env.NEXT_PUBLIC_SERVER_HOST}${image}`}
-            alt={"faculty image"}
-            height={364}
-            width={384}
-            className="rounded-t-xl"
-          />
-          <div className="overlay absolute flex items-end justify-start opacity-0 text-center bottom-0 rounded-xl h-0 w-full bg-[rgb(0,0,0)] bg-[rgba(0,0,0,0.5)] text-orange text-xl ">
-            <p className="text-center p-3 m-3 font-black text-2xl">{name}</p>
-          </div>
+    <>
+      <div
+        className="faculty-card relative cursor-pointer rounded-xl"
+        onClick={(e) => setTrigger(true)}
+      >
+        <Image
+          src={`${process.env.NEXT_PUBLIC_SERVER_HOST}${image}`}
+          alt={"faculty image"}
+          height={364}
+          width={384}
+          className="rounded-t-xl"
+        />
+        <div className="overlay absolute flex items-end justify-start opacity-0 text-center bottom-0 rounded-xl h-0 w-full bg-[rgb(0,0,0)] bg-[rgba(0,0,0,0.5)] text-orange text-xl ">
+          <p className="text-center p-3 m-3 font-black text-2xl">{name}</p>
         </div>
-      }
-      modal
-    >
-      {(close) => (
+      </div>
+      <Popup trigger={trigger} setTrigger={setTrigger} width={"w-8/12"}>
         <div className="popup-container flex flex-col w-full rounded-xl">
-          <button className="self-end px-5 pt-3 text-4xl" onClick={close}>
-            &times;
-          </button>
-          <div className="content flex flex-col lg:flex-row gap-5 !p-10 !pt-0">
+          <div className="content flex flex-col md:flex-row lg:grid lg:grid-cols-2 lg:gap-10 !p-10">
             <div
-              className="faculty-overlay-image w-full h-[20em] lg:w-[30em] [30em] lg:h-[22rem] rounded-xl"
+              className="faculty-overlay-image w-full h-[20em] lg:w-full lg:h-[22rem] rounded-xl"
               style={{
                 backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${image}')`,
                 backgroundSize: "cover",
@@ -57,7 +55,7 @@ export default function FacultyCard({
             </div>
           </div>
         </div>
-      )}
-    </Popup>
+      </Popup>
+    </>
   );
 }
