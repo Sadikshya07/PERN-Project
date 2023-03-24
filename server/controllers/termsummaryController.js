@@ -34,12 +34,23 @@ router.get("/:id", async (req, res) => {
     console.error(error.message);
   }
 });
+let imagePathServer = "/images/";
+let filePathServer = "/files/";
 router.post("/", async (req, res) => {
   try {
     console.log(req.body);
+    let ImagePath, FilePath;
+
+    ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
+    FilePath = filePathServer + Date.now() + "-" + req.files.file.name;
+    await req.files.image.mv("./public" + ImagePath);
+    await req.files.file.mv("./public" + FilePath);
+
     const { name } = req.body;
     const data = {
       name: name,
+      image: ImagePath,
+      file: FilePath,
     };
     const results = await prisma.termsummary.create({
       data: data,
@@ -56,17 +67,38 @@ router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const { name } = req.body;
-
+    const vals = await prisma.termsummary.findFirst({
+      where: {
+        id: id,
+      },
+    });
+    if (req.files) {
+      // checking if image or file has been updated
+      if (req.files.image) {
+        imagePathServer = ImagePath + Date.now() + "-" + req.files.image.name;
+        await req.files.image.mv("./public" + ImagePath);
+        await fsPromises.unlink(vals.image);
+      } else ImagePath = "";
+      if (req.files.file) {
+        FilePath = filePathServer + Date.now() + "-" + req.files.file.name;
+        await req.files.book_file.mv("./public" + FilePath);
+        await fsPromises.unlink(vals.file);
+      } else FilePath = "";
+    } else {
+      ImagePath = "";
+      FilePath = "";
+    }
     const data = {
       name: name,
+      ...(ImagePath !== "" && { image: ImagePath }),
+      ...(FilePath !== "" && { file: FilePath }),
     };
     const results = await prisma.termsummary.update({
       where: {
         id,
       },
-      data,
+      data: data,
     });
-    console.log(results);
     res.status(201).json({
       status: "success",
       data: results,

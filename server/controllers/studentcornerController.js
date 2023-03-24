@@ -34,17 +34,23 @@ router.get("/:id", async (req, res) => {
     console.error(error.message);
   }
 });
+let imagePathServer = "/images/";
+
 router.post("/", async (req, res) => {
   try {
     console.log(req.body);
+    let ImagePath;
+    ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
     const { studentname, rollnumber, grade, articletitle, articlecontent } =
       req.body;
+
     const data = {
       studentname: studentname,
       rollnumber: rollnumber,
       grade: grade,
       articletitle: articletitle,
       articlecontent: articlecontent,
+      image: ImagePath,
     };
     const results = await prisma.studentcorner.create({
       data: data,
@@ -62,13 +68,24 @@ router.put("/:id", async (req, res) => {
     const id = req.params.id;
     const { studentname, rollnumber, grade, articletitle, articlecontent } =
       req.body;
-
+    let ImagePath;
+    const vals = await prisma.newsletter.findFirst({
+      where: {
+        id: id,
+      },
+    });
+    if (req.files.image) {
+      imagePathServer = ImagePath + Date.now() + "-" + req.files.image.name;
+      await req.files.image.mv("./public" + ImagePath);
+      await fsPromises.unlink(vals.image);
+    } else ImagePath = "";
     const data = {
       studentname: studentname,
       rollnumber: rollnumber,
       grade: grade,
       articletitle: articletitle,
       articlecontent: articlecontent,
+      ...(ImagePath !== "" && { image: ImagePath }),
     };
     const results = await prisma.studentcorner.update({
       where: {
