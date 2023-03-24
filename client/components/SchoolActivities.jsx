@@ -16,7 +16,7 @@ const SchoolActivities = () => {
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: silidesToShowValue,
     slidesToScroll: 4,
@@ -24,7 +24,7 @@ const SchoolActivities = () => {
       {
         breakpoint: 1350,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: schoolActivites && schoolActivites.length > 3 ? 3 : schoolActivites.length,
           slidesToScroll: 3,
           infinite: true,
         },
