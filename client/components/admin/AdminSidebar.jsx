@@ -106,11 +106,11 @@ export default function AdminSidebar() {
           {publications}
           <hr className="w-11/12 text-offWhite mt-2"/>
         </div>
-        <div className="otherPages mb-4">
+        {/* <div className="otherPages mb-4">
           <h1 className="text-offWhite text-2xl font-bold mb-2">Other Pages</h1>
           {otherPages}
           <hr className="w-11/12 text-offWhite mt-2"/>
-        </div>
+        </div> */}
       </div>
     </div>
   );
