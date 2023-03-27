@@ -362,7 +362,7 @@ function Home() {
           </div>
         </div>
         <div className="bottom-embeds mt-2">
-          <div className="embeds-container w-full lg:h-[28em] mx-auto flex flex-col lg:flex-row gap-10 py-8">
+          <div className="embeds-container w-11/12 lg:h-[28em] mx-auto flex flex-col lg:flex-row gap-10 py-8">
             <div className="social-embed w-full h-[20rem] lg:h-auto lg:w-4/12">
               <iframe
                 src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDeerwalkSifalSchool%2F&tabs=timeline&width=600&height=395&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState,useEffect} from "react";
+import { useRef, useState, useEffect } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import SchoolinMediaFinder from "../../api/SchoolinMediaFinder";
 
@@ -11,7 +11,6 @@ export default function Metrics() {
   const titleRef = useRef();
   const linkRef = useRef();
   const [schoolMedia, setSchoolMedia] = useState();
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,91 +61,69 @@ export default function Metrics() {
   return (
     <div>
       <Head>
-        <title>Add School in Media</title>
+        <title>Admin | Add School in Media</title>
         <meta name="description" content="Deerwalk Sifal School" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
         <div className="main-container">
-          <h1>School in Media</h1>
-          <table>
-            <thead>
-              <tr>
-                <th>SN</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Link</th>
-                <th>Image</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-             {schoolMedia &&
-              schoolMedia.map((media) => {
-              return (
-            <tr key={media.id} >
-            <td>{media.title}</td>
-            <td>{media.author}</td>
-            <td>{media.Link}</td>
-            <td>{media.image}</td>
-            <td>
-              <Link href="">
-                <button
-                onClick = {() => handleUpdate(media.id)}
-                className="border-2">Update</button>
-              </Link>
-            </td>
-            <td>
-              <button
-              onClick = {() => handleDelete(media.id)}
-              className="border-2">Delete</button>
-            </td>
-            </tr>
-              );
-             })
-           }
-           </tbody>
-          </table>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Title: </label>
+          <h1 className="text-orange text-2xl text-center font-bold m-10">
+            School in Media
+          </h1>
+          <form
+            onSubmit={handleSubmit}
+            className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
+          >
+            <label htmlFor="name" className="text-lg font-medium w-[11em]">
+              Title:{" "}
+            </label>
             <input
               type="text"
               id="title"
               ref={titleRef}
-              className="border-2"
+              className="border-2 w-full p-2 rounded-lg mb-4"
               required
             ></input>
             <br />
-            <label htmlFor="name">Author: </label>
+            <label htmlFor="name" className="text-lg font-medium w-[11em]">
+              Author:{" "}
+            </label>
             <input
               type="text"
               id="author"
               ref={authorRef}
-              className="border-2"
+              className="border-2 w-full p-2 rounded-lg mb-4"
               required
             ></input>
             <br />
-            <label htmlFor="name">Link: </label>
+            <label htmlFor="name" className="text-lg font-medium w-[11em]">
+              Link to Article:{" "}
+            </label>
             <input
               type="text"
               id="title"
               ref={linkRef}
-              className="border-2"
+              className="border-2 w-full p-2 rounded-lg mb-4"
               required
             ></input>
             <br />
-            <label htmlFor="name">Image: </label>
+            <label htmlFor="image" className="text-lg font-medium w-[11em]">
+              Thumbnail Image:{" "}
+            </label>
             <input
               type="file"
               id="image"
               ref={imageRef}
               placeholder="choose file"
-              className="border-2"
+              className="border-2 w-full p-2 rounded-lg mb-4"
             ></input>
             <br />
             <br />
-            <button type="submit" className="border-2">
+            <button
+              type="submit"
+              className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
+            >
               Submit
             </button>
           </form>

@@ -29,19 +29,21 @@ export default function HeroSectionImages() {
   return (
     <div>
       <Head>
-        <title>Add Hero Section Images</title>
+        <title>Admin | Add Hero Section Images</title>
         <meta name="description" content="Deerwalk Sifal School" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
-        <h1>Add Hero Section Images</h1>
+        <h1 className="text-orange text-2xl text-center font-bold m-10">
+          Add Hero Section Images
+        </h1>
         <div className="main-container">
-          <form onSubmit={handleSubmit}>
-            <label
-              htmlFor="pagenames"
-              className="block mb-2 text-sm font-medium text-gray-900 "
-            >
+          <form
+            onSubmit={handleSubmit}
+            className="border-4 border-orange w-[40rem] mx-auto px-6 py-12 rounded-xl"
+          >
+            <label htmlFor="pagenames" className="text-lg font-medium">
               Page:
             </label>
             <select
@@ -50,10 +52,10 @@ export default function HeroSectionImages() {
               onChange={(e) => {
                 setPage(e.target.value);
               }}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 "
+              className="border-2 border-black py-2 px-2 w-full rounded-lg mb-4"
             >
-              <option disabled>Choose Page</option>
-              <option value = {"School in Media"}>School in Media</option>
+              <option disabled selected>Choose Page</option>
+              <option value={"School in Media"}>School in Media</option>
               <option value={"Management"}>Management</option>
               <option value={"Faculty"}>Faculty</option>
               <option value={"Why-DSS"}>Why DSS?</option>
@@ -74,18 +76,23 @@ export default function HeroSectionImages() {
               <option value={"Admission"}>Admission</option>
             </select>
             <br />
-            <label for="file">File:</label>
+            <label for="file" className="text-lg font-medium">
+              File:
+            </label>
             <input
               type="file"
               id="file"
               placeholder="choose file"
-              className="border-2"
+              className="border-2 w-full p-2 rounded-lg mb-4"
               onChange={(e) => {
                 setImage(e.target.files[0]);
               }}
             />
             <br />
-            <button type="submit" className="border-2">
+            <button
+              type="submit"
+              className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
+            >
               Submit
             </button>
           </form>
