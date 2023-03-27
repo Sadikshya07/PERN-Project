@@ -28,7 +28,7 @@ export default function Footer() {
             <p className="text-offWhite text-xl">014591240 | 9851064445</p>
           </div>
           <div className="vertical-bar hidden lg:block h-[20em] border-l-[1px] border-offWhite"></div>
-          <div className="links">
+          <div className="links"> 
             <div className="grid grid-cols-2 grid-rows-2 lg:links-flex-container lg:flex justify-between w-full lg:w-[50em] mb-10">
               <div className="about-us flex flex-col">
                 <h2 className="mb-3 text-offWhite text-xl font-medium">

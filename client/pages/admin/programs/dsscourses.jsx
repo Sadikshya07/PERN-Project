@@ -28,13 +28,12 @@ export default function DSSCourses() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      const response = await DssCoursesFinder.post("/",{
+    try {
+      const response = await DssCoursesFinder.post("/", {
         name,
-        description
+        description,
       });
-    }
-    catch(err){
+    } catch (err) {
       console.log(err);
     }}
     
@@ -55,7 +54,6 @@ export default function DSSCourses() {
     const handleUpdate = async (id) => {
       router.push(`/admin/programs/Dss-courses/${id}`)
     }
-
   return (
     <div>
       <Head>
@@ -78,8 +76,8 @@ export default function DSSCourses() {
               DssCourses.map((Courses) => {
               return (
             <tr key={Courses.id} >
-            <td>name={Courses.name}</td>
-            <td>description={Courses.description}</td>
+            <td>{Courses.name}</td>
+            <td>{Courses.description}</td>
             <td>
               <Link href="/admin/programs/Dss-courses/`${id}`">
                 <button
@@ -98,31 +96,41 @@ export default function DSSCourses() {
            }
            </tbody>
         </table>
-        <form onChange={handleSubmit}>
-          <label htmlFor="name">Name:</label> <br />
-          <input
-            type="text"
-            id="name"
-            placeholder="Name"
-            className="border-2"
-            required
-            onChange={(e) => setName(e.target.value)}
-          ></input>
+        <div className="main-container">
+          <h1 className="text-orange text-2xl text-center font-bold m-10">
+            Add DSS Courses
+          </h1>
+          <button className="border-2">Add</button>
           <br />
-          <label for="description">Description:</label> <br />
-          <input
-            type="text"
-            id="description"
-            placeholder="description"
-            className="border-2"
-            required
-            onChange={(e) => setDescription(e.target.value)}
-          ></input>
-          <br />
-          <button type="submit" className="border-2">
-            Submit
-          </button>
-        </form>
+          <form
+            onChange={handleSubmit}
+            className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
+          >
+            <label htmlFor="title" className="text-lg font-medium w-[10em]">Title:</label> <br />
+            <input
+              type="text"
+              id="title"
+              placeholder=""
+              className="border-2 w-full p-2 rounded-lg mb-4"
+              required
+              onChange={(e) => setName(e.target.value)}
+            ></input>
+            <br />
+            <label for="" className="text-lg font-medium w-[10em]">Description:</label> <br />
+            <textarea
+              type="text"
+              id="description"
+              placeholder=""
+              className="border-2 w-full p-2 rounded-lg mb-4 h-[8em]"
+              required
+              onChange={(e) => setDescription(e.target.value)}
+            ></textarea>{" "}
+            <br />
+            <button type="submit" className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl">
+              Submit
+            </button>
+          </form>
+        </div>
       </AdminLayout>
     </div>
   );

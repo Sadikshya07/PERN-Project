@@ -47,99 +47,125 @@ export default function Podcast() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
-        <button className="border-2">Add</button>
-        <br />
-        <table>
-          <thead>
-            <tr>
-              <th>SN</th>
-              <th>Presenter Name</th>
-              <th>Roll Number</th>
-              <th>Podcast description</th>
-              <th>Grade</th>
-              <th>Image</th>
-              <th>Video</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {podcast &&
-              podcast.map((item) => {
-                return (
-                  <tr key={item.id}>
-                    <td>{i++}</td>
-                    <td>{item.presentername}</td>
-                    <td>{item.rollnumber}</td>
-                    <td>{item.description}</td>
-                    <td>{item.grade}</td>
-                    <td>Update</td>
-                    <td>Delete</td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
-        <form onChange={handleSubmit}>
-          <label for="name">Presenter Name:</label> <br />
-          <input
-            type="text"
-            id="name"
-            placeholder="Name"
-            className="border-2"
-            required
-            onChange={(e) => setPresenterName(e.target.value)}
-          ></input>
+        <div className="main-container">
+          <h1 className="text-orange text-2xl text-center font-bold m-10">
+            Add Podcast
+          </h1>
+          <button className="border-2">Add</button>
           <br />
-          <label for="grade">Grade:</label> <br />
-          <input
-            type="text"
-            id="grade"
-            placeholder="grade"
-            className="border-2"
-            required
-            onChange={(e) => setGrade(e.target.value)}
-          ></input>{" "}
-          <br />
-          <label for="rollno">Rollno:</label> <br />
-          <input
-            type="number"
-            id="rollno"
-            placeholder="Rollno"
-            className="border-2"
-            required
-            onChange={(e) => setRollno(e.target.value)}
-          ></input>{" "}
-          <br />
-          <label for="video">Video link:</label> <br />
-          <input
-            type="url"
-            id="video"
-            placeholder="Place the link."
-            className="border-2"
-          ></input>
-          <br />
-          <label htmlFor="description">Podcast Description</label> <br />
-          <input
-            type="text"
-            id="description"
-            placeholder="description"
-            className="border-2"
-            required
-            onChange={(e) => setPodcastDescription(e.target.value)}
-          ></input>
-          <br />
-          <label for="image">Image:</label> <br />
-          <input
-            type="file"
-            id="image"
-            placeholder="Choose a file"
-            className="border-2"
-          ></input>{" "}
-          <br />
-          <button type="submit" className="border-2">
-            Submit
-          </button>
-        </form>
+          <table>
+            <thead>
+              <tr>
+                <th>SN</th>
+                <th>Presenter Name</th>
+                <th>Roll Number</th>
+                <th>Podcast description</th>
+                <th>Grade</th>
+                <th>Image</th>
+                <th>Video</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {podcast &&
+                podcast.map((item) => {
+                  return (
+                    <tr key={item.id}>
+                      <td>{i++}</td>
+                      <td>{item.presentername}</td>
+                      <td>{item.rollnumber}</td>
+                      <td>{item.description}</td>
+                      <td>{item.grade}</td>
+                      <td>Update</td>
+                      <td>Delete</td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+          <form
+            onChange={handleSubmit}
+            className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
+          >
+            <label for="name" className="text-lg font-medium w-[11em]">
+              Presenter Name:
+            </label>
+            <input
+              type="text"
+              id="name"
+              placeholder=""
+              className="border-2 w-full p-2 rounded-lg mb-4"
+              required
+              onChange={(e) => setPresenterName(e.target.value)}
+            ></input>
+            <br />
+            <label for="grade" className="text-lg font-medium w-[11em]">
+              Grade:
+            </label>
+            <input
+              type="text"
+              id="grade"
+              placeholder=""
+              className="border-2 w-full p-2 rounded-lg mb-4"
+              required
+              onChange={(e) => setGrade(e.target.value)}
+            ></input>{" "}
+            <br />
+            <label for="rollno" className="text-lg font-medium w-[11em]">
+              Rollno:
+            </label>
+            <input
+              type="number"
+              id="rollno"
+              placeholder=""
+              className="border-2 w-full p-2 rounded-lg mb-4"
+              required
+              onChange={(e) => setRollno(e.target.value)}
+            ></input>{" "}
+            <br />
+            <label for="video" className="text-lg font-medium w-[11em]">
+              Video link:
+            </label>
+            <input
+              type="url"
+              id="video"
+              placeholder=""
+              className="border-2 w-full p-2 rounded-lg mb-4"
+            ></input>
+            <br />
+            <label
+              htmlFor="description"
+              className="text-lg font-medium w-[11em]"
+            >
+              Podcast Description
+            </label>
+            <textarea
+              type="text"
+              id="description"
+              placeholder=""
+              className="border-2 w-full p-2 rounded-lg mb-4 h-[8em]"
+              required
+              onChange={(e) => setPodcastDescription(e.target.value)}
+            ></textarea>
+            <br />
+            <label for="image" className="text-lg font-medium w-[11em]">
+              Image:
+            </label>
+            <input
+              type="file"
+              id="image"
+              placeholder=""
+              className="border-2 w-full p-2 rounded-lg mb-4"
+            ></input>{" "}
+            <br />
+            <button
+              type="submit"
+              className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </AdminLayout>
     </div>
   );

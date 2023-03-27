@@ -8,15 +8,23 @@ import { SchoolContext } from "./context/SchoolContext";
 const SchoolActivities = () => {
   const { schoolActivites } = useContext(SchoolContext);
   let silidesToShowValue;
+  let slidestoShowLargeScreen;
+
   if (schoolActivites && schoolActivites.length <= 4) {
-    silidesToShowValue = schoolActivites.lenght;
+    silidesToShowValue = schoolActivites.length;
   } else {
     silidesToShowValue = 4;
   }
 
+  if (schoolActivites && schoolActivites.length <= 3) {
+    slidestoShowLargeScreen = schoolActivites.length;
+  } else {
+    slidestoShowLargeScreen = 3;
+  }
+
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: silidesToShowValue,
     slidesToScroll: 4,
@@ -24,8 +32,8 @@ const SchoolActivities = () => {
       {
         breakpoint: 1350,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: slidestoShowLargeScreen,
+          slidesToScroll: slidestoShowLargeScreen,
           infinite: true,
         },
       },

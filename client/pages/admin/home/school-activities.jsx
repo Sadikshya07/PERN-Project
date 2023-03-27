@@ -64,10 +64,10 @@ export default function SchoolActivities() {
       </Head>
       <AdminLayout>
         <div className="main-container">
-          <h1>School Activities</h1>
-          <h3>
+          <h1 className="text-orange text-2xl text-center font-bold m-10">Add School Activities</h1>
+          {/* {/* <h3>
             Recommended to have at least 6 URLs to be displayed at a time.
-          </h3>
+          </h3> */}
           <table>
             <thead>
               <tr>
@@ -109,15 +109,15 @@ export default function SchoolActivities() {
             <input
               type="text"
               id="url"
-              placeholder="URL"
-              className="border-2"
+              placeholder=""
+              className="border-2 w-full p-2 rounded-lg mb-4"
               onChange={(e) => {
                 setLink(e.target.value);
               }}
               required
             ></input>
             <br />
-            <button type="submit" className="border-2">
+            <button type="submit" className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl">
               Submit
             </button>
           </form>

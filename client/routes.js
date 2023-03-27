@@ -53,20 +53,20 @@ export default [
         title: "Faculty",
         url: "/admin/aboutus/faculty",
       },
-      {
-        title: "Why DSS",
-        url: "/admin/aboutus/whydss",
-      }
+      // {
+      //   title: "Why DSS",
+      //   url: "/admin/aboutus/whydss",
+      // }
     ],
     programs: [
       {
         title: "DSS Courses",
         url: "/admin/programs/dsscourses",
       },
-      {
-        title: "Weekend Camp Program",
-        url: "/admin/programs/weekendcampprogram",
-      },
+      // {
+      //   title: "Weekend Camp Program",
+      //   url: "/admin/programs/weekendcampprogram",
+      // },
       {
         title: "Courses",
         url: "/admin/programs/courses",
@@ -134,10 +134,10 @@ export default [
         title: "DSS Clubs",
         url: "/admin/otherpages/dssclubs",
       },
-      // {
-      //   title: "Admission",
-      //   url: "/admin/otherpages/admission",
-      // }
+      {
+        title: "Admission",
+        url: "/admin/otherpages/admission",
+      }
     ]
   },
 ];
