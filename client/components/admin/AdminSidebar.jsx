@@ -71,7 +71,7 @@ export default function AdminSidebar() {
     );
   });
   return (
-    <div className="main-container w-[22rem] bg-orange h-screen overflow-y-auto">
+    <div className="main-container w-[22rem] bg-orange h-screen overflow-y-auto fixed">
       <Link className="logo-container" href = "/">
         <Image src={logo} alt="dss logo" className="mx-auto my-2" />
       </Link>

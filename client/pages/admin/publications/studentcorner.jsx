@@ -50,10 +50,10 @@ export default function StudentCorner() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
-        <h1 className="text-orange text-2xl text-center font-bold m-10">
-          Add Student Corner
-        </h1>
         <div className="main-container">
+          <h1 className="text-orange text-2xl text-center font-bold m-10">
+            Add Student Corner
+          </h1>
           <button className="border-2">Add</button>
           <br />
           <table>
