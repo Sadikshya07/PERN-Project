@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import ManagementFinder from "../../api/ManagementFinder";
-import AdminLayout from "../../../components/Layouts/AdminLayout";
+import ManagementFinder from "../../../api/ManagementFinder";
+import AdminLayout from "../../../../components/Layouts/AdminLayout";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 

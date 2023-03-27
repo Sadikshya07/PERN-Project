@@ -38,7 +38,7 @@ export default function UpdateDssCourses() {
   return (
     <div>
       <Head>
-        <title>Admin | DssCourses</title>
+        <title>Admin | Update-DssCourses</title>
         <meta name="description" content="Deerwalk Sifal School" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

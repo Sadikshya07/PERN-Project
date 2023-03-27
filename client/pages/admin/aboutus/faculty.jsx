@@ -67,7 +67,7 @@ export default function Faculty() {
   };
 
   const handleUpdate = (id) => {
-    router.push("/admin/aboutus/update-faculty");
+    router.push("/admin/aboutus/Faculty/`${id}`");
   };
 
   return (
@@ -103,7 +103,7 @@ export default function Faculty() {
             <td>AreaofExpertise={person.AreaofExpertise}</td>
             <td>Experience={person.Experience}</td>
             <td>
-              <Link href="/admin/aboutus/Faculty/">
+              <Link href="/admin/aboutus/Faculty/`${id}`">
                 <button
                 onClick = {() => handleUpdate(person.id)}
                 className="border-2">Update</button>

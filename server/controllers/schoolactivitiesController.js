@@ -60,10 +60,10 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { Link } = req.body;
+    const { link } = req.body;
 
     const data = {
-      Link,
+      Link: link,
     };
     const results = await prisma.schoolactivities.update({
       where: {
@@ -83,10 +83,10 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { Link } = req.body;
+    const { link } = req.body;
 
     const data = {
-      Link,
+      Link : link,
     };
     const results = await prisma.schoolactivities.delete({
       where: {

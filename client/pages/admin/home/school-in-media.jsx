@@ -4,8 +4,10 @@ import Link from "next/link";
 import { useRef, useState,useEffect} from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import SchoolinMediaFinder from "../../api/SchoolinMediaFinder";
+import {useRouter} from "next/router"
 
 export default function Metrics() {
+  const router = useRouter();
   const imageRef = useRef();
   const authorRef = useRef();
   const titleRef = useRef();
@@ -59,6 +61,9 @@ export default function Metrics() {
     }
   };
 
+  const handleUpdate = async (id) => {
+    router.push(`/admin/home/SchoolInMedia/${id}`);
+  };
   return (
     <div>
       <Head>
@@ -91,7 +96,7 @@ export default function Metrics() {
             <td>{media.Link}</td>
             <td>{media.image}</td>
             <td>
-              <Link href="">
+              <Link href="/admin/home/SchoolInMedia/`${id}`">
                 <button
                 onClick = {() => handleUpdate(media.id)}
                 className="border-2">Update</button>

@@ -4,40 +4,46 @@ import Link from "next/link";
 import HomeImageFinder from "../../../api/HomeImageFinder";
 import AdminLayout from "../../../../components/Layouts/AdminLayout";
 import { useRouter } from "next/router";
-import { useRef,useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function UpdateHomeImages() {
-    const router = useRouter();
-    const { id } = router.query;
-    const image1Ref = useRef();
-    const image2Ref = useRef();
-    const image3Ref = useRef();
-    const [image1 , setImage1] = useState();
-    const [image2 , setImage2] = useState();
-    const [image3 , setImage3] = useState()
+  const router = useRouter();
+  const { id } = router.query;
+  const image1Ref = useRef();
+  const image2Ref = useRef();
+  const image3Ref = useRef();
+  const [image1, setImage1] = useState();
+  const [image2, setImage2] = useState();
+  const [image3, setImage3] = useState();
 
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await HomeImageFinder.get(`/${id}`);
-            console.log(response.data.data);
-            setImage1(response.data.data.heroImage.image1);
-            setImage2(response.data.data.heroImage.image2);
-            setImage3(response.data.data.heroImage.image3);
-          } catch (err) {
-            console.log(err);
-          }
-        };
-        fetchData();
-      }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await HomeImageFinder.get(`/${id}`);
+        console.log(response.data.data);
+        setImage1(response.data.data.heroImage.image1);
+        setImage2(response.data.data.heroImage.image2);
+        setImage3(response.data.data.heroImage.image3);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await HomeImageFinder.put(`/${id}`, {
+    const response = await HomeImageFinder.put(
+      `/${id}`,
+      {
         image1: image1Ref.current.files[0],
         image2: image2Ref.current.files[0],
         image3: image3Ref.current.files[0],
-    });
+      },
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
     router.push("/admin/home/home-images");
   };
 
@@ -51,7 +57,7 @@ export default function UpdateHomeImages() {
       </Head>
       <AdminLayout>
         <div>
-        <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <label for="image1">Image 1:</label>
             <input
               type="file"
@@ -59,8 +65,6 @@ export default function UpdateHomeImages() {
               ref={image1Ref}
               placeholder="choose file"
               className="border-2"
-              onChange={(e) => setImage1(e.target.files[0])}
-              required
             ></input>
             <br />
             <label for="image2">Image 2:</label>
@@ -70,8 +74,6 @@ export default function UpdateHomeImages() {
               ref={image2Ref}
               placeholder="choose file"
               className="border-2"
-              onChange={(e) => setImage2(e.target.files[0])}
-              required
             ></input>
             <br />
             <label for="image3">Image 3:</label>
@@ -81,8 +83,6 @@ export default function UpdateHomeImages() {
               placeholder="choose file"
               ref={image3Ref}
               className="border-2"
-              onChange={(e) => setImage3(e.target.files[0])}
-              required
             ></input>
             <br />
             <button type="submit" className="border-2">
