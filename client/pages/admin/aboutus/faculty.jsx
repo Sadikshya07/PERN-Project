@@ -79,8 +79,11 @@ export default function Faculty() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
-        <button className="border-2">Add</button>
+        <h1 className="text-orange text-2xl text-center font-bold m-10">
+          Add Faculty
+        </h1>
         <br />
+        <button className="border-2 w-[10em]">View Table</button>
         <table>
           <thead>
             <tr>
@@ -93,94 +96,123 @@ export default function Faculty() {
             </tr>
           </thead>
           <tbody>
-             {faculty &&
+            {faculty &&
               faculty.map((person) => {
-              return (
-            <tr key={person.id} >
-            <td>name={person.name}</td>
-            <td>description={person.description}</td>
-            <td>department={person.department}</td>
-            <td>AreaofExpertise={person.AreaofExpertise}</td>
-            <td>Experience={person.Experience}</td>
-            <td>
-              <Link href="/admin/aboutus/Faculty/`${id}`">
-                <button
-                onClick = {() => handleUpdate(person.id)}
-                className="border-2">Update</button>
-              </Link>
-            </td>
-            <td>
-              <button
-              onClick = {() => handleDelete(person.id)}
-              className="border-2">Delete</button>
-            </td>
-            </tr>
-              );
-             })
-           }
-           </tbody>
+                return (
+                  <tr key={person.id}>
+                    <td>name={person.name}</td>
+                    <td>description={person.description}</td>
+                    <td>department={person.department}</td>
+                    <td>AreaofExpertise={person.AreaofExpertise}</td>
+                    <td>Experience={person.Experience}</td>
+                    <td>
+                      <Link href="/admin/aboutus/Faculty/`${id}`">
+                        <button
+                          onClick={() => handleUpdate(person.id)}
+                          className="border-2"
+                        >
+                          Update
+                        </button>
+                      </Link>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleDelete(person.id)}
+                        className="border-2"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
         </table>
-        <form onSubmit={handleSubmit}>
-          <label for="fname">Full name:</label> <br />
+        <form
+          onSubmit={handleSubmit}
+          className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
+        >
+          <label for="fname" className="text-lg font-medium w-[11em]">
+            Full name:
+          </label>{" "}
+          <br />
           <input
             type="text"
             id="fname"
-            placeholder="Name"
-            className="border-2"
+            placeholder=""
+            className="border-2 w-full p-2 rounded-lg mb-4"
             required
             onChange={(e) => setName(e.target.value)}
           />
           <br />
-          <label for="description">Description:</label> <br />
-          <input
+          <label for="description" className="text-lg font-medium w-[11em]">
+            Description:
+          </label>{" "}
+          <br />
+          <textarea
             type="text"
             id="description"
-            placeholder="description"
-            className="border-2"
+            placeholder=""
+            className="border-2 w-full p-2 rounded-lg mb-4 h-[8em]"
             onChange={(e) => setDescription(e.target.value)}
             required
           />
           <br />
-          <label for="department">Department:</label> <br />
+          <label for="department" className="text-lg font-medium w-[11em]">
+            Department:
+          </label>{" "}
+          <br />
           <input
             type="text"
             id="Department"
-            placeholder="department"
-            className="border-2"
+            placeholder=""
+            className="border-2 w-full p-2 rounded-lg mb-4"
             onChange={(e) => setDepartment(e.target.value)}
             required
           />
           <br />
-          <label for="department">Area Of Expertise:</label> <br />
+          <label for="department" className="text-lg font-medium w-[11em]">
+            Area Of Expertise:
+          </label>{" "}
+          <br />
           <input
             type="text"
             id="areaOfExperties"
-            placeholder="Area of Expertise"
-            className="border-2"
+            placeholder=""
+            className="border-2 w-full p-2 rounded-lg mb-4"
             onChange={(e) => setAreaofExpertise(e.target.value)}
             required
           />
           <br />
-          <label for="areaOfExperties">Experience:</label> <br />
+          <label for="areaOfExperties" className="text-lg font-medium w-[11em]">
+            Experience:
+          </label>{" "}
+          <br />
           <input
             type="text"
             id="experience"
-            placeholder="Experience"
-            className="border-2"
+            placeholder=""
+            className="border-2 w-full p-2 rounded-lg mb-4"
             onChange={(e) => setExperience(e.target.value)}
             required
           />
           <br />
-          <label for="image">Image:</label> <br />
+          <label for="image" className="text-lg font-medium w-[11em]">
+            Image:
+          </label>{" "}
+          <br />
           <input
             type="file"
             id="image"
             placeholder="Choose a file"
-            className="border-2"
+            className="border-2 w-full p-2 rounded-lg mb-4"
             onChange={(e) => setImage(e.target.files[0])}
           />
           <br />
-          <button type="submit" className="border-2">
+          <button
+            type="submit"
+            className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
+          >
             Submit
           </button>
         </form>
