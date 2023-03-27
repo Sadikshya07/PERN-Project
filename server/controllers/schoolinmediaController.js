@@ -76,7 +76,7 @@ router.post("/", async (req, res) => {
   try {
     let ImagePath = imageServerPath + Date.now() + "-" + req.files.image.name;
     await req.files.  image.mv("./public" + ImagePath);
-    //const { title, author, Link } = req.body;
+    const { title, author, Link } = req.body;
     const data = {
       title,
       author,

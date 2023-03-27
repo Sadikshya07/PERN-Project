@@ -53,7 +53,7 @@ export default function DSSCourses() {
 
 
     const handleUpdate = async (id) => {
-      router.push(`/admin/programs/${id}`)
+      router.push(`/admin/programs/Dss-courses/${id}`)
     }
 
   return (
@@ -81,7 +81,7 @@ export default function DSSCourses() {
             <td>name={Courses.name}</td>
             <td>description={Courses.description}</td>
             <td>
-              <Link href="/admin/programs/`${id}`">
+              <Link href="/admin/programs/Dss-courses/`${id}`">
                 <button
                 onClick = {() => handleUpdate(Courses.id)}
                 className="border-2">Update</button>
