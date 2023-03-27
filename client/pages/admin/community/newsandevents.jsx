@@ -150,14 +150,14 @@ export default function NewsAndEvents() {
             ></input>
             <br />
             <label for="description" className="text-lg font-medium w-[11em]">Description:</label>
-            <input
+            <textarea
               type="text"
               id="description"
               placeholder=""
-              className="border-2 w-full p-2 rounded-lg mb-4"
+              className="border-2 w-full p-2 rounded-lg mb-4 h-[8em]"
               required
               onChange={(e) => setDescription(e.target.value)}
-            ></input>
+            ></textarea>
             <br />
             <label for="Title" className="text-lg font-medium w-[11em]">Title:</label>
             <input

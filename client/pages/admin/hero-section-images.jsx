@@ -35,10 +35,10 @@ export default function HeroSectionImages() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
-        <h1 className="text-orange text-2xl text-center font-bold m-10">
-          Add Hero Section Images
-        </h1>
         <div className="main-container">
+          <h1 className="text-orange text-2xl text-center font-bold m-10">
+            Add Hero Section Images
+          </h1>
           <form
             onSubmit={handleSubmit}
             className="border-4 border-orange w-[40rem] mx-auto px-6 py-12 rounded-xl"
@@ -54,7 +54,9 @@ export default function HeroSectionImages() {
               }}
               className="border-2 border-black py-2 px-2 w-full rounded-lg mb-4"
             >
-              <option disabled selected>Choose Page</option>
+              <option disabled selected>
+                Choose Page
+              </option>
               <option value={"School in Media"}>School in Media</option>
               <option value={"Management"}>Management</option>
               <option value={"Faculty"}>Faculty</option>
