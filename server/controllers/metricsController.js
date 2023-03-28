@@ -63,7 +63,6 @@ router.post("/", async (req, res) => {
       Teachers,
       StudentTeacherRatio,
     };
-    console.log(data);
     const results = await prisma.metrics.create({
       data,
     });
