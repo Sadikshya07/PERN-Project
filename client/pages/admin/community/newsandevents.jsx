@@ -125,19 +125,6 @@ export default function NewsAndEvents() {
           </h1>
           <button className="border-2">Add</button>
           <br />
-          <table>
-            <thead>
-              <tr>
-                <th>SN</th>
-                <th>AuthorName</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Date</th>
-                <th>Image</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-          </table>
           <form
             onSubmit={handleSubmit}
             encType="multipart/form-data"

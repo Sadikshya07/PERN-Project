@@ -3,7 +3,7 @@ import AdminLayout from "../../../components/Layouts/AdminLayout";
 import MetricsFinder from "../../api/MetricsFinder";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Metrics() {
   const [formData, setFormData] = useState({

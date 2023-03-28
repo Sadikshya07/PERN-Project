@@ -109,7 +109,10 @@ export default function SchoolActivities() {
                 })}
             </tbody>
           </table>
-          <form onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubmit}
+            className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
+          >
             <label htmlFor="name"> URL:</label>
             <input
               type="text"

@@ -55,6 +55,7 @@ router.get("/:id", async (req, res) => {
 });
 router.post("/", async (req, res) => {
   try {
+    console.log(req.body.formData);
     const { Students, StudentsPerClass, Teachers, StudentTeacherRatio } =
       req.body.formData;
     const data = {
