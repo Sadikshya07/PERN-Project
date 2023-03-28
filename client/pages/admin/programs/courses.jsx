@@ -2,12 +2,13 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import CoursesFinder from "../../api/CoursesFinder";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 
 export default function Courses() {
   const gradeRef = useRef();
   const fileRef = useRef();
+  const [courses, setCourses] = useState();
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
@@ -27,6 +28,19 @@ export default function Courses() {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await CoursesFinder.get("/");
+        setCourses(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <Head>
@@ -40,17 +54,31 @@ export default function Courses() {
           <h1 className="text-orange text-2xl text-center font-bold m-10">
             Add Courses
           </h1>
-          <button className="border-2">Add</button>
+          {/* <button className="border-2">Add</button> */}
           <br />
           <table>
             <thead>
               <tr>
                 <th>SN</th>
-                <th>Name</th>
-                <th>Description</th>
+                <th>Grade</th>
+                <th>File</th>
                 <th>Actions</th>
               </tr>
             </thead>
+            <tbody>
+              {courses &&
+                courses.map((course) => {
+                  return (
+                    <tr key={course.id}>
+                      <td>{course.id}</td>
+                      <td>{course.grade}</td>
+                      <td>{course.file}</td>
+                      <td>Delete</td>
+                      <td>Update</td>
+                    </tr>
+                  );
+                })}
+            </tbody>
           </table>
           <form
             onSubmit={handleSubmit}

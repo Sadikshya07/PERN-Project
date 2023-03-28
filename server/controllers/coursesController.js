@@ -10,7 +10,9 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.get("/", async (req, res) => {
   try {
     const results = await prisma.courses.findMany({
-      orderBy: { grade },
+      orderBy: {
+        grade: "desc",
+      },
     });
     res.status(200).json({
       status: "success",
@@ -39,21 +41,31 @@ router.get("/:id", async (req, res) => {
 const filePathServer = "/files/";
 router.post("/", async (req, res) => {
   try {
-    console.log(req.body);
     const { grade } = req.body;
-    let filePath = filePathServer + Date.now() + "-" + req.files.file.name;
-    await req.files.file.mv("./public" + filePath);
-    const data = {
-      grade: grade,
-      file: filePath,
-    };
-    const results = await prisma.courses.create({
-      data: data,
+    const vals = await prisma.courses.findFirst({
+      where: {
+        grade: grade,
+      },
     });
-    res.status(201).json({
-      status: "success",
-      data: results,
-    });
+    if (vals) {
+      return res.status(409).json({
+        errors: "Grade data already exists please update or remove the data",
+      });
+    } else {
+      let filePath = filePathServer + Date.now() + "-" + req.files.file.name;
+      await req.files.file.mv("./public" + filePath);
+      const data = {
+        grade: grade,
+        file: filePath,
+      };
+      const results = await prisma.courses.create({
+        data: data,
+      });
+      res.status(201).json({
+        status: "success",
+        data: results,
+      });
+    }
   } catch (error) {
     console.error("Error:", error.message);
   }
