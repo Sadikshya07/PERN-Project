@@ -2,21 +2,27 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import CoursesFinder from "../../api/CoursesFinder";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 
 export default function Courses() {
-  const [name, setName] = useState();
-  const [description, setDescription] = useState();
+  const gradeRef = useRef();
+  const fileRef = useRef();
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await CoursesFinder.post("/", {
-        name,
-        description,
-      });
+      const response = await CoursesFinder.post(
+        "/",
+        {
+          grade: gradeRef.current.value,
+          file: fileRef.current.files[0],
+        },
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
     } catch (err) {
       console.log(err);
     }
@@ -47,15 +53,21 @@ export default function Courses() {
             </thead>
           </table>
           <form
-            onChange={handleSubmit}
+            onSubmit={handleSubmit}
             className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
           >
             <label htmlFor="title" className="text-lg font-medium w-[10em]">
               Grade:
             </label>{" "}
             <br />
-            <select className="border-2 border-black py-2 px-2 w-full rounded-lg mb-4">
-              <option disabled selected>Choose Grade</option>
+            <select
+              className="border-2 border-black py-2 px-2 w-full rounded-lg mb-4"
+              ref={gradeRef}
+              required
+            >
+              <option disabled selected>
+                Choose Grade
+              </option>
               <option value={"1"}>1</option>
               <option value={"2"}>2</option>
               <option value={"3"}>3</option>
@@ -69,26 +81,16 @@ export default function Courses() {
               <option value={"11"}>11</option>
               <option value={"12"}>12</option>
             </select>
-            {/* <input
-              type="text"
-              id="title"
-              placeholder=""
-              className="border-2 w-full p-2 rounded-lg mb-4"
-              required
-              onChange={(e) => setName(e.target.value)}
-            ></input> */}
             <br />
             <label for="description" className="text-lg font-medium w-[10em]">
               File:
-            </label>{" "}
+            </label>
             <br />
             <input
               type="file"
-              id=""
-              placeholder=""
               className="border-2 w-full p-2 rounded-lg mb-4"
               required
-              onChange={(e) => setDescription(e.target.value)}
+              ref={fileRef}
             ></input>{" "}
             <br />
             <button
