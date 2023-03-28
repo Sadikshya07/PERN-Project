@@ -85,7 +85,7 @@ export default function Management() {
           <h1 className="text-orange text-2xl text-center font-bold m-10">
             Add Management
           </h1>
-          {/* <table>
+          <table>
             <thead>
               <tr>
                 <th>SN</th>
@@ -97,33 +97,37 @@ export default function Management() {
               </tr>
             </thead>
             <tbody>
-             {Management &&
-              Management.map((person) => {
-              return (
-            <tr key={person.id} >
-            <td>name={person.name}</td>
-            <td>description={person.description}</td>
-            <td>position={person.position}</td>
-            <td>image={person.image}</td>
-            <td>
-              <Link href="/admin/aboutus/Management/`${id}`">
-                <button
-                onClick = {() => handleUpdate(person.id)}
-                className="border-2">Update</button>
-              </Link>
-            </td>
-            <td>
-              <button
-              onClick = {() => handleDelete(person.id)}
-              className="border-2">Delete</button>
-            </td>
-            </tr>
-              );
-             })
-           }
-           </tbody>
+              {Management &&
+                Management.map((person) => {
+                  return (
+                    <tr key={person.id}>
+                      <td>name={person.name}</td>
+                      <td>description={person.description}</td>
+                      <td>position={person.position}</td>
+                      <td>image={person.image}</td>
+                      <td>
+                        <Link href="/admin/aboutus/Management/`${id}`">
+                          <button
+                            onClick={() => handleUpdate(person.id)}
+                            className="border-2"
+                          >
+                            Update
+                          </button>
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(person.id)}
+                          className="border-2"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
           </table>
-          {/* this is to just to call the function handleSubmit when the form is submitted  */}
           <form
             onSubmit={handleSubmit}
             className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"

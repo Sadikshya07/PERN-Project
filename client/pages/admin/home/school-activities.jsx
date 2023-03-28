@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import SchoolActivitiesFinder from "../../api/SchoolActivitiesFinder";
+import { useRouter } from "next/router";
 
-export default function Metrics() {
+export default function SchoolActivities() {
   const [link, setLink] = useState();
   const [schoolActivities, setSchoolActivities] = useState();
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,9 +27,15 @@ export default function Metrics() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await SchoolActivitiesFinder.post("/", {
-        link,
-      });
+      const response = await SchoolActivitiesFinder.post(
+        "/",
+        {
+          link,
+        },
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
     } catch (err) {
       console.log(err);
     }
@@ -46,6 +54,9 @@ export default function Metrics() {
     }
   };
 
+  const handleUpdate = async (id) => {
+    router.push(`/admin/home/School-activities/${id}`);
+  };
   return (
     <div>
       <Head>
@@ -59,21 +70,47 @@ export default function Metrics() {
           <h1 className="text-orange text-2xl text-center font-bold m-10">
             Add School Activities
           </h1>
-          {/* <h3>
+          {/* {/* <h3>
             Recommended to have at least 6 URLs to be displayed at a time.
           </h3> */}
-          <form
-            onSubmit={handleSubmit}
-            className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
-          >
-            <label htmlFor="name" className="text-lg font-medium w-[11em]">
-              Link to Video{" "}
-              <span className="italic font-normal">
-                (please paste in the link from the "embed" option from the
-                YouTube video.)
-              </span>
-              :
-            </label>
+          <table>
+            <thead>
+              <tr>
+                <th>Link</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {schoolActivities &&
+                schoolActivities.map((schoolActivitie) => {
+                  return (
+                    <tr key={schoolActivitie.id}>
+                      <td>Link={schoolActivitie.Link}</td>
+                      <td>
+                        <Link href="/admin/home/School-activities/`${id}`">
+                          <button
+                            onClick={() => handleUpdate(schoolActivitie.id)}
+                            className="border-2"
+                          >
+                            Update
+                          </button>
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(schoolActivitie.id)}
+                          className="border-2"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name"> URL:</label>
             <input
               type="text"
               id="url"

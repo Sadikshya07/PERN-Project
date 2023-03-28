@@ -75,7 +75,7 @@ const imageServerPath = "/images/";
 router.post("/", async (req, res) => {
   try {
     let ImagePath = imageServerPath + Date.now() + "-" + req.files.image.name;
-    await req.files.image.mv("./public" + ImagePath);
+    await req.files.  image.mv("./public" + ImagePath);
     const { title, author, Link } = req.body;
     const data = {
       title,
@@ -97,12 +97,14 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { title, author, Image, Link } = req.body;
+    let ImagePath = imageServerPath + Date.now() + "-" + req.files.image.name;
+    await req.files.image.mv("./public" + ImagePath);
+    const { title, author, Link } = req.body;
 
     const data = {
       title,
       author,
-      Image,
+      Image:ImagePath,
       Link,
     };
     const results = await prisma.schoolinmedia.update({

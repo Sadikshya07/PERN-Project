@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import DssCoursesFinder from "../../api/DssCoursesFinder";
-import AdminLayout from "../../../components/Layouts/AdminLayout";
+import DssCoursesFinder from "../../../api/DssCoursesFinder";
+import AdminLayout from "../../../../components/Layouts/AdminLayout";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
@@ -38,7 +38,7 @@ export default function UpdateDssCourses() {
   return (
     <div>
       <Head>
-        <title>Admin | DssCourses</title>
+        <title>Admin | Update-DssCourses</title>
         <meta name="description" content="Deerwalk Sifal School" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

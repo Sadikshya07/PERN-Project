@@ -22,6 +22,21 @@ router.get("/", async (req, res) => {
     console.log(error.message);
   }
 });
+router.get("/all", async (req, res) => {
+  try {
+    const results = await prisma.metrics.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    res.status(200).json({
+      status: "success",
+      data: results,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;

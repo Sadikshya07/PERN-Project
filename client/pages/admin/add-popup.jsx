@@ -29,12 +29,18 @@ export default function AddPopup() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <AdminLayout>
-      <h1 className="text-orange text-2xl text-center font-bold m-10">
-          Add Popup
-        </h1>
-        {/* {console.log(process.env.NEXT_PUBLIC_SERVER_HOST)} */}
-        <form onSubmit={handleSubmit} className="border-4 border-orange w-[40rem] mx-auto px-6 py-12 rounded-xl">
-            <label htmlFor="image" className="text-lg font-medium w-[10em]">Popup Image:</label>
+        <div className="main-container">
+          <h1 className="text-orange text-2xl text-center font-bold m-10">
+            Add Popup
+          </h1>
+          {/* {console.log(process.env.NEXT_PUBLIC_SERVER_HOST)} */}
+          <form
+            onSubmit={handleSubmit}
+            className="border-4 border-orange w-[40rem] mx-auto px-6 py-12 rounded-xl"
+          >
+            <label htmlFor="image" className="text-lg font-medium w-[10em]">
+              Popup Image:
+            </label>
             <input
               type="file"
               id="image"
@@ -42,11 +48,15 @@ export default function AddPopup() {
               placeholder="choose file"
               className="border-2 w-full p-2 rounded-lg mb-4"
             ></input>
-          <br />
-          <button type="submit" className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl">
-            Submit
-          </button>
-        </form>
+            <br />
+            <button
+              type="submit"
+              className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </AdminLayout>
     </div>
   );

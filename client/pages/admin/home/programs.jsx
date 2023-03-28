@@ -74,6 +74,48 @@ export default function Programs() {
       </Head>
       <AdminLayout>
         <div className="form-container">
+          <h1>Add Programs</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>SN</th>
+                <th>Image1</th>
+                <th>Image2</th>
+                <th>Image3</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {programs &&
+                programs.map((programs) => {
+                  return (
+                    <tr key={programs.id}>
+                      <td>image1={programs.image1}</td>
+                      <td>image2={programs.image2}</td>
+                      <td>image3={programs.image3}</td>
+                      <td>
+                        <Link href="/admin/home/Programs/`${id}`">
+                          <button
+                            onClick={() => handleUpdate(programs.id)}
+                            className="border-2"
+                          >
+                            Update
+                          </button>
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(programs.id)}
+                          className="border-2"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
           <h1 className="text-orange text-2xl text-center font-bold m-10">
             Add Program Images
           </h1>
@@ -89,6 +131,8 @@ export default function Programs() {
               id="elementaryschool"
               ref={image1Ref}
               placeholder="choose file"
+              onChange={(e) => setImage1(e.target.files[0])}
+              required
               className="border-2 w-full p-2 rounded-lg mb-4"
             ></input>
             <br />
@@ -100,6 +144,8 @@ export default function Programs() {
               id="middleschool"
               ref={image2Ref}
               placeholder="choose file"
+              onChange={(e) => setImage2(e.target.files[0])}
+              required
               className="border-2 w-full p-2 rounded-lg mb-4"
             ></input>
             <br />
@@ -111,6 +157,8 @@ export default function Programs() {
               id="highschool"
               ref={image3Ref}
               placeholder="choose file"
+              onChange={(e) => setImage3(e.target.files[0])}
+              required
               className="border-2 w-full p-2 rounded-lg mb-4"
             ></input>
             <br />

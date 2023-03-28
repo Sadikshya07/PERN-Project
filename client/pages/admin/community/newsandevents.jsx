@@ -76,6 +76,49 @@ export default function NewsAndEvents() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
+        <table>
+          <thead>
+            <tr>
+              <th>AuthorName</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Image</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {newsandevents &&
+              newsandevents.map((news) => {
+                return (
+                  <tr key={news.id}>
+                    <td>author={news.author}</td>
+                    <td>title={news.title}</td>
+                    <td>description={news.description}</td>
+                    <td>publishdate={news.publishdate}</td>
+                    <td>
+                      <Link href="/admin/community/`id`">
+                        <button
+                          onClick={() => handleUpdate(news.id)}
+                          className="border-2"
+                        >
+                          Update
+                        </button>
+                      </Link>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleDelete(news.id)}
+                        className="border-2"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
         <div className="main-container">
           <h1 className="text-orange text-2xl text-center font-bold m-10">
             Add News and Events
@@ -115,14 +158,14 @@ export default function NewsAndEvents() {
             <label for="description" className="text-lg font-medium w-[11em]">
               Description:
             </label>
-            <input
+            <textarea
               type="text"
               id="description"
               placeholder=""
-              className="border-2 w-full p-2 rounded-lg mb-4"
+              className="border-2 w-full p-2 rounded-lg mb-4 h-[8em]"
               required
               onChange={(e) => setDescription(e.target.value)}
-            ></input>
+            ></textarea>
             <br />
             <label for="Title" className="text-lg font-medium w-[11em]">
               Title:

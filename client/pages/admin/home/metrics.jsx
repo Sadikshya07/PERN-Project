@@ -17,7 +17,7 @@ export default function Metrics() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await MetricsFinder.get("/");
+        const response = await MetricsFinder.get("/all");
         console.log(response.data.data);
         setMetrics(response.data.data);
       } catch (err) {
@@ -31,9 +31,15 @@ export default function Metrics() {
     e.preventDefault();
     console.log(formData);
     try {
-      const response = await MetricsFinder.post("/", {
-        formData,
-      });
+      const response = await MetricsFinder.post(
+        "/",
+        {
+          formData,
+        },
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
     } catch (err) {
       console.log(err);
     }
@@ -62,6 +68,50 @@ export default function Metrics() {
       </Head>
       <AdminLayout>
         <div className="main-container">
+          <h1>Metrics</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>SN</th>
+                <th>Students</th>
+                <th>StudentsPerClass</th>
+                <th>Teachers</th>
+                <th>StudentTeacherRatio</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {metrics &&
+                metrics.map((metric) => {
+                  return (
+                    <tr key={metric.id}>
+                      <td>{metric.Students}</td>
+                      <td>{metric.StudentsPerClass}</td>
+                      <td>{metric.Teachers}</td>
+                      <td>{metric.StudentTeacherRatio}</td>
+                      <td>
+                        <Link href="/admin/home/Metrics/`${id}`">
+                          <button
+                            onClick={() => handleUpdate(metric.id)}
+                            className="border-2"
+                          >
+                            Update
+                          </button>
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(metric.id)}
+                          className="border-2"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
           <h1 className="text-orange text-2xl text-center font-bold m-10">
             Add Metrics
           </h1>

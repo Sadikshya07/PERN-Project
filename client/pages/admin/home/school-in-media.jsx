@@ -4,8 +4,10 @@ import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import SchoolinMediaFinder from "../../api/SchoolinMediaFinder";
+import { useRouter } from "next/router";
 
 export default function Metrics() {
+  const router = useRouter();
   const imageRef = useRef();
   const authorRef = useRef();
   const titleRef = useRef();
@@ -58,6 +60,9 @@ export default function Metrics() {
     }
   };
 
+  const handleUpdate = async (id) => {
+    router.push(`/admin/home/SchoolInMedia/${id}`);
+  };
   return (
     <div>
       <Head>
@@ -68,6 +73,50 @@ export default function Metrics() {
       </Head>
       <AdminLayout>
         <div className="main-container">
+          <h1>School in Media</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>SN</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Link</th>
+                <th>Image</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {schoolMedia &&
+                schoolMedia.map((media) => {
+                  return (
+                    <tr key={media.id}>
+                      <td>{media.title}</td>
+                      <td>{media.author}</td>
+                      <td>{media.Link}</td>
+                      <td>{media.image}</td>
+                      <td>
+                        <Link href="/admin/home/SchoolInMedia/`${id}`">
+                          <button
+                            onClick={() => handleUpdate(media.id)}
+                            className="border-2"
+                          >
+                            Update
+                          </button>
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(media.id)}
+                          className="border-2"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
           <h1 className="text-orange text-2xl text-center font-bold m-10">
             School in Media
           </h1>

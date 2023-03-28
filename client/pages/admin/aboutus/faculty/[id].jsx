@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import FacultyFinder from "../../api/FacultyFinder";
-import AdminLayout from "../../../components/Layouts/AdminLayout";
+import FacultyFinder from "../../../api/FacultyFinder";
+import AdminLayout from "../../../../components/Layouts/AdminLayout";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 

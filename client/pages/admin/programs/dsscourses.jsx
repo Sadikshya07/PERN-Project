@@ -37,6 +37,23 @@ export default function DSSCourses() {
       console.log(err);
     }
   };
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await DssCoursesFinder.delete(`/${id}`);
+      setDssCourses(
+        DssCourses.filter((Courses) => {
+          return Courses.id !== id;
+        })
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUpdate = async (id) => {
+    router.push(`/admin/programs/Dss-courses/${id}`);
+  };
   return (
     <div>
       <Head>
@@ -46,22 +63,50 @@ export default function DSSCourses() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DssCourses &&
+              DssCourses.map((Courses) => {
+                return (
+                  <tr key={Courses.id}>
+                    <td>{Courses.name}</td>
+                    <td>{Courses.description}</td>
+                    <td>
+                      <Link href="/admin/programs/Dss-courses/`${id}`">
+                        <button
+                          onClick={() => handleUpdate(Courses.id)}
+                          className="border-2"
+                        >
+                          Update
+                        </button>
+                      </Link>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleDelete(Courses.id)}
+                        className="border-2"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
         <div className="main-container">
           <h1 className="text-orange text-2xl text-center font-bold m-10">
             Add DSS Courses
           </h1>
           <button className="border-2">Add</button>
           <br />
-          <table>
-            <thead>
-              <tr>
-                <th>SN</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-          </table>
           <form
             onChange={handleSubmit}
             className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"

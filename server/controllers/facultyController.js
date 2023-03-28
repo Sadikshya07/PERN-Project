@@ -33,18 +33,13 @@ router.get("/:id", async (req, res) => {
     console.error(error.message);
   }
 });
-const imagePathServer = "/images/";
 
+const imagePathServer = "/images/";
 router.post("/", async (req, res) => {
   try {
-    const { name, description, department, AreaofExpertise, Experience } =
+    const { name, description, department, AreaofExpertise, Experience} =
       req.body;
-
-    let fileName = req.files.image.name;
-    let splitName = fileName.split(" ");
-    let newName = splitName.join("-");
-
-    let ImagePath = imagePathServer + Date.now() + "-" + newName;
+    let ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
     await req.files.image.mv("./public" + ImagePath);
 
     const data = {
@@ -66,19 +61,21 @@ router.post("/", async (req, res) => {
     console.error("Error:", error.message);
   }
 });
+
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { name, description, department, AreaofExpertise, Experience } =
+    const { name, description, department, AreaofExpertise, Experience} =
       req.body;
-
+      let ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
+      await req.files.image.mv("./public" + ImagePath);
     const data = {
       name: name,
       description: description,
       department: department,
       AreaofExpertise: AreaofExpertise,
       Experience: Experience,
-      image: ImagePath
+      image:ImagePath
 
     };
     const results = await prisma.faculty.update({
@@ -101,7 +98,8 @@ router.delete("/:id", async (req, res) => {
     const id = req.params.id;
     const { name, description, department, AreaofExpertise, Experience } =
       req.body;
-
+      let ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
+      await req.files.image.mv("./public" + ImagePath);
     const data = {
       name: name,
       description: description,
@@ -123,5 +121,4 @@ router.delete("/:id", async (req, res) => {
     console.error(error.message);
   }
 });
-
 module.exports = router;
