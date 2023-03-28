@@ -23,10 +23,24 @@ import {
 import { motion } from "framer-motion";
 import PopUpFinder from "./api/PopUpFinder";
 
-export default function HomeWrapper() {
+export default function HomeWrapper({newsandevents,
+  metrics,
+  schoolactivites,
+  popup,
+  homeimage,
+  programs,
+  schoolinmedia,}) {
   return (
     <SchoolContextProvider>
-      <Home />
+      <Home 
+      newsandevents={newsandevents}
+      metrics={metrics}
+      schoolactivites={schoolactivites}
+      popup={popup}
+      homeimage={homeimage}
+      programs={programs}
+      schoolinmedia={schoolinmedia}
+      />
     </SchoolContextProvider>
   );
 }
@@ -141,6 +155,15 @@ function Home({
       <Navbar />
       <main>
         <div className="hero-section flex justify-between w-11/12 mx-auto mt-8 ">
+          {console.log(
+            newsandevents,
+            metrics,
+            schoolactivites,
+            popup,
+            homeimage,
+            programs,
+            schoolinmedia
+          )}
           <div className="left lg:w-[38em]">
             <h1 className="text-2xl md:text-[3rem] lg:text-[4rem] font-extrabold w-[14em] leading-[1.25em]">
               Welcome to Sifal School
