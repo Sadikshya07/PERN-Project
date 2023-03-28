@@ -32,4 +32,4 @@ yarn-error.log*
 .vercel
 server/prisma/migrations/migration_lock.toml
 .gitignore
-server/prisma/migrations/20230328080713_/migration.sql
+server/prisma/migrations/*/*
