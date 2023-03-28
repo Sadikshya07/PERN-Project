@@ -56,12 +56,7 @@ function Home({
   ];
 
   const [newsandEvents, setNewsandEvents] = useState();
-  // const [metrics, setMetrics] = useState();
   const [buttonPopup, setButtonPopup] = useState(false);
-  const [popUpImg, setPopUpImg] = useState();
-  const [heroImage, setHeroImage] = useState();
-  // const [programs, setPrograms] = useState();
-  const [schoolMedia, setSchoolMedia] = useState();
   const { schoolActivites, setSchoolActivites } = useContext(SchoolContext);
 
   useEffect(() => {
