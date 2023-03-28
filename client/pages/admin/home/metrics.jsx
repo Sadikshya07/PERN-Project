@@ -12,6 +12,10 @@ export default function Metrics() {
     Teachers: null,
     StudentTeacherRatio: null,
   });
+  const studentRef = useRef();
+  const studentsPerClassRef = useRef();
+  const teachersRef = useRef();
+  const studentTeacherRatioRef = useRef();
   const [metrics, setMetrics] = useState();
 
   useEffect(() => {
@@ -34,7 +38,10 @@ export default function Metrics() {
       const response = await MetricsFinder.post(
         "/",
         {
-          formData,
+          Students: studentRef.current.value,
+          StudentsPerClass: studentsPerClassRef.current.value,
+          Teachers: teachersRef.current.value,
+          StudentTeacherRatio: studentTeacherRatioRef.current.value,
         },
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -126,9 +133,7 @@ export default function Metrics() {
               type="text"
               id="students"
               placeholder=""
-              onChange={(e) =>
-                setFormData({ ...formData, Students: e.target.value })
-              }
+              ref={studentRef}
               className="border-2 w-full p-2 rounded-lg mb-4"
               required
             ></input>
@@ -141,9 +146,7 @@ export default function Metrics() {
               id="perclass"
               placeholder=""
               className="border-2 w-full p-2 rounded-lg mb-4"
-              onChange={(e) => {
-                setFormData({ ...formData, StudentsPerClass: e.target.value });
-              }}
+              ref={studentsPerClassRef}
               required
             ></input>
             <br />
@@ -155,9 +158,7 @@ export default function Metrics() {
               id="teachers"
               placeholder=""
               className="border-2 w-full p-2 rounded-lg mb-4"
-              onChange={(e) => {
-                setFormData({ ...formData, Teachers: e.target.value });
-              }}
+              ref={teachersRef}
               required
             ></input>
             <br />
@@ -169,12 +170,7 @@ export default function Metrics() {
               id="stratio"
               placeholder=""
               className="border-2 w-full p-2 rounded-lg mb-4"
-              onChange={(e) => {
-                setFormData({
-                  ...formData,
-                  StudentTeacherRatio: e.target.value,
-                });
-              }}
+              ref={studentTeacherRatioRef}
               required
             ></input>
             <br />

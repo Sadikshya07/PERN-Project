@@ -111,7 +111,7 @@ model whydss {
 //programs
 
 model courses {
-  id        Int      @id
+  id        Int      @id @default(autoincrement())
   grade     String
   file      String
   createdAt DateTime @default(now())
