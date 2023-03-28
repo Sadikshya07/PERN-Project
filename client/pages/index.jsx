@@ -31,7 +31,15 @@ export default function HomeWrapper() {
   );
 }
 
-function Home() {
+function Home({
+  newsandevents,
+  metrics,
+  schoolactivites,
+  popup,
+  homeimage,
+  programs,
+  schoolinmedia,
+}) {
   const months = [
     "Jan",
     "Feb",
@@ -48,45 +56,24 @@ function Home() {
   ];
 
   const [newsandEvents, setNewsandEvents] = useState();
-  const [metrics, setMetrics] = useState();
+  // const [metrics, setMetrics] = useState();
   const [buttonPopup, setButtonPopup] = useState(false);
   const [popUpImg, setPopUpImg] = useState();
   const [heroImage, setHeroImage] = useState();
-  const [programs, setPrograms] = useState();
+  // const [programs, setPrograms] = useState();
   const [schoolMedia, setSchoolMedia] = useState();
   const { schoolActivites, setSchoolActivites } = useContext(SchoolContext);
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response1 = await NewsandEventsFinder.get("/only4");
-        const response2 = await MetricsFinder.get("/");
-        const response3 = await SchoolActivitiesFinder.get("/");
-        const response4 = await PopUpFinder.get("/one");
-        const response5 = await HomeImageFinder.get("/latest");
-        const response6 = await ProgramsFinder.get("/latest");
-        const response7 = await SchoolinMediaFinder.get("/latest");
-        console.log(response7.data.data);
-        setSchoolMedia(response7.data.data);
-        setPrograms(response6.data.data);
-        setHeroImage(response5.data.data);
-        setPopUpImg(response4.data.data);
-        setNewsandEvents(response1.data.data);
-        setMetrics(response2.data.data);
-        setSchoolActivites(response3.data.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-    setButtonPopup(true);
+    setSchoolActivites(schoolactivites);
   }, []);
 
   let i = 0;
   let y = 0;
 
   const schoolinMediaMapped =
-    schoolMedia &&
-    schoolMedia.map((media) => {
+    schoolinmedia &&
+    schoolinmedia.map((media) => {
       i++;
       return (
         <a
@@ -117,8 +104,8 @@ function Home() {
     });
 
   const newsmapped =
-    newsandEvents &&
-    newsandEvents.map((news) => {
+    newsandevents &&
+    newsandevents.map((news) => {
       let d = new Date(news.publishdate);
       y++;
       return (
@@ -216,26 +203,26 @@ function Home() {
             )}
           </div>
           <div className="images hidden lg:block relative w-[38em] h-[38em] -z-50">
-            {heroImage && (
+            {homeimage && (
               <>
                 <div
                   className="absolute bottom-0 right-[14em] h-[15em] w-[15em] rounded-full bg-red-500"
                   style={{
-                    backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${heroImage.image1}')`,
+                    backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${homeimage.image1}')`,
                     backgroundSize: "cover",
                   }}
                 ></div>
                 <div
                   className="absolute top-0 right-0 h-[30em] w-[30em] rounded-full bg-red-400"
                   style={{
-                    backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${heroImage.image2}')`,
+                    backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${homeimage.image2}')`,
                     backgroundSize: "cover",
                   }}
                 ></div>
                 <div
                   className="absolute top-[10em] left-0 h-[15em] w-[15em] rounded-full bg-red-300"
                   style={{
-                    backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${heroImage.image3}')`,
+                    backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${homeimage.image3}')`,
                     backgroundSize: "cover",
                   }}
                 ></div>
@@ -383,7 +370,7 @@ function Home() {
         </div>
       </main>
       <Footer />
-      {popUpImg && (
+      {popup && (
         <Popup
           trigger={buttonPopup}
           setTrigger={setButtonPopup}
@@ -393,7 +380,7 @@ function Home() {
           <div
             className="h-full rounded-b-xl"
             style={{
-              backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${popUpImg.Image}')`,
+              backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${popup.Image}')`,
               backgroundSize: "cover",
             }}
           ></div>
@@ -401,4 +388,25 @@ function Home() {
       )}
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const response1 = await NewsandEventsFinder.get("/only4");
+  const response2 = await MetricsFinder.get("/");
+  const response3 = await SchoolActivitiesFinder.get("/");
+  const response4 = await PopUpFinder.get("/one");
+  const response5 = await HomeImageFinder.get("/latest");
+  const response6 = await ProgramsFinder.get("/latest");
+  const response7 = await SchoolinMediaFinder.get("/latest");
+  return {
+    props: {
+      newsandevents: response1.data.data,
+      metrics: response2.data.data,
+      schoolactivites: response3.data.data,
+      popup: response4.data.data,
+      homeimage: response5.data.data,
+      programs: response6.data.data,
+      schoolinmedia: response7.data.data,
+    }, // will be passed to the page component as props
+  };
 }
