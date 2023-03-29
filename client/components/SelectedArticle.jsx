@@ -7,20 +7,21 @@ const SelectedArticle = ({ description, image1, image2 }) => {
       </article>
       <div className="images">
         <div
-          className="image1 bg-orange w-full h-[36em] my-8 object-cover aspect-[3/4]"
+          className="image1 bg-orange w-full h-[30em] my-8 rounded-xl"
           style={{
             background: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${image1}')`,
+            backgroundSize: "cover",
+
           }}
         >
-          {/* <Image src={`http://${image1}`} fill quality={100} alt="Image 1" /> */}
         </div>
         <div
-          className="image2 bg-orange w-full h-[36em] my-8 object-cover aspect-[3/4]"
+          className="image2 bg-orange w-full h-[30em] my-8 rounded-xl"
           style={{
             background: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${image2}')`,
+            backgroundSize: "cover",
           }}
         >
-          {/* <Image src={`http://${image2}`} fill quality={100} alt="Image 2" /> */}
         </div>
       </div>
     </main>

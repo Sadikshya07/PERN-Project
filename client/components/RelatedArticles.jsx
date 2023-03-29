@@ -9,9 +9,10 @@ const RelatedArticles = ({ otherArticle }) => {
             className="card w-[18rem] h-[18rem] bg-orange rounded-xl mb-4 object-fill"
             style={{
               background: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${article.image1}')`,
+              backgroundSize: "cover",
             }}
           ></div>
-          <p className="text-orange font-semibold text-2xl w-[18rem]">
+          <p className="text-orange text-center font-semibold text-2xl w-[18rem]">
             {article.title}
           </p>
         </div>
@@ -20,7 +21,7 @@ const RelatedArticles = ({ otherArticle }) => {
   });
 
   return (
-    <aside className="other-posts flex flex-col gap-y-8">
+    <aside className="other-posts flex flex-col gap-y-8 mb-10">
       <h1 className="text-3xl text-center font-semibold">Other Posts</h1>
       {otherarticles}
     </aside>
