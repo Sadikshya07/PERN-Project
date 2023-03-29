@@ -17,7 +17,7 @@ export default function AddPopup() {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-    } catch (err) {
+    } catch (err) { 
       console.log(err.message);
     }
   };
@@ -56,7 +56,7 @@ export default function AddPopup() {
               Submit
             </button>
           </form>
-        </div>
+        </div> 
       </AdminLayout>
     </div>
   );
