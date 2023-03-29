@@ -57,7 +57,7 @@ export default function NewsAndEvents() {
           <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
         )}
         {data ? (
-          <div className="management-grid-container w-11/12 mx-auto grid md:grid-cols-2 lg:grid-cols-3">
+          <div className=" w-11/12 mx-auto my-8 grid justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-10">
             {newsAndEventsCards}
           </div>
         ) : (

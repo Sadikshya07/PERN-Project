@@ -41,7 +41,7 @@ export default function NewsandEventsCard({
             <br />
             {`${months[d.getMonth()]}`}
           </p>
-          <p className="absolute bottom-5 left-5 w-[17em] font-bold text-offWhite text-2xl">
+          <p className="absolute bottom-5 left-5 w-[15em] font-bold text-offWhite text-2xl">
             {title}
           </p>
         </div>
