@@ -4,7 +4,7 @@ import Link from "next/link";
 import ManagementFinder from "../../api/ManagementFinder";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import { useState, useEffect } from "react";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 export default function Management() {
   const router = useRouter();
@@ -16,7 +16,7 @@ export default function Management() {
   const [Management, setManagement] = useState();
   // error is used to display the error but it is not completed
   const [error, setError] = useState("");
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,7 +41,7 @@ export default function Management() {
           name,
           description,
           position,
-          image
+          image,
         },
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -96,31 +96,36 @@ export default function Management() {
               </tr>
             </thead>
             <tbody>
-             {Management &&
-              Management.map((person) => {
-              return (
-            <tr key={person.id} >
-            <td>name={person.name}</td>
-            <td>description={person.description}</td>
-            <td>position={person.position}</td>
-            <td>image={person.image}</td>
-            <td>
-              <Link href="/admin/aboutus/Management/`${id}`">
-                <button
-                onClick = {() => handleUpdate(person.id)}
-                className="border-2">Update</button>
-              </Link>
-            </td>
-            <td>
-              <button
-              onClick = {() => handleDelete(person.id)}
-              className="border-2">Delete</button>
-            </td>
-            </tr>
-              );
-             })
-           }
-           </tbody>
+              {Management &&
+                Management.map((person) => {
+                  return (
+                    <tr key={person.id}>
+                      <td>name={person.name}</td>
+                      <td>description={person.description}</td>
+                      <td>position={person.position}</td>
+                      <td>image={person.image}</td>
+                      <td>
+                        <Link href="/admin/aboutus/Management/`${id}`">
+                          <button
+                            onClick={() => handleUpdate(person.id)}
+                            className="border-2"
+                          >
+                            Update
+                          </button>
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(person.id)}
+                          className="border-2"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
           </table>
           <form
             onSubmit={handleSubmit}

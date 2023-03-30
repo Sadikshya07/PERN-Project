@@ -1,10 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState,useEffect} from "react";
+import { useRef, useState, useEffect } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import SchoolinMediaFinder from "../../api/SchoolinMediaFinder";
-import {useRouter} from "next/router"
+import { useRouter } from "next/router";
 
 export default function Metrics() {
   const router = useRouter();
@@ -13,7 +13,6 @@ export default function Metrics() {
   const titleRef = useRef();
   const linkRef = useRef();
   const [schoolMedia, setSchoolMedia] = useState();
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -87,35 +86,47 @@ export default function Metrics() {
               </tr>
             </thead>
             <tbody>
-             {schoolMedia &&
-              schoolMedia.map((media) => {
-              return (
-            <tr key={media.id} >
-            <td>{media.title}</td>
-            <td>{media.author}</td>
-            <td>{media.Link}</td>
-            <td>{media.image}</td>
-            <td>
-              <Link href="/admin/home/SchoolInMedia/`${id}`">
-                <button
-                onClick = {() => handleUpdate(media.id)}
-                className="border-2">Update</button>
-              </Link>
-            </td>
-            <td>
-              <button
-              onClick = {() => handleDelete(media.id)}
-              className="border-2">Delete</button>
-            </td>
-            </tr>
-              );
-             })
-           }
-           </tbody>
+              {schoolMedia &&
+                schoolMedia.map((media) => {
+                  return (
+                    <tr key={media.id}>
+                      <td>{media.title}</td>
+                      <td>{media.author}</td>
+                      <td>{media.Link}</td>
+                      <td>{media.image}</td>
+                      <td>
+                        <Link href="/admin/home/SchoolInMedia/`${id}`">
+                          <button
+                            onClick={() => handleUpdate(media.id)}
+                            className="border-2"
+                          >
+                            Update
+                          </button>
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(media.id)}
+                          className="border-2"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
           </table>
-          <h1 className="text-orange text-2xl text-center font-bold m-10">School in Media</h1>
-          <form onSubmit={handleSubmit} className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl">
-            <label htmlFor="name" className="text-lg font-medium w-[11em]">Title: </label>
+          <h1 className="text-orange text-2xl text-center font-bold m-10">
+            School in Media
+          </h1>
+          <form
+            onSubmit={handleSubmit}
+            className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
+          >
+            <label htmlFor="name" className="text-lg font-medium w-[11em]">
+              Title:{" "}
+            </label>
             <input
               type="text"
               id="title"
@@ -124,7 +135,9 @@ export default function Metrics() {
               required
             ></input>
             <br />
-            <label htmlFor="name" className="text-lg font-medium w-[11em]">Author: </label>
+            <label htmlFor="name" className="text-lg font-medium w-[11em]">
+              Author:{" "}
+            </label>
             <input
               type="text"
               id="author"
@@ -133,7 +146,9 @@ export default function Metrics() {
               required
             ></input>
             <br />
-            <label htmlFor="name" className="text-lg font-medium w-[11em]">Link to Article: </label>
+            <label htmlFor="name" className="text-lg font-medium w-[11em]">
+              Link to Article:{" "}
+            </label>
             <input
               type="text"
               id="title"
@@ -142,7 +157,9 @@ export default function Metrics() {
               required
             ></input>
             <br />
-            <label htmlFor="image" className="text-lg font-medium w-[11em]">Thumbnail Image: </label>
+            <label htmlFor="image" className="text-lg font-medium w-[11em]">
+              Thumbnail Image:{" "}
+            </label>
             <input
               type="file"
               id="image"
@@ -152,7 +169,10 @@ export default function Metrics() {
             ></input>
             <br />
             <br />
-            <button type="submit" className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl">
+            <button
+              type="submit"
+              className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
+            >
               Submit
             </button>
           </form>

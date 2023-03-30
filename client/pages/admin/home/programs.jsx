@@ -1,19 +1,19 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useRef ,useState,useEffect} from "react";
+import { useRef, useState, useEffect } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import ProgramsFinder from "../../api/ProgramsFinder";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 export default function Programs() {
   const router = useRouter();
   const image1Ref = useRef();
   const image2Ref = useRef();
   const image3Ref = useRef();
-  const [programs,setPrograms] = useState();
-  const [image1 , setImage1] = useState();
-  const [image2 , setImage2] = useState();
-  const [image3 , setImage3] = useState()
+  const [programs, setPrograms] = useState();
+  const [image1, setImage1] = useState();
+  const [image2, setImage2] = useState();
+  const [image3, setImage3] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,8 +62,8 @@ export default function Programs() {
 
   const handleUpdate = (id) => {
     router.push(`/admin/home/Programs/${id}`);
-  }
-    
+  };
+
   return (
     <div>
       <Head>
@@ -86,30 +86,35 @@ export default function Programs() {
               </tr>
             </thead>
             <tbody>
-             {programs &&
-              programs.map((programs) => {
-              return (
-            <tr key={programs.id} >
-            <td>image1={programs.image1}</td>
-            <td>image2={programs.image2}</td>
-            <td>image3={programs.image3}</td>
-            <td>
-              <Link href="/admin/home/Programs/`${id}`">
-                <button
-                onClick = {() => handleUpdate(programs.id)}
-                className="border-2">Update</button>
-              </Link>
-            </td>
-            <td>
-              <button
-              onClick = {() => handleDelete(programs.id)}
-              className="border-2">Delete</button>
-            </td>
-            </tr>
-              );
-             })
-           }
-           </tbody>
+              {programs &&
+                programs.map((programs) => {
+                  return (
+                    <tr key={programs.id}>
+                      <td>image1={programs.image1}</td>
+                      <td>image2={programs.image2}</td>
+                      <td>image3={programs.image3}</td>
+                      <td>
+                        <Link href="/admin/home/Programs/`${id}`">
+                          <button
+                            onClick={() => handleUpdate(programs.id)}
+                            className="border-2"
+                          >
+                            Update
+                          </button>
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(programs.id)}
+                          className="border-2"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
           </table>
           <h1 className="text-orange text-2xl text-center font-bold m-10">
             Add Program Images

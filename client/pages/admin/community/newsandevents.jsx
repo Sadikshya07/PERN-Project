@@ -2,9 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import NewsandEventsFinder from "../../api/NewsandEventsFinder";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
-import {useRouter} from "next/router"
+import { useRouter } from "next/router";
 
 export default function NewsAndEvents() {
   const router = useRouter();
@@ -16,7 +16,7 @@ export default function NewsAndEvents() {
   const [error, setError] = useState("");
   const [image1, setImage1] = useState();
   const [image2, setImage2] = useState();
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -52,19 +52,18 @@ export default function NewsAndEvents() {
     }
   };
   const handleDelete = async (id) => {
-    try{
+    try {
       const response = await NewsandEventsFinder.delete(`/${id}`);
       setNewsandEvents(
         newsandevents.filter((news) => {
           return news.id !== id;
         })
       );
-    }catch (err){
+    } catch (err) {
       console.log(err);
     }
-
   };
-  
+
   const handleUpdate = (id) => {
     router.push(`/admin/community/${id}`);
   };
@@ -89,56 +88,50 @@ export default function NewsAndEvents() {
             </tr>
           </thead>
           <tbody>
-             {newsandevents &&
+            {newsandevents &&
               newsandevents.map((news) => {
-              return (
-            <tr key={news.id} >
-            <td>author={news.author}</td>
-            <td>title={news.title}</td>
-            <td>description={news.description}</td>
-            <td>publishdate={news.publishdate}</td>
-            <td>
-              <Link href="/admin/community/`id`">
-                <button
-                onClick = {() => handleUpdate(news.id)}
-                className="border-2">Update</button>
-              </Link>
-            </td>
-            <td>
-              <button
-              onClick = {() => handleDelete(news.id)}
-              className="border-2">Delete</button>
-            </td>
-            </tr>
-              );
-             })
-           }
-           </tbody>
+                return (
+                  <tr key={news.id}>
+                    <td>author={news.author}</td>
+                    <td>title={news.title}</td>
+                    <td>description={news.description}</td>
+                    <td>publishdate={news.publishdate}</td>
+                    <td>
+                      <Link href="/admin/community/`id`">
+                        <button
+                          onClick={() => handleUpdate(news.id)}
+                          className="border-2"
+                        >
+                          Update
+                        </button>
+                      </Link>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleDelete(news.id)}
+                        className="border-2"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
         </table>
         <div className="main-container">
           <h1 className="text-orange text-2xl text-center font-bold m-10">
             Add News and Events
           </h1>
           <br />
-          <table>
-            <thead>
-              <tr>
-                <th>SN</th>
-                <th>AuthorName</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Date</th>
-                <th>Image</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-          </table>
           <form
             onSubmit={handleSubmit}
             encType="multipart/form-data"
             className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
           >
-            <label htmlFor="fname" className="text-lg font-medium w-[11em]">Full name:</label>
+            <label htmlFor="fname" className="text-lg font-medium w-[11em]">
+              Full name:
+            </label>
             <input
               type="text"
               id="fname"
@@ -148,7 +141,9 @@ export default function NewsAndEvents() {
               onChange={(e) => setAuthor(e.target.value)}
             ></input>
             <br />
-            <label for="description" className="text-lg font-medium w-[11em]">Description:</label>
+            <label for="description" className="text-lg font-medium w-[11em]">
+              Description:
+            </label>
             <textarea
               type="text"
               id="description"
@@ -158,7 +153,9 @@ export default function NewsAndEvents() {
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
             <br />
-            <label for="Title" className="text-lg font-medium w-[11em]">Title:</label>
+            <label for="Title" className="text-lg font-medium w-[11em]">
+              Title:
+            </label>
             <input
               type="text"
               id="Title"
@@ -168,7 +165,9 @@ export default function NewsAndEvents() {
               onChange={(e) => setTitle(e.target.value)}
             ></input>
             <br />
-            <label for="Date" className="text-lg font-medium w-[11em]">Date:</label>
+            <label for="Date" className="text-lg font-medium w-[11em]">
+              Date:
+            </label>
             <input
               type="date"
               id="Date"
@@ -178,7 +177,9 @@ export default function NewsAndEvents() {
               onChange={(e) => setDate(new Date(e.target.value))}
             ></input>
             <br />
-            <label for="image" className="text-lg font-medium w-[11em]">Image 1:</label>
+            <label for="image" className="text-lg font-medium w-[11em]">
+              Image 1:
+            </label>
             <input
               type="file"
               id="image"
@@ -190,7 +191,9 @@ export default function NewsAndEvents() {
               required
             ></input>
             <br />
-            <label for="image" className="text-lg font-medium w-[11em]">Image 2:</label>
+            <label for="image" className="text-lg font-medium w-[11em]">
+              Image 2:
+            </label>
             <input
               type="file"
               id="image"
@@ -202,7 +205,10 @@ export default function NewsAndEvents() {
               required
             ></input>
             <br />
-            <button type="submit" className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl">
+            <button
+              type="submit"
+              className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
+            >
               Submit
             </button>
           </form>

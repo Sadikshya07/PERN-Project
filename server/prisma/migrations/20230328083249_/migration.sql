@@ -125,9 +125,9 @@ CREATE TABLE "whydss" (
 
 -- CreateTable
 CREATE TABLE "courses" (
-    "id" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
+    "id" INTEGER NOT NULL,
+    "grade" TEXT NOT NULL,
+    "file" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

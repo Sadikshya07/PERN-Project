@@ -2,9 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import DssCoursesFinder from "../../api/DssCoursesFinder";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 export default function DSSCourses() {
   const router = useRouter();
@@ -35,25 +35,25 @@ export default function DSSCourses() {
       });
     } catch (err) {
       console.log(err);
-    }}
-    
-    const handleDelete = async (id) => {
-      try{
-        const response = await DssCoursesFinder.delete(`/${id}`);
-        setDssCourses(
-          DssCourses.filter((Courses) => {
-            return Courses.id !== id;
-          })
-        );
-      } catch (err){
-        console.log(err);
-      }
     }
+  };
 
-
-    const handleUpdate = async (id) => {
-      router.push(`/admin/programs/Dss-courses/${id}`)
+  const handleDelete = async (id) => {
+    try {
+      const response = await DssCoursesFinder.delete(`/${id}`);
+      setDssCourses(
+        DssCourses.filter((Courses) => {
+          return Courses.id !== id;
+        })
+      );
+    } catch (err) {
+      console.log(err);
     }
+  };
+
+  const handleUpdate = async (id) => {
+    router.push(`/admin/programs/Dss-courses/${id}`);
+  };
   return (
     <div>
       <Head>
@@ -72,29 +72,34 @@ export default function DSSCourses() {
             </tr>
           </thead>
           <tbody>
-             {DssCourses &&
+            {DssCourses &&
               DssCourses.map((Courses) => {
-              return (
-            <tr key={Courses.id} >
-            <td>{Courses.name}</td>
-            <td>{Courses.description}</td>
-            <td>
-              <Link href="/admin/programs/Dss-courses/`${id}`">
-                <button
-                onClick = {() => handleUpdate(Courses.id)}
-                className="border-2">Update</button>
-              </Link>
-            </td>
-            <td>
-              <button
-              onClick = {() => handleDelete(Courses.id)}
-              className="border-2">Delete</button>
-            </td>
-            </tr>
-              );
-             })
-           }
-           </tbody>
+                return (
+                  <tr key={Courses.id}>
+                    <td>{Courses.name}</td>
+                    <td>{Courses.description}</td>
+                    <td>
+                      <Link href="/admin/programs/Dss-courses/`${id}`">
+                        <button
+                          onClick={() => handleUpdate(Courses.id)}
+                          className="border-2"
+                        >
+                          Update
+                        </button>
+                      </Link>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleDelete(Courses.id)}
+                        className="border-2"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
         </table>
         <div className="main-container">
           <h1 className="text-orange text-2xl text-center font-bold m-10">
@@ -106,7 +111,10 @@ export default function DSSCourses() {
             onChange={handleSubmit}
             className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
           >
-            <label htmlFor="title" className="text-lg font-medium w-[10em]">Title:</label> <br />
+            <label htmlFor="title" className="text-lg font-medium w-[10em]">
+              Title:
+            </label>{" "}
+            <br />
             <input
               type="text"
               id="title"
@@ -116,7 +124,10 @@ export default function DSSCourses() {
               onChange={(e) => setName(e.target.value)}
             ></input>
             <br />
-            <label for="" className="text-lg font-medium w-[10em]">Description:</label> <br />
+            <label for="" className="text-lg font-medium w-[10em]">
+              Description:
+            </label>{" "}
+            <br />
             <textarea
               type="text"
               id="description"
@@ -126,7 +137,10 @@ export default function DSSCourses() {
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>{" "}
             <br />
-            <button type="submit" className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl">
+            <button
+              type="submit"
+              className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
+            >
               Submit
             </button>
           </form>

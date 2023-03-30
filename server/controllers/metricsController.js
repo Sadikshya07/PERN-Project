@@ -55,15 +55,15 @@ router.get("/:id", async (req, res) => {
 });
 router.post("/", async (req, res) => {
   try {
+    console.log(req.body.formData);
     const { Students, StudentsPerClass, Teachers, StudentTeacherRatio } =
-      req.body.formData;
+      req.body;
     const data = {
       Students,
       StudentsPerClass,
       Teachers,
       StudentTeacherRatio,
     };
-    console.log(data);
     const results = await prisma.metrics.create({
       data,
     });

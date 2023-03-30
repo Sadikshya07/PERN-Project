@@ -30,3 +30,6 @@ yarn-error.log*
 .DS_Store
 # vercel
 .vercel
+server/prisma/migrations/migration_lock.toml
+.gitignore
+server/prisma/migrations/*/*

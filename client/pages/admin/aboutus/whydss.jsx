@@ -11,17 +11,16 @@ export default function WhyDSS() {
   const [error, setError] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      const response = await WhyDssFinder.post("/",{
+    try {
+      const response = await WhyDssFinder.post("/", {
         Category,
         Bullets,
       });
-    }
-    catch(err){
+    } catch (err) {
       console.log(err);
     }
   };
-  
+
   return (
     <div>
       <Head>
@@ -43,7 +42,7 @@ export default function WhyDSS() {
             </tr>
           </thead>
         </table>
-        <form onChange={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <label for="category">Category:</label> <br />
           <input
             type="text"
