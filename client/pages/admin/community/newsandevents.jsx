@@ -76,54 +76,55 @@ export default function NewsAndEvents() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
-        <table>
+        <h1 className="text-orange text-2xl text-center font-bold m-10">
+          News and Events
+        </h1>
+        <table className="table-style">
           <thead>
-            <tr>
-              <th>AuthorName</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Date</th>
-              <th>Image</th>
-              <th>Actions</th>
+            <tr className="bg-gray px-4 py-2 border-b-2">
+              <th className="px-5 py-3">Author</th>
+              <th className="px-5 py-3">Title</th>
+              <th className="px-5 py-3">Description</th>
+              <th className="px-5 py-3">Date</th>
+              {/* <th>Image</th> */}
+              <th className="px-5 py-3">Actions</th>
             </tr>
           </thead>
           <tbody>
             {newsandevents &&
               newsandevents.map((news) => {
                 return (
-                  <tr key={news.id}>
-                    <td>author={news.author}</td>
-                    <td>title={news.title}</td>
-                    <td>description={news.description}</td>
-                    <td>publishdate={news.publishdate}</td>
-                    <td>
-                      <Link href="/admin/community/`id`">
+                  <tr key={news.id} className="border-b-2">
+                    <td className="px-5 py-3">{news.author}</td>
+                    <td className="px-5 py-3">{news.title}</td>
+                    <td className="px-5 py-3">{news.description}</td>
+                    <td className="table-data-padding">{news.publishdate}</td>
+                    <div className="flex flex-col px-5 py-3">
+                      <td>
+                        <Link href="/admin/community/`id`">
+                          <button
+                            onClick={() => handleUpdate(news.id)}
+                            className="update"
+                          >
+                            Update
+                          </button>
+                        </Link>
+                      </td>
+                      <td>
                         <button
-                          onClick={() => handleUpdate(news.id)}
-                          className="border-2"
+                          onClick={() => handleDelete(news.id)}
+                          className="delete"
                         >
-                          Update
+                          Delete
                         </button>
-                      </Link>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => handleDelete(news.id)}
-                        className="border-2"
-                      >
-                        Delete
-                      </button>
-                    </td>
+                      </td>
+                    </div>
                   </tr>
                 );
               })}
           </tbody>
         </table>
         <div className="main-container">
-          <h1 className="text-orange text-2xl text-center font-bold m-10">
-            Add News and Events
-          </h1>
-          <button className="border-2">Add</button>
           <br />
           <form
             onSubmit={handleSubmit}

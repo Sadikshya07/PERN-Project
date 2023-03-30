@@ -76,7 +76,6 @@ export default function Images() {
         <table>
           <thead>
             <tr>
-              <th>SN</th>
               <th>Image1</th>
               <th>Image2</th>
               <th>Image3</th>
@@ -88,27 +87,29 @@ export default function Images() {
               heroImage.map((heroImage) => {
                 return (
                   <tr key={heroImage.id}>
-                    <td>image1={heroImage.image1}</td>
-                    <td>image2={heroImage.image2}</td>
-                    <td>image3={heroImage.image3}</td>
-                    <td>
-                      <Link href="/admin/home/Home-images/`${id}`">
+                    <td>{heroImage.image1}</td>
+                    <td>{heroImage.image2}</td>
+                    <td>{heroImage.image3}</td>
+                    <div className="flex flex-col">
+                      <td>
+                        <Link href="/admin/home/Home-images/`${id}`">
+                          <button
+                            onClick={() => handleUpdate(heroImage.id)}
+                            className="update"
+                          >
+                            Update
+                          </button>
+                        </Link>
+                      </td>
+                      <td>
                         <button
-                          onClick={() => handleUpdate(heroImage.id)}
-                          className="border-2"
+                          onClick={() => handleDelete(heroImage.id)}
+                          className="delete"
                         >
-                          Update
+                          Delete
                         </button>
-                      </Link>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => handleDelete(heroImage.id)}
-                        className="border-2"
-                      >
-                        Delete
-                      </button>
-                    </td>
+                      </td>
+                    </div>
                   </tr>
                 );
               })}

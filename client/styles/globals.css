@@ -157,4 +157,20 @@ html {
     margin-top: 1em;
     font-weight: 600;
   }
+
+  .delete{
+    @apply w-full border-2 px-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white;
+  }
+
+  .update{
+    @apply w-full border-2 px-2 border-green text-green hover:bg-green hover:text-white;
+  }
+
+  .table-style{
+    @apply border-2 rounded-xl;
+  }
+
+  .table-data-padding{
+    @apply px-2 py-4;
+  }
 }

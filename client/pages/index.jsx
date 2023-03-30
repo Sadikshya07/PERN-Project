@@ -125,7 +125,6 @@ function Home({
           <div className="h-full rounded-3xl relative">
             <Image
               src={`${process.env.NEXT_PUBLIC_SERVER_HOST}${news.image1}`}
-              cover
               fill
               className="rounded-3xl bg-center bg-contain z-[-1]"
             />
