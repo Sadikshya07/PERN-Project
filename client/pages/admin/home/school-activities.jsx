@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import SchoolActivitiesFinder from "../../api/SchoolActivitiesFinder";
 import { useRouter } from "next/router";
+import Popup from "reactjs-popup";
 
 export default function SchoolActivities() {
   const [link, setLink] = useState();
@@ -66,73 +67,75 @@ export default function SchoolActivities() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
-        <div className="main-container">
-          <h1 className="text-orange text-2xl text-center font-bold m-10">
-            Add School Activities
-          </h1>
-          {/* {/* <h3>
-            Recommended to have at least 6 URLs to be displayed at a time.
-          </h3> */}
-          <table>
-            <thead>
-              <tr>
-                <th>Link</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {schoolActivities &&
-                schoolActivities.map((schoolActivitie) => {
-                  return (
-                    <tr key={schoolActivitie.id}>
-                      <td>Link={schoolActivitie.Link}</td>
-                      <td>
-                        <Link href="/admin/home/School-activities/`${id}`">
-                          <button
-                            onClick={() => handleUpdate(schoolActivitie.id)}
-                            className="border-2"
-                          >
-                            Update
-                          </button>
-                        </Link>
-                      </td>
-                      <td>
+        <h1 className="text-orange text-2xl text-center font-bold m-10">
+          School Activities
+        </h1>
+        <Popup
+          trigger={<button className="add-data-button">Add Data</button>}
+          modal
+        >
+          {(close) => (
+            <form
+              onSubmit={handleSubmit}
+              className="w-[44rem] mx-auto px-6 py-12 rounded-xl"
+            >
+              <label htmlFor="name">Embed Link:</label>
+              <input
+                type="text"
+                id="url"
+                placeholder=""
+                className="border-2 w-full p-2 rounded-lg mb-4"
+                onChange={(e) => {
+                  setLink(e.target.value);
+                }}
+                required
+              ></input>
+              <br />
+              <button
+                type="submit"
+                className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
+              >
+                Submit
+              </button>
+            </form>
+          )}
+        </Popup>
+        <table>
+          <thead>
+            <tr>
+              <th>Link</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {schoolActivities &&
+              schoolActivities.map((schoolActivitie) => {
+                return (
+                  <tr key={schoolActivitie.id}>
+                    <td>Link={schoolActivitie.Link}</td>
+                    <td>
+                      <Link href="/admin/home/School-activities/`${id}`">
                         <button
-                          onClick={() => handleDelete(schoolActivitie.id)}
+                          onClick={() => handleUpdate(schoolActivitie.id)}
                           className="border-2"
                         >
-                          Delete
+                          Update
                         </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
-          <form
-            onSubmit={handleSubmit}
-            className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
-          >
-            <label htmlFor="name"> URL:</label>
-            <input
-              type="text"
-              id="url"
-              placeholder=""
-              className="border-2 w-full p-2 rounded-lg mb-4"
-              onChange={(e) => {
-                setLink(e.target.value);
-              }}
-              required
-            ></input>
-            <br />
-            <button
-              type="submit"
-              className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
+                      </Link>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleDelete(schoolActivitie.id)}
+                        className="border-2"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
       </AdminLayout>
     </div>
   );

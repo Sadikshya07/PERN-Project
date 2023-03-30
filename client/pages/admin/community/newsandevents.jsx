@@ -10,7 +10,7 @@ import Popup from "reactjs-popup";
 export default function NewsAndEvents() {
   const router = useRouter();
   const [author, setAuthor] = useState();
-  const [title, setTitle] = useState();
+const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [publishdate, setDate] = useState();
   const [newsandevents, setNewsandEvents] = useState();

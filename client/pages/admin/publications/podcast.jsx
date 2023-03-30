@@ -4,6 +4,7 @@ import Link from "next/link";
 import PodcastFinder from "../../api/PodcastFinder";
 import { useEffect, useState } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
+import Popup from "reactjs-popup";
 
 export default function Podcast() {
   const [PresenterName, setPresenterName] = useState();
@@ -47,45 +48,17 @@ export default function Podcast() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
-        <div className="main-container">
-          <h1 className="text-orange text-2xl text-center font-bold m-10">
-            Add Podcast
-          </h1>
-          <button className="border-2">Add</button>
-          <br />
-          <table>
-            <thead>
-              <tr>
-                <th>SN</th>
-                <th>Presenter Name</th>
-                <th>Roll Number</th>
-                <th>Podcast description</th>
-                <th>Grade</th>
-                <th>Image</th>
-                <th>Video</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {podcast &&
-                podcast.map((item) => {
-                  return (
-                    <tr key={item.id}>
-                      <td>{i++}</td>
-                      <td>{item.presentername}</td>
-                      <td>{item.rollnumber}</td>
-                      <td>{item.description}</td>
-                      <td>{item.grade}</td>
-                      <td>Update</td>
-                      <td>Delete</td>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
-          <form
+        <h1 className="text-orange text-2xl text-center font-bold m-10">
+          Podcast
+        </h1>
+        <Popup
+          trigger={<button className="add-data-button">Add Data</button>}
+          modal
+        >
+          {(close) => (
+            <form
             onChange={handleSubmit}
-            className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
+            className="w-[44rem] mx-auto px-6 py-12 rounded-xl"
           >
             <label for="name" className="text-lg font-medium w-[11em]">
               Presenter Name:
@@ -115,7 +88,7 @@ export default function Podcast() {
               Rollno:
             </label>
             <input
-              type="number"
+              type="text"
               id="rollno"
               placeholder=""
               className="border-2 w-full p-2 rounded-lg mb-4"
@@ -133,10 +106,7 @@ export default function Podcast() {
               className="border-2 w-full p-2 rounded-lg mb-4"
             ></input>
             <br />
-            <label
-              htmlFor="description"
-              className="text-lg font-medium w-[11em]"
-            >
+            <label htmlFor="description" className="text-lg font-medium w-[11em]">
               Podcast Description
             </label>
             <textarea
@@ -165,7 +135,37 @@ export default function Podcast() {
               Submit
             </button>
           </form>
-        </div>
+          )}
+        </Popup>
+        <table>
+          <thead>
+            <tr>
+              <th>Presenter Name</th>
+              <th>Roll Number</th>
+              <th>Description</th>
+              <th>Grade</th>
+              <th>Image</th>
+              <th>Video Link</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {podcast &&
+              podcast.map((item) => {
+                return (
+                  <tr key={item.id}>
+                    <td>{item.presentername}</td>
+                    <td>{item.rollnumber}</td>
+                    <td>{item.description}</td>
+                    <td>{item.grade}</td>
+                    <td>Update</td>
+                    <td>Delete</td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
+        
       </AdminLayout>
     </div>
   );
