@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import StudentCornerFinder from "../../api/StudentCornerFinder";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 
 export default function StudentCorner() {
@@ -11,6 +11,7 @@ export default function StudentCorner() {
   const [Grade, setGrade] = useState();
   const [ArticleTitle, setArticleTitle] = useState();
   const [ArticleContent, setArticleContent] = useState();
+  const imageRef = useRef();
   const [error, setError] = useState("");
   const [studnentCorner, setStudentCorner] = useState();
   let i = 0;
@@ -30,13 +31,20 @@ export default function StudentCorner() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await StudentCornerFinder.post("/", {
-        StudentName,
-        Rollno,
-        Grade,
-        ArticleTitle,
-        ArticleContent,
-      });
+      const response = await StudentCornerFinder.post(
+        "/",
+        {
+          StudentName,
+          Rollno,
+          Grade,
+          ArticleTitle,
+          ArticleContent,
+          image: imageRef.current.files[0],
+        },
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
     } catch (err) {
       console.log(err);
     }
@@ -89,7 +97,7 @@ export default function StudentCorner() {
             </tbody>
           </table>
           <form
-            onChange={handleSubmit}
+            onSubmit={handleSubmit}
             className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
           >
             <label for="name" className="text-lg font-medium w-[11em]">
@@ -159,6 +167,7 @@ export default function StudentCorner() {
               type="file"
               id="image"
               placeholder=""
+              ref={imageRef}
               className="border-2 w-full p-2 rounded-lg mb-4"
             ></input>{" "}
             <br />

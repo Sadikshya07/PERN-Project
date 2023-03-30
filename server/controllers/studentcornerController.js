@@ -23,7 +23,7 @@ router.get("/:id", async (req, res) => {
     const id = req.params.id;
     const results = await prisma.studentcorner.findFirst({
       where: {
-        id: id,
+        id: parseInt(id),
       },
     });
     res.status(200).json({
@@ -39,17 +39,19 @@ let imagePathServer = "/images/";
 router.post("/", async (req, res) => {
   try {
     console.log(req.body);
+
     let ImagePath;
     ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
-    const { studentname, rollnumber, grade, articletitle, articlecontent } =
+    await req.files.image.mv("./public" + ImagePath);
+    const { StudentName, Rollno, Grade, ArticleTitle, ArticleContent } =
       req.body;
 
     const data = {
-      studentname: studentname,
-      rollnumber: rollnumber,
-      grade: grade,
-      articletitle: articletitle,
-      articlecontent: articlecontent,
+      studentname: StudentName,
+      rollnumber: parseInt(Rollno),
+      grade: parseInt(Grade),
+      articletitle: ArticleTitle,
+      articlecontent: ArticleContent,
       image: ImagePath,
     };
     const results = await prisma.studentcorner.create({
@@ -104,23 +106,12 @@ router.put("/:id", async (req, res) => {
 });
 router.delete("/:id", async (req, res) => {
   try {
-    const id = req.params.id;
-    const { studentname, rollnumber, grade, articletitle, articlecontent } =
-      req.body;
-
-    const data = {
-      studentname: studentname,
-      rollnumber: rollnumber,
-      grade: grade,
-      articletitle: articletitle,
-      articlecontent: articlecontent,
-    };
+    const { id } = req.params;
     const results = await prisma.studentcorner.delete({
       where: {
-        id,
+        id: parseInt(id),
       },
     });
-    console.log(results);
     res.status(201).json({
       status: "success",
     });
