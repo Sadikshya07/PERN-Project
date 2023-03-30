@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import StudentCornerFinder from "../../api/StudentCornerFinder";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import Popup from "reactjs-popup";
 
@@ -12,6 +12,7 @@ export default function StudentCorner() {
   const [Grade, setGrade] = useState();
   const [ArticleTitle, setArticleTitle] = useState();
   const [ArticleContent, setArticleContent] = useState();
+  const imageRef = useRef();
   const [error, setError] = useState("");
   const [studnentCorner, setStudentCorner] = useState();
   let i = 0;
@@ -31,13 +32,20 @@ export default function StudentCorner() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await StudentCornerFinder.post("/", {
-        StudentName,
-        Rollno,
-        Grade,
-        ArticleTitle,
-        ArticleContent,
-      });
+      const response = await StudentCornerFinder.post(
+        "/",
+        {
+          StudentName,
+          Rollno,
+          Grade,
+          ArticleTitle,
+          ArticleContent,
+          image: imageRef.current.files[0],
+        },
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
     } catch (err) {
       console.log(err);
     }
@@ -52,7 +60,7 @@ export default function StudentCorner() {
       </Head>
       <AdminLayout>
         <h1 className="text-orange text-2xl text-center font-bold m-10">
-          Student Corner
+          Add Student Corner
         </h1>
         <Popup
           trigger={<button className="add-data-button">Add Data</button>}
@@ -60,7 +68,7 @@ export default function StudentCorner() {
         >
           {(close) => (
             <form
-              onChange={handleSubmit}
+              onSubmit={handleSubmit}
               className="w-[44rem] mx-auto px-6 py-12 rounded-xl"
             >
               <label for="name" className="text-lg font-medium w-[11em]">
@@ -91,7 +99,7 @@ export default function StudentCorner() {
                 Roll Number:
               </label>
               <input
-                type="text"
+                type="number"
                 id="rollno"
                 placeholder=""
                 className="border-2 w-full p-2 rounded-lg mb-4"
@@ -130,6 +138,7 @@ export default function StudentCorner() {
                 type="file"
                 id="image"
                 placeholder=""
+                ref={imageRef}
                 className="border-2 w-full p-2 rounded-lg mb-4"
               ></input>{" "}
               <br />
@@ -137,11 +146,12 @@ export default function StudentCorner() {
                 type="submit"
                 className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
               >
-                Submit
+                Submit{" "}
               </button>
             </form>
           )}
         </Popup>
+
         <table>
           <thead>
             <tr>

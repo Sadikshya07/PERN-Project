@@ -10,7 +10,6 @@ export default function NewsTemplate() {
   const { id } = router.query;
   const [selectedArticle, setSelectedArtice] = useState();
   const [otherArticle, setOtherArticle] = useState();
-  console.log(id);
 
   useEffect(() => {
     const fetchData = async () => {

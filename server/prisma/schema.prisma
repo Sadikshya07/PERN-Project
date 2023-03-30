@@ -70,8 +70,6 @@ model schoolinmedia {
   Image     String
   author    String
   Link      String
-  // id        String   @id @default(uuid())
-  // image     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -172,14 +170,13 @@ model analysisreport {
 }
 
 model studentcorner {
-  id             String   @id @default(uuid())
+  id             Int      @id @unique @default(autoincrement())
   studentname    String
   rollnumber     Int
   grade          Int
   articletitle   String
   articlecontent String
   image          String
-  file           String
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
