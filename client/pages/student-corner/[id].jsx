@@ -24,23 +24,29 @@ const singleNews = () => {
   return (
     <HomeLayout>
       {selectedArticle && (
-        <div className=" my-10 mx-auto w-11/12">
-          <h1 className="title text-center"> {selectedArticle.articletitle}</h1>
+        <div className=" my-10 mx-auto w-11/12 text-orange">
+          <h1 className="title text-center font-bold text-5xl text-orange font-inter">
+            {selectedArticle.articletitle}
+          </h1>
           <div className="author flex justify-between">
-            <p>
-              Written By:{" "}
-              {`${selectedArticle.studentname} - ${selectedArticle.rollnumber}, Grade ${selectedArticle.grade}`}
+            <p className="font-bold text-2xl">
+              Written By:
+              {` ${selectedArticle.studentname} - ${selectedArticle.rollnumber}, Grade ${selectedArticle.grade}`}
             </p>
-            <p>Posted date {selectedArticle.createdAt} </p>
+            <p className="font-bold text-2xl">
+              Posted date: {selectedArticle.createdAt}{" "}
+            </p>
           </div>
-          <div className="flex flex-col items-center rounded-md gap-4">
+          <div className="flex  items-center justify-center rounded-md gap-4">
             <Image
               src={process.env.NEXT_PUBLIC_SERVER_HOST + selectedArticle.image}
               width={400}
               height={500}
               className="rounded-md"
             />
-            <p className="w-2/4">{selectedArticle.articlecontent}</p>
+            <p className="w-2/4 text-black font-medium text-xl text-justify">
+              {selectedArticle.articlecontent}
+            </p>
           </div>
         </div>
       )}
