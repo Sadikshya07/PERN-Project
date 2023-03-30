@@ -1,6 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import StudentCornerFinder from "../../api/StudentCornerFinder";
 import { useEffect, useRef, useState } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";

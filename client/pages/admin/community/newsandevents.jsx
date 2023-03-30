@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import NewsandEventsFinder from "../../api/NewsandEventsFinder";
 import { useState, useEffect } from "react";
