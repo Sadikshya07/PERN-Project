@@ -3,6 +3,8 @@ const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const bodyParser = require("body-parser");
+const fs = require("fs");
+const path = require("path");
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -75,7 +77,7 @@ const imageServerPath = "/images/";
 router.post("/", async (req, res) => {
   try {
     let ImagePath = imageServerPath + Date.now() + "-" + req.files.image.name;
-    await req.files.  image.mv("./public" + ImagePath);
+    await req.files.image.mv("./public" + ImagePath);
     const { title, author, Link } = req.body;
     const data = {
       title,
@@ -97,8 +99,28 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
+
     let ImagePath = imageServerPath + Date.now() + "-" + req.files.image.name;
     await req.files.image.mv("./public" + ImagePath);
+
+    const oldData = await prisma.schoolinmedia.findFirst({
+      where: {
+        id:id
+      },
+      select: {
+        Image:true
+      }
+    });
+    const oldDataImageLocation = path.join(__dirname, "../public");
+
+     fs.unlink(`${oldDataImageLocation}${oldData.Image}`, (err) => {
+      if(err) {
+        // if error occurs log Error, remove uploaded image (dont know how to update image, own solution might be bad)
+        console.log(err);
+        fs.unlinkSync(`${oldDataImageLocation}${ImagePath}`, (err) => err && console.log(err))
+      }
+    });
+
     const { title, author, Link } = req.body;
 
     const data = {
