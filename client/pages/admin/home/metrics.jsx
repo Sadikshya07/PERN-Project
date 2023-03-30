@@ -4,8 +4,10 @@ import MetricsFinder from "../../api/MetricsFinder";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import {useRouter} from "next/router";
 
 export default function Metrics() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     Students: null,
     StudentsPerClass: null,
@@ -42,18 +44,22 @@ export default function Metrics() {
     }
   };
 
-  const handleDelete = async (id) => {
-    try {
-      const response = await MetricsFinder.delete(`/${id}`);
-      setMetrics(
-        metrics.filter((metrics) => {
-          return metrics.id !== id;
-        })
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleDelete = async (id) => {
+  //   try {
+  //     const response = await MetricsFinder.delete(`/${id}`);
+  //     setMetrics(
+  //       metrics.filter((metrics) => {
+  //         return metrics.id !== id;
+  //       })
+  //     );
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  const handleUpdate = async (id) => {
+    router.push(`/admin/home/Metrics/${id}`);
+  }
+
 
   return (
     <>
@@ -69,7 +75,6 @@ export default function Metrics() {
           <table>
             <thead>
               <tr>
-                <th>SN</th>
                 <th>Students</th>
                 <th>StudentsPerClass</th>
                 <th>Teachers</th>
@@ -95,14 +100,6 @@ export default function Metrics() {
                             Update
                           </button>
                         </Link>
-                      </td>
-                      <td>
-                        <button
-                          onClick={() => handleDelete(metric.id)}
-                          className="border-2"
-                        >
-                          Delete
-                        </button>
                       </td>
                     </tr>
                   );

@@ -1,22 +1,21 @@
 import Head from "next/head";
-import Link from "next/link";
 import { useRef } from "react";
 import { useState,useEffect } from "react";
 import {useRouter} from "next/router";
-import AdminLayout from "../../components/Layouts/AdminLayout";
-import PopUpFinder from "../api/PopUpFinder";
+import AdminLayout from "../../../components/Layouts/AdminLayout";
+import PopUpFinder from "../../api/PopUpFinder";
 
 export default function AddPopup() {
   const router = useRouter();
+  const { id } = router.query;
   const imageRef = useRef();
   const [image,setImage] = useState();
-  const [ PopUp,setPopUp] = useState();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await PopUpFinder.get("/");
+        const response = await PopUpFinder.get(`/${id}`);
         console.log(response.data.data);
-        setPopUp(response.data.data);
+        setImage(response.data.data.popup.image);
       } catch (err) {
         console.log(err);
       }
@@ -26,9 +25,8 @@ export default function AddPopup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await PopUpFinder.post(
-        "/",
+      const response = await PopUpFinder.put(
+        `/${id}`,
         {
           image: imageRef.current.files[0],
         },
@@ -36,24 +34,7 @@ export default function AddPopup() {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-    } catch (err) { 
-      console.log(err.message);
-    }
-  };
-  const handleDelete = async (id) => {
-    try {
-      const response = await PopUpFinder.delete(`/${id}`);
-      setPopUp(
-        PopUp.filter((popup) => {
-          return popup.id !== id;
-        })
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const handleUpdate = (id) => {
-    router.push(`/admin/Add-popup/${id}`);
+    router.push(`/admin/add-popup`);
   };
   return (
     <div>
@@ -64,41 +45,6 @@ export default function AddPopup() {
       </Head>
       <AdminLayout>
         <div className="main-container">
-          <h1 className="text-orange text-2xl text-center font-bold m-10">
-            Add Popup
-          </h1>
-          {/* {console.log(process.env.NEXT_PUBLIC_SERVER_HOST)} */}
-            <table>
-            <thead>
-              <tr>
-                <th>Image</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-             {PopUp &&
-              PopUp.map((popup) => {
-              return (
-            <tr key={popup.id} >
-            <td>image={popup.image}</td>
-            <td>
-              <Link href="/admin/Add-popup/`${id}`">
-                <button
-                onClick = {() => handleUpdate(popup.id)}
-                className="border-2">Update</button>
-              </Link>
-            </td>
-            <td>
-              <button
-              onClick = {() => handleDelete(popup.id)}
-              className="border-2">Delete</button>
-            </td>
-            </tr>
-              );
-             })
-           }
-           </tbody>
-          </table>
           <form
             onSubmit={handleSubmit}
             className="border-4 border-orange w-[40rem] mx-auto px-6 py-12 rounded-xl"

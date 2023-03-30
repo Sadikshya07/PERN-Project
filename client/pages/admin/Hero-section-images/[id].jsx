@@ -1,34 +1,34 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useState, useEffect} from "react";
-import AdminLayout from "../../components/Layouts/AdminLayout";
-import HeroSectionFinder from "../api/HeroSectionFinder";
+import AdminLayout from "../../../components/Layouts/AdminLayout";
+import HeroSectionFinder from "../../api/HeroSectionFinder";
 import {useRouter} from "next/router";
 
 export default function HeroSectionImages() {
   const router = useRouter();
+  const {id} = router.query;
   const [Page, setPage] = useState("Choose Page");
   const [image, setImage] = useState();
-  const [herosection,setHeroSection] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await HeroSectionFinder.get("/");
+        const response = await HeroSectionFinder.get(`/${id}`);
         console.log(response.data.data);
-        setHeroSection(response.data.data);
+        setPage(response.data.data.hero.page);
+        setImage(response.data.data.hero.image);
       } catch (err) {
         console.log(err);
       }
     };
-    fetchData();
-  }, []);
+    if (id) fetchData();
+  }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await HeroSectionFinder.post(
-        "/",
+      const response = await HeroSectionFinder.put(
+        `/${id}`,
         {
           Page,
           image,
@@ -37,29 +37,8 @@ export default function HeroSectionImages() {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-    } catch (err) {
-      console.log(err.message);
-    }
+      router.push(`/admin/hero-section-images`);
   };
-
-  const handleDelete = async (id) => {
-    try {
-      const response = await HeroSectionFinder.delete(`/${id}`);
-      setHeroSection(
-        herosection.filter((hero) => {
-          return hero.id !== id;
-        })
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  
-  const handleUpdate = (id) => {
-    router.push(`/admin/Hero-section-images/${id}`); 
-  };
-
-
   return (
     <div>
       <Head>
@@ -70,42 +49,6 @@ export default function HeroSectionImages() {
       </Head>
       <AdminLayout>
         <div className="main-container">
-          <h1 className="text-orange text-2xl text-center font-bold m-10">
-            Add Hero Section Images
-          </h1>
-          <table>
-            <thead>
-              <tr>
-                <th>Page</th>
-                <th>Image</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-             {herosection &&
-              herosection.map((hero) => {
-              return (
-            <tr key={hero.id} >
-            <td>page={hero.Page}</td>
-            <td>image={hero.image}</td>
-            <td>
-              <Link href="/admin/Hero-section-images/`${id}`">
-                <button
-                onClick = {() => handleUpdate(hero.id)}
-                className="border-2">Update</button>
-              </Link>
-            </td>
-            <td>
-              <button
-              onClick = {() => handleDelete(hero.id)}
-              className="border-2">Delete</button>
-            </td>
-            </tr>
-              );
-             })
-           }
-           </tbody>
-          </table>
           <form
             onSubmit={handleSubmit}
             className="border-4 border-orange w-[40rem] mx-auto px-6 py-12 rounded-xl"

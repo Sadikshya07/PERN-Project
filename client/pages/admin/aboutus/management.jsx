@@ -88,7 +88,6 @@ export default function Management() {
           <table>
             <thead>
               <tr>
-                <th>SN</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Position</th>

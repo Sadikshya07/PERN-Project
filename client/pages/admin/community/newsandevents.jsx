@@ -119,7 +119,6 @@ export default function NewsAndEvents() {
           <h1 className="text-orange text-2xl text-center font-bold m-10">
             Add News and Events
           </h1>
-          <button className="border-2">Add</button>
           <br />
           <table>
             <thead>

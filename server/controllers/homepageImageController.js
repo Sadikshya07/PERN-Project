@@ -100,24 +100,16 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    let imagePath1 = imagePathServer + Date.now() + "-" + req.files.image1.name;
-    let imagePath2 = imagePathServer + Date.now() + "-" + req.files.image2.name;
-    let imagePath3 = imagePathServer + Date.now() + "-" + req.files.image3.name;
-
-    await req.files.image1.mv("./public" + imagePath1);
-    await req.files.image2.mv("./public" + imagePath2);
-    await req.files.image3.mv("./public" + imagePath3);
-
+    const { image1, image2, image3} = req.body;
     const data = {
-      image1: imagePath1,
-      image2: imagePath2,
-      image3: imagePath3,
+      image1,
+      image2,
+      image3,
     };
     const results = await prisma.homeImage.delete({
       where: {
         id,
       },
-      data: data,
     });
     res.status(201).json({
       status: "success",

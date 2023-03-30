@@ -23,7 +23,7 @@ router.get("/:P", async (req, res) => {
     const { P } = req.params;
     const results = await prisma.addheroimages.findFirst({
       where: {
-        Page: P,
+        Page:P,
       },
     });
     res.status(200).json({
@@ -59,11 +59,12 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { Page, Image } = req.body;
-
+    const{Page} = req.body;
+    let ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
+    await req.files.image.mv("./public" + ImagePath);
     const data = {
       Page,
-      Image,
+      Image: ImagePath,
     };
     const results = await prisma.addheroimages.update({
       where: {

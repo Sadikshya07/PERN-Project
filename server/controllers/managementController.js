@@ -61,13 +61,14 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { name, description, position, image} = req.body;
-
+    const { name, description, position} = req.body;
+    let ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
+    await req.files.image.mv("./public" + ImagePath);
     const data = {
       name: name,
       description: description,
       position: position,
-      image: image
+      image: ImagePath,
     };
     const results = await prisma.management.update({
       where: {

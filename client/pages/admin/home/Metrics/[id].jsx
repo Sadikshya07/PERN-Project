@@ -10,7 +10,10 @@ export default function UpdateMetrics() {
   const router = useRouter();
   const { id } = router.query;
   const [formData, setFormData] = useState({
-
+    Students: null,
+    StudentsPerClass: null,
+    Teachers: null,
+    StudentTeacherRatio: null,
   });
 
   useEffect(() => {
@@ -18,7 +21,7 @@ export default function UpdateMetrics() {
       try {
         const response = await MetricsFinder.get(`/${id}`);
         console.log(response.data.data);
-       setFormData(response.data.data)
+       setFormData(response.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -34,7 +37,7 @@ export default function UpdateMetrics() {
     {
       headers: { "Content-Type": "multipart/form-data" },
     });
-    router.push(`/admin/home/metrics`);
+    router.push("/admin/home/metrics");
   };
 
   return (
