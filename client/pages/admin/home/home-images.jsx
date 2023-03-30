@@ -76,7 +76,6 @@ export default function Images() {
         <table>
           <thead>
             <tr>
-              <th>SN</th>
               <th>Image1</th>
               <th>Image2</th>
               <th>Image3</th>
