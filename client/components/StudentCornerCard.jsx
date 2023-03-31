@@ -1,37 +1,46 @@
 import Image from "next/image";
-import Head from "next/head";
 import Link from "next/link";
 
-export default function PodcastCard() {
+export default function StudentCornerCard({
+  id,
+  image,
+  name,
+  rollno,
+  grade,
+  title,
+  description,
+}) {
+  const truncateText = (str, num) => {
+    if (str.length > num) {
+      return str.slice(0, num) + ".....";
+    } else {
+      return str;
+    }
+  };
   return (
-    <a href="/">
-        <div className="podcast-card-container mx-auto card-shadow w-11/12 h-[44em] md:h-[40em] lg:h-[36em] rounded-xl">
-          <div
-            className="card-image w-full h-2/4"
-            style={{
-              backgroundImage:
-                "url(https://deerwalk.edu.np/sifalschool/public/images/StudentCorner/1678879196.jpg)",
-              backgroundSize: "cover",
-            }}
-          ></div>
-          <div className="card-info p-4">
-            <p className="title text-lg font-semibold">
-              Read Aloud Podcast | Little Painters
-            </p>
-            <p className="podcast-by text-[#888888] text-sm mb-2">
-              Siddhartha Aryal - 34032, Grade 1
-            </p>
-            <p className="description mb-2 pb-2">
-              This is one of the "reading aloud" activities for DSS students.We
-              encouraged 'Siddhartha Aryal' from grade 1 to record the audio for the
-              book "Little Painters" Written by Cheryl Rao and Illustrated by Tanvi
-              Choudhary.
-            </p>
-            <a href="https://deerwalk.edu.np/sifalschool/StudentCorner/details/6188" className="text-center text-lg text-orange font-bold">
-              <p>READ MORE</p>
-            </a>
-          </div>
-        </div>
-    </a>
+    <div className="podcast-card-container mx-auto card-shadow w-11/12 h-[44em] md:h-[40em] lg:h-[36em] rounded-xl">
+      <div
+        className="card-image w-full h-2/4"
+        style={{
+          backgroundImage: `url('${process.env.NEXT_PUBLIC_SERVER_HOST}${image}')`,
+          backgroundSize: "cover",
+        }}
+      ></div>
+      <div className="card-info p-4">
+        <p className="title text-lg font-semibold">{title}</p>
+        <p className="podcast-by text-[#888888] text-sm mb-2">
+          {`${name} - ${rollno}, Grade ${grade}`}
+        </p>
+        <p className="description mb-2 pb-2">
+          {truncateText(description, 150)}
+        </p>
+        <Link
+          href={`/student-corner/${id}`}
+          className="text-center text-lg text-orange font-bold"
+        >
+          <p>READ MORE</p>
+        </Link>
+      </div>
+    </div>
   );
 }

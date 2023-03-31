@@ -5,6 +5,7 @@ import AdminLayout from "../../../components/Layouts/AdminLayout";
 import FacultyFinder from "../../api/FacultyFinder";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Popup from "reactjs-popup";
 
 export default function Faculty() {
   const router = useRouter();
@@ -80,14 +81,109 @@ export default function Faculty() {
       </Head>
       <AdminLayout>
         <h1 className="text-orange text-2xl text-center font-bold m-10">
-          Add Faculty
+          Faculty
         </h1>
-        <br />
-        <button className="border-2 w-[10em]">View Table</button>
+        <Popup
+          trigger={<button className="add-data-button">Add Data</button>}
+          modal
+        >
+          {(close) => (
+            <form
+              onSubmit={handleSubmit}
+              className="w-[44rem] mx-auto px-6 py-12 rounded-xl"
+            >
+              <label for="fname" className="text-lg font-medium w-[11em]">
+                Full name:
+              </label>{" "}
+              <br />
+              <input
+                type="text"
+                id="fname"
+                placeholder=""
+                className="border-2 w-full p-2 rounded-lg mb-4"
+                required
+                onChange={(e) => setName(e.target.value)}
+              />
+              <br />
+              <label for="description" className="text-lg font-medium w-[11em]">
+                Description:
+              </label>{" "}
+              <br />
+              <textarea
+                type="text"
+                id="description"
+                placeholder=""
+                className="border-2 w-full p-2 rounded-lg mb-4 h-[8em]"
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              />
+              <br />
+              <label for="department" className="text-lg font-medium w-[11em]">
+                Department:
+              </label>{" "}
+              <br />
+              <input
+                type="text"
+                id="Department"
+                placeholder=""
+                className="border-2 w-full p-2 rounded-lg mb-4"
+                onChange={(e) => setDepartment(e.target.value)}
+                required
+              />
+              <br />
+              <label for="department" className="text-lg font-medium w-[11em]">
+                Area Of Expertise:
+              </label>{" "}
+              <br />
+              <input
+                type="text"
+                id="areaOfExperties"
+                placeholder=""
+                className="border-2 w-full p-2 rounded-lg mb-4"
+                onChange={(e) => setAreaofExpertise(e.target.value)}
+                required
+              />
+              <br />
+              <label
+                for="areaOfExperties"
+                className="text-lg font-medium w-[11em]"
+              >
+                Experience:
+              </label>{" "}
+              <br />
+              <input
+                type="text"
+                id="experience"
+                placeholder=""
+                className="border-2 w-full p-2 rounded-lg mb-4"
+                onChange={(e) => setExperience(e.target.value)}
+                required
+              />
+              <br />
+              <label for="image" className="text-lg font-medium w-[11em]">
+                Image:
+              </label>{" "}
+              <br />
+              <input
+                type="file"
+                id="image"
+                placeholder="Choose a file"
+                className="border-2 w-full p-2 rounded-lg mb-4"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+              <br />
+              <button
+                type="submit"
+                className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
+              >
+                Submit
+              </button>
+            </form>
+          )}
+        </Popup>
         <table>
           <thead>
             <tr>
-              <th>SN</th>
               <th>Name</th>
               <th>Description</th>
               <th>Department</th>
@@ -128,94 +224,6 @@ export default function Faculty() {
               })}
           </tbody>
         </table>
-        <form
-          onSubmit={handleSubmit}
-          className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
-        >
-          <label for="fname" className="text-lg font-medium w-[11em]">
-            Full name:
-          </label>{" "}
-          <br />
-          <input
-            type="text"
-            id="fname"
-            placeholder=""
-            className="border-2 w-full p-2 rounded-lg mb-4"
-            required
-            onChange={(e) => setName(e.target.value)}
-          />
-          <br />
-          <label for="description" className="text-lg font-medium w-[11em]">
-            Description:
-          </label>{" "}
-          <br />
-          <textarea
-            type="text"
-            id="description"
-            placeholder=""
-            className="border-2 w-full p-2 rounded-lg mb-4 h-[8em]"
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-          <br />
-          <label for="department" className="text-lg font-medium w-[11em]">
-            Department:
-          </label>{" "}
-          <br />
-          <input
-            type="text"
-            id="Department"
-            placeholder=""
-            className="border-2 w-full p-2 rounded-lg mb-4"
-            onChange={(e) => setDepartment(e.target.value)}
-            required
-          />
-          <br />
-          <label for="department" className="text-lg font-medium w-[11em]">
-            Area Of Expertise:
-          </label>{" "}
-          <br />
-          <input
-            type="text"
-            id="areaOfExperties"
-            placeholder=""
-            className="border-2 w-full p-2 rounded-lg mb-4"
-            onChange={(e) => setAreaofExpertise(e.target.value)}
-            required
-          />
-          <br />
-          <label for="areaOfExperties" className="text-lg font-medium w-[11em]">
-            Experience:
-          </label>{" "}
-          <br />
-          <input
-            type="text"
-            id="experience"
-            placeholder=""
-            className="border-2 w-full p-2 rounded-lg mb-4"
-            onChange={(e) => setExperience(e.target.value)}
-            required
-          />
-          <br />
-          <label for="image" className="text-lg font-medium w-[11em]">
-            Image:
-          </label>{" "}
-          <br />
-          <input
-            type="file"
-            id="image"
-            placeholder="Choose a file"
-            className="border-2 w-full p-2 rounded-lg mb-4"
-            onChange={(e) => setImage(e.target.files[0])}
-          />
-          <br />
-          <button
-            type="submit"
-            className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
-          >
-            Submit
-          </button>
-        </form>
       </AdminLayout>
     </div>
   );

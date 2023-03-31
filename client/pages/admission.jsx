@@ -120,7 +120,7 @@ export default function Admission() {
             </p>
           </div>
         </div>
-        <div className="admission-offer-letter bg-gray">
+        <div className="admission-offer-letter">
           <div className="offer-letter-container w-11/12 mx-auto py-10">
             <h5 className="text-2xl md:text-3xl text-orange font-bold text-center mb-4">Admission Offer Letter</h5>
             <p className="md:text-xl md:text-center font-regular mb-5">

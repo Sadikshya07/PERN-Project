@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import ProgramsFinder from "../../api/ProgramsFinder";
 import { useRouter } from "next/router";
+import Popup from "reactjs-popup";
 
 export default function Programs() {
   const router = useRouter();
@@ -74,11 +75,69 @@ export default function Programs() {
       </Head>
       <AdminLayout>
         <div className="form-container">
-          <h1>Add Programs</h1>
+          <h1 className="text-orange text-2xl text-center font-bold m-10">
+            Programs Images
+          </h1>
+          <Popup
+            trigger={<button className="add-data-button">Add Data</button>}
+            modal
+          >
+            {(close) => (
+              <form
+                onSubmit={handleSubmit}
+                className="w-[44rem] mx-auto px-6 py-12 rounded-xl"
+              >
+                <label for="image1" className="text-lg font-medium w-[10em]">
+                  Elementary School:
+                </label>
+                <input
+                  type="file"
+                  id="elementaryschool"
+                  ref={image1Ref}
+                  placeholder="choose file"
+                  onChange={(e) => setImage1(e.target.files[0])}
+                  required
+                  className="border-2 w-full p-2 rounded-lg mb-4"
+                ></input>
+                <br />
+                <label for="image2" className="text-lg font-medium w-[10em]">
+                  Middle School:
+                </label>
+                <input
+                  type="file"
+                  id="middleschool"
+                  ref={image2Ref}
+                  placeholder="choose file"
+                  onChange={(e) => setImage2(e.target.files[0])}
+                  required
+                  className="border-2 w-full p-2 rounded-lg mb-4"
+                ></input>
+                <br />
+                <label for="image3" className="text-lg font-medium w-[10em]">
+                  High School:
+                </label>
+                <input
+                  type="file"
+                  id="highschool"
+                  ref={image3Ref}
+                  placeholder="choose file"
+                  onChange={(e) => setImage3(e.target.files[0])}
+                  required
+                  className="border-2 w-full p-2 rounded-lg mb-4"
+                ></input>
+                <br />
+                <button
+                  type="submit"
+                  className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
+                >
+                  Submit
+                </button>
+              </form>
+            )}
+          </Popup>
           <table>
             <thead>
               <tr>
-                <th>SN</th>
                 <th>Image1</th>
                 <th>Image2</th>
                 <th>Image3</th>
@@ -90,9 +149,9 @@ export default function Programs() {
                 programs.map((programs) => {
                   return (
                     <tr key={programs.id}>
-                      <td>image1={programs.image1}</td>
-                      <td>image2={programs.image2}</td>
-                      <td>image3={programs.image3}</td>
+                      <td>{programs.image1}</td>
+                      <td>{programs.image2}</td>
+                      <td>{programs.image3}</td>
                       <td>
                         <Link href="/admin/home/Programs/`${id}`">
                           <button
@@ -116,59 +175,6 @@ export default function Programs() {
                 })}
             </tbody>
           </table>
-          <h1 className="text-orange text-2xl text-center font-bold m-10">
-            Add Program Images
-          </h1>
-          <form
-            onSubmit={handleSubmit}
-            className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
-          >
-            <label for="image1" className="text-lg font-medium w-[10em]">
-              Elementary School:
-            </label>
-            <input
-              type="file"
-              id="elementaryschool"
-              ref={image1Ref}
-              placeholder="choose file"
-              onChange={(e) => setImage1(e.target.files[0])}
-              required
-              className="border-2 w-full p-2 rounded-lg mb-4"
-            ></input>
-            <br />
-            <label for="image2" className="text-lg font-medium w-[10em]">
-              Middle School:
-            </label>
-            <input
-              type="file"
-              id="middleschool"
-              ref={image2Ref}
-              placeholder="choose file"
-              onChange={(e) => setImage2(e.target.files[0])}
-              required
-              className="border-2 w-full p-2 rounded-lg mb-4"
-            ></input>
-            <br />
-            <label for="image3" className="text-lg font-medium w-[10em]">
-              High School:
-            </label>
-            <input
-              type="file"
-              id="highschool"
-              ref={image3Ref}
-              placeholder="choose file"
-              onChange={(e) => setImage3(e.target.files[0])}
-              required
-              className="border-2 w-full p-2 rounded-lg mb-4"
-            ></input>
-            <br />
-            <button
-              type="submit"
-              className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
-            >
-              Submit
-            </button>
-          </form>
         </div>
       </AdminLayout>
     </div>
