@@ -12,7 +12,7 @@ export default function Metrics() {
   const imageRef = useRef();
   const authorRef = useRef();
   const titleRef = useRef();
-  const linkRef = useRef();
+  const LinkRef = useRef();
   const [schoolMedia, setSchoolMedia] = useState();
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function Metrics() {
         {
           title: titleRef.current.value,
           author: authorRef.current.value,
-          Link: linkRef.current.value,
+          Link: LinkRef.current.value,
           image: imageRef.current.files[0],
         },
         {
@@ -113,7 +113,7 @@ export default function Metrics() {
               <input
                 type="text"
                 id="title"
-                ref={linkRef}
+                ref={LinkRef}
                 className="border-2 w-full p-2 rounded-lg mb-4"
                 required
               ></input>

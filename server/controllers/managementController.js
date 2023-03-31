@@ -65,9 +65,9 @@ router.put("/:id", async (req, res) => {
     let ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
     await req.files.image.mv("./public" + ImagePath);
     const data = {
-      name: name,
-      description: description,
-      position: position,
+      name,
+      description,
+      position,
       image: ImagePath,
     };
     const results = await prisma.management.update({

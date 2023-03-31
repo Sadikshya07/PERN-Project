@@ -187,6 +187,8 @@ export default function Faculty() {
               <th>Name</th>
               <th>Description</th>
               <th>Department</th>
+              <th>AreaofExpertise</th>
+              <th>Experience</th>
               <th>Image</th>
               <th>Actions</th>
             </tr>
@@ -201,6 +203,7 @@ export default function Faculty() {
                     <td>department={person.department}</td>
                     <td>AreaofExpertise={person.AreaofExpertise}</td>
                     <td>Experience={person.Experience}</td>
+                    <td>image={person.image}</td>
                     <td>
                       <Link href="/admin/aboutus/Faculty/`${id}`">
                         <button

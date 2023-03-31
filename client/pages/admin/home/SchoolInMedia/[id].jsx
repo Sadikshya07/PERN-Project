@@ -4,7 +4,7 @@ import Link from "next/link";
 import SchoolinMediaFinder from "../../../api/SchoolinMediaFinder";
 import AdminLayout from "../../../../components/Layouts/AdminLayout";
 import { useRouter } from "next/router";
-import { useState,useRef,useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function UpdateManagement() {
   const router = useRouter();
@@ -12,12 +12,12 @@ export default function UpdateManagement() {
   const imageRef = useRef();
   const authorRef = useRef();
   const titleRef = useRef();
-  const linkRef = useRef();
+  const LinkRef = useRef();
   const [schoolMedia, setSchoolMedia] = useState();
-  const [image,setImage] = useState();
-  const [author,setAuthor] = useState(); 
-  const [title,setTitle] = useState();
-  const [link,setLink] = useState();
+  const [image, setImage] = useState();
+  const [author, setAuthor] = useState();
+  const [title, setTitle] = useState();
+  const [Link, setLink] = useState();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,7 +26,7 @@ export default function UpdateManagement() {
         setImage(response.data.data.media.image);
         setAuthor(response.data.data.media.author);
         setTitle(response.data.data.media.title);
-        setLink(response.data.data.media.link);
+        setLink(response.data.data.media.Link);
       } catch (err) {
         console.log(err);
       }
@@ -36,16 +36,19 @@ export default function UpdateManagement() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await SchoolinMediaFinder.put(`/${id}`, {
-      author,
-      title,
-      link,
-      image,
-    },
-    {
-      headers: { "Content-Type": "multipart/form-data" },
-    }
+    const response = await SchoolinMediaFinder.put(
+      `/${id}`,
+      {
+        author,
+        title,
+        Link,
+        image: imageRef.current.files[0],
+      },
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
     );
+    console.log(response);
     router.push(`/admin/home/school-in-media`);
   };
 
@@ -59,7 +62,7 @@ export default function UpdateManagement() {
       </Head>
       <AdminLayout>
         <div>
-        <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <label htmlFor="name">Title: </label>
             <input
               type="text"
@@ -82,7 +85,7 @@ export default function UpdateManagement() {
             <input
               type="text"
               id="title"
-              ref={linkRef}
+              ref={LinkRef}
               className="border-2"
               required
             ></input>
