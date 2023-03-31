@@ -1,12 +1,12 @@
 import Head from "next/head";
+import AdminLayout from "../../../../components/Layouts/AdminLayout";
+import MetricsFinder from "../../../api/MetricsFinder";
 import Image from "next/image";
 import Link from "next/link";
-import MetricsFinder from "../../../api/MetricsFinder";
-import AdminLayout from "../../../../components/Layouts/AdminLayout";
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import {useRouter} from "next/router";
 
-export default function UpdateMetrics() {
+export default function Metrics() {
   const router = useRouter();
   const { id } = router.query;
   const [formData, setFormData] = useState({
@@ -15,99 +15,117 @@ export default function UpdateMetrics() {
     Teachers: null,
     StudentTeacherRatio: null,
   });
+  const studentRef = useRef();
+  const studentsPerClassRef = useRef();
+  const teachersRef = useRef();
+  const studentTeacherRatioRef = useRef();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await MetricsFinder.get(`/${id}`);
+        const response = await MetricsFinder.get("/all");
         console.log(response.data.data);
-       setFormData(response.data.data)
+        setFormData(response.data.data);
       } catch (err) {
         console.log(err);
       }
     };
-    if (id) fetchData();
-  }, [id]);
+    fetchData();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await MetricsFinder.put(`/${id}`, {
-      formData,
-    },
-    {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
-    router.push("/admin/home/metrics");
+    console.log(formData);
+      const response = await MetricsFinder.put(
+        `/${id}`,
+        {
+          Students: studentRef.current.value,
+          StudentsPerClass: studentsPerClassRef.current.value,
+          Teachers: teachersRef.current.value,
+          StudentTeacherRatio: studentTeacherRatioRef.current.value,
+        },
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      router.push(`/admin/home/metrics`);
   };
 
+
   return (
-    <div>
+    <>
       <Head>
-        <title>Admin | Update-Metrics</title>
+        <title>Add Metrics</title>
         <meta name="description" content="Deerwalk Sifal School" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
-        <div>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Students: </label>
+        <div className="main-container">
+          <h1 className="text-orange text-2xl text-center font-bold m-10">
+            Add Metrics
+          </h1>
+          <form
+            onSubmit={handleSubmit}
+            className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
+          >
+            <label htmlFor="name" className="text-lg font-medium w-[11em]">
+              Students:{" "}
+            </label>
             <input
               type="text"
               id="students"
               placeholder=""
-              onChange={(e) =>
-                setFormData({ ...formData, Students: e.target.value })
-              }
-              className="border-2"
+              ref={studentRef}
+              className="border-2 w-full p-2 rounded-lg mb-4"
               required
             ></input>
             <br />
-            <label htmlFor="name">Students Per Class: </label>
+            <label htmlFor="name" className="text-lg font-medium w-[11em]">
+              Students Per Class:{" "}
+            </label>
             <input
               type="text"
               id="perclass"
               placeholder=""
-              className="border-2"
-              onChange={(e) => {
-                setFormData({ ...formData, StudentsPerClass: e.target.value });
-              }}
+              className="border-2 w-full p-2 rounded-lg mb-4"
+              ref={studentsPerClassRef}
               required
             ></input>
             <br />
-            <label htmlFor="name">Teachers: </label>
+            <label htmlFor="name" className="text-lg font-medium w-[11em]">
+              Teachers:{" "}
+            </label>
             <input
               type="text"
               id="teachers"
               placeholder=""
-              className="border-2"
-              onChange={(e) => {
-                setFormData({ ...formData, Teachers: e.target.value });
-              }}
+              className="border-2 w-full p-2 rounded-lg mb-4"
+              ref={teachersRef}
               required
             ></input>
             <br />
-            <label htmlFor="name">Student-Teacher Ratio: </label>
+            <label htmlFor="name" className="text-lg font-medium w-[12em]">
+              Student-Teacher Ratio:{" "}
+            </label>
             <input
               type="text"
               id="stratio"
               placeholder=""
-              className="border-2"
-              onChange={(e) => {
-                setFormData({
-                  ...formData,
-                  StudentTeacherRatio: e.target.value,
-                });
-              }}
+              className="border-2 w-full p-2 rounded-lg mb-4"
+              ref={studentTeacherRatioRef}
               required
             ></input>
             <br />
-            <button type="submit" className="border-2">
+            <button
+              type="submit"
+              className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
+            >
               Submit
             </button>
           </form>
         </div>
       </AdminLayout>
-    </div>
+    </>
   );
-}
+  }

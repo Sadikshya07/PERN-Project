@@ -111,6 +111,14 @@ export default function Metrics() {
                           </button>
                         </Link>
                       </td>
+                      {/* <td>
+                        <button
+                          onClick={() => handleDelete(metric.id)}
+                          className="border-2"
+                        >
+                          Delete
+                        </button>
+                      </td> */}
                     </tr>
                   );
                 })}
