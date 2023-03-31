@@ -219,12 +219,6 @@ const [title, setTitle] = useState();
               })}
           </tbody>
         </table>
-        <div className="main-container">
-          <h1 className="text-orange text-2xl text-center font-bold m-10">
-            Add News and Events
-          </h1>
-          <br />
-        </div>
       </AdminLayout>
     </div>
   );
