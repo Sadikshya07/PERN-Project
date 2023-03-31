@@ -10,7 +10,10 @@ export default function UpdateMetrics() {
   const router = useRouter();
   const { id } = router.query;
   const [formData, setFormData] = useState({
-
+    Students: null,
+    StudentsPerClass: null,
+    Teachers: null,
+    StudentTeacherRatio: null,
   });
 
   useEffect(() => {
