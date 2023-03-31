@@ -59,7 +59,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const{Page} = req.body;
+    const{ Page } = req.body;
     let ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
     await req.files.image.mv("./public" + ImagePath);
     const data = {
