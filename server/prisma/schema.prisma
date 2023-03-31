@@ -50,9 +50,9 @@ model metrics {
 
 model programs {
   id             String   @id @default(uuid())
-  elementryImage        String
-  middleImage         String
-  higherImage         String
+  elementryImage String
+  middleImage    String
+  higherImage    String
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
