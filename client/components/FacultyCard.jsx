@@ -20,12 +20,12 @@ export default function FacultyCard({
         <Image
           src={`${process.env.NEXT_PUBLIC_SERVER_HOST}${image}`}
           alt={"faculty image"}
-          height={364}
-          width={384}
-          className="rounded-t-xl"
+          height={450}
+          width={450}
+          className="rounded-xl"
         />
         <div className="overlay absolute flex items-end justify-start opacity-0 text-center bottom-0 rounded-xl h-0 w-full bg-[rgb(0,0,0)] bg-[rgba(0,0,0,0.5)] text-orange text-xl ">
-          <p className="text-center p-3 m-3 font-black text-2xl">{name}</p>
+          <p className="text-center p-3 m-3 font-bold text-2xl">{name}</p>
         </div>
       </div>
       <Popup trigger={trigger} setTrigger={setTrigger} width={"w-8/12"}>

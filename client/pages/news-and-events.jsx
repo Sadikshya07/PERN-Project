@@ -53,6 +53,9 @@ export default function NewsAndEvents() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
+        <h1 className="text-orange text-3xl text-center font-bold m-10">
+          News and Events
+        </h1>
         {heroImage && (
           <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
         )}

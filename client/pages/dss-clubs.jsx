@@ -1,8 +1,24 @@
 import Head from "next/head";
 import HomeLayout from "../components/Layouts/HomeLayout";
 import HeroSectionCard from "../components/HeroSection";
+import { useEffect, useState } from "react";
+import HeroSectionFinder from "./api/HeroSectionFinder";
 
 export default function DSSClubs() {
+  const [heroImage, setHeroImage] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await HeroSectionFinder.get("/DSS Clubs");
+        setHeroImage(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <Head>
@@ -12,7 +28,9 @@ export default function DSSClubs() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <HomeLayout>
-        <HeroSectionCard url="" title="DSS Clubs" />
+        {heroImage && (
+          <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
+        )}
         <div className="dss-clubs-conten w-11/12 mx-auto">
           <h1 className="md:text-xl md:text-center font-semibold my-8">
             Through DSS clubs we create an environment where students from all

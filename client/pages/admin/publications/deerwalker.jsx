@@ -53,7 +53,7 @@ export default function Deerwalker() {
             {(close) => (
               <form
                 onChange={handleSubmit}
-                className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
+                className="w-[44rem] mx-auto px-6 py-12 rounded-xl"
               >
                 <label htmlFor="title" className="text-lg font-medium w-[11em]">
                   Title:

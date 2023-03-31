@@ -39,7 +39,7 @@ export default function WeekendCampProgram() {
             new friends.
           </h1>
           <div className="sections flex flex-col gap-10 mb-10">
-            <div className="arts flex flex-col md:flex-row justify-between">
+            <div className="arts flex flex-col md:flex-row justify-between items-center">
               <div className="text md:w-8/12">
                 <h3 className="text-3xl font-bold mb-8">Arts</h3>
                 <p className="w-full lg:w-10/12 md:text-xl font-regular">
@@ -58,7 +58,7 @@ export default function WeekendCampProgram() {
                 }}
               ></div>
             </div>
-            <div className="coding flex flex-col md:flex-row-reverse justify-between">
+            <div className="coding flex flex-col md:flex-row-reverse justify-between items-center">
               <div className="text md:w-8/12">
                 <h3 className="text-3xl font-bold mb-8">Coding</h3>
                 <p className="w-full lg:w-10/12 md:text-xl font-regular">
@@ -83,7 +83,7 @@ export default function WeekendCampProgram() {
                 }}
               ></div>
             </div>
-            <div className="conversational-english flex flex-col md:flex-row justify-between">
+            <div className="conversational-english flex flex-col md:flex-row justify-between items-center">
               <div className="text md:w-8/12">
                 <h3 className="text-3xl font-bold mb-8">
                   Conversational English
@@ -104,7 +104,7 @@ export default function WeekendCampProgram() {
                 }}
               ></div>
             </div>
-            <div className="music flex flex-col md:flex-row-reverse justify-between">
+            <div className="music flex flex-col md:flex-row-reverse justify-between items-center">
               <div className="text md:w-8/12">
                 <h3 className="text-3xl font-bold mb-8">Music</h3>
                 <p className="w-full lg:w-10/12 md:text-xl font-regular">
@@ -125,7 +125,7 @@ export default function WeekendCampProgram() {
                 }}
               ></div>
             </div>
-            <div className="dance flex flex-col md:flex-row justify-between">
+            <div className="dance flex flex-col md:flex-row justify-between items-center">
               <div className="text md:w-8/12">
                 <h3 className="text-3xl font-bold mb-8">Dance</h3>
                 <p className="w-full lg:w-10/12 md:text-xl font-regular">

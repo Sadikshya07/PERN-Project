@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import DssCoursesFinder from "../../api/DssCoursesFinder";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import { useRouter } from "next/router";
 import Popup from "reactjs-popup";
@@ -10,7 +10,7 @@ import Popup from "reactjs-popup";
 export default function DSSCourses() {
   const router = useRouter();
   const [name, setName] = useState();
-  const [description, setDescription] = useState();
+  const desRef = useRef();
   const [DssCourses, setDssCourses] = useState();
   const [error, setError] = useState("");
 
@@ -18,7 +18,6 @@ export default function DSSCourses() {
     const fetchData = async () => {
       try {
         const response = await DssCoursesFinder.get("/");
-        console.log(response.data.data);
         setDssCourses(response.data.data);
       } catch (err) {
         console.log(err);
@@ -32,7 +31,7 @@ export default function DSSCourses() {
     try {
       const response = await DssCoursesFinder.post("/", {
         name,
-        description,
+        description: desRef.current.value,
       });
     } catch (err) {
       console.log(err);
@@ -73,7 +72,7 @@ export default function DSSCourses() {
         >
           {(close) => (
             <form
-              onChange={handleSubmit}
+              onSubmit={handleSubmit}
               className="w-[44rem] mx-auto px-6 py-12 rounded-xl"
             >
               <label htmlFor="title" className="text-lg font-medium w-[10em]">
@@ -91,16 +90,15 @@ export default function DSSCourses() {
               <br />
               <label for="" className="text-lg font-medium w-[10em]">
                 Description:
-              </label>{" "}
+              </label>
               <br />
               <textarea
                 type="text"
                 id="description"
-                placeholder=""
                 className="border-2 w-full p-2 rounded-lg mb-4 h-[8em]"
                 required
-                onChange={(e) => setDescription(e.target.value)}
-              ></textarea>{" "}
+                ref={desRef}
+              ></textarea>
               <br />
               <button
                 type="submit"

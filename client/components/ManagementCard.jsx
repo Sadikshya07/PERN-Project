@@ -18,7 +18,7 @@ export default function ManagementCard({ name, description, position, image }) {
         </h1>
         <p className="text-lg md:text-xl font-semibold">{position}</p>
       </div>
-      <p className="description mx-auto my-4 md:w-[37.5rem] px-6 text-center text-lg md:text-xl">
+      <p className="description mx-auto my-4 md:w-[37.5rem] px-6 text-justify text-lg md:text-xl">
         {description}
       </p>
     </div>
