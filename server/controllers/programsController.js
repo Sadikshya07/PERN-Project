@@ -83,11 +83,18 @@ router.post("/", async (req, res) => {
 });
 router.put("/:id", async (req, res) => {
   try {
-    const id = req.params.id;
-    const { Image } = req.body;
+    let imagePath1 = imagePathServer + Date.now() + "-" + req.files.image1.name;
+    let imagePath2 = imagePathServer + Date.now() + "-" + req.files.image2.name;
+    let imagePath3 = imagePathServer + Date.now() + "-" + req.files.image3.name;
+
+    await req.files.image1.mv("./public" + imagePath1);
+    await req.files.image2.mv("./public" + imagePath2);
+    await req.files.image3.mv("./public" + imagePath3);
 
     const data = {
-      Image,
+      elementryImage: imagePath1,
+      middleImage: imagePath2,
+      higherImage: imagePath3,
     };
     const results = await prisma.programs.update({
       where: {

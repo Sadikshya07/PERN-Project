@@ -219,9 +219,6 @@ const [title, setTitle] = useState();
               })}
           </tbody>
         </table>
-        <div className="main-container">
-          <br />
-        </div>
       </AdminLayout>
     </div>
   );

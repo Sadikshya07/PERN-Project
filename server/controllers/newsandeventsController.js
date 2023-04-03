@@ -86,10 +86,17 @@ router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const { title, description, author, publishdate } = req.body;
-
+    let ImagePath1, ImagePath2;
+    console.log(req.files);
+    ImagePath1 = imagePathServer + Date.now() + "-" + req.files.image1.name;
+    ImagePath2 = `${imagePathServer}${Date.now()}-${req.files.image2.name}`;
+    await req.files.image1.mv("./public" + ImagePath1);
+    await req.files.image2.mv("./public" + ImagePath2);
     const data = {
       title: title,
       description: description,
+      image1: ImagePath1,
+      image2: ImagePath2,
       author: author,
       publishdate: publishdate,
     };
