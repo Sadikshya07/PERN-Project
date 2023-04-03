@@ -1,14 +1,15 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import CoursesFinder from "../../api/CoursesFinder";
+import CoursesFinder from "../../../api/CoursesFinder";
 import { useEffect, useRef, useState } from "react";
 import {useRouter} from "next/router";
-import AdminLayout from "../../../components/Layouts/AdminLayout";
+import AdminLayout from "../../../../components/Layouts/AdminLayout";
 import Popup from "reactjs-popup";
 
 export default function Courses() {
   const router = useRouter();
+  const { id } = router.query;
   const gradeRef = useRef();
   const fileRef = useRef();
   const [courses, setCourses] = useState();
@@ -16,9 +17,8 @@ export default function Courses() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await CoursesFinder.post(
-        "/",
+      const response = await CoursesFinder.put(
+        `/${id}`,
         {
           grade: gradeRef.current.value,
           file: fileRef.current.files[0],
@@ -27,9 +27,7 @@ export default function Courses() {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-    } catch (err) {
-      console.log(err);
-    }
+      router.push(`/admin/programs/courses`);
   };
 
   useEffect(() => {
@@ -44,22 +42,6 @@ export default function Courses() {
     fetchData();
   }, []);
 
-  const handleDelete = async (id) => {
-    try {
-      const response = await CoursesFinder.delete(`/${id}`);
-      setCourses(
-        Courses.filter((course) => {
-          return course.id !== id;
-        })
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const handleUpdate = (id) => {
-    router.push(`/admin/programs/Courses/${id}`);
-  };
-
   return (
     <div>
       <Head>
@@ -72,11 +54,6 @@ export default function Courses() {
         <h1 className="text-orange text-2xl text-center font-bold m-10">
           Courses
         </h1>
-        <Popup
-          trigger={<button className="add-data-button">Add Data</button>}
-          modal
-        >
-          {(close) => (
             <form
               onSubmit={handleSubmit}
               className="w-[44rem] mx-auto px-6 py-12 rounded-xl"
@@ -125,40 +102,6 @@ export default function Courses() {
                 Submit
               </button>
             </form>
-          )}
-        </Popup>
-        <table>
-          <thead>
-            <tr>
-              <th>Grade</th>
-              <th>File</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {courses &&
-              courses.map((course) => {
-                return (
-                  <tr key={course.id}>
-                    <td>{course.grade}</td>
-                    <td>{course.file}</td>
-                    <td>
-                  <Link href="/admin/programs/Courses/`${id}`">
-                  <button
-                  onClick = {() => handleUpdate(course.id)}
-                  className="border-2">Update</button>
-                  </Link>
-                  </td>
-                  <td>
-                  <button
-                  onClick = {() => handleDelete(course.id)}
-                  className="border-2">Delete</button>
-                  </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
       </AdminLayout>
     </div>
   );

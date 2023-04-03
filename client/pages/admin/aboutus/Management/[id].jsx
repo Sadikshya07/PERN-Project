@@ -4,7 +4,7 @@ import Link from "next/link";
 import ManagementFinder from "../../../api/ManagementFinder";
 import AdminLayout from "../../../../components/Layouts/AdminLayout";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function UpdateManagement() {
   const router = useRouter();
@@ -13,6 +13,7 @@ export default function UpdateManagement() {
   const [description, setDescription] = useState();
   const [position, setPosition] = useState();
   const [image, setImage] = useState();
+  const imageRef = useRef();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +37,7 @@ export default function UpdateManagement() {
       name,
       description,
       position,
-      image,
+      image: imageRef.current.files[0],
     });
     router.push(`/admin/aboutus/management`);
   };
@@ -92,11 +93,10 @@ export default function UpdateManagement() {
             <input
               type="file"
               id="image"
-              placeholder="Choose a file"
-              className="border-2"
-              required
-              onChange={(e) => setImage(e.target.value)}
-            />
+              ref={imageRef}
+              placeholder="choose file"
+              className="border-2 w-full p-2 rounded-lg mb-4"
+            ></input>
             <br />
             <div className="m-3">
               <button type="submit" className="border-2">

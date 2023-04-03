@@ -76,14 +76,14 @@ router.put("/:id", async (req, res) => {
     const { grade } = req.body;
     const vals = await prisma.courses.findFirst({
       where: {
-        id: id,
+        id,
       },
     });
     if (req.files) {
       if (req.files.file) {
         FilePath = filePathServer + Date.now() + "-" + req.files.file.name;
-        await req.files.book_file.mv("./public" + FilePath);
-        await fsPromises.unlink(vals.file);
+        await req.files.file.mv("./public" + FilePath);
+        //await fsPromises.unlink(vals.file);
       } else FilePath = "";
     }
     const data = {
