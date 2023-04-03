@@ -58,7 +58,7 @@ export default function StudentCorner() {
       </Head>
       <AdminLayout>
         <h1 className="text-orange text-2xl text-center font-bold m-10">
-          Add Student Corner
+          Student Corner
         </h1>
         <Popup
           trigger={<button className="add-data-button">Add Data</button>}

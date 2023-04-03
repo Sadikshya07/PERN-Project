@@ -198,12 +198,12 @@ export default function Faculty() {
               faculty.map((person) => {
                 return (
                   <tr key={person.id}>
-                    <td>name={person.name}</td>
-                    <td>description={person.description}</td>
-                    <td>department={person.department}</td>
-                    <td>AreaofExpertise={person.AreaofExpertise}</td>
-                    <td>Experience={person.Experience}</td>
-                    <td>image={person.image}</td>
+                    <td>{person.name}</td>
+                    <td>{person.description}</td>
+                    <td>{person.department}</td>
+                    <td>{person.AreaofExpertise}</td>
+                    <td>{person.Experience}</td>
+                    <td>{person.image}</td>
                     <td>
                       <Link href="/admin/aboutus/Faculty/`${id}`">
                         <button

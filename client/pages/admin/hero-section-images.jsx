@@ -154,8 +154,8 @@ export default function HeroSectionImages() {
               herosection.map((hero) => {
                 return (
                   <tr key={hero.id}>
-                    <td>page={hero.Page}</td>
-                    <td>image={hero.image}</td>
+                    <td>{hero.Page}</td>
+                    <td>{hero.image}</td>
                     <td>
                       <Link href="/admin/Hero-section-images/`${id}`">
                         <button
