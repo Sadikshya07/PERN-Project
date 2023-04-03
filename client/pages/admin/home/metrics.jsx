@@ -4,9 +4,11 @@ import MetricsFinder from "../../api/MetricsFinder";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import {useRouter} from "next/router";
 import Popup from "reactjs-popup";
 
 export default function Metrics() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     Students: null,
     StudentsPerClass: null,
@@ -53,18 +55,22 @@ export default function Metrics() {
     }
   };
 
-  const handleDelete = async (id) => {
-    try {
-      const response = await MetricsFinder.delete(`/${id}`);
-      setMetrics(
-        metrics.filter((metrics) => {
-          return metrics.id !== id;
-        })
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleDelete = async (id) => {
+  //   try {
+  //     const response = await MetricsFinder.delete(`/${id}`);
+  //     setMetrics(
+  //       metrics.filter((metrics) => {
+  //         return metrics.id !== id;
+  //       })
+  //     );
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  const handleUpdate = async (id) => {
+    router.push(`/admin/home/Metrics/${id}`);
+  }
+
 
   return (
     <>

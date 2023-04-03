@@ -96,17 +96,16 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { name, description, department, AreaofExpertise, Experience } =
+    const { name, description, department, AreaofExpertise, Experience, image } =
       req.body;
-      let ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
-      await req.files.image.mv("./public" + ImagePath);
+      
     const data = {
-      name: name,
-      description: description,
-      department: department,
-      AreaofExpertise: AreaofExpertise,
-      Experience: Experience,
-      image:ImagePath
+      name,
+      description,
+      department,
+      AreaofExpertise,
+      Experience,
+      image,
     };
     const results = await prisma.faculty.delete({
       where: {

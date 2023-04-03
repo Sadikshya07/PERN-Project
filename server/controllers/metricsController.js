@@ -80,16 +80,17 @@ router.put("/:id", async (req, res) => {
     const id = req.params.id;
     const { Students, StudentsPerClass, Teachers, StudentTeacherRatio } =
       req.body;
-
+    console.log(req.body);
     const data = {
       Students,
       StudentsPerClass,
       Teachers,
       StudentTeacherRatio,
     };
+    console.log(data);
     const results = await prisma.metrics.update({
-      where: {
-        id,
+     where: {
+         id,
       },
       data,
     });

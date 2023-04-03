@@ -99,25 +99,28 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-
+    console.log(req.body);
     let ImagePath = imageServerPath + Date.now() + "-" + req.files.image.name;
     await req.files.image.mv("./public" + ImagePath);
 
     const oldData = await prisma.schoolinmedia.findFirst({
       where: {
-        id:id
+        id: id,
       },
       select: {
-        Image:true
-      }
+        Image: true,
+      },
     });
     const oldDataImageLocation = path.join(__dirname, "../public");
 
-     fs.unlink(`${oldDataImageLocation}${oldData.Image}`, (err) => {
-      if(err) {
+    fs.unlink(`${oldDataImageLocation}${oldData.Image}`, (err) => {
+      if (err) {
         // if error occurs log Error, remove uploaded image (dont know how to update image, own solution might be bad)
         console.log(err);
-        fs.unlinkSync(`${oldDataImageLocation}${ImagePath}`, (err) => err && console.log(err))
+        fs.unlinkSync(
+          `${oldDataImageLocation}${ImagePath}`,
+          (err) => err && console.log(err)
+        );
       }
     });
 
@@ -126,7 +129,7 @@ router.put("/:id", async (req, res) => {
     const data = {
       title,
       author,
-      Image:ImagePath,
+      Image: ImagePath,
       Link,
     };
     const results = await prisma.schoolinmedia.update({

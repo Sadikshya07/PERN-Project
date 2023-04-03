@@ -1,11 +1,30 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useRef } from "react";
+import { useState,useEffect } from "react";
+import {useRouter} from "next/router";
 import AdminLayout from "../../components/Layouts/AdminLayout";
 import PopUpFinder from "../api/PopUpFinder";
 import Popup from "reactjs-popup";
 
 export default function AddPopup() {
+  const router = useRouter();
   const imageRef = useRef();
+  const [image,setImage] = useState();
+  const [ PopUp,setPopUp] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await PopUpFinder.get("/");
+        console.log(response.data.data);
+        setPopUp(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -18,9 +37,24 @@ export default function AddPopup() {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-    } catch (err) {
+    } catch (err) { 
       console.log(err.message);
     }
+  };
+  const handleDelete = async (id) => {
+    try {
+      const response = await PopUpFinder.delete(`/${id}`);
+      setPopUp(
+        PopUp.filter((popup) => {
+          return popup.id !== id;
+        })
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleUpdate = (id) => {
+    router.push(`/admin/Add-popup/${id}`);
   };
   return (
     <div>
@@ -34,34 +68,66 @@ export default function AddPopup() {
             Popup
           </h1>
           <Popup
-            trigger={<button className="add-data-button">Add Data</button>}
-            modal
+          trigger={<button className="add-data-button">Add Data</button>}
+          modal
+        >
+          {(close) => (
+            <form
+            onSubmit={handleSubmit}
+            className="w-[40rem] mx-auto px-6 py-12 rounded-xl"
           >
-            {(close) => (
-              <form
-                onSubmit={handleSubmit}
-                className="w-[40rem] mx-auto px-6 py-12 rounded-xl"
-              >
-                <label htmlFor="image" className="text-lg font-medium w-[10em]">
-                  Popup Image:
-                </label>
-                <input
-                  type="file"
-                  id="image"
-                  ref={imageRef}
-                  placeholder="choose file"
-                  className="border-2 w-full p-2 rounded-lg mb-4"
-                ></input>
-                <br />
+            <label htmlFor="image" className="text-lg font-medium w-[10em]">
+              Popup Image:
+            </label>
+            <input
+              type="file"
+              id="image"
+              ref={imageRef}
+              placeholder="choose file"
+              className="border-2 w-full p-2 rounded-lg mb-4"
+            ></input>
+            <br />
+            <button
+              type="submit"
+              className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
+            >
+              Submit
+            </button>
+          </form>
+          )}
+        </Popup>
+            <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+             {PopUp &&
+              PopUp.map((popup) => {
+              return (
+            <tr key={popup.id} >
+            <td>image={popup.image}</td>
+            <td>
+              <Link href="/admin/Add-popup/`${id}`">
                 <button
-                  type="submit"
-                  className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
-          </Popup>
+                onClick = {() => handleUpdate(popup.id)}
+                className="border-2">Update</button>
+              </Link>
+            </td>
+            <td>
+              <button
+              onClick = {() => handleDelete(popup.id)}
+              className="border-2">Delete</button>
+            </td>
+            </tr>
+              );
+             })
+           }
+           </tbody>
+          </table>
+          
       </AdminLayout>
     </div>
   );
