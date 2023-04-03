@@ -162,10 +162,10 @@ export default function Management() {
               Management.map((person) => {
                 return (
                   <tr key={person.id}>
-                    <td>name={person.name}</td>
-                    <td>description={person.description}</td>
-                    <td>position={person.position}</td>
-                    <td>image={person.image}</td>
+                    <td>{person.name}</td>
+                    <td>{person.description}</td>
+                    <td>{person.position}</td>
+                    <td>{person.image}</td>
                     <td>
                       <Link href="/admin/aboutus/Management/`${id}`">
                         <button
