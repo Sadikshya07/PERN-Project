@@ -36,7 +36,7 @@ export default function Podcast() {
         Grade,
         PodcastDescription,
         image: imageRef.current.files[0],
-        
+        Link,
       },
       {
         headers: { "Content-Type": "multipart/form-data" },
@@ -182,6 +182,7 @@ export default function Podcast() {
                     <td>{item.description}</td>
                     <td>{item.grade}</td>
                     <td>{item.image}</td>
+                    <td>{item.Link}</td>
                     <td>
                       <Link href="/admin/publications/Podcast/`${id}`">
                         <button
