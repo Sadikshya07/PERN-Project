@@ -135,13 +135,13 @@ export default function Programs() {
               </form>
             )}
           </Popup>
-          <table>
+          <table className="table-style">
             <thead>
               <tr>
-                <th>Image1</th>
-                <th>Image2</th>
-                <th>Image3</th>
-                <th>Actions</th>
+                <th className="table-header">Image1</th>
+                <th className="table-header">Image2</th>
+                <th className="table-header">Image3</th>
+                <th className="table-header">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -156,16 +156,14 @@ export default function Programs() {
                         <Link href="/admin/home/Programs/`${id}`">
                           <button
                             onClick={() => handleUpdate(programs.id)}
-                            className="border-2"
+                            className="update"
                           >
                             Update
                           </button>
                         </Link>
-                      </td>
-                      <td>
                         <button
                           onClick={() => handleDelete(programs.id)}
-                          className="border-2"
+                          className="delete"
                         >
                           Delete
                         </button>

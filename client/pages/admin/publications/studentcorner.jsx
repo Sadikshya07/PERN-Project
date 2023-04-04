@@ -77,7 +77,7 @@ export default function StudentCorner() {
       </Head>
       <AdminLayout>
         <h1 className="text-orange text-2xl text-center font-bold m-10">
-          Add Student Corner
+          Student Corner
         </h1>
         <Popup
           trigger={<button className="add-data-button">Add Data</button>}
@@ -168,17 +168,16 @@ export default function StudentCorner() {
             </form>
           )}
         </Popup>
-
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Student Name</th>
-              <th>Roll Number</th>
-              <th>Grade</th>
-              <th>Article Title</th>
-              <th>Article Content</th>
-              <th>Image</th>
-              <th colSpan={2}>Actions</th>
+              <th className="table-header">Student Name</th>
+              <th className="table-header">Roll Number</th>
+              <th className="table-header">Grade</th>
+              <th className="table-header">Article Title</th>
+              <th className="table-header">Article Content</th>
+              <th className="table-header">Image</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>

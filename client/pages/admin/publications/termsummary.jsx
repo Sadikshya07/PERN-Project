@@ -125,7 +125,7 @@ export default function TermSummary() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
               <th>Name</th>

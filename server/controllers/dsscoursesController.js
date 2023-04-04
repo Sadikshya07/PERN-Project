@@ -36,12 +36,12 @@ router.get("/:id", async (req, res) => {
 });
 router.post("/", async (req, res) => {
   try {
-    console.log(req.body);
     const { name, description } = req.body;
     const data = {
-      name: name,
-      description: description
+      name,
+      description,
     };
+    console.log(data);
     const results = await prisma.dsscourses.create({
       data: data,
     });

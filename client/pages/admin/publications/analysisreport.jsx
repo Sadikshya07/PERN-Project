@@ -125,13 +125,12 @@ export default function AnalysisReport() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Image</th>
-              <th>File</th>
-              <th colSpan={2}>Actions</th>
+              <th className="table-header">Name</th>
+              <th className="table-header">Image</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>

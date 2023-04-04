@@ -160,16 +160,16 @@ export default function Podcast() {
           </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Presenter Name</th>
-              <th>Roll Number</th>
-              <th>Description</th>
-              <th>Grade</th>
-              <th>Image</th>
-              <th>Video Link</th>
-              <th>Actions</th>
+              <th className="table-header">Presenter Name</th>
+              <th className="table-header">Roll Number</th>
+              <th className="table-header">Description</th>
+              <th className="table-header">Grade</th>
+              <th className="table-header">Image</th>
+              <th className="table-header">Video Link</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>

@@ -123,7 +123,7 @@ export default function Newsletter() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
               <th>Name</th>

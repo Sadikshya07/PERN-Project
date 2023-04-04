@@ -45,7 +45,7 @@ export default function Popup(props) {
           >
             <button>
               <AiOutlineClose
-                className="absolute top-2 right-4 w-8"
+                className="absolute top-3 right-4 w-8 text-2xl "
                 onClick={() => props.setTrigger(false)}
               />
             </button>

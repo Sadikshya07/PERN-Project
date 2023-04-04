@@ -127,12 +127,12 @@ export default function Courses() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Grade</th>
-              <th>File</th>
-              <th>Actions</th>
+              <th className="table-header">Grade</th>
+              <th className="table-header">File</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>

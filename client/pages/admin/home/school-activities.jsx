@@ -100,33 +100,31 @@ export default function SchoolActivities() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Link</th>
-              <th>Actions</th>
+              <th className="table-header">Link</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>
             {schoolActivities &&
               schoolActivities.map((schoolActivitie) => {
                 return (
-                  <tr key={schoolActivitie.id}>
-                    <td>Link={schoolActivitie.Link}</td>
-                    <td>
+                  <tr key={schoolActivitie.id} className="border-b-2">
+                    <td className="table-data">{schoolActivitie.Link}</td>
+                    <td className="actions">
                       <Link href="/admin/home/School-activities/`${id}`">
                         <button
                           onClick={() => handleUpdate(schoolActivitie.id)}
-                          className="border-2"
+                          className="update"
                         >
                           Update
                         </button>
                       </Link>
-                    </td>
-                    <td>
                       <button
                         onClick={() => handleDelete(schoolActivitie.id)}
-                        className="border-2"
+                        className="delete"
                       >
                         Delete
                       </button>

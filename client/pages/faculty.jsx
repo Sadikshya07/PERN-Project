@@ -54,7 +54,7 @@ export default function Faculty() {
           <HeroSectionCard url={heroImage.Image} title={heroImage.Page} />
         )}
         {data ? (
-          <div className="faculty-card-container grid md:grid-cols-2 lg:grid-cols-3 p-3 m-5 gap-5  justify-items-center">
+          <div className="faculty-card-container w-11/12 mx-auto grid md:grid-cols-2 lg:grid-cols-3 p-3 m-5 gap-5 justify-items-center">
             {FacultyCards}
           </div>
         ) : (

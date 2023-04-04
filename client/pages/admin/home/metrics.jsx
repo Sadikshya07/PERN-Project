@@ -94,7 +94,7 @@ export default function Metrics() {
               className="w-[44rem] mx-auto px-6 py-12 rounded-xl"
             >
               <label htmlFor="name" className="text-lg font-medium w-[11em]">
-                Students:{" "}
+                Students:
               </label>
               <input
                 type="text"
@@ -106,7 +106,7 @@ export default function Metrics() {
               ></input>
               <br />
               <label htmlFor="name" className="text-lg font-medium w-[11em]">
-                Students Per Class:{" "}
+                Students Per Class:
               </label>
               <input
                 type="text"
@@ -118,7 +118,7 @@ export default function Metrics() {
               ></input>
               <br />
               <label htmlFor="name" className="text-lg font-medium w-[11em]">
-                Teachers:{" "}
+                Teachers:
               </label>
               <input
                 type="text"
@@ -130,7 +130,7 @@ export default function Metrics() {
               ></input>
               <br />
               <label htmlFor="name" className="text-lg font-medium w-[12em]">
-                Student-Teacher Ratio:{" "}
+                Student-Teacher Ratio:
               </label>
               <input
                 type="text"
@@ -150,43 +150,41 @@ export default function Metrics() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Students</th>
-              <th>StudentsPerClass</th>
-              <th>Teachers</th>
-              <th>StudentTeacherRatio</th>
-              <th>Actions</th>
+              <th className="table-header">Students</th>
+              <th className="table-header">StudentsPerClass</th>
+              <th className="table-header">Teachers</th>
+              <th className="table-header">StudentTeacherRatio</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>
             {metrics &&
               metrics.map((metric) => {
                 return (
-                  <tr key={metric.id}>
-                    <td>{metric.Students}</td>
-                    <td>{metric.StudentsPerClass}</td>
-                    <td>{metric.Teachers}</td>
-                    <td>{metric.StudentTeacherRatio}</td>
-                    <td>
+                  <tr key={metric.id} className="border-b-2">
+                    <td className="table-data">{metric.Students}</td>
+                    <td className="table-data">{metric.StudentsPerClass}</td>
+                    <td className="table-data">{metric.Teachers}</td>
+                    <td className="table-data">{metric.StudentTeacherRatio}</td>
+                    <td className="actions">
                       <Link href="/admin/home/Metrics/`${id}`">
                         <button
                           onClick={() => handleUpdate(metric.id)}
-                          className="border-2"
+                          className="update"
                         >
                           Update
                         </button>
                       </Link>
                     </td>
-                    <td>
-                      <button
+                      {/* <button
                         onClick={() => handleDelete(metric.id)}
                         className="border-2"
                       >
                         Delete
-                      </button>
-                    </td>
+                      </button> */}
                   </tr>
                 );
               })}
