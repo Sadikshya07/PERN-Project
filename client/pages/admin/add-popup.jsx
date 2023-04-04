@@ -110,8 +110,8 @@ export default function AddPopup() {
               PopUp.map((popup) => {
                 return (
                   <tr key={popup.id} className="border-b-2">
-                    <td className="table-data">image={popup.image}</td>
-                    <td>
+                    <td className="table-data">{popup.image}</td>
+                    <td className="actions">
                       <Link href="/admin/Add-popup/`${id}`">
                         <button
                           onClick={() => handleUpdate(popup.id)}
@@ -120,8 +120,6 @@ export default function AddPopup() {
                           Update
                         </button>
                       </Link>
-                    </td>
-                    <td>
                       <button
                         onClick={() => handleDelete(popup.id)}
                         className="delete"

@@ -63,7 +63,7 @@ export default function Metrics() {
       <AdminLayout>
         <div className="main-container">
           <h1 className="text-orange text-2xl text-center font-bold m-10">
-            Add Metrics
+            Update Metrics
           </h1>
           <form
             onSubmit={handleSubmit}
