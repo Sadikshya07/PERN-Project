@@ -157,7 +157,7 @@ export default function Metrics() {
                     <td>{media.title}</td>
                     <td>{media.author}</td>
                     <td>{media.Link}</td>
-                    <td>{media.image}</td>
+                    <td>{media.Image}</td>
                     <td>
                       <Link href="/admin/home/SchoolInMedia/`${id}`">
                         <button

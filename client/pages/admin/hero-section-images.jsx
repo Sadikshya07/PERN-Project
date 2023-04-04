@@ -155,7 +155,7 @@ export default function HeroSectionImages() {
                 return (
                   <tr key={hero.id}>
                     <td>page={hero.Page}</td>
-                    <td>image={hero.image}</td>
+                    <td>image={hero.Image}</td>
                     <td>
                       <Link href="/admin/Hero-section-images/`${id}`">
                         <button

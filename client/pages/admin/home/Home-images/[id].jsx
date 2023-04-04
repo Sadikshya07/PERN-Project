@@ -44,7 +44,7 @@ export default function UpdateHomeImages() {
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
-    router.push("/admin/home/home-images");
+    router.push("/admin/home/homepage-images");
   };
 
   return (

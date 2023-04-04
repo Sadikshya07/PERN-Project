@@ -1,10 +1,13 @@
 import Head from "next/head";
+import Link from "next/link";
 import StudentCornerFinder from "../../api/StudentCornerFinder";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import Popup from "reactjs-popup";
 
 export default function StudentCorner() {
+  const router = useRouter();
   const [StudentName, setStudentName] = useState();
   const [Rollno, setRollno] = useState();
   const [Grade, setGrade] = useState();
@@ -12,7 +15,7 @@ export default function StudentCorner() {
   const [ArticleContent, setArticleContent] = useState();
   const imageRef = useRef();
   const [error, setError] = useState("");
-  const [studnentCorner, setStudentCorner] = useState();
+  const [studentCorner, setStudentCorner] = useState();
   let i = 0;
 
   useEffect(() => {
@@ -47,6 +50,22 @@ export default function StudentCorner() {
     } catch (err) {
       console.log(err);
     }
+  };
+   const handleDelete = async (id) => {
+    try {
+      const response = await StudentCornerFinder.delete(`/${id}`);
+      console.log(response);
+      setStudentCorner(
+        studentCorner.filter((item) => {
+          return item.id !== id;
+        })
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleUpdate = (id) => {
+    router.push(`/admin/publications/StudentCorner/${id}`);
   };
   return (
     <div>
@@ -163,18 +182,34 @@ export default function StudentCorner() {
             </tr>
           </thead>
           <tbody>
-            {studnentCorner &&
-              studnentCorner.map((item) => {
+            {studentCorner &&
+              studentCorner.map((item) => {
                 return (
                   <tr key={item.id}>
                     <td>{item.studentname}</td>
-                    <td>{item.studentname}</td>
+                    <td>{item.rollnumber}</td>
                     <td>{item.grade}</td>
                     <td>{item.articletitle}</td>
                     <td>{item.articlecontent}</td>
-                    <td>Imaga here</td>
-                    <td>Delete</td>
-                    <td>Update</td>
+                    <td>{item.image}</td>
+                    <td>
+                      <Link href="/admin/publications/StudentCorner/`${id}`">
+                        <button
+                          onClick={() => handleUpdate(item.id)}
+                          className="border-2"
+                        >
+                          Update
+                        </button>
+                      </Link>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="border-2"
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 );
               })}

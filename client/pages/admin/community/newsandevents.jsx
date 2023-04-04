@@ -87,7 +87,7 @@ const [title, setTitle] = useState();
             <form
               onSubmit={handleSubmit}
               encType="multipart/form-data"
-              className=" bg-white w-[44rem] mx-auto px-6 py-12 rounded-xl"
+              className=" bg-white w-[44rem] mx-auto px-6 py-12 rounded-xl overflow-auto"
             >
               <label htmlFor="fname" className="text-lg font-medium w-[11em]">
                 Full name:

@@ -38,6 +38,9 @@ export default function UpdateManagement() {
       description,
       position,
       image: imageRef.current.files[0],
+    },
+    {
+      headers: { "Content-Type": "multipart/form-data" },
     });
     router.push(`/admin/aboutus/management`);
   };

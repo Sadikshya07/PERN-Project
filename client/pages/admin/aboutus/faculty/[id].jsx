@@ -44,6 +44,9 @@ export default function UpdateFaculty() {
       AreaofExpertise,
       image,
       Experience
+    },
+    {
+      headers: { "Content-Type": "multipart/form-data" },
     });
     router.push("/admin/aboutus/faculty");
   };

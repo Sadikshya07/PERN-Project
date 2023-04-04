@@ -2,12 +2,16 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import DeerwalkerFinder from "../../api/DeerwalkerFinder";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useRouter } from "next/router";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import Popup from "reactjs-popup";
 
 export default function Deerwalker() {
+  const router = useRouter();
   const [name, setName] = useState();
+  const imageRef = useRef();
+  const fileRef = useRef();
   const [error, setError] = useState("");
   const [deerwalkerData, setDeerwalkerData] = useState();
   let i = 0;
@@ -15,7 +19,7 @@ export default function Deerwalker() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await DeerwalkFinder.get("/");
+        const response = await DeerwalkerFinder.get("/");
         setDeerwalkerData(response.data.data);
       } catch (err) {
         console.log(err);
@@ -29,10 +33,31 @@ export default function Deerwalker() {
     try {
       const response = await DeerwalkerFinder.post("/", {
         name,
+        image: imageRef.current.files[0],
+        file: fileRef.current.files[0],
+      },
+      {
+        headers: { "Content-Type": "multipart/form-data" },
       });
     } catch (err) {
       console.log(err);
     }
+  };
+  const handleDelete = async (id) => {
+    try {
+      const response = await DeerwalkerFinder.delete(`/${id}`);
+      console.log(response);
+      setDeerwalkerData(
+        deerwalkerData.filter((item) => {
+          return item.id !== id;
+        })
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleUpdate = (id) => {
+    router.push(`/admin/publications/Deerwalker/${id}`);
   };
   return (
     <div>
@@ -47,68 +72,97 @@ export default function Deerwalker() {
             The Deerwalker
           </h1>
           <Popup
-            trigger={<button className="add-data-button">Add Data</button>}
-            modal
-          >
-            {(close) => (
-              <form
-                onChange={handleSubmit}
-                className="border-4 border-orange w-[44rem] mx-auto px-6 py-12 rounded-xl"
+          trigger={<button className="add-data-button">Add Data</button>}
+          modal
+        >
+          {(close) => (
+            <form
+              onSubmit={handleSubmit}
+              className="w-[44rem] mx-auto px-6 py-12 rounded-xl"
+            >
+              <label htmlFor="name" className="text-lg font-medium w-[11em]">
+                {" "}
+                Name:
+              </label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Name"
+                className="border-2 w-full p-2 rounded-lg mb-42"
+                required
+                onChange={(e) => setName(e.target.value)}
+              ></input>
+              <br />
+              <label htmlFor="file" className="text-lg font-medium w-[11em]">
+                File:
+              </label>
+              <input
+                type="file"
+                id="file"
+                ref={fileRef}
+                placeholder="choose file"
+                className="border-2 w-full p-2 rounded-lg mb-4"
+              ></input>
+              <br />
+              <label htmlFor="image" className="text-lg font-medium w-[10em]">
+                Image:
+              </label>
+              <input
+                type="file"
+                id="image"
+                ref={imageRef}
+                placeholder="choose file"
+                className="border-2 w-full p-2 rounded-lg mb-4"
+              ></input>
+              <button
+                type="submit"
+                className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
               >
-                <label htmlFor="title" className="text-lg font-medium w-[11em]">
-                  Title:
-                </label>{" "}
-                <br />
-                <input
-                  type="text"
-                  id="title"
-                  placeholder=""
-                  className="border-2 w-full p-2 rounded-lg mb-4"
-                  required
-                  onChange={(e) => setName(e.target.value)}
-                ></input>
-                <br />
-                <label for="file" className="text-lg font-medium w-[11em]">
-                  File:
-                </label>
-                <input
-                  type="file"
-                  id="file"
-                  placeholder="choose file"
-                  className="border-2 w-full p-2 rounded-lg mb-4"
-                ></input>{" "}
-                <br />
-                <button
-                  type="submit"
-                  className="w-full bg-orange hover:bg-[#cb5c1c] text-white text-xl font-bold py-4 rounded-xl"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
-          </Popup>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>File</th>
-                <th colSpan={2}>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {deerwalkerData &&
-                deerwalkerData.map((item) => {
-                  return (
-                    <tr key={item.id}>
-                      <td>{item.name}</td>
-                      <td>{item.file}</td>
-                      <td>Delete</td>
-                      <td>Update</td>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
+                Submit
+              </button>
+            </form>
+          )}
+        </Popup>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Image</th>
+              <th>File</th>
+              <th colSpan={2}>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {deerwalkerData &&
+              deerwalkerData.map((item) => {
+                return (
+                  <tr key={item.id}>
+                    <td>{item.name}</td>
+                    <td>{item.image}</td>
+                    <td>{item.file}</td>
+                    <td>
+                      <Link href="/admin/publications/Deerwalker/`${id}`">
+                        <button
+                          onClick={() => handleUpdate(item.id)}
+                          className="border-2"
+                        >
+                          Update
+                        </button>
+                      </Link>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="border-2"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
       </AdminLayout>
     </div>
   );

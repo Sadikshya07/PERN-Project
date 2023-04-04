@@ -24,7 +24,17 @@ export default function UpdateSchoolActivities() {
   }, [id]);
 
   const handleSubmit = async (e) => {
-    router.push("/admin/home/school-activities");
+    e.preventDefault();
+      const response = await SchoolActivitiesFinder.put(
+        `/${id}`,
+        {
+          Link,
+        },
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      router.push(`/admin/home/school-activities`);
   };
 
   return (

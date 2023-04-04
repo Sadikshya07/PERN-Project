@@ -79,7 +79,7 @@ export default function AddPopup() {
               PopUp.map((popup) => {
               return (
             <tr key={popup.id} >
-            <td>image={popup.image}</td>
+            <td>image={popup.Image}</td>
             <td>
               <Link href="/admin/Add-popup/`${id}`">
                 <button

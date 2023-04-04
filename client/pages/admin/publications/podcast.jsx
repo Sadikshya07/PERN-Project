@@ -1,14 +1,17 @@
 import Head from "next/head";
 import PodcastFinder from "../../api/PodcastFinder";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef} from "react";
+import { useRouter } from "next/router";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import Popup from "reactjs-popup";
 
 export default function Podcast() {
+  const router = useRouter();
   const [PresenterName, setPresenterName] = useState();
   const [Rollno, setRollno] = useState();
   const [Grade, setGrade] = useState();
   const [PodcastDescription, setPodcastDescription] = useState();
+  const [Link,setLink] = useState();
   const [error, setError] = useState("");
   const [podcast, setPodcast] = useState();
   let i = 0;
@@ -32,10 +35,32 @@ export default function Podcast() {
         Rollno,
         Grade,
         PodcastDescription,
-      });
+        image: imageRef.current.files[0],
+        
+      },
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+      );
     } catch (err) {
       console.log(err);
     }
+  };
+  const handleDelete = async (id) => {
+    try {
+      const response = await PodcastFinder.delete(`/${id}`);
+      console.log(response);
+      setPodcast(
+        podcast.filter((item) => {
+          return item.id !== id;
+        })
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleUpdate = (id) => {
+    router.push(`/admin/publications/Podcast/${id}`);
   };
   return (
     <div>
@@ -156,14 +181,30 @@ export default function Podcast() {
                     <td>{item.rollnumber}</td>
                     <td>{item.description}</td>
                     <td>{item.grade}</td>
-                    <td>Update</td>
-                    <td>Delete</td>
+                    <td>{item.image}</td>
+                    <td>
+                      <Link href="/admin/publications/Podcast/`${id}`">
+                        <button
+                          onClick={() => handleUpdate(item.id)}
+                          className="border-2"
+                        >
+                          Update
+                        </button>
+                      </Link>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="border-2"
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 );
               })}
           </tbody>
         </table>
-        
       </AdminLayout>
     </div>
   );

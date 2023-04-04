@@ -149,9 +149,9 @@ export default function Programs() {
                 programs.map((programs) => {
                   return (
                     <tr key={programs.id}>
-                      <td>{programs.image1}</td>
-                      <td>{programs.image2}</td>
-                      <td>{programs.image3}</td>
+                      <td>{programs.elementryImage}</td>
+                      <td>{programs.middleImage}</td>
+                      <td>{programs.higherImage}</td>
                       <td>
                         <Link href="/admin/home/Programs/`${id}`">
                           <button

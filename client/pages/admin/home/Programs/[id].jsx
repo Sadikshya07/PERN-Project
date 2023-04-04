@@ -37,7 +37,11 @@ export default function UpdatePrograms() {
         image1: image1Ref.current.files[0],
         image2: image2Ref.current.files[0],
         image3: image3Ref.current.files[0],
-    });
+    },
+    {
+      headers: { "Content-Type": "multipart/form-data" },
+    }
+    );
     router.push(`/admin/home/programs`);
   };
 
