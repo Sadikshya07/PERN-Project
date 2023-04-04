@@ -3,7 +3,7 @@ const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const bodyParser = require("body-parser");
-
+const fsPromises = require("fs/promises");
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
@@ -66,8 +66,6 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { studentname, rollnumber, grade, articletitle, articlecontent } =
-      req.body;
     let ImagePath;
     const vals = await prisma.newsletter.findFirst({
       where: {
@@ -79,14 +77,18 @@ router.put("/:id", async (req, res) => {
       await req.files.image.mv("./public" + ImagePath);
       await fsPromises.unlink(vals.image);
     } else ImagePath = "";
+
+    const { StudentName, Rollno, Grade, ArticleTitle, ArticleContent } =
+    req.body;
+
     const data = {
-      studentname: studentname,
-      rollnumber: rollnumber,
-      grade: grade,
-      articletitle: articletitle,
-      articlecontent: articlecontent,
-      ...(ImagePath !== "" && { image: ImagePath }),
-    };
+    studentname: StudentName,
+    rollnumber: parseInt(Rollno),
+    grade: parseInt(Grade),
+    articletitle: ArticleTitle,
+    articlecontent: ArticleContent,
+    image: ImagePath,
+  };
     const results = await prisma.studentcorner.update({
       where: {
         id,

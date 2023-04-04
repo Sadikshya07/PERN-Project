@@ -136,10 +136,10 @@ model weekendcampprogram {
 model newsletter {
   id        String   @id @default(uuid())
   name      String
-  createdAt DateTime @default(now())
   image     String
   file      String
   updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
 }
 
 model termsummary {
@@ -189,7 +189,7 @@ model podcast {
   description   String
   rollnumber    Int
   image         String
-  file          String
+  Link          String
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
