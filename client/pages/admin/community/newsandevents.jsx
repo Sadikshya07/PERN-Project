@@ -9,7 +9,7 @@ import Popup from "reactjs-popup";
 export default function NewsAndEvents() {
   const router = useRouter();
   const [author, setAuthor] = useState();
-const [title, setTitle] = useState();
+  const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [publishdate, setDate] = useState();
   const [newsandevents, setNewsandEvents] = useState();
@@ -176,13 +176,13 @@ const [title, setTitle] = useState();
         </Popup>
         <table className="table-style">
           <thead>
-            <tr className="bg-gray px-4 py-2 border-b-2">
-              <th className="px-5 py-3">Author</th>
-              <th className="px-5 py-3">Title</th>
-              <th className="px-5 py-3">Description</th>
-              <th className="px-5 py-3">Date</th>
-              {/* <th>Image</th> */}
-              <th className="px-5 py-3">Actions</th>
+            <tr className="table-header">
+              <th className="table-data">Author</th>
+              <th className="table-data">Title</th>
+              <th className="table-data">Description</th>
+              <th className="table-data">Date</th>
+              <th className="table-data">Image</th>
+              <th className="table-data">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -190,30 +190,43 @@ const [title, setTitle] = useState();
               newsandevents.map((news) => {
                 return (
                   <tr key={news.id} className="border-b-2">
-                    <td className="px-5 py-3">{news.author}</td>
-                    <td className="px-5 py-3">{news.title}</td>
-                    <td className="px-5 py-3">{news.description}</td>
-                    <td className="table-data-padding">{news.publishdate}</td>
-                    <div className="flex flex-col gap-2 px-5 py-3">
-                      <td>
-                        <Link href="/admin/community/`id`">
-                          <button
-                            onClick={() => handleUpdate(news.id)}
-                            className="update"
-                          >
-                            Update
-                          </button>
-                        </Link>
-                      </td>
-                      <td>
+                    <td className="table-data">{news.author}</td>
+                    {console.log(news)}
+                    <td className="table-data">{news.title}</td>
+                    <td className="table-data">{news.description}</td>
+                    <td className="table-data">{news.publishdate}</td>
+                    <td className="table-data w-[12em]">
+                      <a
+                        href={`${process.env.NEXT_PUBLIC_SERVER_HOST}${news.image1}`}
+                        target="_blank "
+                        className="text-blue underline"
+                      >
+                        Image 1
+                      </a>
+                      <a
+                        href={`${process.env.NEXT_PUBLIC_SERVER_HOST}${news.image2}`}
+                        target="_blank "
+                        className="text-blue underline"
+                      >
+                        Image 2
+                      </a>
+                    </td>
+                    <td className="actions">
+                      <Link href="/admin/community/`id`">
                         <button
-                          onClick={() => handleDelete(news.id)}
-                          className="delete"
+                          onClick={() => handleUpdate(news.id)}
+                          className="update"
                         >
-                          Delete
+                          Update
                         </button>
-                      </td>
-                    </div>
+                      </Link>
+                      <button
+                        onClick={() => handleDelete(news.id)}
+                        className="delete"
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 );
               })}

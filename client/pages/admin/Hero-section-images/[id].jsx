@@ -1,13 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import AdminLayout from "../../../components/Layouts/AdminLayout";
 import HeroSectionFinder from "../../api/HeroSectionFinder";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 export default function HeroSectionImages() {
   const router = useRouter();
-  const {id} = router.query;
+  const { id } = router.query;
   const [Page, setPage] = useState("Choose Page");
   const [image, setImage] = useState();
 
@@ -27,17 +27,17 @@ export default function HeroSectionImages() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-      const response = await HeroSectionFinder.put(
-        `/${id}`,
-        {
-          Page,
-          image,
-        },
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
-      router.push(`/admin/hero-section-images`);
+    const response = await HeroSectionFinder.put(
+      `/${id}`,
+      {
+        Page,
+        image,
+      },
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
+    router.push(`/admin/hero-section-images`);
   };
   return (
     <div>
@@ -48,7 +48,9 @@ export default function HeroSectionImages() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminLayout>
-        <div className="main-container">
+        <h1 className="text-orange text-2xl text-center font-bold m-10">
+          Update Hero Section Images
+        </h1>
           <form
             onSubmit={handleSubmit}
             className="border-4 border-orange w-[40rem] mx-auto px-6 py-12 rounded-xl"
@@ -108,7 +110,6 @@ export default function HeroSectionImages() {
               Submit
             </button>
           </form>
-        </div>
       </AdminLayout>
     </div>
   );

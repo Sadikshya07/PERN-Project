@@ -86,20 +86,20 @@ export default function TermSummary() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Title</th>
-              <th>File</th>
+              <th className="table-header">Title</th>
+              <th className="table-header">File</th>
               <th colSpan={2}>Actions</th>
             </tr>
           </thead>
           <tbody>
             {termSummary &&
               termSummary.map((item) => {
-                <tr key={item.id}>
-                  <td>{item.name}</td>
-                  <td>File</td>
+                <tr key={item.id} className="border-b-2">
+                  <td className="table-data">{item.name}</td>
+                  <td className="table-data">File</td>
                   <td>Update</td>
                   <td>Delete</td>
                 </tr>;

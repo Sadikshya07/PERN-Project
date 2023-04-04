@@ -1,8 +1,27 @@
 import Head from "next/head";
 import Image from "next/image";
 import logo from "../../public/src/assets/dssblue.png";
+import { useRouter } from 'next/router'
+import { useState } from "react";
 
 export default function Home() {
+
+  const router = useRouter()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+
+  const routeToDashboard = async (e) => {
+    e.preventDefault()
+    if (username !== 'admin' || password !== 'securePW') {
+      setError('Invalid username or password.')
+      return;
+    }
+
+
+    await router.push('/admin/dashboard')
+  }
+
   return (
     <>
       <Head>
@@ -25,6 +44,7 @@ export default function Home() {
           <form
             action=""
             className="flex flex-col w-[30em] px-12 py-14 rounded-xl bg-offWhite"
+            onSubmit={routeToDashboard}
           >
             <Image src={logo} alt="dss logo" width = {280} className="mx-auto mb-8" />
             <div className="username mb-2">
@@ -37,6 +57,7 @@ export default function Home() {
                 id="username"
                 name="username"
                 className="bg-gray-50 border text-sm rounded-lg focus:border-orange w-full p-2.5"
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="password">
@@ -49,6 +70,7 @@ export default function Home() {
                 id="password"
                 name="username"
                 className="bg-gray-50 border text-sm rounded-lg focus:border-orange w-full p-2.5"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <br />
@@ -58,6 +80,7 @@ export default function Home() {
             >
               Log in
             </button>
+            {error && <p className="mt-4 mx-auto text-red-500 font-bold">{error}</p>}
           </form>
         </div>
       </main>

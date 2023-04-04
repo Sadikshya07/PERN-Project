@@ -181,43 +181,41 @@ export default function Faculty() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Department</th>
-              <th>AreaofExpertise</th>
-              <th>Experience</th>
-              <th>Image</th>
-              <th>Actions</th>
+              <th className="table-header">Name</th>
+              <th className="table-header">Description</th>
+              <th className="table-header">Department</th>
+              <th className="table-header">AreaofExpertise</th>
+              <th className="table-header">Experience</th>
+              <th className="table-header">Image</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>
             {faculty &&
               faculty.map((person) => {
                 return (
-                  <tr key={person.id}>
-                    <td>{person.name}</td>
-                    <td>{person.description}</td>
-                    <td>{person.department}</td>
-                    <td>{person.AreaofExpertise}</td>
-                    <td>{person.Experience}</td>
-                    <td>{person.image}</td>
-                    <td>
+                  <tr key={person.id} className="border-b-2">
+                    <td className="table-data">{person.name}</td>
+                    <td className="table-data">{person.description}</td>
+                    <td className="table-data">{person.department}</td>
+                    <td className="table-data">{person.AreaofExpertise}</td>
+                    <td className="table-data">{person.Experience}</td>
+                    <td className="table-data">{person.image}</td>
+                    <td className="actions">
                       <Link href="/admin/aboutus/Faculty/`${id}`">
                         <button
                           onClick={() => handleUpdate(person.id)}
-                          className="border-2"
+                          className="update"
                         >
                           Update
                         </button>
                       </Link>
-                    </td>
-                    <td>
                       <button
                         onClick={() => handleDelete(person.id)}
-                        className="border-2"
+                        className="delete"
                       >
                         Delete
                       </button>

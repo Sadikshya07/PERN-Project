@@ -85,21 +85,21 @@ export default function Newsletter() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>File</th>
-              <th colSpan={2}>Actions</th>
+              <th className="table-header">Name</th>
+              <th className="table-header">File</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {newLetter &&
               newLetter.map((item) => {
                 return (
-                  <tr key={item.id}>
-                    <td>{item.name}</td>
-                    <td>{item.file}</td>
+                  <tr key={item.id} className="border-b-2">
+                    <td className="table-data">{item.name}</td>
+                    <td className="table-data">{item.file}</td>
                     <td>Update</td>
                     <td>Delete</td>
                   </tr>

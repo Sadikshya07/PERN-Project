@@ -16,7 +16,7 @@ export default function HeroSectionImages() {
     const fetchData = async () => {
       try {
         const response = await HeroSectionFinder.get("/");
-        console.log(response.data.data);
+        ``;
         setHeroSection(response.data.data);
       } catch (err) {
         console.log(err);
@@ -72,14 +72,12 @@ export default function HeroSectionImages() {
         <h1 className="text-orange text-2xl text-center font-bold m-10">
           Hero Section Images
         </h1>
-
         <Popup
           trigger={<button className="add-data-button">Add Data</button>}
           modal
         >
-          {
-            (ckose) => (
-              <form
+          {(ckose) => (
+            <form
               onSubmit={handleSubmit}
               className="w-[40rem] mx-auto px-6 py-12 rounded-xl"
             >
@@ -138,38 +136,44 @@ export default function HeroSectionImages() {
                 Submit
               </button>
             </form>
-            )
-          }
+          )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Page</th>
-              <th>Image</th>
-              <th>Actions</th>
+              <th className="table-header">Page</th>
+              <th className="table-header">Image</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>
             {herosection &&
               herosection.map((hero) => {
                 return (
-                  <tr key={hero.id}>
-                    <td>{hero.Page}</td>
-                    <td>{hero.image}</td>
-                    <td>
+                  <tr key={hero.id} className="border-b-2">
+                    <td className="table-data">{hero.Page}</td>
+                    <td className="table-data">
+                      <a
+                        href={`${process.env.NEXT_PUBLIC_SERVER_HOST}${hero.Image}`}
+                        target="_blank "
+                        className="text-blue underline"
+                      >
+                        Image
+                      </a>
+                    </td>
+                    <td className="actions">
                       <Link href="/admin/Hero-section-images/`${id}`">
                         <button
                           onClick={() => handleUpdate(hero.id)}
-                          className="border-2"
+                          className="update"
                         >
                           Update
                         </button>
                       </Link>
-                    </td>
-                    <td>
+
                       <button
                         onClick={() => handleDelete(hero.id)}
-                        className="border-2"
+                        className="delete"
                       >
                         Delete
                       </button>

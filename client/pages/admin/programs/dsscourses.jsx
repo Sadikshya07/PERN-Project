@@ -109,35 +109,33 @@ export default function DSSCourses() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Actions</th>
+              <th className="table-header">Name</th>
+              <th className="table-header">Description</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>
             {DssCourses &&
               DssCourses.map((Courses) => {
                 return (
-                  <tr key={Courses.id}>
-                    <td>{Courses.name}</td>
-                    <td>{Courses.description}</td>
-                    <td>
+                  <tr key={Courses.id} className="border-b-2">
+                    <td className="table-data">{Courses.name}</td>
+                    <td className="table-data">{Courses.description}</td>
+                    <td className="actions">
                       <Link href="/admin/programs/Dss-courses/`${id}`">
                         <button
                           onClick={() => handleUpdate(Courses.id)}
-                          className="border-2"
+                          className="update"
                         >
                           Update
                         </button>
                       </Link>
-                    </td>
-                    <td>
                       <button
                         onClick={() => handleDelete(Courses.id)}
-                        className="border-2"
+                        className="delete"
                       >
                         Delete
                       </button>

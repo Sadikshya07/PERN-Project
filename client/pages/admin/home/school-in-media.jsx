@@ -139,39 +139,37 @@ export default function Metrics() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Link</th>
-              <th>Image</th>
-              <th>Actions</th>
+              <th className="table-header">Title</th>
+              <th className="table-header">Author</th>
+              <th className="table-header">Link</th>
+              <th className="table-header">Image</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>
             {schoolMedia &&
               schoolMedia.map((media) => {
                 return (
-                  <tr key={media.id}>
-                    <td>{media.title}</td>
-                    <td>{media.author}</td>
-                    <td>{media.Link}</td>
-                    <td>{media.image}</td>
-                    <td>
+                  <tr key={media.id} className="border-b-2"> 
+                    <td className="table-data">{media.title}</td>
+                    <td className="table-data">{media.author}</td>
+                    <td className="table-data">{media.Link}</td>
+                    <td className="table-data">{media.image}</td>
+                    <td className="actions">
                       <Link href="/admin/home/SchoolInMedia/`${id}`">
                         <button
                           onClick={() => handleUpdate(media.id)}
-                          className="border-2"
+                          className="update"
                         >
                           Update
                         </button>
                       </Link>
-                    </td>
-                    <td>
                       <button
                         onClick={() => handleDelete(media.id)}
-                        className="border-2"
+                        className="delete"
                       >
                         Delete
                       </button>

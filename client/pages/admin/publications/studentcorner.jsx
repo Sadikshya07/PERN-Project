@@ -149,30 +149,29 @@ export default function StudentCorner() {
             </form>
           )}
         </Popup>
-
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Student Name</th>
-              <th>Roll Number</th>
-              <th>Grade</th>
-              <th>Article Title</th>
-              <th>Article Content</th>
-              <th>Image</th>
-              <th colSpan={2}>Actions</th>
+              <th className="table-header">Student Name</th>
+              <th className="table-header">Roll Number</th>
+              <th className="table-header">Grade</th>
+              <th className="table-header">Article Title</th>
+              <th className="table-header">Article Content</th>
+              <th className="table-header">Image</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>
             {studnentCorner &&
               studnentCorner.map((item) => {
                 return (
-                  <tr key={item.id}>
-                    <td>{item.studentname}</td>
-                    <td>{item.studentname}</td>
-                    <td>{item.grade}</td>
-                    <td>{item.articletitle}</td>
-                    <td>{item.articlecontent}</td>
-                    <td>Imaga here</td>
+                  <tr key={item.id} className="border-b-2">
+                    <td className="table-data">{item.studentname}</td>
+                    <td className="table-data">{item.studentname}</td>
+                    <td className="table-data">{item.grade}</td>
+                    <td className="table-data">{item.articletitle}</td>
+                    <td className="table-data">{item.articlecontent}</td>
+                    <td className="table-data">Imaga here</td>
                     <td>Delete</td>
                     <td>Update</td>
                   </tr>

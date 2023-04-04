@@ -84,21 +84,21 @@ export default function AnalysisReport() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Image</th>
-              <th colSpan={2}>Actions</th>
+              <th className="table-header">Name</th>
+              <th className="table-header">Image</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>
             {analysisReport &&
               analysisReport.map((item) => {
                 return (
-                  <tr key={item.id}>
-                    <td>{item.name}</td>
-                    <td>{item.image}</td>
+                  <tr key={item.id} className="border-b-2">
+                    <td className="table-data">{item.name}</td>
+                    <td className="table-data">{item.image}</td>
                     <td>Delete</td>
                     <td>Update</td>
                   </tr>

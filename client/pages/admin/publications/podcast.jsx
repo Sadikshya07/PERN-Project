@@ -135,27 +135,27 @@ export default function Podcast() {
           </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Presenter Name</th>
-              <th>Roll Number</th>
-              <th>Description</th>
-              <th>Grade</th>
-              <th>Image</th>
-              <th>Video Link</th>
-              <th>Actions</th>
+              <th className="table-header">Presenter Name</th>
+              <th className="table-header">Roll Number</th>
+              <th className="table-header">Description</th>
+              <th className="table-header">Grade</th>
+              <th className="table-header">Image</th>
+              <th className="table-header">Video Link</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>
             {podcast &&
               podcast.map((item) => {
                 return (
-                  <tr key={item.id}>
-                    <td>{item.presentername}</td>
-                    <td>{item.rollnumber}</td>
-                    <td>{item.description}</td>
-                    <td>{item.grade}</td>
+                  <tr key={item.id} className="border-b-2">
+                    <td className="table-data">{item.presentername}</td>
+                    <td className="table-data">{item.rollnumber}</td>
+                    <td className="table-data">{item.description}</td>
+                    <td className="table-data">{item.grade}</td>
                     <td>Update</td>
                     <td>Delete</td>
                   </tr>

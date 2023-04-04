@@ -128,25 +128,24 @@ export default function Images() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Image1</th>
-              <th>Image2</th>
-              <th>Image3</th>
-              <th>Actions</th>
+              <th className="table-header">Image1</th>
+              <th className="table-header">Image2</th>
+              <th className="table-header">Image3</th>
+              <th className="table-header" colSpan="2">Actions</th>
             </tr>
           </thead>
           <tbody>
             {heroImage &&
               heroImage.map((heroImage) => {
                 return (
-                  <tr key={heroImage.id}>
-                    <td>{heroImage.image1}</td>
-                    <td>{heroImage.image2}</td>
-                    <td>{heroImage.image3}</td>
-                    <div className="flex flex-col">
-                      <td>
+                  <tr key={heroImage.id} className="border-b-2">
+                    <td className="table-data">{heroImage.image1}</td>
+                    <td className="table-data">{heroImage.image2}</td>
+                    <td className="table-data">{heroImage.image3}</td>
+                      <td className="actions">
                         <Link href="/admin/home/Home-images/`${id}`">
                           <button
                             onClick={() => handleUpdate(heroImage.id)}
@@ -155,8 +154,6 @@ export default function Images() {
                             Update
                           </button>
                         </Link>
-                      </td>
-                      <td>
                         <button
                           onClick={() => handleDelete(heroImage.id)}
                           className="delete"
@@ -164,13 +161,11 @@ export default function Images() {
                           Delete
                         </button>
                       </td>
-                    </div>
                   </tr>
                 );
               })}
           </tbody>
         </table>
-        <div className="form-container"></div>
       </AdminLayout>
     </div>
   );

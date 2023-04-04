@@ -109,21 +109,21 @@ export default function Courses() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Grade</th>
-              <th>File</th>
-              <th>Actions</th>
+              <th className="table-header">Grade</th>
+              <th className="table-header">File</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>
             {courses &&
               courses.map((course) => {
                 return (
-                  <tr key={course.id}>
-                    <td>{course.grade}</td>
-                    <td>{course.file}</td>
+                  <tr key={course.id} className="border-b-2">
+                    <td className="table-data">{course.grade}</td>
+                    <td className="table-data">{course.file}</td>
                     <td>Delete</td>
                     <td>Update</td>
                   </tr>

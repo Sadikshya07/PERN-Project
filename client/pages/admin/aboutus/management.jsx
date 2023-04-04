@@ -147,39 +147,37 @@ export default function Management() {
             </form>
           )}
         </Popup>
-        <table>
+        <table className="table-style">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Position</th>
-              <th>Image</th>
-              <th>Actions</th>
+              <th className="table-header">Name</th>
+              <th className="table-header">Description</th>
+              <th className="table-header">Position</th>
+              <th className="table-header">Image</th>
+              <th className="table-header">Actions</th>
             </tr>
           </thead>
           <tbody>
             {Management &&
               Management.map((person) => {
                 return (
-                  <tr key={person.id}>
-                    <td>{person.name}</td>
-                    <td>{person.description}</td>
-                    <td>{person.position}</td>
-                    <td>{person.image}</td>
-                    <td>
+                  <tr key={person.id} className="border-b-2">
+                    <td className="table-data">{person.name}</td>
+                    <td className="table-data">{person.description}</td>
+                    <td className="table-data">{person.position}</td>
+                    <td className="table-data">{person.image}</td>
+                    <td className="actions">
                       <Link href="/admin/aboutus/Management/`${id}`">
                         <button
                           onClick={() => handleUpdate(person.id)}
-                          className="border-2"
+                          className="update"
                         >
                           Update
                         </button>
                       </Link>
-                    </td>
-                    <td>
                       <button
                         onClick={() => handleDelete(person.id)}
-                        className="border-2"
+                        className="delete"
                       >
                         Delete
                       </button>
