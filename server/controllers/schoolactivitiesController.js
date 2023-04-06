@@ -61,7 +61,6 @@ router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const { link } = req.body;
-
     const data = {
       Link: link,
     };

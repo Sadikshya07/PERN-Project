@@ -83,6 +83,7 @@ router.post("/", async (req, res) => {
 });
 router.put("/:id", async (req, res) => {
   try {
+    const id = req.params.id;
     let imagePath1 = imagePathServer + Date.now() + "-" + req.files.image1.name;
     let imagePath2 = imagePathServer + Date.now() + "-" + req.files.image2.name;
     let imagePath3 = imagePathServer + Date.now() + "-" + req.files.image3.name;

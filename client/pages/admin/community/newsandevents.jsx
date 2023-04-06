@@ -212,7 +212,7 @@ export default function NewsAndEvents() {
                       </a>
                     </td>
                     <td className="actions">
-                      <Link href="/admin/community/`id`">
+                      <Link href="/admin/community/`${id}`">
                         <button
                           onClick={() => handleUpdate(news.id)}
                           className="update"

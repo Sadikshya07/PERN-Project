@@ -48,7 +48,7 @@ export default function UpdateFaculty() {
     {
       headers: { "Content-Type": "multipart/form-data" },
     });
-    router.push("/admin/aboutus/faculty");
+    router.push(`/admin/aboutus/faculty`);
   };
 
   return (

@@ -38,6 +38,7 @@ let imagePathServer = "/images/";
 
 router.post("/", async (req, res) => {
   try {
+    console.log(req.body);
     let ImagePath;
     ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
     await req.files.image.mv("./public" + ImagePath);
