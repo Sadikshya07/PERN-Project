@@ -53,9 +53,8 @@ router.post("/", async (req, res) => {
       image:ImagePath,
       Link:Link,
     };
-    console.log(data);
     const results = await prisma.podcast.create({
-      data: data,
+      data,
     });
     res.status(201).json({
       status: "success",
