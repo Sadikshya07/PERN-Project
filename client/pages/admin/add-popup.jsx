@@ -110,7 +110,7 @@ export default function AddPopup() {
               PopUp.map((popup) => {
                 return (
                   <tr key={popup.id} className="border-b-2">
-                    <td className="table-data">{popup.image}</td>
+                    <td className="table-data">{popup.Image}</td>
                     <td className="actions">
                       <Link href="/admin/Add-popup/`${id}`">
                         <button

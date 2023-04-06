@@ -11,7 +11,9 @@ export default function Podcast() {
   const [PresenterName, setPresenterName] = useState();
   const [Rollno, setRollno] = useState();
   const [Grade, setGrade] = useState();
+  const [Link,setLink] = useState();
   const [image, setImage] = useState();
+  const [title,setTitle] = useState();
   const [PodcastDescription, setPodcastDescription] = useState();
   const [error, setError] = useState("");
   const [podcast, setPodcast] = useState();
@@ -25,6 +27,8 @@ export default function Podcast() {
         setGrade(response.data.data.item.grade);
         setPodcastDescription(response.data.data.item.description);
         setImage(response.data.data.item.image);
+        setLink(response.data.data.item.Link);
+        setTitle(response.data.data.item.title);
       } catch (err) {
         console.log(err);
       }
@@ -40,7 +44,9 @@ export default function Podcast() {
         Rollno,
         Grade,
         PodcastDescription,
+        title,
         image: imageRef.current.files[0],
+        Link,
       },
       {
         headers: { "Content-Type": "multipart/form-data" },
@@ -82,6 +88,18 @@ export default function Podcast() {
             <input
               type="text"
               id="grade"
+              placeholder=""
+              className="border-2 w-full p-2 rounded-lg mb-4"
+              required
+              onChange={(e) => setGrade(e.target.value)}
+            ></input>{" "}
+            <br />
+            <label for="title" className="text-lg font-medium w-[11em]">
+              Title
+            </label>
+            <input
+              type="text"
+              id="title"
               placeholder=""
               className="border-2 w-full p-2 rounded-lg mb-4"
               required

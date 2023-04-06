@@ -3,7 +3,7 @@ const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const bodyParser = require("body-parser");
-
+const fsPromises = require("fs/promises");
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
@@ -23,7 +23,7 @@ router.get("/:id", async (req, res) => {
     const id = req.params.id;
     const results = await prisma.podcast.findFirst({
       where: {
-        id: id,
+        id,
       },
     });
     res.status(200).json({
@@ -34,17 +34,25 @@ router.get("/:id", async (req, res) => {
     console.error(error.message);
   }
 });
+let imagePathServer = "/images/";
+
 router.post("/", async (req, res) => {
   try {
-    console.log(req.body);
-    const { presentername, rollnumber, grade, title, description } = req.body;
+    let ImagePath;
+    ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
+    await req.files.image.mv("./public" + ImagePath);
+    const { presentername, rollnumber, grade, title, description,Link } = req.body;
+
     const data = {
       presentername: presentername,
       rollnumber: rollnumber,
       grade: grade,
       title: title,
       description: description,
+      image:ImagePath,
+      Link:Link,
     };
+    console.log(data);
     const results = await prisma.podcast.create({
       data: data,
     });
@@ -58,8 +66,11 @@ router.post("/", async (req, res) => {
 });
 router.put("/:id", async (req, res) => {
   try {
-    const id = req.params.id;
-    const { presentername, rollnumber, grade, title, description } = req.body;
+     const id = req.params.id;
+     let ImagePath;
+     ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
+     await req.files.image.mv("./public" + ImagePath);
+     const { presentername, rollnumber, grade, title, description,Link } = req.body;
 
     const data = {
       presentername: presentername,
@@ -67,26 +78,28 @@ router.put("/:id", async (req, res) => {
       grade: grade,
       title: title,
       description: description,
+      image:ImagePath,
+      Link:Link,
     };
-    const results = await prisma.podcast.update({
+     const results = await prisma.podcast.update({
       where: {
         id,
       },
       data,
     });
-    console.log(results);
-    res.status(201).json({
-      status: "success",
-      data: results,
-    });
-  } catch (error) {
-    console.error(error.message);
-  }
-});
+     res.status(201).json({
+       status: "success",
+       data: results,
+     });
+   } catch (error) {
+     console.error("Error:", error.message);
+   }
+ });
+ 
 router.delete("/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const { presentername, rollnumber, grade, title, description } = req.body;
+    try {
+      const id = req.params.id;
+      const { presentername, rollnumber, grade, title,image, description,Link } = req.body;
 
     const data = {
       presentername: presentername,
@@ -94,18 +107,20 @@ router.delete("/:id", async (req, res) => {
       grade: grade,
       title: title,
       description: description,
+      image:image,
+      Link:Link,
     };
-    const results = await prisma.podcast.delete({
-      where: {
-        id,
-      },
-    });
-    console.log(results);
-    res.status(201).json({
-      status: "success",
-    });
-  } catch (error) {
-    console.error(error.message);
-  }
-});
+      const results = await prisma.podcast.delete({
+        where: {
+          id,
+        },
+      });
+      console.log(results);
+      res.status(201).json({
+        status: "success",
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
+  });
 module.exports = router;

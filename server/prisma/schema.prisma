@@ -170,7 +170,7 @@ model analysisreport {
 }
 
 model studentcorner {
-  id             Int      @id @unique @default(autoincrement())
+  id             String     @id @unique @default(uuid())
   studentname    String
   rollnumber     Int
   grade          Int

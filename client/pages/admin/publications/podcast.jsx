@@ -7,11 +7,12 @@ import Popup from "reactjs-popup";
 
 export default function Podcast() {
   const router = useRouter();
-  const [PresenterName, setPresenterName] = useState();
-  const [Rollno, setRollno] = useState();
-  const [Grade, setGrade] = useState();
-  const [PodcastDescription, setPodcastDescription] = useState();
+  const [presentername, setPresenterName] = useState();
+  const [rollnumber, setRollno] = useState();
+  const [grade, setGrade] = useState();
+  const [description, setPodcastDescription] = useState();
   const [Link,setLink] = useState();
+  const [title,setTitle] = useState();
   const [error, setError] = useState("");
   const [podcast, setPodcast] = useState();
   let i = 0;
@@ -31,10 +32,11 @@ export default function Podcast() {
     e.preventDefault();
     try {
       const response = await PodcastFinder.post("/", {
-        PresenterName,
-        Rollno,
-        Grade,
-        PodcastDescription,
+        presentername,
+        rollnumber,
+        grade,
+        description,
+        title,
         image: imageRef.current.files[0],
         Link,
       },
@@ -80,7 +82,7 @@ export default function Podcast() {
         >
           {(close) => (
             <form
-            onChange={handleSubmit}
+            onSubmit={handleSubmit}
             className="w-[44rem] mx-auto px-6 py-12 rounded-xl"
           >
             <label for="name" className="text-lg font-medium w-[11em]">
@@ -101,6 +103,18 @@ export default function Podcast() {
             <input
               type="text"
               id="grade"
+              placeholder=""
+              className="border-2 w-full p-2 rounded-lg mb-4"
+              required
+              onChange={(e) => setGrade(e.target.value)}
+            ></input>{" "}
+            <br />
+            <label for="title" className="text-lg font-medium w-[11em]">
+              Title
+            </label>
+            <input
+              type="text"
+              id="title"
               placeholder=""
               className="border-2 w-full p-2 rounded-lg mb-4"
               required
@@ -167,6 +181,7 @@ export default function Podcast() {
               <th className="table-header">Roll Number</th>
               <th className="table-header">Description</th>
               <th className="table-header">Grade</th>
+              <th className="table-header">Title</th>
               <th className="table-header">Image</th>
               <th className="table-header">Video Link</th>
               <th className="table-header">Actions</th>
@@ -181,6 +196,7 @@ export default function Podcast() {
                     <td>{item.rollnumber}</td>
                     <td>{item.description}</td>
                     <td>{item.grade}</td>
+                    <td>{item.title}</td>
                     <td>{item.image}</td>
                     <td>{item.Link}</td>
                     <td>

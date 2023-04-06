@@ -23,7 +23,7 @@ router.get("/:id", async (req, res) => {
     const id = req.params.id;
     const results = await prisma.studentcorner.findFirst({
       where: {
-        id: parseInt(id),
+        id,
       },
     });
     res.status(200).json({
@@ -65,58 +65,60 @@ router.post("/", async (req, res) => {
 });
 router.put("/:id", async (req, res) => {
   try {
-    const id = req.params.id;
-    let ImagePath;
-    const vals = await prisma.newsletter.findFirst({
-      where: {
-        id: id,
-      },
-    });
-    if (req.files.image) {
-      imagePathServer = ImagePath + Date.now() + "-" + req.files.image.name;
-      await req.files.image.mv("./public" + ImagePath);
-      await fsPromises.unlink(vals.image);
-    } else ImagePath = "";
-
-    const { StudentName, Rollno, Grade, ArticleTitle, ArticleContent } =
-    req.body;
-
-    const data = {
-    studentname: StudentName,
-    rollnumber: parseInt(Rollno),
-    grade: parseInt(Grade),
-    articletitle: ArticleTitle,
-    articlecontent: ArticleContent,
-    image: ImagePath,
-  };
-    const results = await prisma.studentcorner.update({
+     const id = req.params.id;
+     let ImagePath;
+     ImagePath = imagePathServer + Date.now() + "-" + req.files.image.name;
+     await req.files.image.mv("./public" + ImagePath);
+     const { StudentName, Rollno, Grade, ArticleTitle, ArticleContent } =
+       req.body;
+ 
+     const data = {
+       studentname: StudentName,
+       rollnumber: parseInt(Rollno),
+       grade: parseInt(Grade),
+       articletitle: ArticleTitle,
+       articlecontent: ArticleContent,
+       image: ImagePath,
+     };
+     const results = await prisma.studentcorner.update({
       where: {
         id,
       },
       data,
     });
-    console.log(results);
-    res.status(201).json({
-      status: "success",
-      data: results,
-    });
-  } catch (error) {
-    console.error(error.message);
-  }
-});
+     res.status(201).json({
+       status: "success",
+       data: results,
+     });
+   } catch (error) {
+     console.error("Error:", error.message);
+   }
+ });
+ 
 router.delete("/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const results = await prisma.studentcorner.delete({
-      where: {
-        id: parseInt(id),
-      },
-    });
-    res.status(201).json({
-      status: "success",
-    });
-  } catch (error) {
-    console.error(error.message);
-  }
-});
+    try {
+      const id = req.params.id;
+      const { StudentName, Rollno, Grade, ArticleTitle, ArticleContent,image} =
+      req.body;
+      const data = {
+      studentname: StudentName,
+       rollnumber: parseInt(Rollno),
+       grade: parseInt(Grade),
+       articletitle: ArticleTitle,
+       articlecontent: ArticleContent,
+       image: image,
+      };
+      const results = await prisma.studentcorner.delete({
+        where: {
+          id,
+        },
+      });
+      console.log(results);
+      res.status(201).json({
+        status: "success",
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
+  });
 module.exports = router;
