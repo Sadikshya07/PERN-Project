@@ -13,6 +13,7 @@ export default function Podcast() {
   const [description, setPodcastDescription] = useState();
   const [Link,setLink] = useState();
   const [title,setTitle] = useState();
+  const [image,setImage]= useState();
   const [error, setError] = useState("");
   const [podcast, setPodcast] = useState();
   let i = 0;
@@ -67,7 +68,7 @@ export default function Podcast() {
   return (
     <div>
       <Head>
-        <title>Podcast</title>
+        <title>Podcast</title> 
         <meta name="description" content="Deerwalk Sifal School" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -118,7 +119,7 @@ export default function Podcast() {
               placeholder=""
               className="border-2 w-full p-2 rounded-lg mb-4"
               required
-              onChange={(e) => setGrade(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
             ></input>{" "}
             <br />
             <label for="rollno" className="text-lg font-medium w-[11em]">
@@ -141,6 +142,8 @@ export default function Podcast() {
               id="video"
               placeholder=""
               className="border-2 w-full p-2 rounded-lg mb-4"
+              required
+              onChange={(e) => setLink(e.target.value)}
             ></input>
             <br />
             <label htmlFor="description" className="text-lg font-medium w-[11em]">
@@ -163,6 +166,8 @@ export default function Podcast() {
               id="image"
               placeholder=""
               className="border-2 w-full p-2 rounded-lg mb-4"
+              required
+              onChange={(e) => setImage(e.target.value)}
             ></input>{" "}
             <br />
             <button

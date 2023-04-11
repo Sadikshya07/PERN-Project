@@ -44,6 +44,9 @@ export default function UpdateNewsandEvents() {
       image2,
       description,
       publishdate,
+    },
+    {
+      headers: { "Content-Type": "multipart/form-data" },
     });
     router.push(`/admin/community/newsandevents`);
   };
